@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useState } from 'react'
+import { AppShell } from './components/AppShell'
+import type { Destination, ProjectSection } from './components/AppShell'
 import { AuthView } from './components/AuthView'
-import { Dashboard } from './components/Dashboard'
+import { ProjectsPage } from './components/ProjectsPage'
 import { ProjectWorkspace } from './components/ProjectWorkspace'
 import { StatisticsPage } from './components/StatisticsPage'
 import { ToastProvider, useToast } from './components/Toast'
 import { Banner } from './components/ui'
 import { TOKEN_KEY, api, errorMessage, isNetworkError, setUnauthorizedHandler } from './lib/api'
+import { applyThemeChoice, readThemeChoice } from './lib/theme'
+import type { ThemeChoice } from './lib/theme'
 import type { ProjectSummary, PublicConfig, Repo } from './lib/types'
 
 function Shell() {
@@ -15,19 +19,29 @@ function Shell() {
   const [projects, setProjects] = useState<ProjectSummary[]>([])
   const [githubConnected, setGithubConnected] = useState(false)
   const [repos, setRepos] = useState<Repo[]>([])
+
+  const [destination, setDestination] = useState<Destination>('projects')
   const [activeProject, setActiveProject] = useState<string | null>(null)
-  const [showStatistics, setShowStatistics] = useState(false)
+  const [projectSection, setProjectSection] = useState<ProjectSection>('code')
+
+  const [theme, setTheme] = useState<ThemeChoice>(() => readThemeChoice())
   const [connectionError, setConnectionError] = useState('')
-  // Distinguishes "the server never answered" from "the server answered with
-  // an error" -- the two look identical if all you check is whether a
-  // request failed, but they are not the same problem for the user to chase.
+  // Distinguishes "the server never answered" from "the server answered with an
+  // error" — the two look identical if all you check is whether a request
+  // failed, but they are not the same problem for the user to chase.
   const [connectionUnreachable, setConnectionUnreachable] = useState(false)
+
+  // Applied before first paint in main.tsx too, so there is no flash of the
+  // wrong theme; this keeps the attribute in step with later changes.
+  useEffect(() => {
+    applyThemeChoice(theme)
+  }, [theme])
 
   const signOut = useCallback(() => {
     localStorage.removeItem(TOKEN_KEY)
     setToken(null)
     setActiveProject(null)
-    setShowStatistics(false)
+    setDestination('projects')
     setProjects([])
     setRepos([])
     setGithubConnected(false)
@@ -64,7 +78,7 @@ function Shell() {
         try {
           setRepos(await api.githubRepos())
         } catch {
-          // A stale GitHub token should not break the whole dashboard.
+          // A stale GitHub token should not break the whole page.
           setRepos([])
         }
       } else {
@@ -94,9 +108,9 @@ function Shell() {
     if (!code) return
 
     if (!localStorage.getItem(TOKEN_KEY)) {
-      // Previously the code was silently dropped in this case and the user was
-      // left wondering why nothing happened.
-      toast.notify('Sign in first, then connect GitHub — the authorisation code was discarded.', 'warning')
+      // Previously the code was silently dropped here and the user was left
+      // wondering why nothing happened.
+      toast.notify('Sign in first, then connect GitHub — the code was discarded.', 'warning')
       window.history.replaceState({}, document.title, window.location.pathname)
       return
     }
@@ -122,6 +136,8 @@ function Shell() {
           </div>
         )}
         <AuthView
+          theme={theme}
+          onTheme={setTheme}
           onAuthenticated={(newToken) => {
             localStorage.setItem(TOKEN_KEY, newToken)
             setToken(newToken)
@@ -131,10 +147,34 @@ function Shell() {
     )
   }
 
+  const modelLabel = config?.llm_enabled
+    ? `Model: ${config.llm_model}`
+    : 'No model configured — structural checks only'
+
   return (
-    <>
+    <AppShell
+      destination={destination}
+      onNavigate={(next) => {
+        setDestination(next)
+        if (next === 'projects') setActiveProject(null)
+      }}
+      openProject={activeProject}
+      projectSection={projectSection}
+      onProjectSection={(section) => {
+        setDestination('projects')
+        setProjectSection(section)
+      }}
+      onCloseProject={() => {
+        setActiveProject(null)
+        void refresh()
+      }}
+      theme={theme}
+      onTheme={setTheme}
+      onSignOut={signOut}
+      modelLabel={modelLabel}
+    >
       {connectionError && (
-        <div className="mx-auto max-w-5xl p-6 pb-0">
+        <div className="p-4 pb-0">
           <Banner
             tone="critical"
             title={connectionUnreachable ? 'Backend unreachable' : 'Connection problem'}
@@ -144,30 +184,31 @@ function Shell() {
           </Banner>
         </div>
       )}
-      {showStatistics ? (
-        <StatisticsPage onBack={() => setShowStatistics(false)} />
+
+      {destination === 'statistics' ? (
+        <StatisticsPage />
       ) : activeProject ? (
         <ProjectWorkspace
           projectName={activeProject}
           config={config}
-          onBack={() => {
-            setActiveProject(null)
-            void refresh()
-          }}
+          section={projectSection}
+          onSection={setProjectSection}
         />
       ) : (
-        <Dashboard
+        <ProjectsPage
           config={config}
           projects={projects}
           githubConnected={githubConnected}
           repos={repos}
           onRefresh={refresh}
-          onOpen={setActiveProject}
-          onSignOut={signOut}
-          onOpenStatistics={() => setShowStatistics(true)}
+          onOpen={(name) => {
+            setActiveProject(name)
+            setProjectSection('code')
+            setDestination('projects')
+          }}
         />
       )}
-    </>
+    </AppShell>
   )
 }
 

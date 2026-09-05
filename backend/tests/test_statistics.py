@@ -20,6 +20,7 @@ from pathlib import Path
 from stats.core import (
     MIN_DISCORDANT_PAIRS,
     describe,
+    km_median_horizon,
     mcnemar_exact,
     mean,
     median,
@@ -485,8 +486,26 @@ class ExportTests(unittest.TestCase):
             self.assertIn(filename, bundle)
 
     def test_bundle_is_small_enough_to_read(self):
-        """A reader who opens the export should not face sixteen files."""
-        self.assertLessEqual(len(to_csv_bundle(self.report)), 7)
+        """A reader who opens the export should not face sixteen files.
+
+        Four tables, three figures and the raw runs. The ceiling is a guard, not
+        a target: raising it should mean a deliberate decision that the paper
+        needs another artefact, which is why it is asserted rather than left to
+        drift upwards one convenience file at a time.
+        """
+        self.assertLessEqual(len(to_csv_bundle(self.report)), 8)
+
+    def test_the_conditional_rates_reach_the_export(self):
+        """The recall column is the one a reviewer will look for; it must not
+        stop at the screen."""
+        import csv
+        import io as _io
+
+        bundle = to_csv_bundle(self.report)
+        rows = list(csv.DictReader(_io.StringIO(bundle["table2-gate-performance.csv"])))
+        self.assertIn("recall", rows[0])
+        self.assertIn("specificity", rows[0])
+        self.assertIn("miss_rate_all_runs", rows[0])
 
     def test_csv_parses_and_carries_the_reading(self):
         import csv
@@ -534,3 +553,266 @@ if __name__ == "__main__":
     unittest.main()
 
 
+
+
+# --- the conditional rates and the recovery horizon --------------------------
+
+
+def rows_with_divergence():
+    """`sample_rows` plus the per-row oracle agreement the horizon needs.
+
+    A row diverges from the oracle exactly when the gate is carrying a stale
+    answer: conformance changed at or before this commit and the gate has not
+    re-analysed since. That makes the correction point well defined, so the
+    horizon can be asserted rather than merely smoke-tested.
+    """
+    rows = sample_rows()
+    stale = {}
+    for row in rows:
+        key = (row["project"], row["gate_strategy"])
+        if row["gate_allowed_llm"]:
+            stale[key] = False
+        elif row["conformance_changed"]:
+            stale[key] = True
+        row["diverges_from_oracle"] = stale.get(key, False)
+    return rows
+
+
+class HorizonTests(unittest.TestCase):
+    """Kaplan-Meier, because some misses are never corrected before the end."""
+
+    def test_all_corrected_gives_the_plain_median(self):
+        result = km_median_horizon([1, 1, 2, 2, 3])
+        self.assertEqual(result["misses_tracked"], 5)
+        self.assertEqual(result["resolved_count"], 5)
+        self.assertEqual(result["censored_count"], 0)
+        self.assertEqual(result["median_commits"], 2.0)
+
+    def test_never_corrected_is_censored_not_zero(self):
+        """Invariant 4: an unmeasured gap is never reported as no gap."""
+        result = km_median_horizon([None, None, None])
+        self.assertEqual(result["censored_count"], 3)
+        self.assertEqual(result["resolved_count"], 0)
+        self.assertIsNone(result["median_commits"])
+
+    def test_median_is_not_invented_when_most_are_outstanding(self):
+        result = km_median_horizon([1, None, None, None, None])
+        self.assertIsNone(result["median_commits"])
+        self.assertIsNotNone(result["censored_beyond"])
+
+    def test_censored_observations_are_not_dropped(self):
+        """Dropping them would bias the median down: the longest gaps are
+        exactly the ones most likely to outrun the end of the history."""
+        result = km_median_horizon([1, 2, None, None])
+        self.assertEqual(result["misses_tracked"], 4)
+        self.assertEqual(result["censored_count"], 2)
+
+    def test_no_misses_is_an_earned_zero(self):
+        result = km_median_horizon([])
+        self.assertEqual(result["misses_tracked"], 0)
+        self.assertIsNone(result["median_commits"])
+
+
+class ConditionalRateTests(unittest.TestCase):
+    """Recall and specificity, conditioned on what actually changed.
+
+    The unconditional miss rate divides by every run, and most commits change
+    nothing, so a gate can post a near-zero miss rate by skipping a long quiet
+    stretch. These assert the conditional figures against the fixture's known
+    pattern: every third commit changes, `structural` fires on exactly those,
+    and `isomorphism` skips every second one of them.
+    """
+
+    def setUp(self):
+        self.report = build_report(sample_rows())
+        self.rows = {row["gate"]: row for row in self.report["gates"]["rows"]}
+
+    def test_a_perfect_gate_has_recall_and_specificity_of_one(self):
+        structural = self.rows["structural"]
+        self.assertEqual(structural["recall"], 1.0)
+        self.assertEqual(structural["specificity"], 1.0)
+
+    def test_the_baseline_catches_everything_but_never_skips(self):
+        always = self.rows["always"]
+        self.assertEqual(always["recall"], 1.0)
+        self.assertEqual(always["specificity"], 0.0)
+
+    def test_a_leaky_gate_reports_the_recall_it_actually_achieved(self):
+        """`isomorphism` re-analyses 3 of the 7 changed commits per project."""
+        isomorphism = self.rows["isomorphism"]
+        self.assertEqual(isomorphism["changed_checked"], 21)
+        self.assertAlmostEqual(isomorphism["recall"], round(3 / 7, 2), places=2)
+        self.assertEqual(isomorphism["specificity"], 1.0)
+
+    def test_recall_is_lower_than_the_unconditional_rate_suggests(self):
+        """The reason this column was added: the two numbers disagree, and the
+        conditional one is the honest answer to 'does the gate catch changes'."""
+        isomorphism = self.rows["isomorphism"]
+        self.assertLess(isomorphism["miss_rate"], 0.25)
+        self.assertLess(isomorphism["recall"], 0.5)
+
+    def test_intervals_bracket_the_point_estimate(self):
+        for row in self.report["gates"]["rows"]:
+            if row["recall"] is None:
+                continue
+            self.assertLessEqual(row["recall_low"], row["recall"])
+            self.assertGreaterEqual(row["recall_high"], row["recall"])
+
+    def test_without_an_oracle_recall_is_not_measured_not_zero(self):
+        rows = sample_rows(oracle=False)
+        for row in rows:
+            row.pop("conformance_changed", None)
+        report = build_report(rows)
+        for row in report["gates"]["rows"]:
+            self.assertIsNone(row["recall"])
+            self.assertIsNone(row["specificity"])
+            self.assertEqual(row["changed_checked"], 0)
+
+    def test_the_reading_says_which_denominator_it_used(self):
+        reading = self.rows["isomorphism"]["reading"]
+        self.assertIn("all runs", reading)
+        self.assertIn("conformance really changed", reading)
+
+
+class RecoveryHorizonReportTests(unittest.TestCase):
+    def test_not_measured_without_per_row_oracle_agreement(self):
+        report = build_report(sample_rows())
+        for row in report["gates"]["rows"]:
+            self.assertFalse(row["recovery"]["measured"])
+            self.assertIn("oracle", row["recovery"]["reason"].lower())
+
+    def test_misses_are_tracked_once_divergence_is_recorded(self):
+        report = build_report(rows_with_divergence())
+        isomorphism = next(
+            row for row in report["gates"]["rows"] if row["gate"] == "isomorphism"
+        )
+        self.assertTrue(isomorphism["recovery"]["measured"])
+        self.assertGreater(isomorphism["recovery"]["misses_tracked"], 0)
+
+    def test_a_gate_that_never_misses_tracks_nothing(self):
+        report = build_report(rows_with_divergence())
+        structural = next(
+            row for row in report["gates"]["rows"] if row["gate"] == "structural"
+        )
+        self.assertEqual(structural["recovery"]["misses_tracked"], 0)
+
+
+class ParetoTests(unittest.TestCase):
+    def test_unavailable_without_recall(self):
+        rows = sample_rows(oracle=False)
+        for row in rows:
+            row.pop("conformance_changed", None)
+        report = build_report(rows)
+        self.assertFalse(report["charts"]["pareto"]["available"])
+        self.assertIn("oracle", report["charts"]["pareto"]["reason"].lower())
+
+    def test_a_dominated_gate_is_named(self):
+        """`structural` catches every change *and* skips 65% of runs, so the
+        baseline -- same recall, skips nothing -- is beaten outright."""
+        report = build_report(sample_rows())
+        points = {point["gate"]: point for point in report["charts"]["pareto"]["data"]}
+        self.assertIn("structural", points["always"]["dominated_by"])
+        self.assertFalse(points["always"]["on_frontier"])
+        self.assertTrue(points["structural"]["on_frontier"])
+
+    def test_a_gate_trading_recall_for_savings_stays_on_the_frontier(self):
+        """`isomorphism` skips more than `structural` but catches less. That is
+        a real tradeoff, not a dominated choice, and calling it dominated would
+        misrepresent the only decision this figure exists to inform."""
+        report = build_report(sample_rows())
+        points = {point["gate"]: point for point in report["charts"]["pareto"]["data"]}
+        self.assertGreater(points["isomorphism"]["skip_rate"], points["structural"]["skip_rate"])
+        self.assertLess(points["isomorphism"]["recall"], points["structural"]["recall"])
+        self.assertEqual(points["isomorphism"]["dominated_by"], [])
+        self.assertTrue(points["isomorphism"]["on_frontier"])
+
+    def test_clear_dominance_is_a_subset_of_plain_dominance(self):
+        report = build_report(sample_rows())
+        for point in report["charts"]["pareto"]["data"]:
+            for gate in point["robustly_dominated_by"]:
+                self.assertIn(gate, point["dominated_by"])
+
+    def test_every_plotted_number_appears_in_table_two(self):
+        report = build_report(sample_rows())
+        table = {row["gate"]: row for row in report["gates"]["rows"]}
+        for point in report["charts"]["pareto"]["data"]:
+            self.assertEqual(point["skip_rate"], table[point["gate"]]["skip_rate"])
+            self.assertEqual(point["recall"], table[point["gate"]]["recall"])
+
+
+# --- the replay-to-report column contract ------------------------------------
+
+
+class RunsCsvContractTests(unittest.TestCase):
+    """`research/replay.py` writes runs.csv; `stats/report.py` reads it.
+
+    Nothing in the type system connects the two, and when they disagreed the
+    failure was silent and total: `normalise_rows` falls back to the string
+    "unknown" for a gate it cannot find, so a replayed study collapsed all four
+    gates into a single row and Table 2 — the result the paper is about —
+    quietly described one nonexistent gate. It raised no error and produced a
+    plausible-looking table.
+
+    These assert the column names against the source of `replay.py` itself, so
+    renaming a key on either side fails here instead of in a submitted paper.
+    """
+
+    #: Columns whose absence changes a number rather than merely omitting one.
+    REQUIRED = {
+        "project",
+        "commit",
+        "commit_index",
+        "gate_strategy",
+        "gate_allowed_llm",
+        "missed_change",
+        "conformance_changed",
+        "diverges_from_oracle",
+        "prompt_tokens",
+        "completion_tokens",
+        "latency_ms",
+        "changed_nodes",
+        "similarity_score",
+    }
+
+    def replay_row_keys(self):
+        import re
+
+        source = (
+            Path(__file__).resolve().parents[2] / "research" / "replay.py"
+        ).read_text(encoding="utf-8")
+        start = source.index("rows.append(")
+        end = source.index("previous_truth = truth")
+        return set(re.findall(r'^\s*"([a-z_]+)":', source[start:end], flags=re.M))
+
+    def test_replay_writes_every_column_the_report_depends_on(self):
+        missing = self.REQUIRED - self.replay_row_keys()
+        self.assertEqual(
+            missing,
+            set(),
+            f"research/replay.py stopped writing {sorted(missing)}; "
+            "stats/report.py reads these by name and silently substitutes "
+            "defaults when they are absent.",
+        )
+
+    def test_a_replay_shaped_row_survives_normalisation(self):
+        """The end-to-end version of the above: a row shaped like replay's own
+        output must come through `normalise_rows` with its gate intact."""
+        row = {key: 1 for key in self.replay_row_keys()}
+        row.update(
+            {
+                "project": "proj",
+                "commit": "abc123",
+                "commit_index": 0,
+                "gate_strategy": "structural",
+                "gate_allowed_llm": True,
+                "missed_change": False,
+                "conformance_changed": True,
+                "diverges_from_oracle": False,
+            }
+        )
+        normalised = normalise_rows([row])[0]
+        self.assertEqual(normalised["gate"], "structural")
+        self.assertNotEqual(normalised["gate"], "unknown")
+        self.assertTrue(normalised["conformance_changed"])
+        self.assertIs(normalised["diverges_from_oracle"], False)
+        self.assertIsNotNone(normalised["similarity"])

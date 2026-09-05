@@ -116,6 +116,13 @@ def replay_project(
     rows: List[Dict[str, Any]] = []
     misses: List[Dict[str, Any]] = []
 
+    # The oracle's own previous signature. Whether conformance *changed* at a
+    # commit is a fact about the code and the diagram, not about any gate, so it
+    # is measured by comparing the forced full analysis against the forced full
+    # analysis of the commit before it -- never against a gated run, which would
+    # make the answer depend on the thing being evaluated.
+    previous_truth: Optional[Dict[str, Any]] = None
+
     for index, commit in enumerate(commits):
         checkout_worktree(repo, commit, tree_dir)
 
@@ -125,6 +132,14 @@ def replay_project(
         oracle = run_analysis(oracle_project, gate_strategy="always", force=True)
         oracle_elapsed = (time.perf_counter() - oracle_started) * 1000
         truth = finding_signature(oracle)
+
+        # None at the first commit of a project: there is no earlier commit to
+        # compare against, so the answer is "not measured", never False.
+        conformance_changed = (
+            bool(signatures_differ(previous_truth, truth))
+            if previous_truth is not None
+            else None
+        )
 
         for strategy in strategies:
             project_path = projects[strategy]
@@ -154,7 +169,10 @@ def replay_project(
             rows.append(
                 {
                     "project": spec.name,
-                    "strategy": strategy,
+                    # These column names are the contract with
+                    # backend/stats/report.py::normalise_rows. Renaming either
+                    # of them silently degrades every downstream table.
+                    "gate_strategy": strategy,
                     "commit_index": index,
                     "commit": commit[:12],
                     "files": file_count,
@@ -171,15 +189,24 @@ def replay_project(
                     "latency_ms": round(elapsed, 1),
                     "graph_nodes": result["networkx_nodes"],
                     "graph_edges": result["networkx_edges"],
-                    "similarity_rule_based": result["similarity_score_rule_based"],
+                    "similarity_score": result["similarity_score_rule_based"],
                     "call_resolution_rate": (result.get("call_resolution") or {}).get(
                         "resolution_rate"
                     ),
                     "ambiguous_calls": (result.get("call_resolution") or {}).get("ambiguous", 0),
                     "missed_change": missed,
+                    # Did this run's findings differ from the oracle's, whether
+                    # or not the gate reused? `missed_change` folds this
+                    # together with "and the gate reused", which loses the
+                    # information needed to tell when a miss is corrected.
+                    "diverges_from_oracle": bool(differing),
+                    # A property of the commit, identical for every strategy.
+                    "conformance_changed": conformance_changed,
                     "oracle_latency_ms": round(oracle_elapsed, 1),
                 }
             )
+
+        previous_truth = truth
 
         if not index % 10:
             log(f"    commit {index + 1}/{len(commits)}")
@@ -191,7 +218,7 @@ def summarise(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
     by_strategy: Dict[str, Dict[str, Any]] = {}
     for row in rows:
         bucket = by_strategy.setdefault(
-            row["strategy"],
+            row["gate_strategy"],
             {
                 "runs": 0,
                 "reanalyses": 0,

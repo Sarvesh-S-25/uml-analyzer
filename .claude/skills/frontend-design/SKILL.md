@@ -11,7 +11,7 @@ allowed-tools: mcp__stitch__*
 UI in this project is designed in Stitch first, then translated into the
 codebase. Do not hand-write layout or styling from scratch.
 
-There are exactly three screens (`Dashboard`, `ProjectWorkspace`,
+There are exactly three screens (`ProjectsPage`, `ProjectWorkspace`,
 `StatisticsPage`) plus their sub-components — check whether the request is
 really a fourth screen or a variant of one of these before generating anything
 new.
@@ -49,7 +49,7 @@ new.
   colour, a glyph, and a written label — per `frontend/src/lib/theme.ts`. The
   status palette puts green and red close together under deuteranopia, and a
   figure exported for the paper may be printed in greyscale.
-- The dependency graph view (`components/GraphView.tsx`) renders from
+- The dependency graph view (`components/DesignMap.tsx`) renders from
   `lib/layout.ts`, a deterministic Sugiyama-style layout with **no physics and
   no randomness** — never propose a force-directed or animated layout for it;
   the same project must render pixel-identically every run because it's used

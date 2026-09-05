@@ -35,9 +35,23 @@ export interface GateRow {
   skip_high: number | null
   checked_for_misses: number
   missed: number | null
+  /** Misses over EVERY run. Most commits change nothing, so this flatters a
+   *  gate that skips a long quiet stretch. Read it beside `recall`. */
   miss_rate: number | null
   miss_low: number | null
   miss_high: number | null
+  /** Commits where an oracle established that conformance really changed. */
+  changed_checked: number
+  unchanged_checked: number
+  /** Of the commits that really changed, the share this gate re-analysed. */
+  recall: number | null
+  recall_low: number | null
+  recall_high: number | null
+  /** Of the commits that changed nothing, the share it correctly skipped. */
+  specificity: number | null
+  specificity_low: number | null
+  specificity_high: number | null
+  recovery: RecoveryHorizon
   tokens: number
   tokens_saved: number | null
   percent_saved: number | null
@@ -45,6 +59,23 @@ export interface GateRow {
   is_baseline: boolean
   enough_runs: boolean
   reading: string
+}
+
+/** How long a missed change stays missed.
+ *
+ * A miss still outstanding when a project's history ends is *censored* — known
+ * to be at least this long, exact length unknown. Those are never counted as
+ * zero and never dropped, so `median_commits` is null rather than invented when
+ * too many are outstanding for a median to exist. */
+export interface RecoveryHorizon {
+  measured: boolean
+  reason: string
+  misses_tracked: number
+  resolved_count: number
+  censored_count: number
+  median_commits: number | null
+  censored_beyond: number | null
+  max_resolved: number | null
 }
 
 export interface Recommendation {
@@ -162,9 +193,34 @@ export interface DriftSeries {
   }>
 }
 
+/** One gate as a point in the savings-versus-accuracy plane. */
+export interface ParetoDatum {
+  gate: string
+  skip_rate: number | null
+  skip_low: number | null
+  skip_high: number | null
+  recall: number | null
+  recall_low: number | null
+  recall_high: number | null
+  changed_checked: number
+  /** Gates that beat this one on both axes at once. */
+  dominated_by: string[]
+  /** Of those, the ones whose intervals do not overlap — the claim that
+   *  survives a reviewer asking whether the difference is real. */
+  robustly_dominated_by: string[]
+  on_frontier: boolean
+}
+
 export interface Charts {
   skip_by_gate: { title: string; caption: string; data: SkipDatum[] }
   drift: { title: string; caption: string; data: DriftSeries[] }
+  pareto: {
+    title: string
+    caption: string
+    available: boolean
+    reason: string
+    data: ParetoDatum[]
+  }
 }
 
 export interface Glossary {

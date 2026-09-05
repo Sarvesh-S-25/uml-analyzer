@@ -156,18 +156,22 @@ class CopySourceTests(unittest.TestCase):
 @unittest.skipUnless(AVAILABLE, SKIP_REASON)
 class SummaryTests(unittest.TestCase):
     def rows(self):
+        # `gate_strategy`, not `strategy`: this is the column name
+        # backend/stats/report.py::normalise_rows reads, and replay.py writes
+        # it so a replayed study does not arrive with every row's gate
+        # recorded as "unknown".
         return [
-            {"strategy": "always", "gate_allowed_llm": True, "missed_change": False,
+            {"gate_strategy": "always", "gate_allowed_llm": True, "missed_change": False,
              "prompt_tokens": 100, "completion_tokens": 20, "latency_ms": 50.0, "impact_nodes": 10},
-            {"strategy": "always", "gate_allowed_llm": True, "missed_change": False,
+            {"gate_strategy": "always", "gate_allowed_llm": True, "missed_change": False,
              "prompt_tokens": 100, "completion_tokens": 20, "latency_ms": 50.0, "impact_nodes": 10},
-            {"strategy": "structural", "gate_allowed_llm": True, "missed_change": False,
+            {"gate_strategy": "structural", "gate_allowed_llm": True, "missed_change": False,
              "prompt_tokens": 100, "completion_tokens": 20, "latency_ms": 50.0, "impact_nodes": 4},
-            {"strategy": "structural", "gate_allowed_llm": False, "missed_change": False,
+            {"gate_strategy": "structural", "gate_allowed_llm": False, "missed_change": False,
              "prompt_tokens": 0, "completion_tokens": 0, "latency_ms": 5.0, "impact_nodes": 0},
-            {"strategy": "isomorphism", "gate_allowed_llm": False, "missed_change": True,
+            {"gate_strategy": "isomorphism", "gate_allowed_llm": False, "missed_change": True,
              "prompt_tokens": 0, "completion_tokens": 0, "latency_ms": 5.0, "impact_nodes": 0},
-            {"strategy": "isomorphism", "gate_allowed_llm": False, "missed_change": False,
+            {"gate_strategy": "isomorphism", "gate_allowed_llm": False, "missed_change": False,
              "prompt_tokens": 0, "completion_tokens": 0, "latency_ms": 5.0, "impact_nodes": 0},
         ]
 

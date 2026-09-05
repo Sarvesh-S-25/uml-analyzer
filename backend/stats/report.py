@@ -27,6 +27,7 @@ from stats.core import (
     count,
     describe,
     interval_text,
+    km_median_horizon,
     mcnemar_exact,
     median,
     p_value_text,
@@ -78,6 +79,7 @@ def normalise_rows(rows: Sequence[Dict[str, Any]], default_project: str = "proje
                 "gate": str(row.get("gate_strategy") or "unknown"),
                 "reanalysed": _bool(reanalysed),
                 "missed_change": _optional_bool(row.get("missed_change")),
+                "diverges_from_oracle": _optional_bool(row.get("diverges_from_oracle")),
                 "conformance_changed": _optional_bool(row.get("conformance_changed")),
                 "tokens": _num(row.get("prompt_tokens")) + _num(row.get("completion_tokens")),
                 "latency_ms": _num(row.get("latency_ms")),
@@ -307,6 +309,58 @@ def table_study(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
 # --- Table 2: how each gate performed ----------------------------------------
 
 
+def _recovery_horizon(subset: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """How long a missed change stays missed, for one gate.
+
+    A miss is not a permanently wrong answer -- the next run that re-analyses
+    picks the change up. This measures how many commits pass before that
+    happens, which turns "this gate missed 2% of changes" into a claim a
+    reviewer can weigh.
+
+    "Corrected" means the gate's findings agree with the oracle again, not
+    merely that the gate fired: a gate can re-analyse and still be looking at a
+    different answer. That needs `diverges_from_oracle` on every row, not just
+    the missed ones, which is why `research/replay.py` records it separately
+    from `missed_change`.
+
+    A miss still outstanding when its project's history ends is recorded as
+    censored (`None`), never as zero and never dropped -- see invariant 4.
+    """
+    graded = [row for row in subset if row["diverges_from_oracle"] is not None]
+    if not graded:
+        return {
+            "measured": False,
+            "reason": "No oracle was recorded, so corrections cannot be detected.",
+            "misses_tracked": 0,
+            "resolved_count": 0,
+            "censored_count": 0,
+            "median_commits": None,
+            "censored_beyond": None,
+            "max_resolved": None,
+        }
+
+    durations: List[Optional[int]] = []
+    for project in sorted({row["project"] for row in graded}):
+        ordered = sorted(
+            (row for row in graded if row["project"] == project),
+            key=lambda row: row["commit_index"],
+        )
+        for position, row in enumerate(ordered):
+            if not row["missed_change"]:
+                continue
+            gap: Optional[int] = None
+            for later in ordered[position + 1 :]:
+                if later["diverges_from_oracle"] is False:
+                    gap = later["commit_index"] - row["commit_index"]
+                    break
+            durations.append(gap)
+
+    summary = km_median_horizon(durations)
+    summary["measured"] = True
+    summary["reason"] = ""
+    return summary
+
+
 def table_gates(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
     """The headline. Counts before rates, and misses beside savings, always."""
     gates = _gates_in(rows)
@@ -333,6 +387,33 @@ def table_gates(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
         missed = sum(1 for row in checked if row["missed_change"])
         miss_low, miss_high = wilson_interval(missed, len(checked)) if checked else (None, None)
 
+        # The miss rate above divides by *every* run, and most commits change
+        # nothing, so a gate can post a near-zero miss rate simply by skipping a
+        # long stretch of commits that had nothing to find. These two condition
+        # on what actually happened at each commit instead:
+        #   recall      -- of the commits where conformance really changed, how
+        #                  many did this gate re-analyse?
+        #   specificity -- of the commits where nothing changed, how many did it
+        #                  correctly skip?
+        # Both are framed on the gate's *decision*, which is the thing the gate
+        # controls, rather than on the findings that follow from it.
+        judged = [row for row in subset if row["conformance_changed"] is not None]
+        changed = [row for row in judged if row["conformance_changed"]]
+        unchanged = [row for row in judged if not row["conformance_changed"]]
+
+        caught = sum(1 for row in changed if row["reanalysed"])
+        skipped_quiet = sum(1 for row in unchanged if not row["reanalysed"])
+        recall = rate(caught, len(changed)) if changed else None
+        specificity = rate(skipped_quiet, len(unchanged)) if unchanged else None
+        recall_low, recall_high = (
+            wilson_interval(caught, len(changed)) if changed else (None, None)
+        )
+        specificity_low, specificity_high = (
+            wilson_interval(skipped_quiet, len(unchanged)) if unchanged else (None, None)
+        )
+
+        horizon = _recovery_horizon(subset)
+
         tokens = sum(row["tokens"] for row in subset)
         saved = baseline_tokens - tokens
 
@@ -347,9 +428,21 @@ def table_gates(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
             "skip_high": round2(skip_high),
             "checked_for_misses": len(checked),
             "missed": missed if checked else None,
+            # Deliberately named "all runs": this denominator is every run, not
+            # only the commits where something changed. `docs/STATISTICS.md`
+            # describes both, and the caption must say which is which.
             "miss_rate": round2(rate(missed, len(checked))) if checked else None,
             "miss_low": round2(miss_low),
             "miss_high": round2(miss_high),
+            "changed_checked": len(changed),
+            "unchanged_checked": len(unchanged),
+            "recall": round2(recall),
+            "recall_low": round2(recall_low),
+            "recall_high": round2(recall_high),
+            "specificity": round2(specificity),
+            "specificity_low": round2(specificity_low),
+            "specificity_high": round2(specificity_high),
+            "recovery": horizon,
             "tokens": int(tokens),
             "tokens_saved": int(saved) if gate != baseline_gate else None,
             "percent_saved": round2(saved / baseline_tokens) if baseline_tokens and gate != baseline_gate else None,
@@ -397,8 +490,35 @@ def _gate_reading(entry: Dict[str, Any]) -> str:
     else:
         sentence += (
             f" but missed {entry['missed']} real conformance change"
-            f"{'s' if entry['missed'] != 1 else ''} ({percent(entry['miss_rate'])})."
+            f"{'s' if entry['missed'] != 1 else ''} "
+            f"({percent(entry['miss_rate'])} of all runs)."
         )
+
+    # The conditional figure, which is the one that survives a reviewer who
+    # notices that most commits change nothing.
+    if entry["recall"] is not None:
+        sentence += (
+            f" Of the {entry['changed_checked']} commit"
+            f"{'s' if entry['changed_checked'] != 1 else ''} where conformance really changed, "
+            f"it re-analysed {percent(entry['recall'])}"
+        )
+        span = interval_text(entry["recall_low"], entry["recall_high"])
+        sentence += f" ({span})." if span else "."
+    elif entry["changed_checked"] == 0 and entry["unchanged_checked"] == 0:
+        sentence += " Recall was not measured: no commit had a known before-and-after."
+
+    recovery = entry.get("recovery") or {}
+    if recovery.get("measured") and recovery.get("misses_tracked"):
+        if recovery.get("median_commits") is not None:
+            sentence += (
+                f" A miss was corrected after a median of "
+                f"{recovery['median_commits']:.0f} commit(s)."
+            )
+        elif recovery.get("censored_count"):
+            sentence += (
+                f" {recovery['censored_count']} of {recovery['misses_tracked']} miss(es) were "
+                "still uncorrected when the history ended, so the median is not identified."
+            )
 
     if entry["tokens_saved"]:
         sentence += f" Saved {count(entry['tokens_saved'])} tokens ({percent(entry['percent_saved'], 0)})."
@@ -843,7 +963,84 @@ def chart_data(rows: List[Dict[str, Any]], gate_rows: List[Dict[str, Any]]) -> D
         if len(series) >= 2:
             drift.append({"project": project, "points": series})
 
+    # Figure 3: the tradeoff the whole paper is about, in one picture. A gate
+    # is *dominated* when another gate skipped at least as much and caught at
+    # least as many real changes -- there is then no reason to prefer it.
+    #
+    # Point estimates alone would let a gate be declared dominated on a
+    # difference far smaller than the uncertainty in the estimate, so dominance
+    # is reported twice: the plain empirical version, and a `robust` version
+    # that additionally requires the two Wilson intervals not to overlap on the
+    # axis where the winner is strictly ahead.
+    plottable = [entry for entry in gate_rows if entry.get("recall") is not None]
+    if len(plottable) < 2:
+        pareto: Dict[str, Any] = {
+            "available": False,
+            "reason": (
+                "Needs at least two gates with a measured recall. Recall is only defined "
+                "once an oracle has established which commits actually changed."
+            ),
+            "data": [],
+        }
+    else:
+        def _beats(win: Dict[str, Any], lose: Dict[str, Any]) -> bool:
+            return (
+                win["skip_rate"] >= lose["skip_rate"]
+                and win["recall"] >= lose["recall"]
+                and (win["skip_rate"] > lose["skip_rate"] or win["recall"] > lose["recall"])
+            )
+
+        def _separated(win: Dict[str, Any], lose: Dict[str, Any]) -> bool:
+            """True when the intervals do not overlap on at least one axis."""
+            skip_clear = (
+                win["skip_low"] is not None
+                and lose["skip_high"] is not None
+                and win["skip_low"] > lose["skip_high"]
+            )
+            recall_clear = (
+                win["recall_low"] is not None
+                and lose["recall_high"] is not None
+                and win["recall_low"] > lose["recall_high"]
+            )
+            return bool(skip_clear or recall_clear)
+
+        points = []
+        for entry in plottable:
+            beaten_by = [other["gate"] for other in plottable if _beats(other, entry)]
+            robust = [
+                other["gate"]
+                for other in plottable
+                if _beats(other, entry) and _separated(other, entry)
+            ]
+            points.append(
+                {
+                    "gate": entry["gate"],
+                    "skip_rate": entry["skip_rate"],
+                    "skip_low": entry["skip_low"],
+                    "skip_high": entry["skip_high"],
+                    "recall": entry["recall"],
+                    "recall_low": entry["recall_low"],
+                    "recall_high": entry["recall_high"],
+                    "changed_checked": entry["changed_checked"],
+                    "dominated_by": beaten_by,
+                    "robustly_dominated_by": robust,
+                    "on_frontier": not beaten_by,
+                }
+            )
+        pareto = {"available": True, "reason": "", "data": points}
+
     return {
+        "pareto": {
+            "title": "Figure 3 — What each gate saves, against what it catches",
+            "caption": (
+                "Each gate is one point: how often it skipped, against how often it "
+                "re-analysed when conformance had really changed. Bars are 95% intervals. "
+                "A gate on the frontier is a defensible choice; a gate inside it was beaten "
+                "on both axes at once. Dominance is only called \"clear\" when the intervals "
+                "do not overlap."
+            ),
+            **pareto,
+        },
         "skip_by_gate": {
             "title": "Figure 1 — How much each gate skipped",
             "caption": (
@@ -953,8 +1150,7 @@ HOW_TO_READ = [
     {
         "term": "Tokens saved",
         "meaning": (
-            "How many fewer tokens this gate spent than re-analysing every commit. Multiply by "
-            "your provider's price to get money."
+            "How many fewer tokens this gate spent than re-analysing every commit."
         ),
     },
     {

@@ -84,9 +84,25 @@ def to_csv_bundle(report: Dict[str, Any], raw_rows: Optional[Sequence[Dict[str, 
                     "skip_rate_high": row["skip_high"],
                     "checked_for_misses": row["checked_for_misses"],
                     "missed": row["missed"],
-                    "miss_rate": row["miss_rate"],
+                    # Named for its denominator. `miss_rate_all_runs` divides by
+                    # every run; `recall` divides by the commits where
+                    # conformance actually changed. They are different
+                    # questions and the paper reports both.
+                    "miss_rate_all_runs": row["miss_rate"],
                     "miss_rate_low": row["miss_low"],
                     "miss_rate_high": row["miss_high"],
+                    "changed_checked": row["changed_checked"],
+                    "unchanged_checked": row["unchanged_checked"],
+                    "recall": row["recall"],
+                    "recall_low": row["recall_low"],
+                    "recall_high": row["recall_high"],
+                    "specificity": row["specificity"],
+                    "specificity_low": row["specificity_low"],
+                    "specificity_high": row["specificity_high"],
+                    "recovery_misses_tracked": (row.get("recovery") or {}).get("misses_tracked"),
+                    "recovery_resolved": (row.get("recovery") or {}).get("resolved_count"),
+                    "recovery_censored": (row.get("recovery") or {}).get("censored_count"),
+                    "recovery_median_commits": (row.get("recovery") or {}).get("median_commits"),
                     "tokens": row["tokens"],
                     "tokens_saved": row["tokens_saved"],
                     "percent_saved": row["percent_saved"],
@@ -190,6 +206,28 @@ def to_csv_bundle(report: Dict[str, Any], raw_rows: Optional[Sequence[Dict[str, 
 
     charts = report.get("charts", {})
     drift = charts.get("drift", {}).get("data", [])
+
+    pareto = (report.get("charts", {}).get("pareto") or {})
+    if pareto.get("available") and pareto.get("data"):
+        bundle["figure3-pareto.csv"] = _csv(
+            [
+                {
+                    "gate": point["gate"],
+                    "skip_rate": point["skip_rate"],
+                    "skip_low": point["skip_low"],
+                    "skip_high": point["skip_high"],
+                    "recall": point["recall"],
+                    "recall_low": point["recall_low"],
+                    "recall_high": point["recall_high"],
+                    "changed_checked": point["changed_checked"],
+                    "on_frontier": point["on_frontier"],
+                    "dominated_by": " ".join(point["dominated_by"]),
+                    "robustly_dominated_by": " ".join(point["robustly_dominated_by"]),
+                }
+                for point in pareto["data"]
+            ]
+        )
+
     if drift:
         bundle["figure2-drift.csv"] = _csv(
             [
@@ -239,6 +277,16 @@ def _table(caption: str, label: str, columns: Sequence[str], alignment: str,
     return "\n".join(lines)
 
 
+def _pct_ci(value, low, high) -> str:
+    """A percentage with its interval, or an em dash when it was not measured."""
+    if value is None:
+        return "--"
+    text = _pct(value)
+    if low is not None and high is not None:
+        text += f" [{_pct(low, 0)}, {_pct(high, 0)}]"
+    return text
+
+
 def to_latex(report: Dict[str, Any]) -> str:
     """The four tables, IEEE booktabs style. Requires \\usepackage{booktabs}."""
     return "\n".join(
@@ -284,13 +332,49 @@ def split_latex(report: Dict[str, Any]) -> Dict[str, str]:
             ])
         pieces["table2-gates.tex"] = _table(
             "How each gate performed. Skip rate and miss rate must be read together: a gate "
-            "that never skips has a perfect miss rate and saves nothing.",
+            "that never skips has a perfect miss rate and saves nothing. Miss rate here is "
+            "over all runs; Table~\\ref{tab:gate-accuracy} conditions on the commits where "
+            "conformance actually changed.",
             "tab:gates",
             ["Gate", "Runs", "Re-an.", "Skipped", "Skip rate [95\\% CI]", "Missed", "Miss rate",
              "Tokens", "Saved"],
             "lrrrlrrrr",
             body,
         )
+
+        # Split out rather than widened: most commits change nothing, so the
+        # conditional rates are the ones that answer "does this gate catch a
+        # real change", and they deserve to be read on their own.
+        if any(row["recall"] is not None for row in gates["rows"]):
+            accuracy = []
+            for row in gates["rows"]:
+                recovery = row.get("recovery") or {}
+                if recovery.get("measured") and recovery.get("median_commits") is not None:
+                    horizon = f"{recovery['median_commits']:.0f}"
+                elif recovery.get("measured") and recovery.get("misses_tracked"):
+                    horizon = f"$>${_n(recovery.get('censored_beyond') or 0)}"
+                else:
+                    horizon = "--"
+                accuracy.append([
+                    "\\texttt{" + _tex(row["gate"]) + "}",
+                    _n(row["changed_checked"]),
+                    _pct_ci(row["recall"], row["recall_low"], row["recall_high"]),
+                    _n(row["unchanged_checked"]),
+                    _pct_ci(row["specificity"], row["specificity_low"], row["specificity_high"]),
+                    horizon,
+                ])
+            pieces["table2b-gate-accuracy.tex"] = _table(
+                "Gate accuracy conditioned on what actually happened at each commit. "
+                "Recall is the share of commits where conformance really changed that the "
+                "gate re-analysed; specificity is the share of unchanged commits it "
+                "correctly skipped. Recovery is the median number of commits before a "
+                "missed change is picked up again; \"--\" means not measured, never zero.",
+                "tab:gate-accuracy",
+                ["Gate", "Changed", "Recall [95\\% CI]", "Unchanged",
+                 "Specificity [95\\% CI]", "Recovery"],
+                "lrlrlr",
+                accuracy,
+            )
 
     projects = report.get("projects", {})
     if projects.get("rows"):

@@ -28,10 +28,14 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 # only one of them is worth quoting.
 MIN_RUNS_FOR_A_TRUSTWORTHY_RATE = 10
 
-# McNemar needs disagreements to work with. With four or fewer, the exact test
-# cannot reach significance at all, so reporting a p-value invites the reader to
-# treat "not significant" as evidence of no difference.
-MIN_DISCORDANT_PAIRS = 5
+# McNemar needs disagreements to work with. With *five* or fewer, the exact test
+# cannot reach significance at all: the most lopsided possible split at five
+# discordant pairs is 5-0, giving 2 * 0.5**5 = 0.0625, which never clears the
+# 0.05 the rest of this file reports against. Six is the first count at which a
+# significant result is even reachable (2 * 0.5**6 = 0.03125). Reporting a
+# p-value below that invites the reader to treat "not significant" as evidence
+# of no difference, when in fact no outcome could have been significant.
+MIN_DISCORDANT_PAIRS = 6
 
 
 # --- basic descriptive -------------------------------------------------------
@@ -204,3 +208,58 @@ def interval_text(low: Optional[float], high: Optional[float]) -> str:
     if low is None or high is None:
         return ""
     return f"between {percent(low, 0)} and {percent(high, 0)}"
+
+
+# --- how long a missed change stays missed -----------------------------------
+
+
+def km_median_horizon(durations: Sequence[Optional[int]]) -> Dict[str, Any]:
+    """Median commits from a missed change to the run that corrects it.
+
+    Some misses are still uncorrected when a project's replay ends. Dropping
+    those would bias the median downwards (the longest gaps are exactly the ones
+    most likely to run past the end), and counting them as some finite number
+    would be inventing data. They are therefore treated as **censored**: known
+    to be at least this long, exact length unknown -- which is what the
+    Kaplan-Meier estimator is for.
+
+    Pass an integer commit distance for each corrected miss and ``None`` for
+    each one still outstanding at the end of its project's history.
+
+    ``median_commits`` is ``None`` when the survival curve never falls to 0.5 --
+    that is, when so many misses were still outstanding that the median is not
+    identified. ``censored_beyond`` then carries the longest observed
+    outstanding gap, so the text can honestly say "more than N commits" instead
+    of inventing a midpoint.
+    """
+    resolved = sorted(value for value in durations if value is not None)
+    censored = [value for value in durations if value is None]
+
+    result: Dict[str, Any] = {
+        "misses_tracked": len(durations),
+        "resolved_count": len(resolved),
+        "censored_count": len(censored),
+        "median_commits": None,
+        "censored_beyond": None,
+        "max_resolved": resolved[-1] if resolved else None,
+    }
+    if not durations:
+        return result
+
+    # Kaplan-Meier over the corrected gaps, with the outstanding ones removed
+    # from the risk set at the end (they survived at least as long as any
+    # observed correction).
+    at_risk = len(durations)
+    survival = 1.0
+    for moment in sorted(set(resolved)):
+        events = sum(1 for value in resolved if value == moment)
+        if at_risk <= 0:
+            break
+        survival *= 1 - events / at_risk
+        if survival <= 0.5 and result["median_commits"] is None:
+            result["median_commits"] = float(moment)
+        at_risk -= events
+
+    if result["median_commits"] is None and censored:
+        result["censored_beyond"] = resolved[-1] if resolved else 0
+    return result

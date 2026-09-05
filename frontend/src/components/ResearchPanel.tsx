@@ -106,7 +106,7 @@ export function ResearchPanel({
               )}
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <StatTile
-                  label="Similarity score"
+                  label="Match score"
                   value={`${repeat.similarity_score.mean}`}
                   detail={`± ${repeat.similarity_score.stdev} (range ${repeat.similarity_score.range})`}
                 />

@@ -1,59 +1,68 @@
 import type { Metrics, RunRow } from '../lib/types'
 import { SERIES, formatDate, formatMs, formatNumber } from '../lib/theme'
-import { Card, EmptyState, StatTile } from './ui'
+import { Card, EmptyState, InfoHint, StatTile } from './ui'
 
-/** Cost and cache behaviour, measured from the run ledger.
+/** What the gate actually saved on this project, and what it risked.
  *
- * These are the numbers the incremental design is supposed to move. They come
- * from real runs recorded on disk, not from a simulation, so they can be
- * reported directly.
+ * The unit of saving here is **model invocations avoided** — the quantity the
+ * study is about. Tokens are reported underneath as the mechanism, and the
+ * dollar figures the API also returns are deliberately not shown: this is a
+ * measurement of a change-detection strategy, not a procurement exercise, and
+ * putting money at the top invites the reader to argue about pricing instead of
+ * about the gate.
  */
 export function MetricsPanel({ metrics, runs }: { metrics: Metrics; runs: RunRow[] }) {
   if (metrics.total_runs === 0) {
     return (
-      <Card title="Run metrics">
-        <EmptyState title="No runs recorded yet">
-          Every analysis appends a row here: gate decision, tokens, and latency.
+      <Card title="What the gate saved">
+        <EmptyState title="No checks recorded yet" icon="◔">
+          Every check appends a row here: which gate ran, what it decided, and what it cost.
         </EmptyState>
       </Card>
     )
   }
 
+  const avoided = metrics.total_runs - metrics.llm_calls
+  const avoidedShare = metrics.total_runs > 0 ? avoided / metrics.total_runs : 0
   const cachedShare = metrics.total_runs > 0 ? metrics.cached_runs / metrics.total_runs : 0
 
   return (
     <Card
-      title="Run metrics"
-      subtitle="Measured from this project's own run history. The baseline is what the same sequence of runs would have cost with the gate disabled."
+      title="What the gate saved"
+      subtitle="Measured from this project's own recorded checks. The baseline is what the same sequence would have cost with the gate switched off."
     >
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <StatTile
-          label="Analyses run"
-          value={formatNumber(metrics.total_runs)}
-          detail={`${metrics.reanalyses} re-analysed · ${metrics.cached_runs} reused`}
+          label="Model calls avoided"
+          value={`${avoided} of ${metrics.total_runs}`}
+          detail={`${Math.round(avoidedShare * 100)}% of checks answered without the model`}
+          tone="var(--good)"
+          hint="The headline quantity: how often the gate concluded that re-checking could not change the answer. This is what the study measures."
         />
         <StatTile
-          label="Cache hit rate"
+          label="Answered from a stored version"
           value={`${Math.round(metrics.cache_hit_rate * 100)}%`}
-          detail="Runs the gate answered from a stored version"
-          tone={SERIES.cached}
+          detail={`${metrics.cached_runs} of ${metrics.total_runs} checks`}
+          hint="The gate decided nothing relevant had changed, so a previous version was reused instead of being recomputed."
         />
         <StatTile
-          label="Tokens used"
-          value={formatNumber(metrics.total_tokens)}
-          detail={`vs ${formatNumber(metrics.baseline_total_tokens)} without the gate`}
+          label="Re-checked"
+          value={metrics.reanalyses}
+          detail="Checks where the gate decided the answer could have moved"
         />
         <StatTile
-          label="Estimated cost"
-          value={`$${metrics.actual_cost_usd.toFixed(4)}`}
-          detail={`Saved $${metrics.cost_saved_usd.toFixed(4)}`}
+          label="Time not spent"
+          value={formatMs(metrics.latency_saved_ms)}
+          detail={`${formatMs(metrics.mean_latency_ms_llm)} per re-check vs ${formatMs(
+            metrics.mean_latency_ms_cached,
+          )} reused`}
         />
       </div>
 
-      {/* One part-to-whole comparison, with both segments directly labelled. */}
+      {/* One part-to-whole comparison, both segments directly labelled. */}
       <div className="mt-5">
-        <div className="mb-2 flex items-center justify-between text-xs text-muted">
-          <span>Gate decisions</span>
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-xs text-muted">
+          <span>What the gate decided, across every check</span>
           <span className="flex gap-4">
             <span className="inline-flex items-center gap-1.5">
               <span
@@ -61,7 +70,7 @@ export function MetricsPanel({ metrics, runs }: { metrics: Metrics; runs: RunRow
                 className="inline-block h-2.5 w-2.5 rounded-sm"
                 style={{ background: SERIES.reanalysed }}
               />
-              Re-analysed {metrics.reanalyses}
+              Re-checked {metrics.reanalyses}
             </span>
             <span className="inline-flex items-center gap-1.5">
               <span
@@ -73,76 +82,83 @@ export function MetricsPanel({ metrics, runs }: { metrics: Metrics; runs: RunRow
             </span>
           </span>
         </div>
-        <div className="flex h-3 w-full gap-[2px] overflow-hidden rounded">
-          <div
-            className="rounded-l"
-            style={{ background: SERIES.reanalysed, width: `${(1 - cachedShare) * 100}%` }}
-          />
-          <div
-            className="rounded-r"
-            style={{ background: SERIES.cached, width: `${cachedShare * 100}%` }}
-          />
+        <div
+          className="flex h-3 w-full gap-px overflow-hidden rounded"
+          role="img"
+          aria-label={`${metrics.reanalyses} re-checked, ${metrics.cached_runs} reused`}
+        >
+          <div style={{ background: SERIES.reanalysed, width: `${(1 - cachedShare) * 100}%` }} />
+          <div style={{ background: SERIES.cached, width: `${cachedShare * 100}%` }} />
         </div>
       </div>
 
       <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <StatTile
-          label="Mean latency, re-analysis"
-          value={formatMs(metrics.mean_latency_ms_llm)}
+          label="Tokens sent"
+          value={formatNumber(metrics.total_tokens)}
+          detail={`Against ${formatNumber(metrics.baseline_total_tokens)} with the gate off`}
+          hint="The mechanism behind the saving, reported for completeness. The claim this project makes is about avoided invocations, not about spend."
         />
-        <StatTile label="Mean latency, reused" value={formatMs(metrics.mean_latency_ms_cached)} />
         <StatTile
-          label="Similarity score variance across commits"
-          value={metrics.score_variance === null ? '—' : metrics.score_variance.toFixed(2)}
+          label="Tokens not sent"
+          value={formatNumber(metrics.tokens_saved)}
+          detail="The difference between those two figures"
+        />
+        <StatTile
+          label="Score movement"
+          value={metrics.score_variance === null ? 'not measured' : metrics.score_variance.toFixed(2)}
           detail={
             metrics.score_variance === null
-              ? 'Needs at least two runs'
-              : 'How much the code moved, not model non-determinism — see Repeatability for that'
+              ? 'Needs at least two checks'
+              : 'How much the code moved — not model randomness; see Repeatability for that'
           }
         />
       </div>
 
       {runs.length > 0 && (
-        <div className="mt-5 overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <caption className="sr-only">Recorded analysis runs</caption>
-            <thead className="text-muted">
-              <tr className="border-b border-hairline">
-                <th className="py-2 pr-3 font-medium">When</th>
-                <th className="py-2 pr-3 font-medium">Ver.</th>
-                <th className="py-2 pr-3 font-medium">Gate</th>
-                <th className="py-2 pr-3 font-medium">Decision</th>
-                <th className="py-2 pr-3 font-medium text-right">Changed</th>
-                <th className="py-2 pr-3 font-medium text-right">Tokens</th>
-                <th className="py-2 font-medium text-right">Latency</th>
-              </tr>
-            </thead>
-            <tbody className="text-ink-2">
-              {[...runs].reverse().slice(0, 12).map((run, index) => (
-                <tr key={`${run.timestamp}-${index}`} className="border-b border-hairline/50">
-                  <td className="py-2 pr-3 whitespace-nowrap">{formatDate(run.timestamp)}</td>
-                  <td className="py-2 pr-3 tabular-nums">{run.version}</td>
-                  <td className="py-2 pr-3">{run.gate_strategy}</td>
-                  <td className="py-2 pr-3">
-                    <span
-                      className="inline-flex items-center gap-1.5"
-                      style={{
-                        color: run.gate_allowed_llm ? SERIES.reanalysed : SERIES.cached,
-                      }}
-                    >
-                      <span aria-hidden="true">{run.gate_allowed_llm ? '↻' : '='}</span>
-                      {run.gate_allowed_llm ? 'Re-analysed' : 'Reused'}
-                    </span>
-                  </td>
-                  <td className="py-2 pr-3 text-right tabular-nums">{run.changed_nodes}</td>
-                  <td className="py-2 pr-3 text-right tabular-nums">
-                    {formatNumber((run.prompt_tokens ?? 0) + (run.completion_tokens ?? 0))}
-                  </td>
-                  <td className="py-2 text-right tabular-nums">{formatMs(run.latency_ms)}</td>
+        <div className="mt-5">
+          <h3 className="mb-2 flex items-center gap-1.5 text-sm font-semibold text-ink">
+            Recent checks
+            <InfoHint text="One row per recorded check. 'Allowed' is the gate's decision; 'Called' is whether the model was actually reached. They differ when no model is configured." />
+          </h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs">
+              <caption className="sr-only">Recorded checks, most recent first</caption>
+              <thead className="text-muted">
+                <tr className="border-b border-hairline">
+                  <th className="py-1.5 pr-3 font-medium">When</th>
+                  <th className="py-1.5 pr-3 font-medium">Ver.</th>
+                  <th className="py-1.5 pr-3 font-medium">Gate</th>
+                  <th className="py-1.5 pr-3 font-medium">Allowed</th>
+                  <th className="py-1.5 pr-3 font-medium">Called</th>
+                  <th className="py-1.5 pr-3 text-right font-medium">Changed</th>
+                  <th className="py-1.5 pr-3 text-right font-medium">Tokens</th>
+                  <th className="py-1.5 text-right font-medium">Took</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="text-ink-2">
+                {[...runs].reverse().slice(0, 12).map((run, index) => (
+                  <tr key={`${run.timestamp}-${index}`} className="border-b border-hairline/60">
+                    <td className="whitespace-nowrap py-1.5 pr-3">{formatDate(run.timestamp)}</td>
+                    <td className="py-1.5 pr-3 tabular-nums">{run.version}</td>
+                    <td className="py-1.5 pr-3 font-mono text-[11px]">{run.gate_strategy}</td>
+                    <td className="py-1.5 pr-3">
+                      <span style={{ color: run.gate_allowed_llm ? SERIES.reanalysed : SERIES.cached }}>
+                        <span aria-hidden="true">{run.gate_allowed_llm ? '↻ ' : '= '}</span>
+                        {run.gate_allowed_llm ? 'yes' : 'no'}
+                      </span>
+                    </td>
+                    <td className="py-1.5 pr-3">{run.llm_invoked ? 'yes' : 'no'}</td>
+                    <td className="py-1.5 pr-3 text-right tabular-nums">{run.changed_nodes}</td>
+                    <td className="py-1.5 pr-3 text-right tabular-nums">
+                      {formatNumber((run.prompt_tokens ?? 0) + (run.completion_tokens ?? 0))}
+                    </td>
+                    <td className="py-1.5 text-right tabular-nums">{formatMs(run.latency_ms)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </Card>

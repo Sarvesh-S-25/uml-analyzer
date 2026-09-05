@@ -1,54 +1,199 @@
 @import "tailwindcss";
 
-/* Design tokens.
-   Written against roles rather than raw hex, so a colour is changed in one
-   place. The three categorical slots and the four status colours were checked
-   with a colour-blindness separation validator against the surface below --
-   they clear every all-pairs floor -- rather than chosen by eye.
+/* ---------------------------------------------------------------------------
+   CompX design tokens.
 
-   Dark, deliberately, but a *readable* dark: the surfaces are lifted off pure
-   black so a dense table has visible structure, and the secondary text colour
-   is bright enough to read a whole paragraph in. The previous values were the
-   right hues at the wrong contrast. */
-@theme {
-  /* Surfaces, three steps apart so a card on a page on a panel is legible
-     without needing a border to separate them. */
-  --color-plane: #111110;
-  --color-surface: #1c1c1b;
-  --color-surface-2: #262625;
-  --color-surface-3: #313130;
-  --color-hairline: rgba(255, 255, 255, 0.13);
+   Two themes, one set of names. Every colour is declared twice as a plain CSS
+   custom property -- once on :root for light, once under [data-theme="dark"]
+   for dark -- and Tailwind's `@theme inline` then maps the utility names onto
+   those variables *by reference*. `inline` matters: without it Tailwind copies
+   the value at build time and `bg-surface` freezes to whichever theme compiled
+   first, so the toggle silently does nothing.
 
-  /* Text. `ink-2` carries body copy, so it is well above the 4.5:1 line rather
-     than at it; `muted` is for labels and captions only, never a sentence a
-     reader has to work through. */
-  --color-ink: #f7f7f5;
-  --color-ink-2: #d3d2ca;
-  --color-muted: #94918a;
-  --color-grid: #302f2d;
+   The result is that switching one attribute on <html> re-themes the whole app
+   with no re-render and no per-component branching.
 
-  /* Reserved status palette. Always shipped with a glyph and a written label --
-     green and red sit close together under deuteranopia, so colour never
-     carries the meaning alone. */
-  --color-good: #2fb344;
-  --color-warning: #fab219;
-  --color-serious: #ec835a;
-  --color-critical: #e05252;
+   Light is the default because figures from this tool are printed on paper in
+   an IEEE Access submission, and a dark screenshot on a white page is unusable.
+   --------------------------------------------------------------------------- */
 
-  /* Categorical slots. A fourth hue fails the separation floors on this surface
-     in any ordering, so charts distinguishing four things use direct labels. */
-  --color-series-1: #3987e5;
-  --color-series-2: #d95926;
-  --color-series-3: #199e70;
-  --color-series-7: #9085e9;
+:root {
+  color-scheme: light;
 
-  /* One type scale, five sizes. There were eight, which is why nothing looked
+  /* Surfaces, three steps apart so a card on a panel on a page separates
+     without needing a border between each pair. */
+  --plane: #f7f7f5;
+  --surface: #ffffff;
+  --surface-2: #f2f2ef;
+  --surface-3: #e6e6e2;
+  --hairline: rgba(23, 23, 21, 0.13);
+
+  /* Text. `ink-2` carries body copy so it sits well above the 4.5:1 floor
+     rather than exactly on it; `muted` is for labels and captions only, never
+     a sentence a reader has to work through. */
+  --ink: #17171a;
+  --ink-2: #3d3d3a;
+  --ink-3: #57574f;
+  --muted: #6e6c65;
+  --grid: #e4e4e0;
+  --axis: #c9c9c3;
+
+  /* Reserved status palette. Never used for anything that is not a conformance
+     status. These are the light-theme values: the dark-theme greens and ambers
+     are far too light to read as text on white, so each theme carries its own
+     tuned pair rather than sharing one compromise value. */
+  --good: #1a7f37;
+  --warning: #9a6700;
+  --serious: #bc4c00;
+  --critical: #cf222e;
+  --proposed: #6639ba;
+  --neutral: #59636e;
+
+  /* Tinted backgrounds for the same statuses, for chips and row highlights. */
+  --good-wash: #dafbe1;
+  --warning-wash: #fff8c5;
+  --serious-wash: #ffe7d5;
+  --critical-wash: #ffebe9;
+  --proposed-wash: #eee1fd;
+
+  /* Categorical slots for charts, checked pairwise for colour-blind
+     separation against this surface rather than picked by eye. */
+  --series-1: #0969da;
+  --series-2: #bc4c00;
+  --series-3: #1a7f37;
+  --series-4: #6639ba;
+
+  --shadow-card: 0 1px 2px rgba(23, 23, 21, 0.06), 0 1px 3px rgba(23, 23, 21, 0.04);
+  --shadow-float: 0 4px 12px rgba(23, 23, 21, 0.1), 0 2px 4px rgba(23, 23, 21, 0.06);
+}
+
+/* An explicit choice wins in both directions, so the toggle can override the
+   system preference either way. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --plane: #111110;
+  --surface: #1c1c1b;
+  --surface-2: #262625;
+  --surface-3: #313130;
+  --hairline: rgba(255, 255, 255, 0.13);
+
+  --ink: #f7f7f5;
+  --ink-2: #d3d2ca;
+  --ink-3: #b0aea5;
+  --muted: #94918a;
+  --grid: #302f2d;
+  --axis: #3a3a38;
+
+  --good: #2fb344;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #e05252;
+  --proposed: #9085e9;
+  --neutral: #8b8983;
+
+  --good-wash: #10281a;
+  --warning-wash: #2e2410;
+  --serious-wash: #2f1d13;
+  --critical-wash: #2f1516;
+  --proposed-wash: #211d38;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #9085e9;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-float: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Someone who never touches the toggle gets their OS preference. Guarded on
+   :not([data-theme="light"]) so an explicit light choice is not overridden. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --plane: #111110;
+    --surface: #1c1c1b;
+    --surface-2: #262625;
+    --surface-3: #313130;
+    --hairline: rgba(255, 255, 255, 0.13);
+
+    --ink: #f7f7f5;
+    --ink-2: #d3d2ca;
+    --ink-3: #b0aea5;
+    --muted: #94918a;
+    --grid: #302f2d;
+    --axis: #3a3a38;
+
+    --good: #2fb344;
+    --warning: #fab219;
+    --serious: #ec835a;
+    --critical: #e05252;
+    --proposed: #9085e9;
+    --neutral: #8b8983;
+
+    --good-wash: #10281a;
+    --warning-wash: #2e2410;
+    --serious-wash: #2f1d13;
+    --critical-wash: #2f1516;
+    --proposed-wash: #211d38;
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #9085e9;
+
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-float: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* `inline` keeps these as live var() references instead of baking in a copy,
+   which is what makes the runtime theme switch work at all. */
+@theme inline {
+  --color-plane: var(--plane);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-hairline: var(--hairline);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-muted: var(--muted);
+  --color-grid: var(--grid);
+  --color-axis: var(--axis);
+
+  --color-good: var(--good);
+  --color-warning: var(--warning);
+  --color-serious: var(--serious);
+  --color-critical: var(--critical);
+  --color-proposed: var(--proposed);
+  --color-neutral: var(--neutral);
+
+  --color-good-wash: var(--good-wash);
+  --color-warning-wash: var(--warning-wash);
+  --color-serious-wash: var(--serious-wash);
+  --color-critical-wash: var(--critical-wash);
+  --color-proposed-wash: var(--proposed-wash);
+
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-series-3: var(--series-3);
+  --color-series-4: var(--series-4);
+
+  /* One type scale, six sizes. There were eight, which is why nothing looked
      deliberate. */
   --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 0.9375rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.375rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.3125rem;
+
+  --font-mono: "JetBrains Mono", "SF Mono", "Cascadia Code", ui-monospace,
+    "Menlo", "Consolas", monospace;
 }
 
 html,
@@ -59,10 +204,10 @@ body,
 
 body {
   margin: 0;
-  background: var(--color-plane);
-  color: var(--color-ink);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.9375rem;
+  background: var(--plane);
+  color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -80,13 +225,13 @@ h1,
 h2,
 h3,
 h4 {
-  letter-spacing: -0.011em;
+  letter-spacing: -0.012em;
   line-height: 1.3;
 }
 
 /* Focus is never removed, only restyled: keyboard users need to see it. */
 :focus-visible {
-  outline: 2px solid var(--color-series-1);
+  outline: 2px solid var(--series-1);
   outline-offset: 2px;
   border-radius: 3px;
 }
@@ -100,11 +245,11 @@ table {
   height: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3a3a38;
+  background: var(--surface-3);
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a4a47;
+  background: var(--axis);
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -118,5 +263,25 @@ table {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print: force the light palette regardless of the on-screen theme, and drop
+   the app chrome. A figure printed from a dark screen wastes toner and loses
+   the hairlines entirely. */
+@media print {
+  :root,
+  :root[data-theme="dark"] {
+    --plane: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f6f6f4;
+    --ink: #000000;
+    --ink-2: #1a1a1a;
+    --muted: #4a4a46;
+    --hairline: rgba(0, 0, 0, 0.28);
+  }
+  [data-print-hide] {
+    display: none !important;
   }
 }

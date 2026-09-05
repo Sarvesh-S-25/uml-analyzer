@@ -1,9 +1,18 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { api, errorMessage } from '../lib/api'
-import { Banner, Button, Card, Field, Input } from './ui'
+import type { ThemeChoice } from '../lib/theme'
+import { Banner, Button, Card, Field, Input, SegmentedControl, ThemeToggle } from './ui'
 
-export function AuthView({ onAuthenticated }: { onAuthenticated: (token: string) => void }) {
+export function AuthView({
+  onAuthenticated,
+  theme,
+  onTheme,
+}: {
+  onAuthenticated: (token: string) => void
+  theme: ThemeChoice
+  onTheme: (choice: ThemeChoice) => void
+}) {
   const [mode, setMode] = useState<'signin' | 'register'>('signin')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -39,29 +48,24 @@ export function AuthView({ onAuthenticated }: { onAuthenticated: (token: string)
     <main className="flex min-h-screen items-center justify-center p-6">
       <div className="w-full max-w-sm">
         <div className="mb-6 text-center">
-          <h1 className="text-xl font-semibold text-ink">Polyglot Conformance Platform</h1>
-          <p className="mt-1 text-sm text-muted">
-            Compare a StarUML design against the code that implements it.
-          </p>
+          <h1 className="text-xl font-semibold tracking-tight text-ink">CompX</h1>
+          <p className="mt-1 text-sm text-muted">Does your code still match your diagram?</p>
         </div>
 
         <Card>
-          <div className="mb-4 flex rounded-lg border border-hairline p-1">
-            {(['signin', 'register'] as const).map((value) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => {
-                  setMode(value)
-                  setError('')
-                }}
-                className={`flex-1 rounded-md px-3 py-1.5 text-sm transition ${
-                  mode === value ? 'bg-surface-2 text-ink' : 'text-muted hover:text-ink-2'
-                }`}
-              >
-                {value === 'signin' ? 'Sign in' : 'Register'}
-              </button>
-            ))}
+          <div className="mb-4">
+            <SegmentedControl
+              className="w-full [&>button]:flex-1"
+              options={[
+                { value: 'signin', label: 'Sign in' },
+                { value: 'register', label: 'Create account' },
+              ]}
+              value={mode}
+              onChange={(value) => {
+                setMode(value)
+                setError('')
+              }}
+            />
           </div>
 
           {error && (
@@ -99,10 +103,7 @@ export function AuthView({ onAuthenticated }: { onAuthenticated: (token: string)
               </Field>
             )}
 
-            <Field
-              label="Password"
-              hint={isRegistering ? 'At least 8 characters.' : undefined}
-            >
+            <Field label="Password" hint={isRegistering ? 'At least 8 characters.' : undefined}>
               <Input
                 type="password"
                 value={password}
@@ -118,6 +119,10 @@ export function AuthView({ onAuthenticated }: { onAuthenticated: (token: string)
             </Button>
           </form>
         </Card>
+
+        <div className="mt-5 flex justify-center">
+          <ThemeToggle choice={theme} onChange={onTheme} />
+        </div>
       </div>
     </main>
   )

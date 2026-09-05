@@ -25,11 +25,14 @@ export function useToast(): ToastApi {
   return useContext(ToastContext)
 }
 
+// Drawn from the one definition in index.css rather than re-declared here,
+// which is how a "good" toast and a "Matches" badge ended up being two
+// different greens.
 const TONE_COLORS: Record<ToastTone, string> = {
-  info: '#3987e5',
-  good: '#0ca30c',
-  warning: '#fab219',
-  critical: '#d03b3b',
+  info: 'var(--series-1)',
+  good: 'var(--good)',
+  warning: 'var(--warning)',
+  critical: 'var(--critical)',
 }
 
 const TONE_GLYPHS: Record<ToastTone, string> = {
@@ -70,13 +73,13 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className="flex items-start gap-3 rounded-lg border bg-surface px-4 py-3 text-sm text-ink-2 shadow-lg"
-            style={{ borderColor: `${TONE_COLORS[toast.tone]}66` }}
+            className="flex items-start gap-3 rounded-lg border bg-surface px-4 py-3 text-sm text-ink-2 shadow-[var(--shadow-float)]"
+            style={{ borderColor: TONE_COLORS[toast.tone] }}
           >
             <span
               aria-hidden="true"
-              className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-plane"
-              style={{ background: TONE_COLORS[toast.tone] }}
+              className="mt-0.5 shrink-0 text-sm font-bold"
+              style={{ color: TONE_COLORS[toast.tone] }}
             >
               {TONE_GLYPHS[toast.tone]}
             </span>

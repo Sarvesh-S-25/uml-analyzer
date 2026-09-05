@@ -4,7 +4,7 @@ import { api, errorMessage } from '../lib/api'
 import type { UmlModelInfo } from '../lib/types'
 import { formatDate } from '../lib/theme'
 import { useToast } from './Toast'
-import { Badge, Banner, Button, Card, EmptyState } from './ui'
+import { Badge, Banner, Button, Card, Dialog, EmptyState } from './ui'
 
 /** StarUML model management.
  *
@@ -24,6 +24,7 @@ export function UmlPanel({
   const [models, setModels] = useState<UmlModelInfo[]>([])
   const [uploading, setUploading] = useState(false)
   const [error, setError] = useState('')
+  const [pendingRemoval, setPendingRemoval] = useState<string | null>(null)
   const input = useRef<HTMLInputElement>(null)
 
   async function refresh() {
@@ -60,7 +61,6 @@ export function UmlPanel({
   }
 
   async function remove(filename: string) {
-    if (!window.confirm(`Remove the model “${filename}”?`)) return
     try {
       const response = await api.deleteUml(projectName, filename)
       setModels(response.models)
@@ -68,13 +68,15 @@ export function UmlPanel({
       toast.notify(`Removed ${filename}.`, 'good')
     } catch (caught) {
       toast.notify(errorMessage(caught), 'critical')
+    } finally {
+      setPendingRemoval(null)
     }
   }
 
   return (
     <Card
-      title="Design model"
-      subtitle="The StarUML (.mdj) diagram the code is checked against."
+      title="Your diagram"
+      subtitle="The StarUML (.mdj) file describing the design your code is supposed to implement."
       actions={
         <Button onClick={() => input.current?.click()} loading={uploading}>
           Upload .mdj
@@ -111,7 +113,7 @@ export function UmlPanel({
                 <div className="flex items-center gap-2">
                   <span className="truncate text-sm text-ink">{model.filename}</span>
                   {model.active && (
-                    <Badge color="#199e70" glyph="✓">
+                    <Badge color="var(--good)" wash="var(--good-wash)" glyph="✓">
                       In use
                     </Badge>
                   )}
@@ -120,7 +122,7 @@ export function UmlPanel({
                   {Math.round(model.size / 1024)} KB · {formatDate(model.modified_at)}
                 </div>
               </div>
-              <Button variant="ghost" onClick={() => remove(model.filename)}>
+              <Button variant="ghost" onClick={() => setPendingRemoval(model.filename)}>
                 Remove
               </Button>
             </li>
@@ -135,6 +137,16 @@ export function UmlPanel({
           unambiguous.
         </p>
       )}
+
+      <Dialog
+        open={pendingRemoval !== null}
+        title={`Remove “${pendingRemoval}”?`}
+        description="The diagram file is deleted from the project. Checks already recorded keep their results; the next check will have nothing to compare against until you upload another."
+        confirmLabel="Remove"
+        danger
+        onConfirm={() => pendingRemoval && remove(pendingRemoval)}
+        onCancel={() => setPendingRemoval(null)}
+      />
     </Card>
   )
 }

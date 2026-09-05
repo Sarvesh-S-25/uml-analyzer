@@ -54,7 +54,7 @@ Most real defects in this codebase are one of these, not style problems:
 ## Before finishing any change
 
 1. **Backend touched** → `python -m unittest discover -s tests -t .` from
-   `backend/` (211 tests, stdlib `unittest`, no pytest). Also run
+   `backend/` (232 tests, stdlib `unittest`, no pytest). Also run
    `python tools/check_imports.py`.
    As of this writing the suite is fully green on a clean checkout — the three
    tests once documented here as known-failing (`test_full_cycle`,

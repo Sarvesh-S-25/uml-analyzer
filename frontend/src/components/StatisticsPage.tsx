@@ -5,6 +5,7 @@ import { downloadBlob, downloadCsv } from '../lib/csv'
 import type {
   DeviationTable,
   GateTable,
+  RecoveryHorizon,
   ProjectRow,
   ProjectTable,
   StatisticsReport,
@@ -12,6 +13,7 @@ import type {
 } from '../lib/statsTypes'
 import type { ProjectSummary } from '../lib/types'
 import { BarChart } from './charts/BarChart'
+import { ParetoChart } from './charts/ParetoChart'
 import { DriftChart } from './charts/DriftChart'
 import { Figure, STATUS, downloadSvgElement, formatNumber, formatPercent } from './charts/primitives'
 import { useToast } from './Toast'
@@ -28,7 +30,7 @@ import { Badge, Banner, Button, Card, EmptyState, Spinner } from './ui'
  * statistical tests. It was correct and unreadable. This one is deliberately
  * small.
  */
-export function StatisticsPage({ onBack }: { onBack: () => void }) {
+export function StatisticsPage() {
   const toast = useToast()
   const [projects, setProjects] = useState<ProjectSummary[]>([])
   const [selected, setSelected] = useState<string[]>([])
@@ -79,17 +81,13 @@ export function StatisticsPage({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="mx-auto max-w-4xl p-6">
-      <button onClick={onBack} className="mb-5 text-sm text-muted transition hover:text-ink">
-        ← All projects
-      </button>
-
       <header className="mb-6 border-b border-hairline pb-5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <h1 className="text-xl font-semibold text-ink">Results</h1>
+            <h1 className="text-xl font-semibold text-ink">Statistics</h1>
             <p className="mt-1 text-sm text-muted">
-              Four tables and two charts — everything the paper needs, and nothing else. Each one
-              is followed by a sentence saying what it means.
+              Four tables and three charts — everything the paper needs, and nothing else. Each
+              one is followed by a sentence saying what it means.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -177,6 +175,7 @@ export function StatisticsPage({ onBack }: { onBack: () => void }) {
           <ProjectSection projects={report.projects} />
           <DeviationSection deviations={report.deviations} />
           <ComparisonSection comparison={report.comparison} />
+          <ParetoSection charts={report.charts} />
           <DriftSection charts={report.charts} />
           {report.configuration && (
             <ConfigurationSection configuration={report.configuration} />
@@ -222,7 +221,7 @@ function GateExplainer() {
       name: 'always',
       plain: 'Re-check on every single commit.',
       skips: 'Nothing.',
-      why: 'The yardstick. Everything else is measured as a saving against this.',
+      why: 'The yardstick. Every other gate is measured as invocations avoided against this.',
     },
     {
       name: 'content',
@@ -234,7 +233,7 @@ function GateExplainer() {
       name: 'structural',
       plain: 'Re-check only when the code\u2019s shape changed \u2014 classes, methods, inheritance, what calls what.',
       skips: 'Comments, formatting, renamed local variables, reordered statements.',
-      why: 'None of those can change whether your code matches a class diagram, so re-checking after them is wasted money.',
+      why: 'None of those can change whether your code matches a class diagram, so re-checking after them is a wasted invocation.',
     },
     {
       name: 'isomorphism',
@@ -255,16 +254,17 @@ function GateExplainer() {
       }
     >
       <p className="text-sm leading-relaxed text-ink-2">
-        Checking whether your code still matches your UML diagram costs money, because it calls a
-        language model. It has to be redone every time the code changes. A{' '}
+        Checking whether your code still matches your UML diagram means calling a language
+        model, and it has to be redone every time the code changes. A{' '}
         <span className="font-medium text-ink">gate</span> is the decision made{' '}
-        <span className="italic">before</span> paying: <span className="text-ink">has anything
+        <span className="italic">before</span> that call: <span className="text-ink">has anything
         changed that could possibly affect the answer?</span> If not, reuse the previous result and
-        spend nothing.
+        the model is never invoked.
       </p>
       <p className="mt-3 text-sm leading-relaxed text-ink-2">
-        Four gates are implemented, from most cautious to most economical. The whole study is: how
-        much does each one save, and what does that saving cost in missed problems?
+        Four gates are implemented, from most cautious to most economical. The whole study is one
+        question: how many model invocations does each one avoid, and what does avoiding them
+        cost in missed problems?
       </p>
 
       {open && (
@@ -287,12 +287,43 @@ function GateExplainer() {
           ))}
           <p className="text-sm leading-relaxed text-ink-2">
             <span className="font-medium text-ink">The one rule for reading this page:</span>{' '}
-            a gate that skips more saves more but risks missing more. Never look at how much a gate
-            skipped without looking at what it missed in the same glance.
+            a gate that skips more avoids more invocations but risks missing more. Never look at how
+            much a gate skipped without looking at what it missed in the same glance.
           </p>
         </div>
       )}
     </Card>
+  )
+}
+
+
+/** How long a missed change stayed missed.
+ *
+ * "--" means not measured -- either no oracle, or no miss to measure. It never
+ * means zero, and a median that the survival curve never reaches is reported as
+ * "more than N" rather than invented. */
+function RecoveryCell({ recovery }: { recovery: RecoveryHorizon | undefined }) {
+  if (!recovery || !recovery.measured) {
+    return <span className="text-xs text-muted">not measured</span>
+  }
+  if (recovery.misses_tracked === 0) {
+    return <span className="text-good">nothing missed</span>
+  }
+  if (recovery.median_commits !== null) {
+    return (
+      <>
+        {recovery.median_commits.toFixed(0)}
+        <div className="text-xs text-muted">
+          commits · {recovery.resolved_count}/{recovery.misses_tracked} corrected
+        </div>
+      </>
+    )
+  }
+  return (
+    <>
+      <span className="text-warning">&gt;{recovery.censored_beyond ?? 0}</span>
+      <div className="text-xs text-muted">{recovery.censored_count} still outstanding</div>
+    </>
   )
 }
 
@@ -392,8 +423,19 @@ function GateSection({
               <Th numeric>Runs</Th>
               <Th numeric>Skipped</Th>
               <Th numeric>Skip rate</Th>
-              <Th numeric>Missed</Th>
-              <Th numeric>Tokens saved</Th>
+              <Th numeric>
+                Missed
+                <div className="font-normal normal-case">all runs</div>
+              </Th>
+              <Th numeric>
+                Caught
+                <div className="font-normal normal-case">of real changes</div>
+              </Th>
+              <Th numeric>
+                Correctly skipped
+                <div className="font-normal normal-case">of quiet commits</div>
+              </Th>
+              <Th numeric>Recovery</Th>
             </tr>
           </thead>
           <tbody className="text-ink-2">
@@ -431,11 +473,41 @@ function GateSection({
                     <span className="text-warning">{row.missed}</span>
                   )}
                 </Td>
+                {/* Recall: of the commits where conformance really changed,
+                    how many did this gate re-analyse? The column beside it
+                    divides by every run instead, and most commits change
+                    nothing, so the two disagree and both are shown. */}
                 <Td numeric>
-                  {row.tokens_saved === null ? '—' : formatNumber(row.tokens_saved)}
-                  {row.percent_saved !== null && (
-                    <div className="text-xs text-muted">{formatPercent(row.percent_saved, 0)}</div>
+                  {row.recall === null ? (
+                    <span className="text-xs text-muted">not measured</span>
+                  ) : (
+                    <>
+                      <span className={row.recall === 1 ? 'text-good' : 'text-warning'}>
+                        {formatPercent(row.recall)}
+                      </span>
+                      <div className="text-xs text-muted">
+                        {row.recall_low !== null
+                          ? `${formatPercent(row.recall_low, 0)}–${formatPercent(row.recall_high, 0)}`
+                          : ''}
+                        {row.changed_checked ? ` · n=${row.changed_checked}` : ''}
+                      </div>
+                    </>
                   )}
+                </Td>
+                <Td numeric>
+                  {row.specificity === null ? (
+                    <span className="text-xs text-muted">not measured</span>
+                  ) : (
+                    <>
+                      {formatPercent(row.specificity)}
+                      <div className="text-xs text-muted">
+                        {row.unchanged_checked ? `n=${row.unchanged_checked}` : ''}
+                      </div>
+                    </>
+                  )}
+                </Td>
+                <Td numeric>
+                  <RecoveryCell recovery={row.recovery} />
                 </Td>
               </tr>
             ))}
@@ -467,7 +539,7 @@ function GateSection({
           actions={
             <Button
               variant="ghost"
-              onClick={() => downloadSvgElement(figureRef.current, 'figure1-skip-by-gate.svg')}
+              onClick={() => downloadSvgElement(figureRef.current, 'figure1-skip-by-gate.svg', '#ffffff', true)}
             >
               Save as SVG
             </Button>
@@ -739,6 +811,44 @@ function Figureless({ label, value, tone }: { label: string; value: ReactNode; t
 
 // --- Figure 2 -----------------------------------------------------------------
 
+function ParetoSection({ charts }: { charts: StatisticsReport['charts'] }) {
+  const figureRef = useRef<SVGSVGElement>(null)
+  const pareto = charts.pareto
+
+  return (
+    <Card title="Which gate is actually worth choosing?">
+      <Figure
+        title={pareto.title}
+        caption={pareto.caption}
+        actions={
+          pareto.available ? (
+            <>
+              <Button
+                variant="ghost"
+                onClick={() => downloadCsv('figure3-pareto.csv', pareto.data)}
+              >
+                CSV
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => downloadSvgElement(figureRef.current, 'figure3-pareto.svg', '#ffffff', true)}
+              >
+                Save as SVG
+              </Button>
+            </>
+          ) : undefined
+        }
+      >
+        {pareto.available ? (
+          <ParetoChart data={pareto.data} svgRef={figureRef} />
+        ) : (
+          <EmptyState title="Not measured yet">{pareto.reason}</EmptyState>
+        )}
+      </Figure>
+    </Card>
+  )
+}
+
 function DriftSection({ charts }: { charts: StatisticsReport['charts'] }) {
   const figureRef = useRef<SVGSVGElement>(null)
   const hasData = charts.drift.data.length > 0
@@ -766,7 +876,7 @@ function DriftSection({ charts }: { charts: StatisticsReport['charts'] }) {
               </Button>
               <Button
                 variant="ghost"
-                onClick={() => downloadSvgElement(figureRef.current, 'figure2-drift.svg')}
+                onClick={() => downloadSvgElement(figureRef.current, 'figure2-drift.svg', '#ffffff', true)}
               >
                 Save as SVG
               </Button>

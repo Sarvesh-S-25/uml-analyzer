@@ -177,21 +177,27 @@ Every file, so nothing is unaccounted for.
 | Path | Does |
 |---|---|
 | `main.tsx` | Vite entry point |
-| `App.tsx` | Auth gate and top-level routing between the three screens |
+| `App.tsx` | Auth gate, theme, and top-level routing |
+| `components/AppShell.tsx` | The sidebar: destinations, the open project's sections, theme toggle |
 | `lib/api.ts` | Every backend call, typed |
 | `lib/layout.ts` | **Deterministic graph layout.** Sugiyama-style, no physics |
 | `lib/statsTypes.ts` | Mirrors `backend/stats/report.py` exactly |
-| `lib/theme.ts` | Conformance status colours, glyphs, labels |
-| `components/Dashboard.tsx` | Project list, GitHub import, create |
-| `components/ProjectWorkspace.tsx` | The three tabs: Setup, Results, History |
-| `components/FileManager.tsx` | The virtual directory UI |
-| `components/GraphView.tsx` | The static layered graph, with SVG export |
-| `components/StatisticsPage.tsx` | Four tables, two charts, gate explainer |
+| `lib/theme.ts` | Conformance status colours, glyphs, labels; the light/dark controller |
+| `lib/tree.ts` | Rebuilds a folder hierarchy from the backend's flat path list |
+| `lib/highlight.ts` | Small dependency-free syntax highlighter for the code viewer |
+| `components/ProjectsPage.tsx` | Project list, GitHub import, create |
+| `components/ProjectWorkspace.tsx` | The four sections: Code, Diagram, Results, History |
+| `components/CodePanel.tsx` | The three-pane code screen: tree, viewer, what the diagram says |
+| `components/FileTree.tsx` | The collapsible folder tree, keyboard-navigable |
+| `components/CodeViewer.tsx` | Line numbers, highlighting, gutter status marks |
+| `components/DesignMap.tsx` | The static layered graph, with SVG export |
+| `components/StatisticsPage.tsx` | Four tables, three charts, gate explainer |
+| `components/charts/ParetoChart.tsx` | Figure 3: skip rate against recall |
 | `components/AuthView.tsx` | Sign in and register |
 | `components/UmlPanel.tsx` | Upload and validate the `.mdj` |
 | `components/ConformanceReport.tsx` | The findings for one analysis: score, divergences, absences |
 | `components/VersionTimeline.tsx` | The three retained versions, and switching between them |
-| `components/MetricsPanel.tsx` | Cost per run: tokens, latency, cache behaviour |
+| `components/MetricsPanel.tsx` | Per run: model invocations avoided, latency, cache behaviour |
 | `components/ResearchPanel.tsx` | Repeatability and cross-model agreement |
 | `components/ui.tsx` | Card, Button, Badge, Banner, EmptyState, Spinner — every shared primitive |
 | `components/Toast.tsx` | Transient notifications |
