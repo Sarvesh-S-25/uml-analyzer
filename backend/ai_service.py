@@ -20,6 +20,7 @@ Design points that matter for the study:
 """
 import json
 import random
+import threading
 import time
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
@@ -36,6 +37,9 @@ from config import (
     LLM_MODE,
     LLM_MODEL,
     LLM_PROVIDER,
+    OLLAMA_BASE_URL,
+    OLLAMA_NUM_CTX,
+    OLLAMA_PROBE_TIMEOUT,
     LLM_SEED,
     LLM_TEMPERATURE,
     LLM_TIMEOUT_SECONDS,
@@ -134,28 +138,126 @@ SYSTEM_PROMPT = (
 def parse_model_spec(spec: str) -> Tuple[str, str]:
     """`"anthropic:claude-sonnet-4-5"` -> `("anthropic", "claude-sonnet-4-5")`.
 
-    A bare model name uses the configured default provider. Model names contain
-    no colon in any provider's naming scheme currently in use, so the split is
-    unambiguous; a URL-style spec would not be.
+    A bare model name uses the configured default provider.
+
+    Only the *first* colon separates the provider, because Ollama model names
+    carry a tag and contain one themselves: `"ollama:qwen2.5-coder:7b"` is the
+    7b tag of qwen2.5-coder, not a model called "7b". A bare `"qwen2.5-coder:7b"`
+    is therefore left whole and given to the configured default provider, since
+    "qwen2.5-coder" is not a provider name.
     """
     if ":" in spec:
         provider, _, model = spec.partition(":")
         provider = provider.strip().lower()
-        if provider in ("openai", "compatible", "anthropic", "offline"):
+        if provider in ("openai", "ollama", "compatible", "anthropic", "offline"):
             return provider, model.strip()
     return LLM_PROVIDER, spec.strip()
 
 
 def provider_available(provider: str) -> bool:
+    """Is this provider *configured*? Deliberately does no I/O.
+
+    Every caller on the analysis path relies on this being cheap. Whether a
+    local daemon is actually running is a different question with a different
+    answer -- see `ollama_reachable()`, which is used for what the interface
+    reports, not for deciding whether to attempt a call. Attempting a call and
+    degrading with a clear note is better than refusing to try because a probe
+    was slow.
+    """
     if LLM_MODE == "offline" or provider == "offline":
         return False
     if LLM_MODE == "api":
         return True
     if provider == "anthropic":
         return bool(ANTHROPIC_API_KEY)
+    if provider == "ollama":
+        # No API key exists to check. Ollama ships with a default address, so
+        # it is always "configured"; being switched off is a runtime condition.
+        return bool(OLLAMA_BASE_URL)
     if provider == "compatible":
         return bool(LLM_BASE_URL)
     return bool(OPENAI_API_KEY)
+
+
+_ollama_probe: Dict[str, Any] = {"checked_at": 0.0, "reachable": False, "running": False}
+_ollama_lock = threading.Lock()
+
+
+def _probe_ollama_once() -> bool:
+    try:
+        import urllib.request
+
+        # The OpenAI-compatible listing endpoint; the base already ends in /v1.
+        with urllib.request.urlopen(
+            OLLAMA_BASE_URL.rstrip("/") + "/models", timeout=OLLAMA_PROBE_TIMEOUT
+        ) as response:
+            return 200 <= response.status < 300
+    except Exception:
+        # Refused, DNS, timeout, anything: not reachable. The distinction is not
+        # actionable enough here to be worth reporting separately.
+        return False
+
+
+def ollama_reachable(force: bool = False) -> bool:
+    """Is the Ollama daemon answering?
+
+    **Never blocks.** This is read by GET /config, which the frontend calls on
+    every page load, and probing a daemon that is *not* running is the slow
+    case: `localhost` resolves to both ::1 and 127.0.0.1, so a dead port costs
+    two timeouts, not one -- measured at over two seconds on this machine.
+
+    So the cached answer is returned immediately and a refresh runs on a
+    background thread. The cost is that the very first call after startup
+    reports "not running" even when it is; the next page load, a second later,
+    is correct. That is a better trade than making every load wait.
+
+    `force=True` probes synchronously, for the diagnosis path where a call has
+    already failed and an accurate answer matters more than latency.
+    """
+    now = time.time()
+    fresh = now - _ollama_probe["checked_at"] < 30.0
+
+    if force:
+        with _ollama_lock:
+            _ollama_probe["reachable"] = _probe_ollama_once()
+            _ollama_probe["checked_at"] = time.time()
+        return bool(_ollama_probe["reachable"])
+
+    if not fresh and not _ollama_probe["running"]:
+        _ollama_probe["running"] = True
+
+        def refresh() -> None:
+            try:
+                reachable = _probe_ollama_once()
+                with _ollama_lock:
+                    _ollama_probe["reachable"] = reachable
+                    _ollama_probe["checked_at"] = time.time()
+            finally:
+                _ollama_probe["running"] = False
+
+        # Daemon: a probe in flight must never hold up interpreter shutdown.
+        threading.Thread(target=refresh, name="ollama-probe", daemon=True).start()
+
+    return bool(_ollama_probe["reachable"])
+
+
+def ollama_models() -> List[str]:
+    """Model names the local daemon actually has pulled, for a better error.
+
+    `LLM_MODEL` must match `ollama list` exactly, tag included; naming
+    `qwen2.5-coder` when only `qwen2.5-coder:7b` is present is a common and
+    otherwise baffling failure.
+    """
+    try:
+        import urllib.request
+
+        with urllib.request.urlopen(
+            OLLAMA_BASE_URL.rstrip("/") + "/models", timeout=OLLAMA_PROBE_TIMEOUT
+        ) as response:
+            payload = json.loads(response.read().decode())
+        return sorted(str(entry.get("id", "")) for entry in payload.get("data", []))
+    except Exception:
+        return []
 
 
 def llm_available() -> bool:
@@ -169,11 +271,16 @@ def available_models() -> List[Dict[str, Any]]:
         provider, model = parse_model_spec(spec)
         key = f"{provider}:{model}"
         if key not in seen:
+            available = provider_available(provider)
+            # For a local daemon, "configured" is not the useful answer -- it is
+            # always configured. Report whether it is actually up.
+            if available and provider == "ollama":
+                available = ollama_reachable()
             seen[key] = {
                 "spec": key,
                 "provider": provider,
                 "model": model,
-                "available": provider_available(provider),
+                "available": available,
             }
     seen[OFFLINE_MODEL] = {
         "spec": f"offline:{OFFLINE_MODEL}",
@@ -196,6 +303,13 @@ def _comparison_specs() -> List[str]:
 def _openai_client(provider: str):
     from openai import OpenAI  # imported lazily so offline mode needs no SDK
 
+    if provider == "ollama":
+        # Ollama ignores the key but the SDK requires a non-empty one.
+        return OpenAI(
+            api_key="ollama",
+            base_url=OLLAMA_BASE_URL,
+            timeout=LLM_TIMEOUT_SECONDS,
+        )
     if provider == "compatible":
         return OpenAI(
             api_key=OPENAI_API_KEY or "not-needed",
@@ -211,6 +325,18 @@ def _anthropic_client():
     return Anthropic(api_key=ANTHROPIC_API_KEY or None, timeout=LLM_TIMEOUT_SECONDS)
 
 
+def _is_bad_request(exc: Exception) -> bool:
+    """A 400 from the server, however the installed SDK expresses it."""
+    try:
+        from openai import BadRequestError  # imported lazily; optional dependency
+
+        if isinstance(exc, BadRequestError):
+            return True
+    except Exception:
+        pass
+    return getattr(exc, "status_code", None) == 400
+
+
 def _call_openai(provider: str, model: str, system: str, user: str):
     kwargs: Dict[str, Any] = {
         "model": model,
@@ -220,6 +346,13 @@ def _call_openai(provider: str, model: str, system: str, user: str):
             {"role": "user", "content": user},
         ],
     }
+    if provider == "ollama":
+        # Ollama's own options ride along in extra_body. num_ctx is the one that
+        # matters: without it the daemon uses a small default and truncates the
+        # prompt silently, which would corrupt the comparison rather than fail
+        # it. A server that rejects the field is handled by the fallback below.
+        kwargs["extra_body"] = {"options": {"num_ctx": OLLAMA_NUM_CTX}}
+
     # Not every OpenAI-compatible server implements these; drop them and retry
     # rather than failing outright.
     optional = {"response_format": {"type": "json_object"}, "seed": LLM_SEED}
@@ -227,9 +360,15 @@ def _call_openai(provider: str, model: str, system: str, user: str):
     try:
         response = client.chat.completions.create(**kwargs, **optional)
     except TypeError:
+        # The installed SDK does not know the argument at all.
         response = client.chat.completions.create(**kwargs)
     except Exception as exc:
-        if "response_format" in str(exc) or "seed" in str(exc):
+        # Previously this matched on the words "response_format" or "seed"
+        # appearing in the message, which is not something a server promises.
+        # A 400 means the server rejected the request as sent, and the only
+        # parts that are optional are the ones added here -- so retry without
+        # them and let a second failure propagate.
+        if _is_bad_request(exc):
             response = client.chat.completions.create(**kwargs)
         else:
             raise
@@ -305,7 +444,16 @@ def _chat_json(provider: str, model: str, system: str, user: str) -> LlmResult:
                 latency_ms=(time.perf_counter() - started) * 1000,
                 attempts=attempt,
             )
-        except Exception as exc:  # network, rate limit, auth, malformed JSON
+        except json.JSONDecodeError as exc:
+            # The call succeeded; the model's answer was not JSON. At
+            # temperature 0 the next attempt gets the same tokens back, so
+            # retrying burns local compute to reach the same place. Stop and let
+            # the caller degrade to the deterministic path, which is what small
+            # local models mostly need.
+            last_error = exc
+            if LLM_TEMPERATURE == 0:
+                break
+        except Exception as exc:  # network, rate limit, auth
             last_error = exc
 
         if attempt < LLM_MAX_RETRIES:
@@ -455,18 +603,64 @@ def evaluate_conformance(
 
     prompt = build_prompt(uml_design, code_architecture, scope, rule_findings)
 
+    # Checked before the call, not after: once Ollama has truncated the prompt
+    # the damage is done and the response looks perfectly normal.
+    truncation_warning = _ollama_context_warning(provider, SYSTEM_PROMPT + prompt)
+
     try:
         result = _chat_json(provider, model, SYSTEM_PROMPT, prompt)
     except LlmUnavailable as exc:
         fallback = _offline_result(code_architecture, rule_findings)
         fallback.degraded = True
         fallback.notes.append(f"LLM unavailable, fell back to deterministic analysis: {exc}")
+        if provider == "ollama":
+            fallback.notes.extend(_ollama_diagnosis(model))
         return fallback
 
     result.payload = _normalise(result.payload)
     if not result.prompt_tokens:
         result.prompt_tokens = count_tokens(SYSTEM_PROMPT + prompt)
+    if truncation_warning:
+        result.notes.append(truncation_warning)
     return result
+
+
+def _ollama_context_warning(provider: str, text: str) -> str:
+    """Say so when the prompt will not fit in the context Ollama was asked for.
+
+    Ollama truncates rather than refusing, so this is the only point at which
+    the problem is visible. Reported as a note on the run rather than raised:
+    the structural findings are unaffected and still exact.
+    """
+    if provider != "ollama":
+        return ""
+    tokens = count_tokens(text)
+    if tokens <= OLLAMA_NUM_CTX * 0.9:
+        return ""
+    return (
+        f"This prompt is about {tokens:,} tokens but Ollama was asked for a "
+        f"{OLLAMA_NUM_CTX:,}-token context, so it may have been truncated and the "
+        "model's answer may describe only part of the project. Raise OLLAMA_NUM_CTX, "
+        "or build a model with a larger PARAMETER num_ctx. The structural findings "
+        "on this page are unaffected -- they come from parsing, not from the model."
+    )
+
+
+def _ollama_diagnosis(model: str) -> List[str]:
+    """Turn "it did not work" into something actionable, for local models."""
+    if not ollama_reachable(force=True):
+        return [
+            f"Could not reach Ollama at {OLLAMA_BASE_URL}. Start it with `ollama serve`, "
+            "or set OLLAMA_BASE_URL if it runs elsewhere."
+        ]
+    installed = ollama_models()
+    if installed and model not in installed:
+        return [
+            f"Ollama is running but has no model named '{model}'. It has: "
+            f"{', '.join(installed[:8])}. The name must match `ollama list` exactly, "
+            "including the tag."
+        ]
+    return []
 
 
 def _offline_result(

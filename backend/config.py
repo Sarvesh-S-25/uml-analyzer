@@ -52,6 +52,29 @@ ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 # "anthropic"  -> the Anthropic API
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "openai").lower()
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "")
+
+# --- local models via Ollama ---------------------------------------------------
+# Ollama speaks the OpenAI protocol at /v1, so it reuses the OpenAI SDK. It is a
+# provider in its own right rather than a `compatible` endpoint because it needs
+# no API key, has a well-known default address, and needs `num_ctx` sent with
+# every request -- see below.
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
+
+# The context window Ollama is asked to allocate for each request.
+#
+# This matters more than any other setting here. Ollama defaults many models to
+# a 2048-token context and, when a prompt is longer, **truncates it silently**.
+# The prompt for this task carries the design model and the extracted code
+# structure and is routinely larger than that, so a truncated run would compare
+# a fragment of the code against a fragment of the diagram and report the result
+# as though nothing were wrong. Passing num_ctx explicitly is what prevents it.
+OLLAMA_NUM_CTX = int(os.getenv("OLLAMA_NUM_CTX", "16384"))
+
+# How long to wait when checking whether the Ollama daemon is up. This runs
+# during GET /config, which the frontend calls on every page load, so it is
+# deliberately short: a refused connection on localhost returns instantly, and
+# this bound only applies to something listening but not answering.
+OLLAMA_PROBE_TIMEOUT = float(os.getenv("OLLAMA_PROBE_TIMEOUT", "1.0"))
 LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4o")
 LLM_TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0"))
 LLM_SEED = int(os.getenv("LLM_SEED", "20260815"))

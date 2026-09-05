@@ -147,9 +147,19 @@ function Shell() {
     )
   }
 
-  const modelLabel = config?.llm_enabled
-    ? `Model: ${config.llm_model}`
-    : 'No model configured — structural checks only'
+  // "Configured" and "running" are different facts, and for a local model the
+  // second is the one that bites. The backend reports both: llm_enabled says a
+  // provider is set up, and the model's own entry says whether it answered a
+  // reachability check. Saying only the first would promise a model that is not
+  // there and leave the user to discover it one failed check later.
+  const activeModel = config?.available_models?.find(
+    (entry) => entry.model === config.llm_model && entry.provider !== 'offline',
+  )
+  const modelLabel = !config?.llm_enabled
+    ? 'No model configured — structural checks only'
+    : activeModel && !activeModel.available
+      ? `${config.llm_model} is not reachable — structural checks only`
+      : `Model: ${config.llm_model}`
 
   return (
     <AppShell
