@@ -1,0 +1,64 @@
+{
+  "projects": [
+    {
+      "name": "jabref",
+      "source": "https://github.com/JabRef/jabref.git",
+      "uml": "research/models/jabref.mdj",
+      "commits": 40,
+      "branch": "v3.7",
+      "subdirectory": "src/main/java",
+      "notes": "SAEroCon intended architecture, translated to .mdj, frozen at v3.7."
+    },
+    {
+      "name": "teammates",
+      "source": "https://github.com/TEAMMATES/teammates.git",
+      "uml": "research/models/teammates.mdj",
+      "commits": 40,
+      "subdirectory": "src/main/java",
+      "notes": "SAEroCon HUSACCT mapping, translated to .mdj, frozen at V5.110."
+    },
+    {
+      "name": "spring-petclinic",
+      "source": "https://github.com/spring-projects/spring-petclinic.git",
+      "uml": "research/models/petclinic.mdj",
+      "commits": 40,
+      "subdirectory": "src/main/java",
+      "notes": "Diagram reverse-engineered once at commit <SHA> and held fixed."
+    },
+    {
+      "name": "jpetstore",
+      "source": "https://github.com/mybatis/jpetstore-6.git",
+      "uml": "research/models/jpetstore.mdj",
+      "commits": 30,
+      "subdirectory": "src/main/java",
+      "notes": "Diagram reverse-engineered once at commit <SHA> and held fixed."
+    },
+    {
+      "name": "piggymetrics",
+      "source": "https://github.com/sqshq/piggymetrics.git",
+      "uml": "research/models/piggymetrics.mdj",
+      "commits": 30,
+      "notes": "Diagram reverse-engineered once at commit <SHA> and held fixed."
+    },
+    {
+      "name": "reference-orders",
+      "source": "research/deviations/base",
+      "uml": "research/deviations/base/design.mdj",
+      "commits": 1,
+      "notes": "The bundled seeded-deviation project."
+    }
+  ],
+  "$comment": [
+    "Corpus manifest for research/replay.py.",
+    "",
+    "Every entry below is a REAL, verified repository. Before running the replay:",
+    "  1. Build a .mdj for each project under research/models/ and FREEZE it.",
+    "  2. Replace every <SHA> in `notes` with the commit you recovered it from.",
+    "  3. Delete any entry you are not using -- a missing .mdj fails that project.",
+    "",
+    "`subdirectory` matters for Java: without it you analyse tests and generated",
+    "code, and the numbers become noise.",
+    "",
+    "See docs/CORPUS-AND-SUBMISSION.md for why each project is here."
+  ]
+}

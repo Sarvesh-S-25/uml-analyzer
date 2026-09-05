@@ -1,0 +1,51 @@
+{
+  "_type": "Project",
+  "_id": "AAAAAAFF+h6SjaM2Hec=",
+  "name": "UserAuthenticationProject",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "AAAAAAFF+qBWK6M3Z8Y=",
+      "_parent": "AAAAAAFF+h6SjaM2Hec=",
+      "name": "Model",
+      "ownedElements": [
+        {
+          "_type": "UMLClass",
+          "_id": "class_controller",
+          "_parent": "AAAAAAFF+qBWK6M3Z8Y=",
+          "name": "UserController",
+          "ownedElements": [
+            {
+              "_type": "UMLDependency",
+              "_id": "dep_1",
+              "_parent": "class_controller",
+              "source": "class_controller",
+              "target": "class_service"
+            }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "class_service",
+          "_parent": "AAAAAAFF+qBWK6M3Z8Y=",
+          "name": "UserService",
+          "ownedElements": [
+            {
+              "_type": "UMLDependency",
+              "_id": "dep_2",
+              "_parent": "class_service",
+              "source": "class_service",
+              "target": "class_repository"
+            }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "class_repository",
+          "_parent": "AAAAAAFF+qBWK6M3Z8Y=",
+          "name": "UserRepository"
+        }
+      ]
+    }
+  ]
+}

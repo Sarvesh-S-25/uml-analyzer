@@ -1,0 +1,43 @@
+{
+  "$comment": [
+    "Corpus manifest for research/replay.py.",
+    "",
+    "`source` is a local path or a clone URL. `uml` is a StarUML .mdj model for",
+    "that project -- either an existing one, or one you reverse-engineer from an",
+    "early commit and then hold fixed for the whole replay. Holding it fixed is",
+    "what makes drift between design and code observable; if the diagram moves",
+    "with the code there is nothing to measure.",
+    "",
+    "The bundled entry is the seeded-deviation project, which needs no network.",
+    "Add real projects below it. Choose ones where a class diagram is meaningful:",
+    "layered applications with named services and repositories, not scripts.",
+    "Aim for 5-10 projects x 30-50 commits each."
+  ],
+  "projects": [
+    {
+      "name": "reference-orders",
+      "source": "research/deviations/base",
+      "uml": "research/deviations/base/design.mdj",
+      "commits": 1,
+      "notes": "The bundled reference project. Used by evaluate_deviations.py; a single commit, so replay over it is trivial."
+    }
+  ],
+  "$candidates": [
+    {
+      "name": "example-local-project",
+      "source": "../my-java-service",
+      "uml": "research/models/my-java-service.mdj",
+      "commits": 40,
+      "subdirectory": "src/main/java",
+      "notes": "Template for a local clone. `subdirectory` narrows the analysis to application code and excludes tests and build output."
+    },
+    {
+      "name": "example-remote-project",
+      "source": "https://github.com/<owner>/<repo>.git",
+      "uml": "research/models/<repo>.mdj",
+      "commits": 30,
+      "branch": "main",
+      "notes": "Template for a clone URL. The clone is cached under .corpus-cache and reused across runs."
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "_type": "Project",
+  "_id": "AAAAAAFF+h6SjaM2Hgg=",
+  "name": "OrdersReference",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "model-1",
+      "_parent": { "$ref": "AAAAAAFF+h6SjaM2Hgg=" },
+      "name": "Model",
+      "ownedElements": [
+        {
+          "_type": "UMLClass",
+          "_id": "cls-order",
+          "_parent": { "$ref": "model-1" },
+          "name": "Order",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "attr-order-id", "name": "order_id", "type": "String", "visibility": "public" },
+            { "_type": "UMLAttribute", "_id": "attr-order-total", "name": "total", "type": "Float", "visibility": "public" },
+            { "_type": "UMLAttribute", "_id": "attr-order-cancelled", "name": "cancelled", "type": "Boolean", "visibility": "public" }
+          ],
+          "operations": [
+            {
+              "_type": "UMLOperation",
+              "_id": "op-order-tax",
+              "name": "total_with_tax",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-tax-rate", "name": "rate", "type": "Float" },
+                { "_type": "UMLParameter", "_id": "p-tax-ret", "name": "", "type": "Float", "direction": "return" }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "op-order-cancel",
+              "name": "cancel",
+              "visibility": "public",
+              "parameters": []
+            }
+          ]
+        },
+        {
+          "_type": "UMLInterface",
+          "_id": "int-repository",
+          "_parent": { "$ref": "model-1" },
+          "name": "Repository",
+          "attributes": [],
+          "operations": [
+            {
+              "_type": "UMLOperation",
+              "_id": "op-repo-save",
+              "name": "save",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-save-entity", "name": "entity", "type": { "$ref": "cls-order" } },
+                { "_type": "UMLParameter", "_id": "p-save-ret", "name": "", "type": "Boolean", "direction": "return" }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "cls-order-repository",
+          "_parent": { "$ref": "model-1" },
+          "name": "OrderRepository",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "attr-repo-rows", "name": "rows", "type": "Map", "visibility": "private" }
+          ],
+          "operations": [
+            {
+              "_type": "UMLOperation",
+              "_id": "op-repo-save-impl",
+              "name": "save",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-save2-entity", "name": "entity", "type": { "$ref": "cls-order" } },
+                { "_type": "UMLParameter", "_id": "p-save2-ret", "name": "", "type": "Boolean", "direction": "return" }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "op-repo-find",
+              "name": "find_by_id",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-find-id", "name": "order_id", "type": "String" },
+                { "_type": "UMLParameter", "_id": "p-find-ret", "name": "", "type": { "$ref": "cls-order" }, "direction": "return" }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "op-repo-delete",
+              "name": "delete",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-del-id", "name": "order_id", "type": "String" },
+                { "_type": "UMLParameter", "_id": "p-del-ret", "name": "", "type": "Boolean", "direction": "return" }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "cls-order-service",
+          "_parent": { "$ref": "model-1" },
+          "name": "OrderService",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "attr-svc-repo", "name": "repo", "type": { "$ref": "cls-order-repository" }, "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "attr-svc-audit", "name": "audit", "type": { "$ref": "cls-audit" }, "visibility": "private" }
+          ],
+          "operations": [
+            {
+              "_type": "UMLOperation",
+              "_id": "op-svc-place",
+              "name": "place",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-place-order", "name": "order", "type": { "$ref": "cls-order" } },
+                { "_type": "UMLParameter", "_id": "p-place-ret", "name": "", "type": "Boolean", "direction": "return" }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "op-svc-cancel",
+              "name": "cancel",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-cancel-id", "name": "order_id", "type": "String" },
+                { "_type": "UMLParameter", "_id": "p-cancel-ret", "name": "", "type": "Boolean", "direction": "return" }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "op-svc-refund",
+              "name": "refund",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-refund-id", "name": "order_id", "type": "String" },
+                { "_type": "UMLParameter", "_id": "p-refund-ret", "name": "", "type": "Boolean", "direction": "return" }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "cls-audit",
+          "_parent": { "$ref": "model-1" },
+          "name": "AuditLog",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "attr-audit-entries", "name": "entries", "type": "List", "visibility": "private" }
+          ],
+          "operations": [
+            {
+              "_type": "UMLOperation",
+              "_id": "op-audit-record",
+              "name": "record",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-audit-msg", "name": "message", "type": "String" }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "cls-controller",
+          "_parent": { "$ref": "model-1" },
+          "name": "OrderController",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "attr-ctl-service", "name": "service", "type": { "$ref": "cls-order-service" }, "visibility": "private" }
+          ],
+          "operations": [
+            {
+              "_type": "UMLOperation",
+              "_id": "op-ctl-create",
+              "name": "create",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-ctl-payload", "name": "payload", "type": "Map" },
+                { "_type": "UMLParameter", "_id": "p-ctl-create-ret", "name": "", "type": "Map", "direction": "return" }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "op-ctl-get",
+              "name": "get",
+              "visibility": "public",
+              "parameters": [
+                { "_type": "UMLParameter", "_id": "p-ctl-get-id", "name": "order_id", "type": "String" },
+                { "_type": "UMLParameter", "_id": "p-ctl-get-ret", "name": "", "type": "Map", "direction": "return" }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLInterfaceRealization",
+          "_id": "rel-repo-realizes",
+          "_parent": { "$ref": "model-1" },
+          "source": { "$ref": "cls-order-repository" },
+          "target": { "$ref": "int-repository" }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "rel-service-repo",
+          "_parent": { "$ref": "model-1" },
+          "name": "uses",
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "rel-service-repo-e1",
+            "reference": { "$ref": "cls-order-service" },
+            "multiplicity": "1"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "rel-service-repo-e2",
+            "reference": { "$ref": "cls-order-repository" },
+            "multiplicity": "1"
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "rel-controller-service",
+          "_parent": { "$ref": "model-1" },
+          "name": "delegates to",
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "rel-controller-service-e1",
+            "reference": { "$ref": "cls-controller" },
+            "multiplicity": "1"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "rel-controller-service-e2",
+            "reference": { "$ref": "cls-order-service" },
+            "multiplicity": "1"
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "rel-service-audit",
+          "_parent": { "$ref": "model-1" },
+          "name": "records to",
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "rel-service-audit-e1",
+            "reference": { "$ref": "cls-order-service" },
+            "multiplicity": "1"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "rel-service-audit-e2",
+            "reference": { "$ref": "cls-audit" },
+            "multiplicity": "0..1"
+          }
+        }
+      ]
+    }
+  ]
+}

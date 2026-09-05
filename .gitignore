@@ -1,0 +1,35 @@
+# Secrets — never commit these
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Application data
+backend/conformance_app.db
+workspace/
+backend/workspace/
+
+# Research output
+results/
+.corpus-cache/
+deviation-repo/
+
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,12 @@
+# Optional. Nothing here is required.
+#
+#   pip install -r research/requirements-optional.txt
+#
+# Every statistic the paper needs is pure Python in backend/stats/ and runs on
+# the standard library alone. That was deliberate: a dependency that might be
+# missing in a reviewer's environment is a reproducibility problem.
+#
+# These are only for convenience.
+
+# Nicer terminal tables when poking at results/runs.csv by hand.
+pandas>=2.2
