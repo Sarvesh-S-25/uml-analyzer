@@ -118,15 +118,20 @@ export function ProjectsPage({
   }
 
   return (
-    <div className="mx-auto max-w-5xl p-6">
-      <header className="mb-6 flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h1 className="text-xl font-semibold text-ink">Projects</h1>
-          <p className="mt-1 max-w-[62ch] text-sm text-muted">
-            Each project is one codebase plus the StarUML diagram it is supposed to match.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
+    <div className="mx-auto max-w-6xl p-4 lg:p-6">
+      <header className="relative mb-6 overflow-hidden rounded-2xl border border-hairline bg-surface/62 px-6 py-10 text-center shadow-[var(--shadow-card)] backdrop-blur-md lg:py-14">
+        <div className="pointer-events-none absolute left-6 top-6 h-8 w-8 opacity-35 [background-image:radial-gradient(circle,var(--ink)_1px,transparent_1.2px)] [background-size:7px_7px]" />
+        <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-muted">
+          Structural conformance workspace
+        </p>
+        <h1 className="mx-auto mt-3 max-w-4xl text-[clamp(2.35rem,5.6vw,5.5rem)] font-semibold uppercase leading-[0.92] tracking-[-0.065em] text-ink">
+          Code meets design
+        </h1>
+        <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted">
+          Compare a codebase with its StarUML model, inspect structural drift, and keep every
+          result grounded in parser evidence.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
           {githubConnected ? (
             <Button
               variant="ghost"
@@ -162,7 +167,7 @@ export function ProjectsPage({
       </header>
 
       {projects.length > 0 && (
-        <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
           <StatTile
             label="Projects"
             value={projects.length}
@@ -182,7 +187,7 @@ export function ProjectsPage({
       )}
 
       {creating && (
-        <Card title="New project" className="mb-6">
+        <Card title="New project" className="mb-4">
           <div className="mb-4">
             <SegmentedControl
               options={[
@@ -279,11 +284,11 @@ export function ProjectsPage({
           folder, or import a repository.
         </EmptyState>
       ) : (
-        <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
           {projects.map((project) => (
             <div
               key={project.name}
-              className="group rounded-xl border border-hairline bg-surface p-4 shadow-[var(--shadow-card)] transition hover:border-series-1/60"
+              className="group rounded-md border border-hairline bg-surface p-3 shadow-[var(--shadow-card)] transition hover:border-series-1/60"
             >
               <div className="flex items-start justify-between gap-3">
                 <button onClick={() => onOpen(project.name)} className="min-w-0 flex-1 text-left">

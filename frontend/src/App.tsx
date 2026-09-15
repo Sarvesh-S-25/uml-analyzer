@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { AppShell } from './components/AppShell'
 import type { Destination, ProjectSection } from './components/AppShell'
+import { AmbientBackdrop } from './components/AmbientBackdrop'
 import { AuthView } from './components/AuthView'
 import { ProjectsPage } from './components/ProjectsPage'
 import { ProjectWorkspace } from './components/ProjectWorkspace'
@@ -168,6 +169,12 @@ function Shell() {
         setDestination(next)
         if (next === 'projects') setActiveProject(null)
       }}
+      projects={projects}
+      onOpenProject={(name) => {
+        setActiveProject(name)
+        setProjectSection('results')
+        setDestination('projects')
+      }}
       openProject={activeProject}
       projectSection={projectSection}
       onProjectSection={(section) => {
@@ -213,7 +220,7 @@ function Shell() {
           onRefresh={refresh}
           onOpen={(name) => {
             setActiveProject(name)
-            setProjectSection('code')
+            setProjectSection('results')
             setDestination('projects')
           }}
         />
@@ -224,8 +231,13 @@ function Shell() {
 
 export default function App() {
   return (
-    <ToastProvider>
-      <Shell />
-    </ToastProvider>
+    <div className="relative isolate h-full overflow-hidden">
+      <AmbientBackdrop />
+      <div className="relative z-10 h-full">
+        <ToastProvider>
+          <Shell />
+        </ToastProvider>
+      </div>
+    </div>
   )
 }

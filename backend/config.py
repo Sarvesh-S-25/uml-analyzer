@@ -95,8 +95,8 @@ LLM_COMPARISON_MODELS = [
 LLM_MODE = os.getenv("LLM_MODE", "auto").lower()
 
 # Pricing used only for reporting estimated cost in the metrics endpoint.
-USD_PER_1M_INPUT_TOKENS = float(os.getenv("USD_PER_1M_INPUT_TOKENS", "5.00"))
-USD_PER_1M_OUTPUT_TOKENS = float(os.getenv("USD_PER_1M_OUTPUT_TOKENS", "15.00"))
+USD_PER_1M_INPUT_TOKENS = float(os.getenv("USD_PER_1M_INPUT_TOKENS", "0" if LLM_PROVIDER == "ollama" else "5.00"))
+USD_PER_1M_OUTPUT_TOKENS = float(os.getenv("USD_PER_1M_OUTPUT_TOKENS", "0" if LLM_PROVIDER == "ollama" else "15.00"))
 
 # --- Incremental analysis ----------------------------------------------------
 

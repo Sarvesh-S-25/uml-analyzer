@@ -22,6 +22,7 @@ backend/workspace/
 results/
 .corpus-cache/
 deviation-repo/
+extracted-mdj/download-cache/
 
 # Node
 node_modules/

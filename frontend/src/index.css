@@ -22,19 +22,19 @@
 
   /* Surfaces, three steps apart so a card on a panel on a page separates
      without needing a border between each pair. */
-  --plane: #f7f7f5;
+  --plane: #f4f6f9;
   --surface: #ffffff;
-  --surface-2: #f2f2ef;
-  --surface-3: #e6e6e2;
-  --hairline: rgba(23, 23, 21, 0.13);
+  --surface-2: #f7f8fa;
+  --surface-3: #e8ecf2;
+  --hairline: #d9dee7;
 
   /* Text. `ink-2` carries body copy so it sits well above the 4.5:1 floor
      rather than exactly on it; `muted` is for labels and captions only, never
      a sentence a reader has to work through. */
-  --ink: #17171a;
-  --ink-2: #3d3d3a;
-  --ink-3: #57574f;
-  --muted: #6e6c65;
+  --ink: #172033;
+  --ink-2: #364152;
+  --ink-3: #4d596a;
+  --muted: #6f7a89;
   --grid: #e4e4e0;
   --axis: #c9c9c3;
 
@@ -58,12 +58,12 @@
 
   /* Categorical slots for charts, checked pairwise for colour-blind
      separation against this surface rather than picked by eye. */
-  --series-1: #0969da;
+  --series-1: #2869e8;
   --series-2: #bc4c00;
   --series-3: #1a7f37;
   --series-4: #6639ba;
 
-  --shadow-card: 0 1px 2px rgba(23, 23, 21, 0.06), 0 1px 3px rgba(23, 23, 21, 0.04);
+  --shadow-card: 0 1px 2px rgba(23, 32, 51, 0.04);
   --shadow-float: 0 4px 12px rgba(23, 23, 21, 0.1), 0 2px 4px rgba(23, 23, 21, 0.06);
 }
 
@@ -211,6 +211,106 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Minimal geometric atmosphere. The blurred colour stays behind the product
+   surfaces, while the fine outlines echo the reference without competing with
+   dense comparison data. Transforms are fed by AmbientBackdrop without React
+   re-renders, which keeps pointer movement smooth even on large code maps. */
+.ambient-backdrop {
+  --aqua-x: 0px;
+  --aqua-y: 0px;
+  --rose-x: 0px;
+  --rose-y: 0px;
+  --grid-x: 0px;
+  --grid-y: 0px;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), transparent 48%),
+    var(--plane);
+}
+
+.ambient-blob,
+.ambient-orbit,
+.ambient-grid {
+  position: absolute;
+  will-change: transform;
+}
+
+.ambient-blob {
+  width: min(38vw, 38rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  filter: blur(54px);
+  opacity: 0.58;
+}
+
+.ambient-blob-aqua {
+  left: -15rem;
+  bottom: -20rem;
+  transform: translate3d(var(--aqua-x), var(--aqua-y), 0);
+  background: radial-gradient(circle, rgba(50, 225, 188, 0.72) 0%, rgba(80, 230, 207, 0.28) 44%, transparent 72%);
+}
+
+.ambient-blob-rose {
+  right: -14rem;
+  top: -17rem;
+  transform: translate3d(var(--rose-x), var(--rose-y), 0);
+  background: radial-gradient(circle, rgba(255, 79, 132, 0.68) 0%, rgba(255, 133, 101, 0.25) 46%, transparent 72%);
+}
+
+.ambient-orbit {
+  width: min(28vw, 25rem);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--ink) 38%, transparent);
+  border-radius: 999px;
+  opacity: 0.72;
+}
+
+.ambient-orbit-aqua {
+  left: -12rem;
+  bottom: -13rem;
+  transform: translate3d(var(--aqua-x), var(--aqua-y), 0);
+}
+
+.ambient-orbit-rose {
+  right: -10rem;
+  top: -10rem;
+  transform: translate3d(var(--rose-x), var(--rose-y), 0);
+}
+
+.ambient-grid {
+  left: 4.5rem;
+  top: 4.5rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  transform: translate3d(var(--grid-x), var(--grid-y), 0);
+  opacity: 0.58;
+  background-image: radial-gradient(circle, var(--ink) 1px, transparent 1.2px);
+  background-size: 7px 7px;
+}
+
+:root[data-theme="dark"] .ambient-blob {
+  opacity: 0.2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ambient-blob {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-blob,
+  .ambient-orbit,
+  .ambient-grid {
+    transform: none !important;
+    will-change: auto;
+  }
 }
 
 /* Figures line up in a column only if the digits are the same width. Every

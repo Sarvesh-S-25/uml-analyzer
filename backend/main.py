@@ -788,6 +788,13 @@ async def upload_uml(
     if not isinstance(parsed, dict):
         raise HTTPException(status_code=400, detail="A StarUML model must be a JSON object.")
 
+    from parsers.uml_parser import StarUMLParser
+    validator = StarUMLParser(filename)
+    validator._index(parsed)
+    validator._extract(parsed)
+    if not validator.model.elements:
+        raise HTTPException(status_code=400, detail="This model contains no UML classes or interfaces. Upload a class model; use-case and sequence diagrams cannot be compared.")
+
     target = resolve_within(uml_dir(path), filename)
     with open(target, "wb") as handle:
         handle.write(content)
@@ -998,7 +1005,10 @@ def repeatability_harness(
 
     for _ in range(request.runs):
         result = run_analysis(path, gate_strategy="always", force=True)
-        scores.append(float(result["similarity_score"]))
+        if result["similarity_score"] is None:
+            raise HTTPException(status_code=422, detail=result["evaluation"]["issues"])
+        score = result.get("model_score") if result["llm"]["invoked"] else result["similarity_score"]
+        scores.append(float(score))
         gap_counts.append(float(len(result["ai_gaps"])))
         node_counts.append(float(result["networkx_nodes"]))
 
@@ -1047,7 +1057,8 @@ def model_comparison(
                 "model": result["llm"]["model"],
                 "provider": result["llm"].get("provider"),
                 "invoked": result["llm"]["invoked"],
-                "similarity_score": result["similarity_score"],
+                "similarity_score": (result.get("model_score") if result["llm"]["invoked"] else result["similarity_score"]),
+                "structural_score": result["similarity_score"],
                 "gap_count": len(result["ai_gaps"]),
                 "gaps": result["ai_gaps"],
                 "graph_nodes": result["networkx_nodes"],
@@ -1058,7 +1069,7 @@ def model_comparison(
             }
         )
 
-    usable = [outcome for outcome in outcomes if "error" not in outcome]
+    usable = [outcome for outcome in outcomes if "error" not in outcome and outcome.get("structural_score") is not None and outcome.get("similarity_score") is not None]
     agreement = []
     for index, left in enumerate(usable):
         for right in usable[index + 1:]:

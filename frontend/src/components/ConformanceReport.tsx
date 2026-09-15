@@ -1,360 +1,504 @@
+import { useMemo, useState } from 'react'
 import type { AnalysisResult } from '../lib/types'
-import { formatMs, statusStyle } from '../lib/theme'
-import { Badge, Banner, Card, ScoreBar, Section, StatTile } from './ui'
+import { formatMs } from '../lib/theme'
+import { Badge, Banner, Card } from './ui'
 
-/** What the check found.
- *
- * Organised by how much you can trust it, not by where it came from: the
- * structural differences are computed by parsing and are exact, and everything
- * the language model contributed is kept visibly separate and labelled as
- * suggestion. That separation is the honest presentation of a pipeline that is
- * part parser and part model.
- */
+type Presence = 'yes' | 'no' | 'unknown'
+type FindingSource = 'parser' | 'model'
 
-const EVIDENCE: Record<string, { color: string; glyph: string; word: string }> = {
-  strong: { color: 'var(--good)', glyph: '✓', word: 'strong evidence' },
-  weak: { color: 'var(--warning)', glyph: '~', word: 'weak evidence' },
-  none: { color: 'var(--critical)', glyph: '✗', word: 'no evidence' },
+interface DifferenceRow {
+  id: string
+  element: string
+  detail: string
+  category: 'Class' | 'Member' | 'Relationship' | 'Architecture' | 'Observation'
+  code: Presence
+  diagram: Presence
+  source: FindingSource
+  evidence: string
+  sourceFile?: string
+  suggestion: string
 }
 
-function List({ items, empty }: { items: string[]; empty: string }) {
-  if (items.length === 0) return <p className="text-xs text-muted">{empty}</p>
+const CATEGORY_TONE: Record<DifferenceRow['category'], { color: string; wash: string }> = {
+  Class: { color: 'var(--critical)', wash: 'var(--critical-wash)' },
+  Member: { color: 'var(--serious)', wash: 'var(--serious-wash)' },
+  Relationship: { color: 'var(--warning)', wash: 'var(--warning-wash)' },
+  Architecture: { color: 'var(--proposed)', wash: 'var(--proposed-wash)' },
+  Observation: { color: 'var(--neutral)', wash: 'var(--surface-2)' },
+}
+
+function PresenceMark({ value }: { value: Presence }) {
+  if (value === 'yes') {
+    return <span className="inline-flex items-center gap-1 text-xs text-good"><b>✓</b> Yes</span>
+  }
+  if (value === 'no') {
+    return <span className="inline-flex items-center gap-1 text-xs text-critical"><b>×</b> No</span>
+  }
+  return <span className="text-xs text-muted">—</span>
+}
+
+function CategoryChip({ category }: { category: DifferenceRow['category'] }) {
+  const tone = CATEGORY_TONE[category]
   return (
-    <ul className="space-y-1 text-sm text-ink-2">
-      {items.map((item, index) => (
-        <li key={index} className="flex gap-2">
-          <span aria-hidden="true" className="text-muted">
-            •
-          </span>
-          <span className="min-w-0 break-words font-mono text-xs">{item}</span>
-        </li>
-      ))}
-    </ul>
+    <span
+      className="inline-flex rounded px-1.5 py-0.5 text-[10px] font-medium"
+      style={{ color: tone.color, background: tone.wash }}
+    >
+      {category}
+    </span>
+  )
+}
+
+function buildRows(result: AnalysisResult): DifferenceRow[] {
+  const { difference } = result
+  const rows: DifferenceRow[] = []
+  const sourceFileFor = (name: string) =>
+    result.graph_data.nodes.find((node) => node.label === name && node.source_file)?.source_file ?? undefined
+
+  difference.missing_classes.forEach((name, index) => {
+    rows.push({
+      id: `missing-code-${index}-${name}`,
+      element: name,
+      detail: 'Missing from code',
+      category: 'Class',
+      code: 'no',
+      diagram: 'yes',
+      source: 'parser',
+      evidence: `The StarUML model defines “${name}”, but the source parser found no class or interface with that name.`,
+      suggestion: 'Implement the class, or remove it from the diagram if it is no longer part of the intended design.',
+    })
+  })
+
+  difference.extra_classes.forEach((name, index) => {
+    const sourceFile = sourceFileFor(name)
+    rows.push({
+      id: `not-diagrammed-${index}-${name}`,
+      element: name,
+      detail: 'Not in diagram',
+      category: 'Class',
+      code: 'yes',
+      diagram: 'no',
+      source: 'parser',
+      evidence: sourceFile
+        ? `The parser found “${name}” in ${sourceFile}, but no matching element exists in the StarUML model.`
+        : `The parser found “${name}” in the source, but no matching element exists in the StarUML model.`,
+      sourceFile,
+      suggestion: 'Add the class to the diagram, or remove it from the code if it is unintended.',
+    })
+  })
+
+  difference.missing_relations.forEach((relation, index) => {
+    rows.push({
+      id: `missing-relation-${index}`,
+      element: relation,
+      detail: 'Relationship not implemented',
+      category: 'Relationship',
+      code: 'no',
+      diagram: 'yes',
+      source: 'parser',
+      evidence: 'The relationship is present in the diagram, but the structural parser could not corroborate it in the source.',
+      suggestion: 'Implement the relationship in code, or update the diagram to reflect the current design.',
+    })
+  })
+
+  difference.unimplemented_associations.forEach((relation, index) => {
+    rows.push({
+      id: `association-${index}`,
+      element: relation,
+      detail: 'No association evidence',
+      category: 'Relationship',
+      code: 'unknown',
+      diagram: 'yes',
+      source: 'parser',
+      evidence: 'The diagram contains this association, but the parser found no strong or weak implementation evidence.',
+      suggestion: 'Check the involved fields and calls, then decide whether the association or the implementation should change.',
+    })
+  })
+
+  difference.element_differences.forEach((element, index) => {
+    const parts = [
+      element.missing_methods.length > 0 ? `methods missing from code: ${element.missing_methods.join(', ')}` : '',
+      element.missing_attributes.length > 0 ? `fields missing from code: ${element.missing_attributes.join(', ')}` : '',
+      element.extra_methods.length > 0 ? `methods not in diagram: ${element.extra_methods.join(', ')}` : '',
+      element.extra_attributes.length > 0 ? `fields not in diagram: ${element.extra_attributes.join(', ')}` : '',
+    ].filter(Boolean)
+    rows.push({
+      id: `member-${index}-${element.element_name}`,
+      element: element.element_name,
+      detail: 'Member mismatch',
+      category: 'Member',
+      code: 'yes',
+      diagram: 'yes',
+      source: 'parser',
+      evidence: parts.join('; '),
+      sourceFile: sourceFileFor(element.element_name),
+      suggestion: 'Align the class fields and methods with the intended StarUML definition.',
+    })
+  })
+
+  result.rule_violations.forEach((violation, index) => {
+    rows.push({
+      id: `rule-${index}`,
+      element: violation.rule,
+      detail: violation.message,
+      category: 'Architecture',
+      code: 'yes',
+      diagram: 'unknown',
+      source: 'parser',
+      evidence: `${violation.evidence} (${violation.confidence} confidence)`,
+      sourceFile: violation.file,
+      suggestion: 'Review this dependency against the intended layer boundaries before changing the design or source.',
+    })
+  })
+
+  result.ai_gaps.forEach((gap, index) => {
+    rows.push({
+      id: `model-${index}`,
+      element: `Model observation ${index + 1}`,
+      detail: gap,
+      category: 'Observation',
+      code: 'unknown',
+      diagram: 'unknown',
+      source: 'model',
+      evidence: 'Suggested by the configured language model; this item is not parser-verified.',
+      suggestion: 'Inspect the relevant code and diagram before acting on this suggestion.',
+    })
+  })
+
+  return rows
+}
+
+function DifferenceWorkbench({ result }: { result: AnalysisResult }) {
+  const rows = useMemo(() => buildRows(result), [result])
+  const [search, setSearch] = useState('')
+  const [category, setCategory] = useState('all')
+  const [source, setSource] = useState('all')
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+
+  const filtered = rows.filter((row) => {
+    const query = search.trim().toLowerCase()
+    return (
+      (category === 'all' || row.category === category) &&
+      (source === 'all' || row.source === source) &&
+      (!query || `${row.element} ${row.detail} ${row.evidence}`.toLowerCase().includes(query))
+    )
+  })
+  const selected = rows.find((row) => row.id === selectedId) ?? filtered[0] ?? rows[0]
+
+  return (
+    <section className="overflow-hidden rounded-md border border-hairline bg-surface shadow-[var(--shadow-card)]">
+      <div className="border-b border-hairline px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 className="text-md font-semibold text-ink">Differences</h2>
+            <p className="mt-0.5 text-xs text-muted">Parser findings and model observations remain clearly separated.</p>
+          </div>
+          <span className="text-xs tabular-nums text-muted">{filtered.length} of {rows.length}</span>
+        </div>
+        <div className="mt-3 grid gap-2 sm:grid-cols-[10rem_9rem_minmax(12rem,1fr)]">
+          <select
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+            aria-label="Filter by difference type"
+            className="rounded-md border border-hairline bg-surface px-2.5 py-1.5 text-xs text-ink"
+          >
+            <option value="all">All difference types</option>
+            <option value="Class">Classes</option>
+            <option value="Member">Members</option>
+            <option value="Relationship">Relationships</option>
+            <option value="Architecture">Architecture</option>
+            <option value="Observation">Observations</option>
+          </select>
+          <select
+            value={source}
+            onChange={(event) => setSource(event.target.value)}
+            aria-label="Filter by source"
+            className="rounded-md border border-hairline bg-surface px-2.5 py-1.5 text-xs text-ink"
+          >
+            <option value="all">All sources</option>
+            <option value="parser">Parser verified</option>
+            <option value="model">Model suggested</option>
+          </select>
+          <label className="relative">
+            <span aria-hidden="true" className="absolute left-2.5 top-1.5 text-xs text-muted">⌕</span>
+            <input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search findings…"
+              className="w-full rounded-md border border-hairline bg-surface py-1.5 pl-7 pr-2.5 text-xs text-ink placeholder:text-muted"
+            />
+          </label>
+        </div>
+      </div>
+
+      {rows.length === 0 ? (
+        <div className="px-5 py-10 text-center">
+          <div className="text-lg text-good">✓</div>
+          <h3 className="mt-1 text-sm font-semibold text-ink">No differences found</h3>
+          <p className="mt-1 text-xs text-muted">The parser found no structural mismatches in this result.</p>
+        </div>
+      ) : (
+        <div className="grid min-h-[28rem] xl:grid-cols-[minmax(0,1.55fr)_minmax(20rem,1fr)]">
+          <div className="min-w-0 overflow-x-auto border-b border-hairline xl:border-b-0 xl:border-r">
+            <table className="w-full min-w-[46rem] text-left text-xs">
+              <thead className="bg-surface-2 text-[10px] uppercase tracking-wide text-muted">
+                <tr>
+                  <th className="px-3 py-2 font-medium">Element</th>
+                  <th className="w-28 px-3 py-2 font-medium">In code</th>
+                  <th className="w-28 px-3 py-2 font-medium">In diagram</th>
+                  <th className="w-28 px-3 py-2 font-medium">Category</th>
+                  <th className="w-28 px-3 py-2 font-medium">Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((row) => {
+                  const active = selected?.id === row.id
+                  return (
+                    <tr
+                      key={row.id}
+                      onClick={() => setSelectedId(row.id)}
+                      className={`cursor-pointer border-t border-hairline transition ${
+                        active ? 'bg-series-1/8' : 'hover:bg-surface-2'
+                      }`}
+                    >
+                      <td className={`relative px-3 py-2.5 ${active ? 'before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-series-1' : ''}`}>
+                        <div className="max-w-md truncate font-medium text-ink" title={row.element}>{row.element}</div>
+                        <div className="mt-0.5 max-w-md truncate text-[11px] text-muted" title={row.detail}>{row.detail}</div>
+                      </td>
+                      <td className="px-3 py-2.5"><PresenceMark value={row.code} /></td>
+                      <td className="px-3 py-2.5"><PresenceMark value={row.diagram} /></td>
+                      <td className="px-3 py-2.5"><CategoryChip category={row.category} /></td>
+                      <td className="px-3 py-2.5">
+                        <span className={row.source === 'parser' ? 'text-good' : 'text-proposed'}>
+                          {row.source === 'parser' ? '✓ Parser' : '◇ Model'}
+                        </span>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+            {filtered.length === 0 && (
+              <div className="px-5 py-10 text-center text-xs text-muted">No findings match these filters.</div>
+            )}
+          </div>
+
+          {selected && (
+            <aside className="min-w-0 bg-surface px-4 py-4" aria-label="Difference details">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-muted">Difference details</p>
+                  <h3 className="mt-1 break-words text-lg font-semibold text-ink">{selected.element}</h3>
+                  <p className="mt-1 text-xs text-critical">{selected.detail}</p>
+                </div>
+                <CategoryChip category={selected.category} />
+              </div>
+
+              <dl className="mt-4 divide-y divide-hairline border-y border-hairline text-xs">
+                <div className="grid grid-cols-[6rem_1fr] gap-2 py-2">
+                  <dt className="text-muted">Found in code</dt>
+                  <dd><PresenceMark value={selected.code} /></dd>
+                </div>
+                <div className="grid grid-cols-[6rem_1fr] gap-2 py-2">
+                  <dt className="text-muted">Found in diagram</dt>
+                  <dd><PresenceMark value={selected.diagram} /></dd>
+                </div>
+                <div className="grid grid-cols-[6rem_1fr] gap-2 py-2">
+                  <dt className="text-muted">Source</dt>
+                  <dd className={selected.source === 'parser' ? 'text-good' : 'text-proposed'}>
+                    {selected.source === 'parser' ? 'Parser verified' : 'Model suggested'}
+                  </dd>
+                </div>
+                {selected.sourceFile && (
+                  <div className="grid grid-cols-[6rem_1fr] gap-2 py-2">
+                    <dt className="text-muted">Code location</dt>
+                    <dd className="break-all font-mono text-[11px] text-series-1">{selected.sourceFile}</dd>
+                  </div>
+                )}
+              </dl>
+
+              <div className="mt-4">
+                <h4 className="text-xs font-semibold text-ink">Evidence</h4>
+                <div className="mt-1.5 rounded-md border border-hairline bg-plane p-3 text-xs leading-relaxed text-ink-2">
+                  {selected.evidence}
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <h4 className="text-xs font-semibold text-ink">Suggested action</h4>
+                <div className="mt-1.5 rounded-md border border-warning/40 bg-warning-wash p-3 text-xs leading-relaxed text-ink-2">
+                  {selected.suggestion}
+                </div>
+              </div>
+
+              <p className="mt-4 text-[11px] leading-relaxed text-muted">
+                {selected.source === 'parser'
+                  ? 'This finding comes from the deterministic structural comparison.'
+                  : 'Treat this model output as a review prompt, not a verified defect.'}
+              </p>
+            </aside>
+          )}
+        </div>
+      )}
+    </section>
   )
 }
 
 export function ConformanceReport({ result }: { result: AnalysisResult }) {
   const { gate, llm, difference, graph_validation: validation } = result
   const reused = !gate.should_invoke_llm
-  const changedTotal =
-    gate.delta.changed_nodes + gate.delta.added_nodes + gate.delta.removed_nodes
+  const valid = result.evaluation?.valid ?? (result.uml.element_count > 0 && result.source.file_count > 0)
+  const changedTotal = gate.delta.changed_nodes + gate.delta.added_nodes + gate.delta.removed_nodes
+  const differenceCount =
+    difference.missing_classes.length +
+    difference.extra_classes.length +
+    difference.missing_relations.length +
+    difference.unimplemented_associations.length +
+    difference.element_differences.length
 
   return (
     <div className="space-y-4">
+      {!result.evaluation && (
+        <Banner tone="warning" title="Result from an earlier analyzer version">
+          Force a full re-check to apply the corrected language support, input validation and structural scoring.
+        </Banner>
+      )}
       {result.uml.error && (
         <Banner tone="critical" title="Your diagram could not be read">
-          {result.uml.error} The score below therefore describes the code only — it is not a
-          comparison against your diagram.
+          {result.uml.error} This result cannot be treated as a code-to-diagram comparison.
         </Banner>
       )}
-
-      {result.uml.warnings.map((warning, index) => (
-        <Banner key={index} tone="warning">
-          {warning}
-        </Banner>
-      ))}
-
+      {result.uml.warnings.map((warning, index) => <Banner key={index} tone="warning">{warning}</Banner>)}
       {!result.uml.error && result.uml.element_count === 0 && (
         <Banner tone="warning" title="No diagram to compare against">
-          Upload a StarUML .mdj file on the Diagram screen. Without one there is nothing to check
-          the code against.
+          Upload a StarUML .mdj file on the Diagram screen. Without one there is nothing to compare.
         </Banner>
       )}
-
       {result.source.parse_errors.length > 0 && (
         <Banner tone="warning" title="Some files did not parse">
           {result.source.parse_errors.slice(0, 5).join(', ')}
-          {result.source.parse_errors.length > 5
-            ? ` and ${result.source.parse_errors.length - 5} more`
-            : ''}
-          . Their contents are missing from the map and from the comparison.
+          {result.source.parse_errors.length > 5 ? ` and ${result.source.parse_errors.length - 5} more` : ''}.
+          Their contents are missing from the map and comparison.
         </Banner>
       )}
-
       {llm.degraded && (
         <Banner tone="warning" title="Ran without the language model">
-          {llm.notes.join(' ')} The structural findings below are still exact; suggested tests and
-          plain-English gaps are unavailable for this run.
+          {llm.notes.join(' ')} Structural findings remain available, but model observations are unavailable.
         </Banner>
       )}
 
-      <Card
-        title={`Result — version ${result.version}`}
-        subtitle={gate.reason}
-        actions={
-          <Badge
-            color={reused ? 'var(--good)' : 'var(--series-1)'}
-            wash={reused ? 'var(--good-wash)' : undefined}
-            glyph={reused ? '=' : '↻'}
-          >
-            {reused ? 'Reused the previous answer' : 'Re-checked'}
-          </Badge>
-        }
-      >
-        <div className="mb-4">
-          <ScoreBar value={result.similarity_score} />
-          <p className="mt-1.5 text-xs text-muted">
-            {result.similarity_score_source === 'cache'
-              ? 'Carried over from the previous version, because nothing relevant changed. '
-              : ''}
-            The parser-only check, which uses no model at all, gives{' '}
-            <span className="text-ink-2">{result.similarity_score_rule_based}%</span>.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          <StatTile
-            label="Classes in the map"
-            value={result.networkx_nodes}
-            detail={`${result.networkx_edges} relationships between them`}
-          />
-          <StatTile
-            label="Changed since last time"
-            value={changedTotal}
-            detail={`${gate.impact_node_count} class(es) affected by those changes`}
-            hint="What the gate looked at when deciding whether this run needed re-checking. It reads the code's structure only — never the diagram."
-          />
-          <StatTile
-            label="Model called"
-            value={llm.invoked ? 'yes' : 'no'}
-            detail={
-              llm.invoked
-                ? `${llm.model} · ${llm.attempts} attempt(s)`
-                : 'Answered from the parser and the stored version'
-            }
-            hint="The gate allowing a re-check and the model actually being reached are different facts; in offline mode the gate can allow a call that never happens."
-          />
-          <StatTile label="Took" value={formatMs(result.elapsed_ms)} detail="Wall clock" />
-        </div>
-
-        {validation.grounded_node_ratio !== null && (
-          <p className="mt-4 text-xs leading-relaxed text-muted">
-            Of the classes the model proposed for the map,{' '}
-            <span className="text-ink-2">
-              {validation.grounded_nodes} of {validation.llm_node_count} (
-              {Math.round((validation.grounded_node_ratio ?? 0) * 100)}%)
-            </span>{' '}
-            were also found in the code by the parser. The rest are shown as{' '}
-            {statusStyle('model_inferred').label.toLowerCase()} and are not corroborated.
-          </p>
-        )}
-
-        {Object.keys(result.renamed_components).length > 0 && (
-          <p className="mt-2 text-xs text-muted">
-            {Object.keys(result.renamed_components).length} class(es) were renamed. The stored
-            answer was relabelled rather than recomputed.
-          </p>
-        )}
-
-        {result.call_resolution?.total_call_sites > 0 && (
-          <p className="mt-2 text-xs leading-relaxed text-muted">
-            Call resolution:{' '}
-            <span className="text-ink-2">
-              {result.call_resolution.resolved} of {result.call_resolution.total_call_sites} (
-              {Math.round((result.call_resolution.resolution_rate ?? 0) * 100)}%)
-            </span>{' '}
-            were traced to exactly one definition; {result.call_resolution.ambiguous} were
-            ambiguous and {result.call_resolution.external} pointed outside the project. An
-            ambiguous call is counted and left unlinked, never linked to every candidate — linking
-            to all of them would invent relationships that are not there.
-          </p>
-        )}
-
-        {!result.source.typescript_grammar && result.source.files_without_types.length > 0 && (
-          <p className="mt-2 text-xs text-muted">
-            {result.source.files_without_types.length} TypeScript file(s) were read with the
-            JavaScript grammar, so their type annotations are invisible. Install{' '}
-            <code className="text-ink-2">tree-sitter-typescript</code> for full fidelity.
-          </p>
+      <Card dense>
+        {valid ? (
+          <div>
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-2xl font-semibold tabular-nums text-ink">{result.similarity_score_rule_based}%</span>
+                  <span className="text-md font-semibold text-ink">structural match</span>
+                </div>
+                <p className="mt-1 text-xs text-muted">
+                  Passed {difference.checks_passed} of {difference.checks_total} parser checks · version {result.version}
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge color="var(--good)" wash="var(--good-wash)" glyph="✓">Parser verified</Badge>
+                <Badge
+                  color={llm.invoked ? 'var(--proposed)' : 'var(--neutral)'}
+                  wash={llm.invoked ? 'var(--proposed-wash)' : 'var(--surface-2)'}
+                  glyph={llm.invoked ? '◇' : '—'}
+                >
+                  {llm.invoked ? `${llm.model} used` : 'Model not called'}
+                </Badge>
+                <Badge color={reused ? 'var(--good)' : 'var(--series-1)'} glyph={reused ? '=' : '↻'}>
+                  {reused ? 'Reused' : 'Re-checked'}
+                </Badge>
+              </div>
+            </div>
+            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-surface-3">
+              <div
+                className="h-full rounded-full bg-series-1"
+                style={{ width: `${Math.max(0, Math.min(100, result.similarity_score_rule_based))}%` }}
+              />
+            </div>
+            <dl className="mt-4 grid grid-cols-2 divide-x divide-hairline border-t border-hairline pt-3 sm:grid-cols-4">
+              <div className="px-3 first:pl-0">
+                <dt className="text-[10px] uppercase tracking-wide text-muted">Classes</dt>
+                <dd className="mt-0.5 text-lg font-semibold tabular-nums text-ink">{result.source_class_count ?? '—'}</dd>
+              </div>
+              <div className="px-3">
+                <dt className="text-[10px] uppercase tracking-wide text-muted">Relationships</dt>
+                <dd className="mt-0.5 text-lg font-semibold tabular-nums text-ink">{result.networkx_edges}</dd>
+              </div>
+              <div className="px-3">
+                <dt className="text-[10px] uppercase tracking-wide text-muted">Differences</dt>
+                <dd className="mt-0.5 text-lg font-semibold tabular-nums text-ink">{differenceCount}</dd>
+              </div>
+              <div className="px-3">
+                <dt className="text-[10px] uppercase tracking-wide text-muted">Analysis time</dt>
+                <dd className="mt-0.5 text-lg font-semibold tabular-nums text-ink">{formatMs(result.elapsed_ms)}</dd>
+              </div>
+            </dl>
+          </div>
+        ) : (
+          <Banner tone="warning" title="Cannot evaluate">
+            {result.evaluation?.issues.join(' ') || 'A usable class diagram and supported source code are required.'}
+          </Banner>
         )}
       </Card>
 
-      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-        <Card
-          title="Differences"
-          subtitle="Found by reading the code and the diagram directly. These are exact — no model was involved."
-        >
-          <div className="space-y-4">
-            <Section
-              title="In the diagram, never built"
-              count={difference.missing_classes.length}
-              hint="Classes your diagram describes that do not exist in the code."
-            >
-              <List items={difference.missing_classes} empty="None — everything drawn exists." />
-            </Section>
+      {valid && <DifferenceWorkbench result={result} />}
 
-            <Section
-              title="In the code, not in the diagram"
-              count={difference.extra_classes.length}
-              hint="Classes the code defines that were never drawn. Not necessarily wrong — but undocumented."
-            >
-              <List items={difference.extra_classes} empty="None — everything built is drawn." />
-            </Section>
-
-            <Section
-              title="Missing inheritance"
-              count={difference.missing_relations.length}
-              hint="An 'extends' or 'implements' the diagram shows but the code does not have."
-            >
-              <List items={difference.missing_relations} empty="None." />
-            </Section>
-
-            {difference.relation_findings.length > 0 && (
-              <Section title="Relationships" collapsible defaultOpen={false}>
-                <p className="mb-2 text-xs leading-relaxed text-muted">
-                  Inheritance can be recovered from the code exactly. An association cannot: a
-                  typed field is strong evidence, a name match or an instantiation is weak.
-                  Associations{' '}
-                  <span className="text-ink-2">
-                    {difference.association_scoring ? 'count' : 'do not count'}
-                  </span>{' '}
-                  toward the score in this run.
-                </p>
-                <ul className="space-y-1.5">
-                  {difference.relation_findings.map((finding, index) => {
-                    const evidence = EVIDENCE[finding.evidence]
-                    return (
-                      <li key={index} className="rounded border border-hairline p-2 text-xs">
-                        <div className="flex items-start gap-2">
-                          <span
-                            aria-hidden="true"
-                            className="mt-0.5 shrink-0 font-bold"
-                            style={{ color: evidence.color }}
-                          >
-                            {evidence.glyph}
-                          </span>
-                          <div className="min-w-0">
-                            <div className="font-mono text-ink-2">
-                              {finding.source} →{finding.relation}→ {finding.target}
-                            </div>
-                            <div className="text-muted">
-                              <span style={{ color: evidence.color }}>{evidence.word}</span>
-                              {finding.scored ? ', counted' : ', not counted'} ·{' '}
-                              {finding.evidence_detail}
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </Section>
-            )}
-
-            {difference.element_differences.length > 0 && (
-              <Section
-                title="Member differences"
-                count={difference.element_differences.length}
-                collapsible
-                defaultOpen={false}
-              >
-                <ul className="space-y-2">
-                  {difference.element_differences.slice(0, 20).map((element) => (
-                    <li key={element.element_name} className="rounded border border-hairline p-2">
-                      <div className="font-mono text-xs font-medium text-ink">
-                        {element.element_name}
-                      </div>
-                      {element.missing_methods.length > 0 && (
-                        <div className="mt-1 text-xs text-critical">
-                          Not built: {element.missing_methods.join(', ')}
-                        </div>
-                      )}
-                      {element.missing_attributes.length > 0 && (
-                        <div className="text-xs text-critical">
-                          Fields not built: {element.missing_attributes.join(', ')}
-                        </div>
-                      )}
-                      {element.extra_methods.length > 0 && (
-                        <div className="text-xs text-serious">
-                          Not in the diagram: {element.extra_methods.join(', ')}
-                        </div>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-                {difference.element_differences.length > 20 && (
-                  <p className="mt-2 text-xs text-muted">
-                    Showing the first 20 of {difference.element_differences.length}.
-                  </p>
-                )}
-              </Section>
+      <details className="group rounded-md border border-hairline bg-surface shadow-[var(--shadow-card)]">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3">
+          <div>
+            <span className="text-sm font-semibold text-ink">Analysis details</span>
+            <span className="ml-2 text-xs text-muted">Relationship evidence, recommendations, and model diagnostics</span>
+          </div>
+          <span aria-hidden="true" className="text-muted transition group-open:rotate-90">›</span>
+        </summary>
+        <div className="grid gap-5 border-t border-hairline p-4 lg:grid-cols-2">
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">Relationship evidence</h3>
+            {difference.relation_findings.length === 0 ? (
+              <p className="mt-2 text-xs text-muted">No modelled relationships to report.</p>
+            ) : (
+              <ul className="mt-2 space-y-2">
+                {difference.relation_findings.map((finding, index) => (
+                  <li key={index} className="rounded-md border border-hairline bg-plane p-2.5 text-xs">
+                    <div className="break-words font-mono text-ink-2">
+                      {finding.source} →{finding.relation}→ {finding.target}
+                    </div>
+                    <div className="mt-1 text-muted">
+                      {finding.evidence} evidence · {finding.scored ? 'counted' : 'not counted'} · {finding.evidence_detail}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
-        </Card>
-
-        <Card
-          title="Observations"
-          subtitle={
-            llm.invoked
-              ? 'Layering rules, plus the language model reading your design. Treat the model’s items as suggestions.'
-              : 'Layering rules only — no model was called for this run.'
-          }
-        >
-          <div className="space-y-4">
-            <Section
-              title="Layering problems"
-              count={result.rule_violations.length}
-              hint="A class reaching across a layer boundary it should not — for example a controller talking straight to a repository."
-            >
-              {result.rule_violations.length === 0 ? (
-                <p className="text-xs text-muted">None found.</p>
-              ) : (
-                <ul className="space-y-1.5">
-                  {result.rule_violations.map((violation, index) => (
-                    <li
-                      key={index}
-                      className="rounded border p-2 text-xs"
-                      style={{ borderColor: 'var(--warning)', background: 'var(--warning-wash)' }}
-                    >
-                      <div className="flex items-start gap-2">
-                        <span
-                          aria-hidden="true"
-                          className="mt-0.5 shrink-0 font-bold text-warning"
-                        >
-                          !
-                        </span>
-                        <div className="min-w-0">
-                          <div className="text-ink-2">{violation.message}</div>
-                          <div className="mt-0.5 break-words font-mono text-[11px] text-muted">
-                            {violation.file} · {violation.evidence} · {violation.confidence}
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Section>
-
-            {difference.unimplemented_associations.length > 0 && (
-              <Section
-                title="Relationships with no evidence"
-                count={difference.unimplemented_associations.length}
-              >
-                <List items={difference.unimplemented_associations} empty="None." />
-              </Section>
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">Recommendations</h3>
+            {result.recommendations.length === 0 ? (
+              <p className="mt-2 text-xs text-muted">No recommendations returned.</p>
+            ) : (
+              <ul className="mt-2 space-y-2 text-xs text-ink-2">
+                {result.recommendations.map((item, index) => (
+                  <li key={index} className="flex gap-2"><span className="text-proposed">◇</span><span>{item}</span></li>
+                ))}
+              </ul>
             )}
-
-            <Section
-              title="Gaps the model noticed"
-              count={result.ai_gaps.length}
-              hint="Written by the language model, not verified by the parser. Read them as prompts to go and look, not as findings."
-            >
-              <List items={result.ai_gaps} empty="None reported." />
-            </Section>
-
-            <Section title="Suggestions" count={result.recommendations.length}>
-              <List items={result.recommendations} empty="None." />
-            </Section>
+            <dl className="mt-4 grid grid-cols-2 gap-3 rounded-md bg-plane p-3 text-xs">
+              <div><dt className="text-muted">Changed nodes</dt><dd className="mt-0.5 font-medium tabular-nums text-ink">{changedTotal}</dd></div>
+              <div><dt className="text-muted">Impact set</dt><dd className="mt-0.5 font-medium tabular-nums text-ink">{gate.impact_node_count}</dd></div>
+              <div><dt className="text-muted">Call resolution</dt><dd className="mt-0.5 font-medium tabular-nums text-ink">{result.call_resolution.resolution_rate === null ? '—' : `${Math.round(result.call_resolution.resolution_rate * 100)}%`}</dd></div>
+              <div><dt className="text-muted">Grounded model nodes</dt><dd className="mt-0.5 font-medium tabular-nums text-ink">{validation.grounded_node_ratio === null ? '—' : `${Math.round(validation.grounded_node_ratio * 100)}%`}</dd></div>
+            </dl>
           </div>
-        </Card>
-      </div>
+        </div>
+      </details>
 
       {result.unit_tests.length > 0 && (
-        <Card
-          title="Suggested tests"
-          subtitle="Written by the language model. Read them before you commit them — they are drafts, not verified tests."
-        >
+        <Card title="Suggested tests" subtitle="Model-generated drafts. Review them before using them.">
           <div className="space-y-3">
             {result.unit_tests.map((test, index) => (
               <div key={index} className="overflow-hidden rounded-lg border border-hairline">
@@ -362,13 +506,17 @@ export function ConformanceReport({ result }: { result: AnalysisResult }) {
                   <span className="break-all font-mono text-ink-2">{test.target_file}</span>
                   <span className="uppercase text-muted">{test.framework}</span>
                 </div>
-                <pre className="overflow-x-auto bg-plane p-3 font-mono text-xs text-ink-2">
-                  <code>{test.code}</code>
-                </pre>
+                <pre className="overflow-x-auto bg-plane p-3 font-mono text-xs text-ink-2"><code>{test.code}</code></pre>
               </div>
             ))}
           </div>
         </Card>
+      )}
+
+      {!result.source.typescript_grammar && result.source.files_without_types.length > 0 && (
+        <Banner tone="warning">
+          {result.source.files_without_types.length} TypeScript file(s) were parsed without type annotations because the TypeScript grammar is unavailable.
+        </Banner>
       )}
     </div>
   )

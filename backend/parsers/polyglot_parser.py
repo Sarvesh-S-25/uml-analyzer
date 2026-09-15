@@ -35,6 +35,10 @@ from tree_sitter import Language, Parser
 PY_LANGUAGE = Language(tspython.language())
 JS_LANGUAGE = Language(tsjavascript.language())
 JAVA_LANGUAGE = Language(tsjava.language())
+import tree_sitter_c_sharp as tscsharp
+import tree_sitter_php as tsphp
+CS_LANGUAGE = Language(tscsharp.language())
+PHP_LANGUAGE = Language(tsphp.language_php())
 
 # Optional: real TypeScript/TSX grammars. Without them .ts/.tsx still parse,
 # but type annotations are invisible.
@@ -51,6 +55,8 @@ except Exception:  # pragma: no cover - depends on the install
 
 
 EXT_LANGUAGE: Dict[str, Tuple[str, Language, str]] = {
+    ".cs": ("csharp", CS_LANGUAGE, "csharp"),
+    ".php": ("php", PHP_LANGUAGE, "php"),
     ".py": ("python", PY_LANGUAGE, "python"),
     ".js": ("javascript", JS_LANGUAGE, "javascript"),
     ".jsx": ("javascript", JS_LANGUAGE, "javascript"),
@@ -61,6 +67,7 @@ EXT_LANGUAGE: Dict[str, Tuple[str, Language, str]] = {
 }
 
 CLASS_NODES = {
+    "record_declaration", "struct_declaration", "trait_declaration",
     "class_definition",
     "class_declaration",
     "interface_declaration",
@@ -77,6 +84,7 @@ FUNCTION_NODES = {
     "function_signature",
 }
 CALL_NODES = {
+    "invocation_expression", "function_call_expression", "member_call_expression", "scoped_call_expression",
     "call",
     "call_expression",
     "method_invocation",
@@ -93,7 +101,7 @@ IMPORT_NODES = {
 SKIP_DIRS = {
     ".git", "node_modules", "venv", ".venv", "__pycache__", "dist", "build",
     ".idea", ".vscode", "target", ".mypy_cache", ".pytest_cache", "site-packages",
-    ".next", "coverage", ".tox", "bin", "obj",
+    ".next", "coverage", ".tox", "bin", "obj", "vendor",
 }
 
 MAX_FILE_BYTES = 2 * 1024 * 1024
@@ -120,6 +128,7 @@ class PolyglotParser:
 
     def parse(self) -> Dict[str, Any]:
         files: List[Dict[str, Any]] = []
+        unsupported = set()
 
         if not os.path.isdir(self.source_dir):
             return _empty_architecture()
@@ -129,6 +138,8 @@ class PolyglotParser:
             for filename in sorted(filenames):
                 extension = os.path.splitext(filename)[1].lower()
                 if extension not in EXT_LANGUAGE:
+                    if extension in {".kt", ".go", ".rb", ".c", ".cpp", ".rs", ".swift"}:
+                        unsupported.add(extension)
                     continue
                 absolute = os.path.join(root, filename)
                 try:
@@ -144,6 +155,7 @@ class PolyglotParser:
 
         return {
             "files": files,
+            "unsupported_extensions": sorted(unsupported),
             "project_structure_sha256": canonical_hash(
                 [[f["file_path"], f["structure_sha256"]] for f in files]
             ),
@@ -330,7 +342,7 @@ class PolyglotParser:
 
     def _split_callee(self, text: str) -> Tuple[Optional[str], Optional[str]]:
         """`self.repo.save` -> (receiver `self.repo`, name `save`)."""
-        cleaned = " ".join(text.split())
+        cleaned = " ".join(text.split()).replace("->", ".").replace("::", ".").lstrip("$")
         cleaned = cleaned.split("(")[0].strip()
         if not cleaned or len(cleaned) > 200:
             return None, None
@@ -434,13 +446,14 @@ class PolyglotParser:
             if child.type in (
                 "argument_list", "superclass", "super_interfaces", "extends_interfaces",
                 "class_heritage", "extends_clause", "implements_clause", "type_list",
+                "base_list", "base_clause", "class_interface_clause",
             ):
                 containers.append(child)
 
         for container in containers:
             for sub in container.children:
                 if sub.type in ("identifier", "type_identifier", "generic_type", "attribute",
-                                "scoped_type_identifier"):
+                                "scoped_type_identifier", "name", "qualified_name"):
                     name = self._type_text(sub, code)
                     if name:
                         bases.append(name)
@@ -467,13 +480,27 @@ class PolyglotParser:
                 }
             if current.type in (
                 "field_declaration", "field_definition", "public_field_definition",
-                "property_signature",
+                "property_signature", "property_declaration",
             ):
                 declared = current.child_by_field_name("type")
                 if declared is not None and declared.type == "type_annotation" and declared.children:
                     declared = declared.children[-1]
                 type_name = self._type_text(declared, code) if declared is not None else None
                 found = False
+                for declaration in current.named_children:
+                    if declaration.type == "variable_declaration":
+                        declared_type = self._type_text(declaration.child_by_field_name("type"), code)
+                        for variable in declaration.named_children:
+                            if variable.type == "variable_declarator":
+                                name = self._name_of(variable, code)
+                                if name:
+                                    fields.append({"name": name, "type": declared_type})
+                                    found = True
+                    elif declaration.type == "property_element":
+                        name = self._name_of(declaration, code)
+                        if name:
+                            fields.append({"name": name.lstrip("$"), "type": type_name})
+                            found = True
                 for sub in current.children:
                     if sub.type == "variable_declarator":
                         name_node = sub.child_by_field_name("name")

@@ -19,7 +19,7 @@ import { ResearchPanel } from './ResearchPanel'
 import { UmlPanel } from './UmlPanel'
 import { VersionTimeline } from './VersionTimeline'
 import { useToast } from './Toast'
-import { Badge, Banner, Button, Card, EmptyState, InfoHint } from './ui'
+import { Banner, Button, Card, EmptyState, InfoHint } from './ui'
 
 /** Plain-English names for the four gates.
  *
@@ -133,39 +133,20 @@ export function ProjectWorkspace({
   async function viewVersionGraph(version: number) {
     try {
       setViewedGraph({ version, data: await api.versionGraph(projectName, version) })
-      onSection('results')
+      onSection('map')
     } catch (caught) {
       toast.notify(errorMessage(caught, 'That version is no longer kept.'), 'critical')
     }
   }
 
   const shownGraph = viewedGraph?.data ?? result?.graph_data ?? null
-
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <header className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-hairline px-5 py-3">
-        <div className="min-w-0">
-          <h1 className="truncate text-md font-semibold text-ink">{projectName}</h1>
-          <p className="text-xs text-muted">
-            {versions.length} version{versions.length === 1 ? '' : 's'} kept
-            {config && !config.llm_enabled && ' · structural checks only'}
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          {config && !config.llm_enabled && (
-            <Badge color="var(--warning)" wash="var(--warning-wash)" glyph="!">
-              No model configured
-            </Badge>
-          )}
-          {stale && (
-            <Badge color="var(--series-1)" glyph="↻">
-              Files changed since the last check
-            </Badge>
-          )}
+      <header data-print-hide className="fixed right-16 top-3 z-30 flex h-8 items-center gap-2">
+          {stale && <span className="hidden text-[11px] text-series-1 lg:inline">Files changed</span>}
           <Button variant="primary" loading={analysing} onClick={() => check(false)}>
-            {analysing ? 'Checking…' : 'Check now'}
+            {analysing ? 'Comparing…' : 'Run comparison'}
           </Button>
-        </div>
       </header>
 
       <div className="min-h-0 flex-1 overflow-y-auto">
@@ -182,7 +163,7 @@ export function ProjectWorkspace({
         )}
 
         {section === 'diagram' && (
-          <div className="mx-auto max-w-3xl space-y-4 p-5">
+          <div className="mx-auto max-w-3xl space-y-3 p-4">
             <UmlPanel projectName={projectName} onChanged={() => setStale(true)} />
             <Card title="How a check works" subtitle="Three inputs. No git required.">
               <ol className="space-y-2.5 text-sm text-ink-2">
@@ -210,11 +191,20 @@ export function ProjectWorkspace({
         )}
 
         {section === 'results' && (
-          <div className="space-y-4 p-5">
-            <Card
-              title="When to re-check"
-              subtitle="What has to change before this project is worth checking again. This choice is the subject of the study — it decides how much work is skipped and what that skipping costs."
-            >
+          <div className="mx-auto max-w-[1500px] space-y-4 p-4 lg:p-5">
+            <details className="group rounded-lg border border-hairline bg-surface shadow-[var(--shadow-card)]">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-3 text-sm font-medium text-ink">
+                <span>Analysis settings</span>
+                <span className="flex items-center gap-2 text-xs font-normal text-muted">
+                  {GATE_LABELS[strategy]?.label}
+                  <span aria-hidden="true" className="transition group-open:rotate-90">›</span>
+                </span>
+              </summary>
+              <div className="border-t border-hairline px-4 py-4">
+                <p className="mb-3 max-w-[72ch] text-xs leading-relaxed text-muted">
+                  Choose when code changes should trigger a fresh model-assisted comparison.
+                  Structural parser checks still run independently.
+                </p>
               <div className="flex flex-wrap gap-1.5">
                 {(config?.gate_strategies ?? ['structural']).map((option) => (
                   <button
@@ -293,7 +283,8 @@ export function ProjectWorkspace({
                   )}
                 </dl>
               )}
-            </Card>
+              </div>
+            </details>
 
             {analysisError && <Banner tone="critical">{analysisError}</Banner>}
 
@@ -306,9 +297,14 @@ export function ProjectWorkspace({
 
             {result && <ConformanceReport result={result} />}
 
+          </div>
+        )}
+
+        {section === 'map' && (
+          <div className="mx-auto max-w-[1500px] p-3">
             <Card
-              title={viewedGraph ? `Design map — version ${viewedGraph.version}` : 'Design map'}
-              subtitle="Every class the code reader found, arranged in layers, coloured by whether it matches the diagram."
+              title={viewedGraph ? `Code map — version ${viewedGraph.version}` : 'Code map'}
+              subtitle="Every class recovered from the source, arranged in layers and coloured by its verification status."
               actions={
                 viewedGraph ? (
                   <Button variant="ghost" onClick={() => setViewedGraph(null)}>
@@ -323,7 +319,7 @@ export function ProjectWorkspace({
         )}
 
         {section === 'history' && (
-          <div className="space-y-4 p-5">
+          <div className="space-y-3 p-4">
             <VersionTimeline
               versions={versions}
               maxVersions={maxVersions}

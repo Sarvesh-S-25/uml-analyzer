@@ -414,9 +414,21 @@ def run_analysis(
         annotated, llm_result.payload.get("semantic_graph", {})
     )
 
-    similarity_source = "llm" if decision.should_invoke_llm else "cache"
+    evaluation_issues = []
+    if uml.error or not uml.model or not uml.model.elements:
+        evaluation_issues.append("Upload a StarUML model containing classes or interfaces.")
+    if not code_model.elements:
+        evaluation_issues.append("No source classes or interfaces were parsed. Check the source language and folder.")
+    if architecture.get("parse_errors"):
+        evaluation_issues.append("Some source files have parse errors; correct them before using a conformance score.")
+    if architecture.get("unsupported_extensions"):
+        evaluation_issues.append("Unsupported source languages: " + ", ".join(architecture["unsupported_extensions"]))
+    evaluable = not evaluation_issues
+    similarity_source = "structural" if evaluable else "unavailable"
     analysis = {
-        "similarity_score": llm_result.payload.get("similarity_score", 0),
+        "similarity_score": difference["similarity_score"] if evaluable else None,
+        "evaluation": {"valid": evaluable, "issues": evaluation_issues},
+        "model_score": llm_result.payload.get("similarity_score") if llm_result.invoked else None,
         "similarity_score_rule_based": difference["similarity_score"],
         "similarity_score_source": similarity_source,
         "gaps": llm_result.payload.get("gaps", []),
@@ -511,6 +523,9 @@ def run_analysis(
         "similarity_score_rule_based": analysis["similarity_score_rule_based"],
         "similarity_score_source": similarity_source,
         "ai_gaps": analysis["gaps"],
+        "evaluation": analysis["evaluation"],
+        "model_score": analysis["model_score"],
+        "source_class_count": len(code_model.elements),
         "recommendations": analysis["recommendations"],
         "unit_tests": analysis["unit_tests"],
         "rule_violations": layer_violations,

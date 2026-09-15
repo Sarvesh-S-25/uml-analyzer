@@ -305,6 +305,8 @@ def architecture_to_design_model(architecture: Dict[str, Any]) -> IntermediateDe
     from models.design_model import DesignElement, ElementAttribute, ElementMethod
 
     model = IntermediateDesignModel(project_id="implementation")
+    interface_names = {c["name"] for f in architecture.get("files", [])
+                       for c in f.get("classes", []) if c.get("kind") == "interface"}
     for record in architecture.get("files", []):
         for klass in record.get("classes", []):
             element = DesignElement(
@@ -325,8 +327,13 @@ def architecture_to_design_model(architecture: Dict[str, Any]) -> IntermediateDe
             )
             bases = klass.get("bases", [])
             if bases:
-                element.extends = bases[0]
-                element.implements = bases[1:]
+                if record.get("language") == "csharp":
+                    element.implements = [b for b in bases if b in interface_names]
+                    parents = [b for b in bases if b not in interface_names]
+                    element.extends = parents[0] if parents else None
+                else:
+                    element.extends = bases[0]
+                    element.implements = bases[1:]
             model.elements.append(element)
     return model
 

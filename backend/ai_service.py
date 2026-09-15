@@ -338,6 +338,23 @@ def _is_bad_request(exc: Exception) -> bool:
 
 
 def _call_openai(provider: str, model: str, system: str, user: str):
+    if provider == "ollama":
+        # The native endpoint supports num_ctx; /v1/chat/completions does not.
+        import httpx
+        base = OLLAMA_BASE_URL.rstrip("/").removesuffix("/v1")
+        response = httpx.post(
+            base + "/api/chat",
+            json={"model": model, "stream": False, "format": "json",
+                  "messages": [{"role": "system", "content": system},
+                               {"role": "user", "content": user}],
+                  "options": {"num_ctx": OLLAMA_NUM_CTX,
+                              "temperature": LLM_TEMPERATURE, "seed": LLM_SEED}},
+            timeout=LLM_TIMEOUT_SECONDS,
+        )
+        response.raise_for_status()
+        data = response.json()
+        return (data["message"]["content"], data.get("prompt_eval_count", 0),
+                data.get("eval_count", 0))
     kwargs: Dict[str, Any] = {
         "model": model,
         "temperature": LLM_TEMPERATURE,
@@ -346,13 +363,6 @@ def _call_openai(provider: str, model: str, system: str, user: str):
             {"role": "user", "content": user},
         ],
     }
-    if provider == "ollama":
-        # Ollama's own options ride along in extra_body. num_ctx is the one that
-        # matters: without it the daemon uses a small default and truncates the
-        # prompt silently, which would corrupt the comparison rather than fail
-        # it. A server that rejects the field is handled by the fallback below.
-        kwargs["extra_body"] = {"options": {"num_ctx": OLLAMA_NUM_CTX}}
-
     # Not every OpenAI-compatible server implements these; drop them and retry
     # rather than failing outright.
     optional = {"response_format": {"type": "json_object"}, "seed": LLM_SEED}

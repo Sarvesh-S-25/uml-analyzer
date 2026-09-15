@@ -177,13 +177,16 @@ export interface CallResolution {
 }
 
 export interface AnalysisResult {
+  evaluation?: { valid: boolean; issues: string[] }
+  model_score?: number | null
+  source_class_count?: number
   status: string
   version: number
   gate: GateInfo
   llm: LlmInfo
   reused_from_version: number | null
   renamed_components: Record<string, string>
-  similarity_score: number
+  similarity_score: number | null
   similarity_score_rule_based: number
   similarity_score_source: string
   ai_gaps: string[]

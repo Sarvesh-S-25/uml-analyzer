@@ -32,7 +32,7 @@ export function Card({
 }) {
   return (
     <section
-      className={`rounded-xl border border-hairline bg-surface shadow-[var(--shadow-card)] ${className}`}
+      className={`rounded-lg border border-hairline bg-surface/88 shadow-[var(--shadow-card)] backdrop-blur-xl transition-shadow duration-300 hover:shadow-[var(--shadow-float)] ${className}`}
     >
       {(title || actions) && (
         <header
@@ -74,7 +74,7 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const styles: Record<string, string> = {
-    primary: 'bg-series-1 text-white hover:brightness-110 active:brightness-95 border border-transparent',
+    primary: 'bg-ink text-surface hover:opacity-85 active:opacity-75 border border-ink',
     secondary: 'bg-surface text-ink border border-hairline hover:bg-surface-2',
     subtle: 'bg-surface-2 text-ink-2 border border-transparent hover:bg-surface-3 hover:text-ink',
     ghost: 'text-ink-2 border border-transparent hover:bg-surface-2 hover:text-ink',
@@ -88,7 +88,7 @@ export function Button({
     <button
       {...rest}
       disabled={disabled || loading}
-      className={`inline-flex items-center justify-center rounded-lg font-medium transition disabled:cursor-not-allowed disabled:opacity-45 ${styles[variant]} ${sizes[size]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-full font-medium transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-45 ${styles[variant]} ${sizes[size]} ${className}`}
     >
       {loading ? <Spinner /> : icon}
       {children}
@@ -127,7 +127,7 @@ export function Input({ className = '', ...rest }: ComponentPropsWithRef<'input'
   return (
     <input
       {...rest}
-      className={`w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-series-1 focus:outline-none ${className}`}
+      className={`w-full rounded-md border border-hairline bg-surface px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-series-1 focus:outline-none ${className}`}
     />
   )
 }
@@ -136,7 +136,7 @@ export function Select({ className = '', children, ...rest }: ComponentPropsWith
   return (
     <select
       {...rest}
-      className={`w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink focus:border-series-1 focus:outline-none ${className}`}
+      className={`w-full rounded-md border border-hairline bg-surface px-3 py-2 text-sm text-ink focus:border-series-1 focus:outline-none ${className}`}
     >
       {children}
     </select>
@@ -235,7 +235,7 @@ export function StatTile({
   hint?: string
 }) {
   return (
-    <div className="rounded-lg border border-hairline bg-surface-2 px-3.5 py-3">
+    <div className="rounded-md border border-hairline bg-surface-2 px-3 py-2.5">
       <div className="flex items-center gap-1.5 text-xs text-muted">
         {label}
         {hint && <InfoHint text={hint} />}
