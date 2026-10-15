@@ -1,0 +1,94 @@
+- generic [ref=f20e4]:
+  - generic [ref=f20e45]:
+    - banner [ref=f20e46]:
+      - button "CompX" [ref=f20e47]
+      - combobox "Current project" [ref=f20e49]:
+        - option "All projects"
+        - option "bancario-src"
+        - option "discord-src" [selected]
+      - navigation "Project" [ref=f20e841]:
+        - button "Overview" [ref=f20e842]
+        - button "Code" [ref=f20e843]
+        - button "Code map" [ref=f20e844]
+        - button "Diagram" [ref=f20e845]
+        - button "Runs" [ref=f20e846]
+      - group [ref=f20e51]:
+        - generic "Application settings" [ref=f20e52] [cursor=pointer]: ⚙
+    - generic [ref=f20e53]:
+      - complementary [ref=f20e54]:
+        - generic [ref=f20e55]:
+          - generic [ref=f20e56]:
+            - heading "Projects" [level=2] [ref=f20e57]
+            - button "New project" [ref=f20e58]: +
+          - navigation "Projects" [ref=f20e59]:
+            - button "bancario-src" [ref=f20e520]:
+              - generic [aria-hidden] [ref=f20e142]: ▧
+            - button "discord-src !" [ref=f20e847]:
+              - generic [aria-hidden] [ref=f20e849]: ▧
+              - generic [ref=f20e850]: discord-src
+              - generic "Needs a diagram" [ref=f20e851]: "!"
+          - button "New project" [ref=f20e61]:
+            - generic [aria-hidden] [ref=f20e62]: +
+            - text: New project
+          - button "Statistics ›" [ref=f20e64]:
+            - generic [ref=f20e65]: Statistics
+            - generic [ref=f20e66]: ›
+          - generic [ref=f20e67]:
+            - generic [ref=f20e68]:
+              - term [ref=f20e69]: Comparison runs
+              - definition [ref=f20e70]: "1"
+            - generic [ref=f20e71]:
+              - term [ref=f20e72]: Projects
+              - definition [ref=f20e73]: "2"
+            - generic [ref=f20e74]:
+              - term [ref=f20e75]: Source files
+              - definition [ref=f20e76]: "99"
+        - generic [ref=f20e77]:
+          - paragraph [ref=f20e78]: No model configured — structural checks only
+          - generic [ref=f20e79]:
+            - group "Colour theme" [ref=f20e80]:
+              - button "Light" [ref=f20e81]: ☀
+              - button "Dark" [ref=f20e83]: ☾
+              - button "System" [pressed] [ref=f20e85]: ◐
+            - button "Sign out" [ref=f20e87]
+      - main [ref=f20e88]:
+        - generic [ref=f20e852]:
+          - generic [ref=f20e853]:
+            - generic [ref=f20e898]: Files changed
+            - button "Run comparison" [ref=f20e854]
+          - generic [ref=f20e870]:
+            - generic [ref=f20e871]:
+              - generic [ref=f20e872]:
+                - generic [ref=f20e873]:
+                  - heading "Your diagram" [level=2] [ref=f20e874]
+                  - paragraph [ref=f20e875]: The StarUML (.mdj) file describing the design your code is supposed to implement.
+                - button "Upload .mdj" [active] [ref=f20e877]
+              - list [ref=f20e899]:
+                - listitem [ref=f20e900]:
+                  - generic [ref=f20e901]:
+                    - generic [ref=f20e902]:
+                      - generic [ref=f20e903]: discordbotrpg.mdj
+                      - generic [ref=f20e904]:
+                        - generic [aria-hidden] [ref=f20e905]: ✓
+                        - text: In use
+                    - generic [ref=f20e906]: 1320 KB · Oct 5, 2026, 06:12 PM
+                  - button "Remove" [ref=f20e907]
+            - generic [ref=f20e882]:
+              - generic [ref=f20e884]:
+                - heading "How a check works" [level=2] [ref=f20e885]
+                - paragraph [ref=f20e886]: Three inputs. No git required.
+              - list [ref=f20e888]:
+                - listitem [ref=f20e889]:
+                  - generic [ref=f20e890]: "1"
+                  - generic [ref=f20e891]: Put your code in the project — upload a folder, a .zip, individual files, or write it in the Code screen.
+                - listitem [ref=f20e892]:
+                  - generic [ref=f20e893]: "2"
+                  - generic [ref=f20e894]: Upload the StarUML .mdj file that describes the intended design.
+                - listitem [ref=f20e895]:
+                  - generic [ref=f20e896]: "3"
+                  - generic [ref=f20e897]: Press Check now. Later checks reuse the previous answer unless the code's structure actually changed.
+  - status [ref=f20e159]:
+    - generic [ref=f20e908]:
+      - generic [aria-hidden] [ref=f20e909]: ✓
+      - generic [ref=f20e910]: Uploaded discordbotrpg.mdj.
+      - button "Dismiss notification" [ref=f20e911]: ✕

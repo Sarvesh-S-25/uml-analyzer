@@ -1,0 +1,282 @@
+- generic [ref=f20e4]:
+  - generic [ref=f20e45]:
+    - banner [ref=f20e46]:
+      - button "CompX" [ref=f20e47]
+      - combobox "Current project" [ref=f20e49]:
+        - option "All projects" [selected]
+        - option "bancario-src"
+      - button "Statistics" [active] [ref=f20e486]
+      - group [ref=f20e51]:
+        - generic "Application settings" [ref=f20e52] [cursor=pointer]: ⚙
+    - generic [ref=f20e53]:
+      - complementary [ref=f20e54]:
+        - generic [ref=f20e55]:
+          - generic [ref=f20e56]:
+            - heading "Projects" [level=2] [ref=f20e57]
+            - button "New project" [ref=f20e58]: +
+          - navigation "Projects" [ref=f20e59]:
+            - button "bancario-src" [ref=f20e520]:
+              - generic [aria-hidden] [ref=f20e142]: ▧
+          - button "New project" [ref=f20e61]:
+            - generic [aria-hidden] [ref=f20e62]: +
+            - text: New project
+          - button "Statistics ›" [ref=f20e64]:
+            - generic [ref=f20e65]: Statistics
+            - generic [ref=f20e66]: ›
+          - generic [ref=f20e67]:
+            - generic [ref=f20e68]:
+              - term [ref=f20e69]: Comparison runs
+              - definition [ref=f20e70]: "1"
+            - generic [ref=f20e71]:
+              - term [ref=f20e72]: Projects
+              - definition [ref=f20e73]: "1"
+            - generic [ref=f20e74]:
+              - term [ref=f20e75]: Source files
+              - definition [ref=f20e76]: "8"
+        - generic [ref=f20e77]:
+          - paragraph [ref=f20e78]: No model configured — structural checks only
+          - generic [ref=f20e79]:
+            - group "Colour theme" [ref=f20e80]:
+              - button "Light" [ref=f20e81]: ☀
+              - button "Dark" [ref=f20e83]: ☾
+              - button "System" [pressed] [ref=f20e85]: ◐
+            - button "Sign out" [ref=f20e87]
+      - main [ref=f20e88]:
+        - generic [ref=f20e521]:
+          - generic [ref=f20e523]:
+            - generic [ref=f20e524]:
+              - heading "Statistics" [level=1] [ref=f20e525]
+              - paragraph [ref=f20e526]: Four tables and three charts — everything the paper needs, and nothing else. Each one is followed by a sentence saying what it means.
+            - generic [ref=f20e527]:
+              - button "Recompute" [ref=f20e528]
+              - button "All as CSV" [ref=f20e529]
+              - button "LaTeX for the paper" [ref=f20e530]
+          - generic [ref=f20e531]:
+            - generic [ref=f20e532]:
+              - heading "The short version" [level=2] [ref=f20e533]
+              - paragraph [ref=f20e534]: 1 runs across 1 project(s). Miss rates were not measured, so no gate can be recommended yet. Run the commit replay.
+            - generic [ref=f20e535]:
+              - generic [ref=f20e536]:
+                - generic [ref=f20e537]:
+                  - 'heading "First: what is a gate?" [level=2] [ref=f20e538]'
+                  - paragraph [ref=f20e539]: Every table below is about gates. Two minutes here makes the rest of the page readable.
+                - button "Explain" [ref=f20e541]
+              - generic [ref=f20e542]:
+                - paragraph [ref=f20e543]: "Checking whether your code still matches your UML diagram means calling a language model, and it has to be redone every time the code changes. A gate is the decision made before that call: has anything changed that could possibly affect the answer? If not, reuse the previous result and the model is never invoked."
+                - paragraph [ref=f20e544]: "Four gates are implemented, from most cautious to most economical. The whole study is one question: how many model invocations does each one avoid, and what does avoiding them cost in missed problems?"
+            - generic [ref=f20e545]:
+              - generic [ref=f20e546]:
+                - heading "Table 1 — What was studied" [level=2] [ref=f20e548]
+                - button "CSV" [ref=f20e550]
+              - generic [ref=f20e551]:
+                - generic [ref=f20e552]:
+                  - generic [ref=f20e553]:
+                    - term [ref=f20e554]: Projects
+                    - definition [ref=f20e555]:
+                      - text: "1"
+                      - generic [ref=f20e556]: bancario-src
+                  - generic [ref=f20e557]:
+                    - term [ref=f20e558]: Commits analysed
+                    - definition [ref=f20e559]: "1"
+                  - generic [ref=f20e560]:
+                    - term [ref=f20e561]: Total analysis runs
+                    - definition [ref=f20e562]:
+                      - text: "1"
+                      - generic [ref=f20e563]: each commit, once per gate
+                  - generic [ref=f20e564]:
+                    - term [ref=f20e565]: Gate policies compared
+                    - definition [ref=f20e566]:
+                      - text: "1"
+                      - generic [ref=f20e567]: structural
+                  - generic [ref=f20e568]:
+                    - term [ref=f20e569]: Can we measure misses?
+                    - definition [ref=f20e570]:
+                      - text: "No"
+                      - generic [ref=f20e571]: run research/replay.py to get the comparison that makes this measurable
+                - paragraph [ref=f20e572]: 1 project and 1 commits. Each commit was analysed once per gate policy, giving 1 runs in total. No forced comparison run is present, so the 'missed' column below cannot be filled in — the tool says 'not measured' rather than printing a zero it did not earn.
+            - generic [ref=f20e573]:
+              - generic [ref=f20e574]:
+                - generic [ref=f20e575]:
+                  - heading "Table 2 — How each gate performed" [level=2] [ref=f20e576]
+                  - paragraph [ref=f20e577]: This is the result the paper is about.
+                - button "CSV" [ref=f20e579]
+              - generic [ref=f20e580]:
+                - table [ref=f20e582]:
+                  - rowgroup [ref=f20e583]:
+                    - row [ref=f20e584]:
+                      - columnheader "Gate" [ref=f20e585]
+                      - columnheader "Runs" [ref=f20e586]
+                      - columnheader "Skipped" [ref=f20e587]
+                      - columnheader "Skip rate" [ref=f20e588]
+                      - columnheader "Missed all runs" [ref=f20e589]:
+                        - text: Missed
+                        - generic [ref=f20e590]: all runs
+                      - columnheader "Caught of real changes" [ref=f20e591]:
+                        - text: Caught
+                        - generic [ref=f20e592]: of real changes
+                      - columnheader "Correctly skipped of quiet commits" [ref=f20e593]:
+                        - text: Correctly skipped
+                        - generic [ref=f20e594]: of quiet commits
+                      - columnheader "Recovery" [ref=f20e595]
+                  - rowgroup [ref=f20e596]:
+                    - row [ref=f20e597] [cursor=pointer]:
+                      - cell "structuralbaselinefew runs" [ref=f20e598]
+                      - cell "1" [ref=f20e599]
+                      - cell "0" [ref=f20e600]
+                      - cell "0.0% 0%–79%" [ref=f20e601]:
+                        - text: 0.0%
+                        - generic [ref=f20e602]: 0%–79%
+                      - cell "not measured" [ref=f20e603]
+                      - cell "not measured" [ref=f20e604]
+                      - cell "not measured" [ref=f20e605]
+                      - cell "not measured" [ref=f20e606]
+                - paragraph [ref=f20e607]: "No `always` runs are present, so savings are measured against `structural`, the most expensive gate here. Careful with `structural`: fewer than 10 runs, so the percentage moves a lot when a single run changes."
+                - figure [ref=f20e609]:
+                  - generic [ref=f20e610]:
+                    - generic [ref=f20e611]:
+                      - heading "Figure 1 — How much each gate skipped" [level=4] [ref=f20e612]
+                      - generic [ref=f20e613]: Bar length is the share of runs skipped; the label on each bar is how many real changes that gate missed. Both numbers are shown together because neither means anything alone.
+                    - button "Save as SVG" [ref=f20e614]
+                  - generic [ref=f20e616]:
+                    - img "Share of runs skipped by each gate, with the number of missed changes" [ref=f20e617]:
+                      - generic [ref=f20e618]: 0%
+                      - generic [ref=f20e620]: 20%
+                      - generic [ref=f20e622]: 40%
+                      - generic [ref=f20e624]: 60%
+                      - generic [ref=f20e626]: 80%
+                      - generic [ref=f20e628]: 100%
+                      - generic [ref=f20e630]: share of runs skipped
+                      - generic [ref=f20e631]:
+                        - generic [ref=f20e632]: structural
+                        - generic [ref=f20e635]: 0.0%
+                        - generic [ref=f20e636]: misses not measured
+                    - paragraph [ref=f20e637]: Bar length is the saving. The tag on the right is what it cost.
+            - generic [ref=f20e638]:
+              - generic [ref=f20e639]:
+                - generic [ref=f20e640]:
+                  - heading "Table 3 — Did it work on every project?" [level=2] [ref=f20e641]
+                  - paragraph [ref=f20e642]: No gate recommended yet.
+                - button "CSV" [ref=f20e644]
+              - generic [ref=f20e645]:
+                - table [ref=f20e647]:
+                  - rowgroup [ref=f20e648]:
+                    - row [ref=f20e649]:
+                      - columnheader "Project" [ref=f20e650]
+                      - columnheader "Commits" [ref=f20e651]
+                      - columnheader "Skip rate" [ref=f20e652]
+                      - columnheader "Missed" [ref=f20e653]
+                      - columnheader "Tokens saved" [ref=f20e654]
+                      - columnheader "Drift/commit" [ref=f20e655]
+                  - rowgroup [ref=f20e656]:
+                    - row [ref=f20e657] [cursor=pointer]:
+                      - cell "▸bancario-srcfew runs" [ref=f20e658]
+                      - cell "1" [ref=f20e659]
+                      - cell "0.0%" [ref=f20e660]
+                      - cell "—" [ref=f20e661]
+                      - cell "—" [ref=f20e662]
+                      - cell "—" [ref=f20e663]
+                - generic [ref=f20e665]:
+                  - generic [aria-hidden] [ref=f20e666]: ✓
+                  - text: Same ranking in every project
+                - paragraph [ref=f20e667]: Only one project, so this table cannot say whether the result generalises. Add projects and re-run the replay — with three or more you can say something about generality, and with one you cannot.
+            - generic [ref=f20e668]:
+              - generic [ref=f20e669]:
+                - generic [ref=f20e670]:
+                  - heading "Table 4 — The controlled test" [level=2] [ref=f20e671]
+                  - paragraph [ref=f20e672]: 16 deliberate design changes with known right answers. The only table here with unambiguous ground truth.
+                - button "CSV" [ref=f20e674]
+              - generic [ref=f20e675]:
+                - table [ref=f20e677]:
+                  - rowgroup [ref=f20e678]:
+                    - row [ref=f20e679]:
+                      - columnheader "Gate" [ref=f20e680]
+                      - columnheader "Caught" [ref=f20e681]
+                      - columnheader "Missed" [ref=f20e682]
+                      - columnheader "False alarms" [ref=f20e683]
+                      - columnheader "Correctly ignored" [ref=f20e684]
+                  - rowgroup [ref=f20e685]:
+                    - row [ref=f20e686]:
+                      - cell "always" [ref=f20e687]
+                      - cell "10" [ref=f20e688]
+                      - cell "0" [ref=f20e689]
+                      - cell "6" [ref=f20e690]
+                      - cell "0" [ref=f20e691]
+                    - row [ref=f20e692]:
+                      - cell "content" [ref=f20e693]
+                      - cell "10" [ref=f20e694]
+                      - cell "0" [ref=f20e695]
+                      - cell "6" [ref=f20e696]
+                      - cell "0" [ref=f20e697]
+                    - row [ref=f20e698]:
+                      - cell "structural" [ref=f20e699]
+                      - cell "10" [ref=f20e700]
+                      - cell "0" [ref=f20e701]
+                      - cell "1" [ref=f20e702]
+                      - cell "5" [ref=f20e703]
+                    - row [ref=f20e704]:
+                      - cell "isomorphism" [ref=f20e705]
+                      - cell "9" [ref=f20e706]
+                      - cell "1" [ref=f20e707]
+                      - cell "0" [ref=f20e708]
+                      - cell "6" [ref=f20e709]
+                - paragraph [ref=f20e710]: "Of 10 deliberate changes that break conformance, `always`, `content`, `structural` caught every one. `isomorphism` missed 1 — the known failure mode: a class renamed consistently everywhere leaves the code's shape unchanged, but still breaks a diagram that names that class. It is by design, and reporting it is stronger than hiding it."
+            - generic [ref=f20e711]:
+              - heading "Which gate is actually worth choosing?" [level=2] [ref=f20e714]
+              - figure [ref=f20e716]:
+                - generic [ref=f20e718]:
+                  - heading "Figure 3 — What each gate saves, against what it catches" [level=4] [ref=f20e719]
+                  - generic [ref=f20e720]: "Each gate is one point: how often it skipped, against how often it re-analysed when conformance had really changed. Bars are 95% intervals. A gate on the frontier is a defensible choice; a gate inside it was beaten on both axes at once. Dominance is only called \"clear\" when the intervals do not overlap."
+                - generic [ref=f20e722]:
+                  - paragraph [ref=f20e723]: Not measured yet
+                  - paragraph [ref=f20e724]: Needs at least two gates with a measured recall. Recall is only defined once an oracle has established which commits actually changed.
+            - generic [ref=f20e725]:
+              - heading "Are the code and the diagram drifting apart?" [level=2] [ref=f20e728]
+              - figure [ref=f20e730]:
+                - generic [ref=f20e732]:
+                  - heading "Figure 2 — Design violations building up over commits" [level=4] [ref=f20e733]
+                  - generic [ref=f20e734]: Divergences (code does something the diagram does not describe) plus absences (the diagram describes something the code no longer does), accumulating as each project's history advances.
+                - generic [ref=f20e735]: Needs at least two analyses of the same project. Analyse again after the code changes.
+            - generic [ref=f20e737]:
+              - generic [ref=f20e738]:
+                - generic [ref=f20e739]:
+                  - heading "How these runs were produced" [level=2] [ref=f20e740]
+                  - paragraph [ref=f20e741]: Copy this into the paper's methodology section.
+                - button "CSV" [ref=f20e743]
+              - generic [ref=f20e744]:
+                - generic [ref=f20e745]:
+                  - generic [ref=f20e746]:
+                    - term [ref=f20e747]: Model mode
+                    - definition [ref=f20e748]:
+                      - text: offline
+                      - generic [ref=f20e749]: offline means no model was ever called; the pipeline ran deterministically
+                  - generic [ref=f20e750]:
+                    - term [ref=f20e751]: Provider
+                    - definition [ref=f20e752]: offline
+                  - generic [ref=f20e753]:
+                    - term [ref=f20e754]: Model
+                    - definition [ref=f20e755]:
+                      - text: deterministic-offline
+                      - generic [ref=f20e756]: state the exact version string in the paper
+                  - generic [ref=f20e757]:
+                    - term [ref=f20e758]: Temperature
+                    - definition [ref=f20e759]: "0.0"
+                  - generic [ref=f20e760]:
+                    - term [ref=f20e761]: Seed
+                    - definition [ref=f20e762]: "20260815"
+                  - generic [ref=f20e763]:
+                    - term [ref=f20e764]: Impact radius (hops)
+                    - definition [ref=f20e765]:
+                      - text: "1"
+                      - generic [ref=f20e766]: how far around a change the analysis looks
+                  - generic [ref=f20e767]:
+                    - term [ref=f20e768]: Associations scored
+                    - definition [ref=f20e769]:
+                      - text: "False"
+                      - generic [ref=f20e770]: "off by default: an association cannot be proven from an AST, only evidenced"
+                - paragraph [ref=f20e771]: All runs share one configuration, which is what makes the comparison between gates fair. Copy these values into the paper's methodology section — model, temperature and seed are expected for any study involving a language model, and their absence is a routine review comment.
+            - generic [ref=f20e773]:
+              - generic [ref=f20e774]:
+                - heading "What the words mean" [level=2] [ref=f20e775]
+                - paragraph [ref=f20e776]: Six terms. Everything on this page is built from them.
+              - button "Show" [ref=f20e778]
+  - status

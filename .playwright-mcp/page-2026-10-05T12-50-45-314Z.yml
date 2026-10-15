@@ -1,0 +1,68 @@
+- generic [ref=f21e4]:
+  - generic [ref=f21e5]:
+    - banner [ref=f21e6]:
+      - button "CompX" [ref=f21e7]
+      - combobox "Current project" [ref=f21e9]:
+        - option "All projects" [selected]
+      - button "Statistics" [ref=f21e10]
+      - group [ref=f21e11]:
+        - generic "Application settings" [ref=f21e12] [cursor=pointer]: ⚙
+    - generic [ref=f21e13]:
+      - complementary [ref=f21e14]:
+        - generic [ref=f21e15]:
+          - generic [ref=f21e16]:
+            - heading "Projects" [level=2] [ref=f21e17]
+            - button "New project" [ref=f21e18]: +
+          - navigation "Projects" [ref=f21e19]:
+            - paragraph [ref=f21e20]: No projects yet.
+          - button "New project" [ref=f21e21]:
+            - generic [aria-hidden] [ref=f21e22]: +
+            - text: New project
+          - button "Statistics ›" [ref=f21e24]:
+            - generic [ref=f21e25]: Statistics
+            - generic [ref=f21e26]: ›
+          - generic [ref=f21e27]:
+            - generic [ref=f21e28]:
+              - term [ref=f21e29]: Comparison runs
+              - definition [ref=f21e30]: "0"
+            - generic [ref=f21e31]:
+              - term [ref=f21e32]: Projects
+              - definition [ref=f21e33]: "0"
+            - generic [ref=f21e34]:
+              - term [ref=f21e35]: Source files
+              - definition [ref=f21e36]: "0"
+        - generic [ref=f21e37]:
+          - paragraph [ref=f21e38]: No model configured — structural checks only
+          - generic [ref=f21e39]:
+            - group "Colour theme" [ref=f21e40]:
+              - button "Light" [ref=f21e41]: ☀
+              - button "Dark" [ref=f21e43]: ☾
+              - button "System" [pressed] [ref=f21e45]: ◐
+            - button "Sign out" [ref=f21e47]
+      - main [ref=f21e48]:
+        - generic [ref=f21e49]:
+          - generic [ref=f21e50]:
+            - paragraph [ref=f21e51]: Structural conformance workspace
+            - heading "Code meets design" [level=1] [ref=f21e52]
+            - paragraph [ref=f21e53]: Compare a codebase with its StarUML model, inspect structural drift, and keep every result grounded in parser evidence.
+            - generic [ref=f21e54]:
+              - button "Connect GitHub" [disabled] [ref=f21e55]
+              - button "New project" [ref=f21e56]
+          - generic [ref=f21e58]:
+            - generic [aria-hidden] [ref=f21e59]: i
+            - generic [ref=f21e60]:
+              - generic [ref=f21e61]: GitHub import is not configured — everything else works
+              - generic [ref=f21e62]:
+                - text: Create a project and upload a folder, a .zip, or individual files; you can also write code directly in the app. Repository import needs
+                - code [ref=f21e63]: GITHUB_CLIENT_ID
+                - text: and
+                - code [ref=f21e64]: GITHUB_CLIENT_SECRET
+                - text: in the backend
+                - code [ref=f21e65]: .env
+                - text: .
+          - generic [ref=f21e66]:
+            - generic [ref=f21e67]: ▤
+            - paragraph [ref=f21e68]: No projects yet
+            - paragraph [ref=f21e69]: A project holds your code and the diagram it should match. Start empty and upload a folder, or import a repository.
+            - button "Create your first project" [ref=f21e71]
+  - status

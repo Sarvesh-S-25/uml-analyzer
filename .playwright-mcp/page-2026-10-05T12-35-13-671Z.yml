@@ -1,0 +1,26 @@
+- generic [ref=f20e4]:
+  - main [ref=f20e5]:
+    - generic [ref=f20e6]:
+      - generic [ref=f20e7]:
+        - heading "CompX" [level=1] [ref=f20e8]
+        - paragraph [ref=f20e9]: Does your code still match your diagram?
+      - generic [ref=f20e11]:
+        - generic [ref=f20e13]:
+          - button "Sign in" [pressed] [ref=f20e14]
+          - button "Create account" [ref=f20e15]
+        - generic [ref=f20e39]:
+          - generic [aria-hidden] [ref=f20e40]: ✓
+          - generic [ref=f20e41]: Account created. Sign in to continue.
+        - generic [ref=f20e16]:
+          - generic [ref=f20e17]:
+            - generic [ref=f20e18]: Username
+            - textbox "Username" [ref=f20e19]: papercheck
+          - generic [ref=f20e20]:
+            - generic [ref=f20e21]: Password
+            - textbox "Password" [ref=f20e43]
+          - button "Sign in" [ref=f20e44]
+      - group "Colour theme" [ref=f20e25]:
+        - button "Light" [ref=f20e26]: ☀
+        - button "Dark" [ref=f20e28]: ☾
+        - button "System" [pressed] [ref=f20e30]: ◐
+  - status

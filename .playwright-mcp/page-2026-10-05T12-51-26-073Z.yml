@@ -1,0 +1,66 @@
+- generic [ref=f23e4]:
+  - generic [ref=f23e5]:
+    - banner [ref=f23e6]:
+      - button "CompX" [ref=f23e7]
+      - combobox "Current project" [ref=f23e9]:
+        - option "All projects"
+        - option "bancario-src"
+        - option "discord-src" [selected]
+      - navigation "Project" [ref=f23e72]:
+        - button "Overview" [ref=f23e73]
+        - button "Code" [ref=f23e74]
+        - button "Code map" [ref=f23e75]
+        - button "Diagram" [ref=f23e76]
+        - button "Runs" [ref=f23e77]
+      - group [ref=f23e11]:
+        - generic "Application settings" [ref=f23e12] [cursor=pointer]: ⚙
+    - generic [ref=f23e13]:
+      - complementary [ref=f23e14]:
+        - generic [ref=f23e15]:
+          - generic [ref=f23e16]:
+            - heading "Projects" [level=2] [ref=f23e17]
+            - button "New project" [ref=f23e18]: +
+          - navigation "Projects" [ref=f23e19]:
+            - button "bancario-src" [ref=f23e78]:
+              - generic [aria-hidden] [ref=f23e79]: ▧
+            - button "discord-src" [active] [ref=f23e81]:
+              - generic [aria-hidden] [ref=f23e83]: ▧
+          - button "New project" [ref=f23e21]:
+            - generic [aria-hidden] [ref=f23e22]: +
+            - text: New project
+          - button "Statistics ›" [ref=f23e24]:
+            - generic [ref=f23e25]: Statistics
+            - generic [ref=f23e26]: ›
+          - generic [ref=f23e27]:
+            - generic [ref=f23e28]:
+              - term [ref=f23e29]: Comparison runs
+              - definition [ref=f23e30]: "2"
+            - generic [ref=f23e31]:
+              - term [ref=f23e32]: Projects
+              - definition [ref=f23e33]: "2"
+            - generic [ref=f23e34]:
+              - term [ref=f23e35]: Source files
+              - definition [ref=f23e36]: "99"
+        - generic [ref=f23e37]:
+          - paragraph [ref=f23e38]: No model configured — structural checks only
+          - generic [ref=f23e39]:
+            - group "Colour theme" [ref=f23e40]:
+              - button "Light" [ref=f23e41]: ☀
+              - button "Dark" [ref=f23e43]: ☾
+              - button "System" [pressed] [ref=f23e45]: ◐
+            - button "Sign out" [ref=f23e47]
+      - main [ref=f23e48]:
+        - generic [ref=f23e85]:
+          - button "Run comparison" [ref=f23e87]
+          - generic [ref=f23e89]:
+            - group [ref=f23e90]:
+              - generic "Analysis settings When the structure changes" [ref=f23e91] [cursor=pointer]:
+                - generic [ref=f23e92]: Analysis settings
+                - generic [ref=f23e93]:
+                  - text: When the structure changes
+                  - generic [aria-hidden] [ref=f23e94]: ›
+            - generic [ref=f23e95]:
+              - generic [ref=f23e96]: ◉
+              - paragraph [ref=f23e97]: Not checked yet
+              - paragraph [ref=f23e98]: Press “Check now” and the comparison between your code and your diagram appears here.
+  - status
