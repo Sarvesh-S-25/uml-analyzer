@@ -42,6 +42,54 @@ class LanguageTests(unittest.TestCase):
         model = architecture_to_design_model(a)
         self.assertEqual(next(c for c in model.elements if c.name == "Repo").implements, ["IRepo"])
 
+    def test_java_superclass_is_not_chosen_alphabetically(self):
+        # `bases` is sorted for the fingerprint; taking bases[0] as the
+        # superclass once made this class extend Alpha.
+        a = self.parse("A.java", "interface Alpha {} class Zeta {} class A extends Zeta implements Alpha {}")
+        model = architecture_to_design_model(a)
+        element = next(c for c in model.elements if c.name == "A")
+        self.assertEqual(element.extends, "Zeta")
+        self.assertEqual(element.implements, ["Alpha"])
+        self.assertEqual(element.untyped_supertypes, [])
+
+    def test_javascript_fields_assigned_through_this(self):
+        a = self.parse("area.js", "class Area {\n  constructor(id) {\n    this.id = id;\n    this.players = [];\n    this.a.b = 1;\n  }\n}\n")
+        area = a["files"][0]["classes"][0]
+        self.assertEqual({f["name"] for f in area["fields"]}, {"id", "players"})
+
+    def test_typescript_clauses_keep_their_kind(self):
+        a = self.parse("a.ts", "interface Port {} class Base {} class Impl extends Base implements Port {}")
+        element = next(c for c in architecture_to_design_model(a).elements if c.name == "Impl")
+        self.assertEqual((element.extends, element.implements), ("Base", ["Port"]))
+
+    def test_python_realization_is_satisfied_by_a_base_class(self):
+        # Python has no interface keyword, so a UML realization to an abstract
+        # base can only ever be written as a base class.
+        from comparison.engine import ComparisonEngine
+        from models.design_model import DesignElement, DesignRelation, IntermediateDesignModel
+
+        a = self.parse("repo.py", "class Repository:\n    pass\n\nclass OrderRepository(Repository):\n    pass\n")
+        design = IntermediateDesignModel(
+            elements=[DesignElement(name="Repository", element_type="interface"),
+                      DesignElement(name="OrderRepository", element_type="class")],
+            relations=[DesignRelation(source="OrderRepository", target="Repository", relation="realization")],
+        )
+        diff = ComparisonEngine(design, architecture_to_design_model(a)).compare()
+        self.assertEqual(diff.missing_relations, [])
+
+    def test_java_extension_does_not_satisfy_a_realization(self):
+        from comparison.engine import ComparisonEngine
+        from models.design_model import DesignElement, DesignRelation, IntermediateDesignModel
+
+        a = self.parse("R.java", "class Repository {} class OrderRepository extends Repository {}")
+        design = IntermediateDesignModel(
+            elements=[DesignElement(name="Repository", element_type="interface"),
+                      DesignElement(name="OrderRepository", element_type="class")],
+            relations=[DesignRelation(source="OrderRepository", target="Repository", relation="realization")],
+        )
+        diff = ComparisonEngine(design, architecture_to_design_model(a)).compare()
+        self.assertEqual(diff.missing_relations, ["OrderRepository --realization--> Repository"])
+
     def test_php_members(self):
         a = self.parse("test.php", "<?php class Repo { private string $label; public function save(int $id): void {} }")
         self.assertFalse(a["parse_errors"])

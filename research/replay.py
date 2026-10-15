@@ -36,12 +36,15 @@ from harness import (  # noqa: E402  (path set up inside harness)
     clone_or_reuse,
     commit_list,
     copy_source,
+    designed_element_names,
+    element_statuses,
     finding_signature,
     git_available,
     install_uml,
     load_corpus,
     preflight,
     signatures_differ,
+    tree_digest,
     write_csv,
     write_json,
 )
@@ -57,6 +60,11 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument("--commits", type=int, default=30, help="Commits per project (default 30).")
     parser.add_argument("--branch", help="Branch to read history from.")
     parser.add_argument("--subdirectory", help="Analyse only this subdirectory of the repo.")
+    parser.add_argument(
+        "--start",
+        help="Diagram-freeze commit. The replay starts there and walks forward, "
+        "which is what a drift study needs; without it the last N commits are used.",
+    )
     parser.add_argument(
         "--strategies",
         default=",".join(GATE_STRATEGIES),
@@ -86,6 +94,7 @@ def resolve_projects(args: argparse.Namespace) -> List[ProjectSpec]:
             commits=args.commits,
             branch=args.branch,
             subdirectory=args.subdirectory,
+            start=args.start,
         )
     ]
 
@@ -100,7 +109,7 @@ def replay_project(
     from core.pipeline import run_analysis  # imported after harness sets sys.path
 
     repo = clone_or_reuse(spec.source, cache_dir)
-    commits = commit_list(repo, spec.commits, spec.branch)
+    commits = commit_list(repo, spec.commits, spec.branch, spec.start)
     if not commits:
         raise GitError(f"No commits found for {spec.name}.")
 
@@ -112,9 +121,11 @@ def replay_project(
 
     for path in list(projects.values()) + [oracle_project]:
         install_uml(path, spec.uml)
+    designed = designed_element_names(oracle_project)
 
     rows: List[Dict[str, Any]] = []
     misses: List[Dict[str, Any]] = []
+    drift_rows: List[Dict[str, Any]] = []
 
     # The oracle's own previous signature. Whether conformance *changed* at a
     # commit is a fact about the code and the diagram, not about any gate, so it
@@ -122,16 +133,31 @@ def replay_project(
     # analysis of the commit before it -- never against a gated run, which would
     # make the answer depend on the thing being evaluated.
     previous_truth: Optional[Dict[str, Any]] = None
+    previous_digest: Optional[str] = None
+
+    # What each gate is currently *serving*: the deterministic findings that its
+    # most recent model analysis was produced from. The deterministic findings
+    # themselves are recomputed on every run, gated or not, so comparing them
+    # against the oracle can never disagree -- an earlier version of this script
+    # did exactly that and could only ever report zero misses. What a gate can
+    # make stale is the model-authored analysis it reuses, and that is stale
+    # precisely when the findings it was written for are no longer the findings.
+    served: Dict[str, Optional[Dict[str, Any]]] = {strategy: None for strategy in strategies}
 
     for index, commit in enumerate(commits):
-        checkout_worktree(repo, commit, tree_dir)
+        checkout_worktree(repo, commit, tree_dir, spec.subdirectory)
 
         # The oracle: the same commit, always fully re-analysed.
         copy_source(tree_dir, oracle_project, spec.subdirectory)
+        digest = tree_digest(os.path.join(oracle_project, "source"))
+        source_touched = None if previous_digest is None else digest != previous_digest
+        previous_digest = digest
+
         oracle_started = time.perf_counter()
         oracle = run_analysis(oracle_project, gate_strategy="always", force=True)
         oracle_elapsed = (time.perf_counter() - oracle_started) * 1000
         truth = finding_signature(oracle)
+        reflexion = oracle.get("reflexion") or {}
 
         # None at the first commit of a project: there is no earlier commit to
         # compare against, so the answer is "not measured", never False.
@@ -141,6 +167,17 @@ def replay_project(
             else None
         )
 
+        for element, status in element_statuses(oracle, designed).items():
+            drift_rows.append(
+                {
+                    "project": spec.name,
+                    "commit_index": index,
+                    "commit": commit[:12],
+                    "element": element,
+                    "status": status,
+                }
+            )
+
         for strategy in strategies:
             project_path = projects[strategy]
             file_count = copy_source(tree_dir, project_path, spec.subdirectory)
@@ -149,9 +186,11 @@ def replay_project(
             result = run_analysis(project_path, gate_strategy=strategy)
             elapsed = (time.perf_counter() - started) * 1000
 
-            observed = finding_signature(result)
-            differing = signatures_differ(truth, observed)
-            reused = not result["gate"]["should_invoke_llm"]
+            reanalysed = bool(result["gate"]["should_invoke_llm"])
+            if reanalysed or served[strategy] is None:
+                served[strategy] = finding_signature(result)
+            differing = signatures_differ(truth, served[strategy])
+            reused = not reanalysed
             missed = bool(differing) and reused
 
             if missed:
@@ -166,9 +205,11 @@ def replay_project(
                     }
                 )
 
+            llm = result["llm"]
             rows.append(
                 {
                     "project": spec.name,
+                    "provenance": spec.provenance,
                     # These column names are the contract with
                     # backend/stats/report.py::normalise_rows. Renaming either
                     # of them silently degrades every downstream table.
@@ -176,7 +217,7 @@ def replay_project(
                     "commit_index": index,
                     "commit": commit[:12],
                     "files": file_count,
-                    "gate_allowed_llm": result["gate"]["should_invoke_llm"],
+                    "gate_allowed_llm": reanalysed,
                     "reused": reused,
                     "reason": result["gate"]["reason"],
                     "changed_nodes": result["gate"]["delta"]["changed_nodes"],
@@ -184,8 +225,11 @@ def replay_project(
                     "removed_nodes": result["gate"]["delta"]["removed_nodes"],
                     "impact_nodes": result["gate"]["impact_node_count"],
                     "isomorphic": result["gate"]["isomorphic"],
-                    "prompt_tokens": result["llm"]["prompt_tokens"],
-                    "completion_tokens": result["llm"]["completion_tokens"],
+                    "prompt_tokens": llm["prompt_tokens"],
+                    "completion_tokens": llm["completion_tokens"],
+                    # Offline, nothing is spent; this is the size of the prompt
+                    # the gate *would* have sent, and is zero when it reused.
+                    "counterfactual_prompt_tokens": llm.get("counterfactual_prompt_tokens", 0),
                     "latency_ms": round(elapsed, 1),
                     "graph_nodes": result["networkx_nodes"],
                     "graph_edges": result["networkx_edges"],
@@ -194,14 +238,20 @@ def replay_project(
                         "resolution_rate"
                     ),
                     "ambiguous_calls": (result.get("call_resolution") or {}).get("ambiguous", 0),
+                    # The analysis served at this commit was produced for
+                    # findings that no longer hold, and the gate chose not to
+                    # refresh it.
                     "missed_change": missed,
-                    # Did this run's findings differ from the oracle's, whether
-                    # or not the gate reused? `missed_change` folds this
-                    # together with "and the gate reused", which loses the
-                    # information needed to tell when a miss is corrected.
+                    # Whether the served analysis disagrees with the oracle,
+                    # reused or not. Needed to tell when a miss is corrected.
                     "diverges_from_oracle": bool(differing),
-                    # A property of the commit, identical for every strategy.
+                    # Properties of the commit, identical for every strategy.
                     "conformance_changed": conformance_changed,
+                    "source_touched": source_touched,
+                    "convergences": reflexion.get("convergences"),
+                    "divergences": reflexion.get("divergences"),
+                    "absences": reflexion.get("absences"),
+                    "findings_hash": oracle.get("findings_hash"),
                     "oracle_latency_ms": round(oracle_elapsed, 1),
                 }
             )
@@ -211,7 +261,13 @@ def replay_project(
         if not index % 10:
             log(f"    commit {index + 1}/{len(commits)}")
 
-    return {"project": spec.name, "commits": len(commits), "rows": rows, "misses": misses}
+    return {
+        "project": spec.name,
+        "commits": len(commits),
+        "rows": rows,
+        "misses": misses,
+        "drift_rows": drift_rows,
+    }
 
 
 def summarise(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -225,6 +281,7 @@ def summarise(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
                 "reused": 0,
                 "missed_changes": 0,
                 "prompt_tokens": 0,
+                "counterfactual_prompt_tokens": 0,
                 "completion_tokens": 0,
                 "latency_ms": 0.0,
                 "impact_nodes": 0,
@@ -235,6 +292,7 @@ def summarise(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
         bucket["reused"] += 0 if row["gate_allowed_llm"] else 1
         bucket["missed_changes"] += 1 if row["missed_change"] else 0
         bucket["prompt_tokens"] += row["prompt_tokens"] or 0
+        bucket["counterfactual_prompt_tokens"] += row.get("counterfactual_prompt_tokens") or 0
         bucket["completion_tokens"] += row["completion_tokens"] or 0
         bucket["latency_ms"] += row["latency_ms"] or 0.0
         bucket["impact_nodes"] += row["impact_nodes"] or 0
@@ -278,6 +336,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     sandbox = Sandbox.create(keep=args.keep_sandbox)
     all_rows: List[Dict[str, Any]] = []
     all_misses: List[Dict[str, Any]] = []
+    all_drift: List[Dict[str, Any]] = []
     failures: List[Dict[str, str]] = []
 
     log(f"Replaying {len(projects)} project(s) under {len(strategies)} gate(s), LLM {args.llm_mode}.")
@@ -292,6 +351,7 @@ def main(argv: Optional[List[str]] = None) -> int:
                 continue
             all_rows.extend(outcome["rows"])
             all_misses.extend(outcome["misses"])
+            all_drift.extend(outcome["drift_rows"])
     finally:
         sandbox.cleanup()
 
@@ -301,10 +361,14 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     summary = summarise(all_rows)
     write_csv(os.path.join(args.out, "runs.csv"), all_rows)
+    # One row per designed element per commit: the input to the element-level
+    # drift measures (time to first deviation, conformance half-life).
+    write_csv(os.path.join(args.out, "drift_elements.csv"), all_drift)
     write_json(
         os.path.join(args.out, "summary.json"),
         {
             "projects": [spec.name for spec in projects],
+            "provenance": {spec.name: spec.provenance for spec in projects},
             "strategies": strategies,
             "llm_mode": args.llm_mode,
             "total_runs": len(all_rows),

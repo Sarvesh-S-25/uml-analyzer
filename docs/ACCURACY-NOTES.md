@@ -21,9 +21,14 @@ resolution and type inference are incomplete; inspect coverage and parse warning
 
 ## Verified local uploads
 
-- Banking: its own `sistema-bancario.staruml.mdj` gives 32/40 checks, **80.00%**.
-  The unrelated registration diagram was retained as `.mdj.backup` and is no
-  longer selected. The original correct diagram was copied from the source ZIP.
+- Banking: its own `sistema-bancario.staruml.mdj` gives 36/40 checks, **90.00%**
+  at the diagram-freeze commit `16508fe` (`src/main/java`). This was 32/40
+  (80.00%) before the supertype fix of October 2026: the comparator took the
+  alphabetically first base as the superclass, so the four
+  `Agencia/Banco/Cliente/Conta implements Cadastro` realizations were scored as
+  generalizations and failed. Confirmed identical through the UI and the
+  replay oracle. The unrelated registration diagram was retained as
+  `.mdj.backup` and is no longer selected.
 - GameSpark: 63 C# source files parse without syntax errors. Its uploaded model
   gives 432/471 checks, **91.72%**, after distinguishing implemented interfaces.
 - MyDiary: its uploaded model contains no supported class/interface elements.

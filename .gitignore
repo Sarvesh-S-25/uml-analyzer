@@ -29,9 +29,6 @@ results/
 deviation-repo/
 extracted-mdj/download-cache/
 
-# Old nested copy of this repo — not part of the tracked tree
-uml-analyzer/
-
 # Node
 node_modules/
 dist/
@@ -47,3 +44,6 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Profiler output
+*.out

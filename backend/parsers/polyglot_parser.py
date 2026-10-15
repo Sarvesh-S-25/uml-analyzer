@@ -35,10 +35,24 @@ from tree_sitter import Language, Parser
 PY_LANGUAGE = Language(tspython.language())
 JS_LANGUAGE = Language(tsjavascript.language())
 JAVA_LANGUAGE = Language(tsjava.language())
-import tree_sitter_c_sharp as tscsharp
-import tree_sitter_php as tsphp
-CS_LANGUAGE = Language(tscsharp.language())
-PHP_LANGUAGE = Language(tsphp.language_php())
+
+# Optional: C# and PHP grammars. A missing grammar must not take the whole
+# parser down with it -- Python, Java and JavaScript projects do not need
+# either. Files in a language whose grammar is absent are reported through
+# `unsupported_extensions`, which makes the score unavailable rather than
+# silently computing it over the remaining files.
+try:
+    import tree_sitter_c_sharp as tscsharp
+
+    CS_LANGUAGE: Optional[Language] = Language(tscsharp.language())
+except Exception:  # pragma: no cover - depends on the install
+    CS_LANGUAGE = None
+try:
+    import tree_sitter_php as tsphp
+
+    PHP_LANGUAGE: Optional[Language] = Language(tsphp.language_php())
+except Exception:  # pragma: no cover - depends on the install
+    PHP_LANGUAGE = None
 
 # Optional: real TypeScript/TSX grammars. Without them .ts/.tsx still parse,
 # but type annotations are invisible.
@@ -55,8 +69,6 @@ except Exception:  # pragma: no cover - depends on the install
 
 
 EXT_LANGUAGE: Dict[str, Tuple[str, Language, str]] = {
-    ".cs": ("csharp", CS_LANGUAGE, "csharp"),
-    ".php": ("php", PHP_LANGUAGE, "php"),
     ".py": ("python", PY_LANGUAGE, "python"),
     ".js": ("javascript", JS_LANGUAGE, "javascript"),
     ".jsx": ("javascript", JS_LANGUAGE, "javascript"),
@@ -65,6 +77,13 @@ EXT_LANGUAGE: Dict[str, Tuple[str, Language, str]] = {
     ".tsx": ("typescript", TSX_LANGUAGE, "typescript" if TYPESCRIPT_AVAILABLE else "javascript"),
     ".java": ("java", JAVA_LANGUAGE, "java"),
 }
+if CS_LANGUAGE is not None:
+    EXT_LANGUAGE[".cs"] = ("csharp", CS_LANGUAGE, "csharp")
+if PHP_LANGUAGE is not None:
+    EXT_LANGUAGE[".php"] = ("php", PHP_LANGUAGE, "php")
+
+# Source extensions we recognise but cannot parse in this install.
+UNSUPPORTED_SOURCE_EXTENSIONS = {".kt", ".go", ".rb", ".c", ".cpp", ".rs", ".swift", ".cs", ".php"} - set(EXT_LANGUAGE)
 
 CLASS_NODES = {
     "record_declaration", "struct_declaration", "trait_declaration",
@@ -138,7 +157,7 @@ class PolyglotParser:
             for filename in sorted(filenames):
                 extension = os.path.splitext(filename)[1].lower()
                 if extension not in EXT_LANGUAGE:
-                    if extension in {".kt", ".go", ".rb", ".c", ".cpp", ".rs", ".swift"}:
+                    if extension in UNSUPPORTED_SOURCE_EXTENSIONS:
                         unsupported.add(extension)
                     continue
                 absolute = os.path.join(root, filename)
@@ -435,14 +454,29 @@ class PolyglotParser:
             walk(child, 0)
         return bindings
 
+    # Which inheritance clause a supertype came from. Java, TypeScript and PHP
+    # say syntactically whether a supertype is extended or implemented; Python's
+    # argument list, C#'s base list and JavaScript's heritage do not, and those
+    # are recorded as "unknown" rather than guessed here.
+    _EXTENDS_CONTAINERS = {"superclass", "extends_clause", "base_clause", "extends_interfaces"}
+    _IMPLEMENTS_CONTAINERS = {"super_interfaces", "implements_clause", "class_interface_clause"}
+
     def _bases(self, node, code: bytes) -> List[str]:
-        bases: List[str] = []
+        return [name for name, _ in self._bases_with_kinds(node, code)]
+
+    def _bases_with_kinds(self, node, code: bytes) -> List[Tuple[str, str]]:
+        """Supertypes in source order, each tagged extends | implements | unknown."""
+        found: List[Tuple[str, str]] = []
         containers = []
+        seen_ids = set()
         for field in ("superclass", "interfaces", "superclasses"):
             candidate = node.child_by_field_name(field)
-            if candidate is not None:
+            if candidate is not None and candidate.id not in seen_ids:
+                seen_ids.add(candidate.id)
                 containers.append(candidate)
         for child in node.children:
+            if child.id in seen_ids:
+                continue
             if child.type in (
                 "argument_list", "superclass", "super_interfaces", "extends_interfaces",
                 "class_heritage", "extends_clause", "implements_clause", "type_list",
@@ -450,20 +484,39 @@ class PolyglotParser:
             ):
                 containers.append(child)
 
+        def kind_of(container_type: str) -> str:
+            if container_type in self._EXTENDS_CONTAINERS:
+                return "extends"
+            if container_type in self._IMPLEMENTS_CONTAINERS:
+                return "implements"
+            return "unknown"
+
         for container in containers:
+            container_kind = kind_of(container.type)
             for sub in container.children:
                 if sub.type in ("identifier", "type_identifier", "generic_type", "attribute",
                                 "scoped_type_identifier", "name", "qualified_name"):
                     name = self._type_text(sub, code)
                     if name:
-                        bases.append(name)
+                        found.append((name, container_kind))
                 elif sub.type in ("extends_clause", "implements_clause", "type_list"):
+                    # A nested clause states its own kind (TypeScript); a bare
+                    # type list inherits its container's (Java super_interfaces).
+                    inner_kind = kind_of(sub.type) if sub.type != "type_list" else container_kind
                     for inner in sub.children:
                         if inner.type in ("identifier", "type_identifier", "generic_type"):
                             name = self._type_text(inner, code)
                             if name:
-                                bases.append(name)
-        return [base for base in bases if base and base not in ("object", "Object")]
+                                found.append((name, inner_kind))
+
+        ordered: Dict[str, str] = {}
+        for name, kind in found:
+            if not name or name in ("object", "Object"):
+                continue
+            # A name seen twice keeps the more specific kind.
+            if name not in ordered or ordered[name] == "unknown":
+                ordered[name] = kind
+        return list(ordered.items())
 
     def _fields(self, node, code: bytes) -> List[Dict[str, Optional[str]]]:
         fields: List[Dict[str, Optional[str]]] = []
@@ -518,12 +571,15 @@ class PolyglotParser:
                         name = self._name_of(declarator, code)
                         if name:
                             fields.append({"name": name, "type": type_name})
-            # Python has no field declarations; `self.x = ...` inside any method
-            # is the closest equivalent.
-            if current.type == "assignment":
+            # Python has no field declarations, and plain JavaScript rarely uses
+            # them; `self.x = ...` / `this.x = ...` inside any method is the
+            # closest equivalent. (JavaScript spells it assignment_expression
+            # over a member_expression; missing it made every JS field look
+            # absent from the code.)
+            if current.type in ("assignment", "assignment_expression"):
                 left = current.child_by_field_name("left")
                 right = current.child_by_field_name("right")
-                if left is not None and left.type == "attribute":
+                if left is not None and left.type in ("attribute", "member_expression"):
                     text = self._text(left, code)
                     if text.startswith(("self.", "this.")):
                         leaf = text.split(".", 1)[1]
@@ -588,10 +644,15 @@ class PolyglotParser:
                     kind = "interface" if child.type == "interface_declaration" else "class"
                     if child.type == "enum_declaration":
                         kind = "enum"
+                    typed_bases = self._bases_with_kinds(child, code)
                     klass = {
                         "name": name,
                         "kind": kind,
-                        "bases": self._bases(child, code),
+                        # `bases` is sorted in _normalise and feeds the
+                        # fingerprint; `base_kinds` keeps source order and the
+                        # clause each supertype was declared in.
+                        "bases": [base for base, _ in typed_bases],
+                        "base_kinds": [{"name": base, "kind": k} for base, k in typed_bases],
                         "fields": self._fields(child, code),
                         "methods": [],
                     }

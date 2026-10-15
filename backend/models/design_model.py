@@ -23,6 +23,11 @@ class DesignElement(BaseModel):
     methods: List[ElementMethod] = []
     extends: Optional[str] = None
     implements: List[str] = []
+    # Supertypes whose source language does not say whether they are extended
+    # or realized (Python, JavaScript, C# bases outside the project). Only the
+    # code side populates this; a UML generalization or realization to one of
+    # these is satisfied by either kind.
+    untyped_supertypes: List[str] = []
 
 
 class DesignRelation(BaseModel):

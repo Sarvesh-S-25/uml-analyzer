@@ -167,7 +167,13 @@ function Shell() {
       destination={destination}
       onNavigate={(next) => {
         setDestination(next)
-        if (next === 'projects') setActiveProject(null)
+        if (next === 'projects') {
+          setActiveProject(null)
+          // Leaving a workspace this way must refetch exactly as closing it
+          // does; otherwise the list keeps showing "never checked" and "needs
+          // a diagram" for a project that was just uploaded to and checked.
+          void refresh()
+        }
       }}
       projects={projects}
       onOpenProject={(name) => {

@@ -1,7 +1,31 @@
 # The paper
 
-`IEEE-Access-draft.docx` — the manuscript. **This is the only copy.** Edit it
-directly in Word.
+**`paper.md` is the current manuscript** — the conformance-drift framing, the
+corpus study, verified references and every number filled from `results/`.
+
+**`paper.docx`** is the same text laid out as an IEEE conference paper (US
+Letter, two columns, Times New Roman 10 pt, figures and tables placed), and
+**`paper.pdf`** is Word's export of it. Both are generated — edit `paper.md`,
+then rebuild:
+
+```
+python research/make_pipeline_figure.py --out paper/figures/
+python research/make_figures.py --results results/ --out paper/figures/
+cd paper && npm install docx && node build-paper-docx.js
+```
+
+Before submitting, fill the one highlighted placeholder (archive link in Data
+Availability) and move the text into the venue's own IEEE template if it
+requires one. The author name and e-mail are set at the top of
+`build-paper-docx.js`.
+
+`IEEE-Access-draft.docx` is the earlier, gate-only draft with `<placeholders>`.
+Several of its statements are superseded by `paper.md` (the controlled set has
+ten findings-changing deviations, not nine; reference [14] is ICSE 2025, not
+ICSME; ReflexML is by Adersberger and Philippsen). Port `paper.md` into the
+IEEE Access template rather than filling the old draft.
+
+The notes below describe the old draft.
 
 Eight pages of finished prose with 21 numbered gaps. Everything else — abstract,
 all eight sections, seven tables, threats, references — is written.

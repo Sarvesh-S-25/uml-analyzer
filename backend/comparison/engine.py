@@ -28,6 +28,9 @@ from models.design_model import (
 
 EXACT_RELATIONS = ("generalization", "realization")
 EVIDENCE_RELATIONS = ("association", "dependency")
+# Python, JavaScript/TypeScript and PHP spell the constructor; Java and C# name
+# it after the class, which `_compare_members` adds per class.
+CONSTRUCTOR_NAMES = frozenset({"__init__", "__new__", "constructor", "__construct"})
 
 STRONG = "strong"
 WEAK = "weak"
@@ -137,7 +140,14 @@ class ComparisonEngine:
             uml_methods = {method.name for method in uml_class.methods}
             code_methods = {method.name for method in code_class.methods}
             element_diff.missing_methods = sorted(uml_methods - code_methods)
-            element_diff.extra_methods = sorted(code_methods - uml_methods)
+            # An undocumented constructor is not a divergence: class diagrams
+            # conventionally omit constructors, and counting them made nearly
+            # every Python class "divergent" before anyone had touched it. A
+            # constructor the diagram *does* specify is still checked above.
+            constructors = CONSTRUCTOR_NAMES | {class_name}
+            element_diff.extra_methods = sorted(
+                name for name in code_methods - uml_methods if name not in constructors
+            )
             total += len(uml_methods)
             passed += len(uml_methods & code_methods)
 
@@ -163,6 +173,14 @@ class ComparisonEngine:
             for element in self.code_model.elements
             for interface in element.implements
         }
+        # Supertypes whose language does not distinguish extension from
+        # realization satisfy either UML relation -- but only those: in Java,
+        # extending a class the diagram says should be realized is still wrong.
+        untyped_inheritance = {
+            (element.name, parent)
+            for element in self.code_model.elements
+            for parent in element.untyped_supertypes
+        }
 
         total = 0
         passed = 0
@@ -174,7 +192,10 @@ class ComparisonEngine:
                     relation.source,
                     relation.target,
                     relation.relation,
-                ) in implemented_inheritance
+                ) in implemented_inheritance or (
+                    relation.source,
+                    relation.target,
+                ) in untyped_inheritance
                 if satisfied:
                     passed += 1
                 else:
@@ -325,17 +346,53 @@ def architecture_to_design_model(architecture: Dict[str, Any]) -> IntermediateDe
                     for method in klass.get("methods", [])
                 ],
             )
-            bases = klass.get("bases", [])
-            if bases:
-                if record.get("language") == "csharp":
-                    element.implements = [b for b in bases if b in interface_names]
-                    parents = [b for b in bases if b not in interface_names]
-                    element.extends = parents[0] if parents else None
-                else:
-                    element.extends = bases[0]
-                    element.implements = bases[1:]
+            _assign_supertypes(element, klass, interface_names)
             model.elements.append(element)
     return model
+
+
+def _assign_supertypes(element, klass: Dict[str, Any], interface_names: Set[str]) -> None:
+    """Split a class's supertypes into extends / implements.
+
+    Where the language states the kind (Java `extends`/`implements`, TypeScript
+    and PHP clauses) the parser's tag is used as-is. Where it does not, a
+    supertype declared as an interface in the project is a realization; any
+    other is recorded as untyped, because "is this an extension or a
+    realization?" has no answer in Python and none we can see for a C# base
+    defined outside the project.
+
+    `bases` is sorted for the fingerprint, so it must never be used for order:
+    an earlier version took `bases[0]` as the superclass, which made
+    `class A extends Zeta implements Alpha` extend Alpha.
+    """
+    typed = klass.get("base_kinds")
+    if typed is None:  # architecture produced before base_kinds existed
+        typed = [{"name": base, "kind": "unknown"} for base in klass.get("bases", [])]
+
+    extends: List[str] = []
+    implements: List[str] = []
+    untyped: List[str] = []
+    for entry in typed:
+        name, kind = entry["name"], entry["kind"]
+        if kind == "extends":
+            extends.append(name)
+        elif kind == "implements" or name in interface_names:
+            implements.append(name)
+        else:
+            untyped.append(name)
+
+    if klass.get("kind") == "interface":
+        # An interface extending an interface is a UML generalization.
+        extends = extends + implements
+        implements = []
+
+    parents = extends + untyped
+    element.extends = parents[0] if parents else None
+    element.implements = implements
+    # Further parents only occur where the kind cannot matter: Python multiple
+    # inheritance (already untyped) or an interface extending several
+    # interfaces, which can only ever be generalization.
+    element.untyped_supertypes = untyped + [p for p in extends[1:] if p not in untyped]
 
 
 def evaluate_layer_rules(

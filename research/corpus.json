@@ -3,41 +3,57 @@
     "Corpus manifest for research/replay.py.",
     "",
     "`source` is a local path or a clone URL. `uml` is a StarUML .mdj model for",
-    "that project -- either an existing one, or one you reverse-engineer from an",
-    "early commit and then hold fixed for the whole replay. Holding it fixed is",
-    "what makes drift between design and code observable; if the diagram moves",
-    "with the code there is nothing to measure.",
+    "that project, held fixed for the whole replay. `start` is the commit at which",
+    "the diagram was last edited (the freeze); the replay walks forward from there,",
+    "so the study begins from the design as its author last left it.",
     "",
-    "The bundled entry is the seeded-deviation project, which needs no network.",
-    "Add real projects below it. Choose ones where a class diagram is meaningful:",
-    "layered applications with named services and repositories, not scripts.",
-    "Aim for 5-10 projects x 30-50 commits each."
+    "`provenance` labels where the design came from: found (an abandoned diagram",
+    "committed by the project's own authors), curated (a published ground-truth",
+    "architecture), recovered (reverse-engineered and frozen), synthetic.",
+    "",
+    "Every model under research/models/ was taken from the repository's own",
+    "history at `start`. discordbotrpg.mdj differs from the original only by four",
+    "missing closing quotes the authors' file lacked; see research/models/README.md."
   ],
   "projects": [
+    {
+      "name": "discordbotrpg",
+      "source": "https://github.com/FightRPG-DiscordBotRPG/DiscordBotRPG-Server.git",
+      "uml": "research/models/discordbotrpg.mdj",
+      "start": "f2ab878",
+      "commits": 0,
+      "subdirectory": "bin",
+      "provenance": "found",
+      "notes": "JavaScript. UML.mdj last edited 2019-12-01; code ran to 2023-01-27 (1153 days, 719 commits behind)."
+    },
+    {
+      "name": "sistema-bancario",
+      "source": "https://github.com/manoelcampos/sistema-bancario-java-junit.git",
+      "uml": "research/models/sistema-bancario.mdj",
+      "start": "16508fe",
+      "commits": 0,
+      "subdirectory": "src/main/java",
+      "provenance": "found",
+      "notes": "Java. Diagram last edited 2020-08-13; code ran to 2025-06-26 (1777 days, 24 commits). A pilot: 8 source files."
+    },
+    {
+      "name": "gamespark",
+      "source": "https://github.com/yusufkaraaslan/GameSpark.git",
+      "uml": "research/models/gamespark.mdj",
+      "start": "8902f40",
+      "commits": 0,
+      "subdirectory": "Assets/yUSyUS/Game Spark/Script",
+      "provenance": "found",
+      "notes": "C#. Diagram last edited 2022-02-25; code ran to 2024-06-19 (845 days, 12 commits). Short window; included for language coverage."
+    }
+  ],
+  "$candidates": [
     {
       "name": "reference-orders",
       "source": "research/deviations/base",
       "uml": "research/deviations/base/design.mdj",
       "commits": 1,
-      "notes": "The bundled reference project. Used by evaluate_deviations.py; a single commit, so replay over it is trivial."
-    }
-  ],
-  "$candidates": [
-    {
-      "name": "example-local-project",
-      "source": "../my-java-service",
-      "uml": "research/models/my-java-service.mdj",
-      "commits": 40,
-      "subdirectory": "src/main/java",
-      "notes": "Template for a local clone. `subdirectory` narrows the analysis to application code and excludes tests and build output."
-    },
-    {
-      "name": "example-remote-project",
-      "source": "https://github.com/<owner>/<repo>.git",
-      "uml": "research/models/<repo>.mdj",
-      "commits": 30,
-      "branch": "main",
-      "notes": "Template for a clone URL. The clone is cached under .corpus-cache and reused across runs."
+      "notes": "The bundled seeded-deviation project. Used by evaluate_deviations.py; not a git history."
     }
   ]
 }

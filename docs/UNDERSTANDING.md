@@ -208,7 +208,7 @@ results/                   created when you run things
 ## 11. The honest summary
 
 Built and working: parser, UML reader, comparator, four gates, versioning,
-statistics, graph, exports, replication packaging. 210 backend tests pass and
+statistics, graph, exports, replication packaging. 279 backend tests pass and
 TypeScript compiles clean.
 
 Not done: **the corpus**. You have 1 project and 3 runs. You need 4–6 projects

@@ -88,8 +88,36 @@ are precisely the ones most likely to outrun the end of the history.
 the recommended gate, plus whether the ordering of gates is the same everywhere.
 
 **Table 4 — The controlled test.** Sixteen deliberate design changes with known
-right answers — nine that break conformance, seven that do not. The only table
-with unambiguous ground truth. Produced by `evaluate_deviations.py`.
+right answers — ten that change the deterministic findings, six that do not.
+The only table with unambiguous ground truth. Produced by
+`evaluate_deviations.py`.
+
+**What "missed" means in a replay.** The deterministic findings are recomputed
+on every run, so they are never stale; what a gate can leave stale is the
+model-authored analysis it reuses. A run is *missed* when the gate reused and
+the findings that analysis was written for differ from the oracle's at that
+commit. An earlier version compared the gated run's fresh findings with the
+oracle's, which can never differ, and so could only ever report zero.
+
+**Tokens offline.** An offline replay spends nothing. Each run therefore also
+records `counterfactual_prompt_tokens` — the size of the prompt the gate would
+have sent (zero when it reused) — and Table 2 carries
+`counterfactual_percent_saved` beside the measured spend. It is never added to
+spend.
+
+**Conformance drift (`drift.json`, end of `REPORT.md`).** Computed from the
+oracle only, so no gate affects it:
+
+| Measure | Question |
+|---|---|
+| Trajectory | Convergences, divergences and absences at every commit |
+| Direction | Did the code grow away from the design (divergence-led) or did designed elements disappear (absence-led)? |
+| Element survival | For each designed element conforming at the freeze commit, commits until it first deviated — Kaplan-Meier, censored at the end of the window |
+| Half-life | Commits until half the initially conforming elements had deviated; "not reached" when fewer than half did |
+
+An undocumented constructor is not counted as a divergence (class diagrams
+conventionally omit constructors); a constructor the diagram specifies is
+still checked.
 
 **The one test.** McNemar's exact test between the two candidate gates. The
 design is paired — every commit goes through every gate — so only the commits

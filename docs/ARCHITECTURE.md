@@ -168,7 +168,7 @@ Every file except tests, so nothing is unaccounted for.
 | `stats/report.py` | Builds the four tables and writes every plain-English sentence |
 | `stats/exports.py` | CSV bundle, IEEE LaTeX, one file per table |
 | `tools/check_imports.py` | Static cross-module import check |
-| `tests/` | 210 tests, stdlib `unittest`, no pytest needed |
+| `tests/` | 279 tests, stdlib `unittest`, no pytest needed |
 
 ### frontend/src/
 

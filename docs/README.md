@@ -32,7 +32,7 @@ Everything in this repository exists to produce that measurement.
 | Parser, UML reader, comparator, four gates, versioning | Done |
 | Statistics: four tables, McNemar, two charts, per-project breakdown | Done |
 | Static layered graph, SVG export, replication packaging | Done |
-| Paper draft (`paper/IEEE-Access-draft.docx`) | Written, 21 numbers to fill |
-| **A corpus** | **Not started — the only blocker** |
+| Paper (`paper/paper.md` → `paper.docx`) | Written; archive link to fill |
+| Corpus | Three projects with abandoned diagrams, replayed; more would strengthen it |
 
-Everything except the corpus is an afternoon. The corpus is the project.
+The main remaining work is a larger corpus.

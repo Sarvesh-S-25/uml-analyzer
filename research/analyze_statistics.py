@@ -34,6 +34,7 @@ os.environ.setdefault("LLM_MODE", "offline")
 
 from stats.core import count, percent  # noqa: E402
 from stats.exports import split_latex, to_csv_bundle  # noqa: E402
+from stats.drift import build_drift_report, drift_markdown  # noqa: E402
 from stats.report import build_report, normalise_rows  # noqa: E402
 
 
@@ -221,6 +222,8 @@ def build_replication_package(out_dir: str, runs_csv: Optional[str]) -> str:
         (os.path.join(out_dir, "deviations.csv"), "results/deviations.csv"),
         (os.path.join(out_dir, "deviations_summary.json"), "results/deviations_summary.json"),
         (os.path.join(out_dir, "summary.json"), "results/summary.json"),
+        (os.path.join(out_dir, "drift.json"), "results/drift.json"),
+        (os.path.join(out_dir, "drift_elements.csv"), "results/drift_elements.csv"),
         # What produced them.
         (os.path.join(root, "research", "corpus.json"), "corpus.json"),
         (os.path.join(root, "research", "replay.py"), "scripts/replay.py"),
@@ -324,6 +327,19 @@ def main(argv: Optional[List[str]] = None) -> int:
             handle.write(content)
 
     write_markdown(report, os.path.join(args.out, "REPORT.md"))
+
+    # Conformance drift, from the oracle's counts on every commit and, when the
+    # replay wrote it, the per-element status file beside runs.csv.
+    element_rows: List[Dict[str, Any]] = []
+    if args.runs:
+        elements_csv = os.path.join(os.path.dirname(os.path.abspath(args.runs)), "drift_elements.csv")
+        if os.path.isfile(elements_csv):
+            element_rows = read_runs_csv(elements_csv)
+    drift = build_drift_report(normalise_rows(rows), element_rows)
+    with open(os.path.join(args.out, "drift.json"), "w", encoding="utf-8") as handle:
+        json.dump(drift, handle, indent=2)
+    with open(os.path.join(args.out, "REPORT.md"), "a", encoding="utf-8") as handle:
+        handle.write("\n" + drift_markdown(drift))
 
     # A short version of the headline on the terminal, so a run that produced
     # nothing useful is obvious without opening a file.

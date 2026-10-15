@@ -481,6 +481,7 @@ def run_analysis(
                 "removed_nodes": len(decision.delta.removed_nodes),
                 "impact_nodes": len(decision.impact_nodes),
                 "prompt_tokens": llm_result.prompt_tokens,
+                "counterfactual_prompt_tokens": llm_result.counterfactual_prompt_tokens,
                 "completion_tokens": llm_result.completion_tokens,
                 "latency_ms": round(elapsed_ms, 1),
                 "llm_latency_ms": round(llm_result.latency_ms, 1),

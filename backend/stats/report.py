@@ -82,6 +82,11 @@ def normalise_rows(rows: Sequence[Dict[str, Any]], default_project: str = "proje
                 "diverges_from_oracle": _optional_bool(row.get("diverges_from_oracle")),
                 "conformance_changed": _optional_bool(row.get("conformance_changed")),
                 "tokens": _num(row.get("prompt_tokens")) + _num(row.get("completion_tokens")),
+                # Offline replays spend nothing; this is the prompt each run
+                # would have sent. Reported beside spend, never added to it.
+                "counterfactual_tokens": _num(row.get("counterfactual_prompt_tokens")),
+                "source_touched": _optional_bool(row.get("source_touched")),
+                "provenance": row.get("provenance") or "",
                 "latency_ms": _num(row.get("latency_ms")),
                 "changed_nodes": _num(row.get("changed_nodes")),
                 "similarity": _optional_num(row.get("similarity_score")),
@@ -348,6 +353,12 @@ def _recovery_horizon(subset: List[Dict[str, Any]]) -> Dict[str, Any]:
         for position, row in enumerate(ordered):
             if not row["missed_change"]:
                 continue
+            # Count each stale stretch once, from its onset. A gate that keeps
+            # serving the same stale analysis for five commits missed one
+            # change, not five; timing every row of the stretch would count the
+            # same miss repeatedly with ever-shorter horizons.
+            if position > 0 and ordered[position - 1]["diverges_from_oracle"]:
+                continue
             gap: Optional[int] = None
             for later in ordered[position + 1 :]:
                 if later["diverges_from_oracle"] is False:
@@ -416,6 +427,10 @@ def table_gates(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
 
         tokens = sum(row["tokens"] for row in subset)
         saved = baseline_tokens - tokens
+        counterfactual = sum(row.get("counterfactual_tokens", 0) for row in subset)
+        baseline_counterfactual = sum(
+            row.get("counterfactual_tokens", 0) for row in by_gate[baseline_gate]
+        )
 
         entry = {
             "gate": gate,
@@ -446,6 +461,12 @@ def table_gates(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
             "tokens": int(tokens),
             "tokens_saved": int(saved) if gate != baseline_gate else None,
             "percent_saved": round2(saved / baseline_tokens) if baseline_tokens and gate != baseline_gate else None,
+            "counterfactual_tokens": int(counterfactual),
+            "counterfactual_percent_saved": (
+                round2((baseline_counterfactual - counterfactual) / baseline_counterfactual)
+                if baseline_counterfactual and gate != baseline_gate
+                else None
+            ),
             "median_latency_ms": median([row["latency_ms"] for row in subset]),
             "is_baseline": gate == baseline_gate,
             "enough_runs": runs >= MIN_RUNS_FOR_A_TRUSTWORTHY_RATE,

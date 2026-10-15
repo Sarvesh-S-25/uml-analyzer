@@ -32,8 +32,11 @@ candidate: the design is genuine and so is the drift. See
 ## 1. Seeded deviations — labelled ground truth
 
 Sixteen reproducible mutations of a reference project whose code matches its
-diagram exactly. Nine change conformance, two change structure without changing
-conformance, five are negative controls that must cost nothing.
+diagram exactly: nine conformance-breaking deviations, two structure-only edits
+(one adds an undocumented member, which is a divergence; one changes an arity,
+which the name-based comparison does not see), and five negative controls that
+must cost nothing. Ten change the deterministic findings and six do not, and
+the oracle agrees with every one of the sixteen declared labels.
 
 ```bash
 python research/evaluate_deviations.py --out results/
@@ -57,11 +60,23 @@ python research/replay.py --corpus research/corpus.json --out results/
 ```
 
 For each commit, each gate gets its own project and its own analysis, and a
-separate always-forced run acts as the oracle. Wherever a gate reused a cached
-analysis but the forced run's deterministic findings differ, that commit is
-recorded as a missed change.
+separate always-forced run acts as the oracle.
 
-Produces `runs.csv` (one row per commit per gate) and `summary.json`. Feed
+**What a miss is.** The deterministic findings are recomputed on every run,
+gated or not, so they can never be stale. What a gate can leave stale is the
+*model-authored analysis* it reuses. Each gate therefore tracks which findings
+its served analysis was produced for; a commit is a **missed change** when the
+gate reused and those findings no longer equal the oracle's. A stale analysis
+stays stale until the gate next re-analyses, and every commit in between is
+counted (the "missed, all runs" denominator); the recovery horizon counts each
+stale stretch once, from its onset.
+
+Give `start` (the diagram-freeze commit) to replay forward from the design as
+its author left it; `commits: 0` means every commit after it. `provenance`
+labels where the design came from.
+
+Produces `runs.csv` (one row per commit per gate), `drift_elements.csv` (one
+row per designed element per commit) and `summary.json`. Feed
 `runs.csv` to `research/analyze_statistics.py` to turn it into the paper's
 tables, CSV/LaTeX exports, and the replication package.
 
@@ -89,7 +104,12 @@ the variance across projects is itself a result worth reporting.
 |---|---|
 | `gate_allowed_llm` | The gate decided this commit needed a fresh analysis |
 | `reused` | The gate served the previous version instead |
-| `missed_change` | It reused, **and** a forced run disagreed — a false negative |
+| `missed_change` | It reused, **and** the analysis it served was written for findings the oracle no longer reports |
+| `diverges_from_oracle` | The served analysis disagrees with the oracle, reused or not |
+| `conformance_changed` | The oracle's findings differ from the previous commit's (a property of the commit) |
+| `source_touched` | Any analysed source file changed since the previous commit |
+| `counterfactual_prompt_tokens` | Offline only: the prompt the gate *would* have sent; 0 when it reused |
+| `convergences` / `divergences` / `absences` | The oracle's reflexion counts at this commit — the drift trajectory |
 | `impact_nodes` | Size of the subgraph sent to the model when it did run |
 | `call_resolution_rate` | Share of call sites attributed to exactly one target |
 | `ambiguous_calls` | Call sites left unlinked because several targets matched |

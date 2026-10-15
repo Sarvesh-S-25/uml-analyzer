@@ -92,6 +92,10 @@ class LlmResult:
     attempts: int = 0
     degraded: bool = False
     notes: List[str] = field(default_factory=list)
+    # Size of the prompt that *would* have been sent, when none was. Kept apart
+    # from `prompt_tokens` so a counterfactual is never reported as spend; it is
+    # what makes an offline replay able to say what a gate saves.
+    counterfactual_prompt_tokens: int = 0
 
     def usage(self) -> Dict[str, Any]:
         return {
@@ -99,6 +103,7 @@ class LlmResult:
             "provider": self.provider,
             "invoked": self.invoked,
             "prompt_tokens": self.prompt_tokens,
+            "counterfactual_prompt_tokens": self.counterfactual_prompt_tokens,
             "completion_tokens": self.completion_tokens,
             "latency_ms": round(self.latency_ms, 1),
             "attempts": self.attempts,
@@ -607,6 +612,9 @@ def evaluate_conformance(
 
     if not provider_available(provider):
         result = _offline_result(code_architecture, rule_findings)
+        result.counterfactual_prompt_tokens = count_tokens(
+            SYSTEM_PROMPT + build_prompt(uml_design, code_architecture, scope, rule_findings)
+        )
         if model_spec and provider != "offline":
             result.notes.append(f"{provider} is not configured; used the deterministic path.")
         return result

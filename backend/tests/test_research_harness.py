@@ -72,7 +72,12 @@ class CorpusTests(unittest.TestCase):
     def test_bundled_corpus_parses(self):
         specs = harness.load_corpus(os.path.join(RESEARCH, "corpus.json"))
         self.assertTrue(specs)
-        self.assertEqual(specs[0].name, "reference-orders")
+        # Every corpus entry must say where its design came from and which
+        # commit froze it -- the paper reports both for every subject.
+        for spec in specs:
+            self.assertIn(spec.provenance, {"found", "curated", "recovered", "synthetic"})
+            self.assertTrue(spec.start, f"{spec.name} has no freeze commit")
+            self.assertTrue(spec.uml and os.path.isfile(os.path.join(RESEARCH, "..", spec.uml)))
 
     def test_spec_defaults(self):
         spec = harness.ProjectSpec.from_dict({"name": "x", "source": "/tmp/x"})

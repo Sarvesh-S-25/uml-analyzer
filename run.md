@@ -229,7 +229,7 @@ the whole pipeline deterministic.
 From `backend\`, with the venv active:
 
 ```powershell
-python -m unittest discover -s tests -t .    # 258 tests
+python -m unittest discover -s tests -t .    # 279 tests
 python tools\check_imports.py
 ```
 
@@ -337,7 +337,7 @@ it with `ollama serve`, or set `OLLAMA_BASE_URL` if it runs on another machine.
 
 **The suite is red.** Compare the *set* of failures against the note in
 `.claude/CLAUDE.md` before assuming it is your environment. On a clean checkout
-all 258 pass.
+all 279 pass.
 
 **Changes to `.env` do nothing.** It is read at startup only. Restart the
 backend.

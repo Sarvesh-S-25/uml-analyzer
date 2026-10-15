@@ -23,13 +23,11 @@ touching:
 | `backend/` | FastAPI, SQLAlchemy, tree-sitter, NetworkX | `uvicorn main:app --reload --port 8000` |
 | `frontend/` | React 19, Vite, Tailwind v4, no chart library | `npm run dev` |
 | `research/` | Plain Python scripts, no framework | run individually, see `docs/START-HERE.md` |
-| `paper/` | `IEEE-Access-draft.docx` + a build script | edited directly in Word |
+| `paper/` | `paper.md` → `paper.docx` via `build-paper-docx.js` | edit `paper.md`, then rebuild |
 
-**This directory is not a git repository.** Do not assume `git status`/`git
-diff` work here — they will error. If a task needs a diff, ask what changed or
-work from the files named in the request. (The *analysed projects* under
-`workspace/` and the corpus repos under `research/` are separate git checkouts
-and behave normally.)
+This directory is a git repository (remote: `Sarvesh-S-25/uml-analyzer`).
+The *analysed projects* under `workspace/` and the corpus clones under
+`.corpus-cache/` are separate git checkouts; both are ignored.
 
 ## The six invariants — read `docs/ARCHITECTURE.md` §4 for the reasoning
 
@@ -54,7 +52,7 @@ Most real defects in this codebase are one of these, not style problems:
 ## Before finishing any change
 
 1. **Backend touched** → `python -m unittest discover -s tests -t .` from
-   `backend/` (258 tests, stdlib `unittest`, no pytest). Also run
+   `backend/` (279 tests, stdlib `unittest`, no pytest). Also run
    `python tools/check_imports.py`.
    As of this writing the suite is fully green on a clean checkout — the three
    tests once documented here as known-failing (`test_full_cycle`,
@@ -125,6 +123,7 @@ actual tokens (Tailwind v4, `frontend/src/lib/theme.ts`, `frontend/src/index.css
 ## Status, in one line
 
 Parser, UML reader, comparator, four gates, versioning, statistics, static
-graph and exports are built and tested. The corpus — 4–6 real projects with a
-frozen diagram and 30–40 replayed commits each — is the only thing not done.
+graph, exports and drift measures are built and tested. A three-project corpus
+of abandoned StarUML diagrams is replayed (`research/corpus.json`) and the
+paper is written (`paper/paper.md`); enlarging the corpus is the open work.
 `docs/README.md` and `docs/START-HERE.md` say what that involves.
