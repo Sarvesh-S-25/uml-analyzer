@@ -1,7 +1,9 @@
-# Secrets — never commit these
-backend/.env
-frontend/.env
-frontend/.env.local
+# Secrets — never commit these. Only the *.example templates are tracked.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
 
 # Python
 __pycache__/
@@ -12,9 +14,12 @@ venv/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+.coverage
+htmlcov/
 
 # Application data
-backend/conformance_app.db
+*.db
+*.sqlite3
 workspace/
 backend/workspace/
 
@@ -24,10 +29,18 @@ results/
 deviation-repo/
 extracted-mdj/download-cache/
 
+# Old nested copy of this repo — not part of the tracked tree
+uml-analyzer/
+
 # Node
 node_modules/
 dist/
 *.tsbuildinfo
+
+# Tool and agent scratch output
+.playwright-mcp/
+*.log
+*.tgz
 
 # Editors and OS
 .vscode/
