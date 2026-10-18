@@ -299,7 +299,9 @@ while (i < lines.length) {
       spacing: { after: 160, line: 200 },
       children: runs(cap, { size: PT(8) }),
     })
-    if (/fig-drift/.test(src)) addWide(figure(src, 6.9), capPara)
+    // The old per-project drift strip needs the page width; the corpus scatter
+    // (figures-v2) is column-sized like the others.
+    if (/figures\/fig-drift/.test(src)) addWide(figure(src, 6.9), capPara)
     else add(figure(src, 3.35), capPara)
     continue
   }

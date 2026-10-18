@@ -12,7 +12,40 @@ three projects drifted.*
 
 ## Abstract
 
-⟦ABSTRACT⟧
+A UML class diagram is committed, and the code moves on without it. Measuring
+that drift means re-checking conformance at every commit. Language models make
+the check easier to build and its findings easier to read, but each check
+costs a model call, and most commits cannot change whether code matches a
+class diagram.
+
+We present CompX, a conformance checker for StarUML class models and code in
+six languages, built on one rule: the conformance verdict is computed
+deterministically on every commit, and only the model-written explanation is
+gated. A gate that never reads the diagram decides from the code's structure
+whether the explanation must be regenerated. We compare four gate policies,
+with a 7.6-billion-parameter open-weight code model served locally (no hosted
+API), and measure drift over 52 open-source projects whose own
+authors committed a StarUML class model and then stopped updating it, found by
+a systematic search of GitHub and screened by a rule fixed in advance
+(2,606 first-parent commits in Java, C#, Python, PHP, JavaScript and
+TypeScript).
+
+Drift was common: 44 of 52 projects changed conformance after
+their diagram was abandoned, 20.1% of commits changed it, and the drift
+was overwhelmingly divergence-led (divergences +1,703, absences
++139). A structural gate re-analysed every one of the 514
+conformance-changing commits while skipping 60% of commits and
+92% of prompt tokens. With the real model, its seeded-deviation
+calls used 35% of the baseline's measured prompt tokens, and the model
+evaluated 1.051 times the counterfactual token estimate used in earlier
+work (range 1.029–1.092), so that estimate holds up. A graph-isomorphism gate skipped more commits but served stale
+explanations after 51 shape-preserving changes, most of them member
+replacements rather than the class renames it was designed to tolerate. On a
+laptop, only 38% of full-project prompts fit a 32k-token window
+against 87% of structurally scoped ones, so scoping is what makes a
+local model usable, and scoping also changes what the model notices. We
+release the tool, the corpus search, the live-model protocol and the scripts
+behind every number.
 
 **Index Terms —** architectural drift, architecture conformance checking,
 reflexion models, UML, large language models, local models, incremental
@@ -61,7 +94,7 @@ one drifted. Here we (i) put a real model in the loop, a 7.6-billion-parameter
 open-weight code model served locally by Ollama, with no hosted API and no key,
 and record what the model server itself measures; and (ii) replace hand-picked
 subjects with a systematic search of GitHub for StarUML class models, screened
-by a rule fixed before any replay, which yields ⟦N_PROJECTS⟧ projects.
+by a rule fixed before any replay, which yields 52 projects.
 
 We ask five research questions:
 
@@ -89,8 +122,8 @@ We ask five research questions:
    that send the same prompt share one call, a context-fit guard that refuses
    to send a prompt the model would silently truncate, and deterministic scores
    for the explanation a user is served (Section IV-D).
-6. Results on 16 seeded deviations and ⟦N_PROJECTS⟧ projects with abandoned
-   StarUML models (⟦N_COMMITS⟧ first-parent commits), and a replication package.
+6. Results on 16 seeded deviations and 52 projects with abandoned
+   StarUML models (2,606 first-parent commits), and a replication package.
 
 ---
 
@@ -148,7 +181,7 @@ whatever the gate says. The gate decides one thing: whether the model's written
 analysis (gaps and recommendations in prose) is regenerated for the changed
 part of the graph or carried over from the previous version.
 
-![Fig. 1](figures/fig-pipeline.svg)
+![Fig. 1](figures-v2/fig-pipeline.svg)
 *Fig. 1. One analysis. The verdict is computed on every commit and only the
 explanation is gated. The gate's only input is code structure (dashed line).*
 
@@ -239,7 +272,53 @@ comment, whitespace, a local rename, reordered methods, a docstring).
 
 ### B. Corpus: a systematic search
 
-⟦CORPUS_SEARCH⟧
+The previous corpus was three projects found by browsing. This one comes from
+a search with a fixed procedure (all artifacts in `research/corpus-search/`).
+
+1. **Search.** GitHub code search, through its web interface, for files
+   matching `path:*.mdj` that contain both `UMLClass` and `UMLOperation`,
+   sliced by 49 extra terms because each query returns at most about a
+   hundred results, gave 3,056 repositories; Sourcegraph's public code search
+   for `.mdj` files containing `UMLClass` gave another 102.
+2. **Staleness.** For every GitHub repository, the last commit touching each
+   model was compared with the repository's last commit. Models last edited at
+   least 180 days before the repository's last commit were kept. Repositories
+   whose names or paths mark coursework (semester, lab, assignment, course
+   codes, design-pattern tutorials) and non-class diagrams were removed, first
+   by a regular expression and then by hand.
+3. **Screen.** For each of the 215 remaining (repository, model) pairs, a
+   script took the model at its last edit (the *freeze*), found which designed
+   classes are declared in the code at the freeze, took their common directory
+   as the analysed directory, counted first-parent commits after the freeze
+   touching it, and ran the checker at the freeze and at the head.
+4. **Inclusion rule**, fixed before any replay: at least 5 designed classes,
+   at least 3 of them in the code at the freeze; at least 3 later first-parent
+   commits touching the analysed directory; 1 to 1,500 source files at the
+   freeze, with the directory still present at the head; one model per
+   repository; forks dropped when their upstream qualifies. The rule never
+   looks at whether a project drifted.
+
+Of the 215 pairs, 112 named too few designed classes in the code, 41 had too
+little later activity under the analysed directory, 3 had lost the directory,
+2 were too large and 5 could not be parsed or checked out; 50 qualified. With
+the three projects of the first study the corpus has 53. One (city-sim) could
+not be replayed on Windows because its history contains a path with a trailing
+space, and 52 were replayed.
+
+**Table II. Corpus composition (replayed projects).**
+
+| | Value |
+|---|---|
+| Projects | 52 (Java 18, C# 12, Python 10, PHP 5, JavaScript 4, TypeScript 3) |
+| Model last edited | 2015–2025 (median year 2021) |
+| First-parent commits per project | median 32, range 4–150 (windows capped at 150) |
+| Calendar span of the window | median 560 days, range 149–2,764 |
+| Analysed source files at the freeze | median 38, range 4–803 |
+| Total commits replayed | 2,606 |
+
+*The per-project list, with repository, model path, freeze commit and analysed
+directory, is `research/corpus-v2.json`; `results/v2/corpus_table.json` adds
+window, size and score at both ends.*
 
 ### C. Replay procedure
 
@@ -306,24 +385,120 @@ as zero.
 
 ### A. RQ1: How the code drifted
 
-⟦RQ1⟧
+**Table III. Drift over the post-freeze windows (oracle findings, first-parent).**
+
+| | Projects | Share |
+|---|---|---|
+| Changed conformance at least once | 44 | 85% |
+| Divergence-led | 37 | |
+| Absence-led | 5 | |
+| Converging (deviations fell) | 2 | |
+| Stable (no change) | 8 | |
+
+| | Commits |
+|---|---|
+| Judged transitions | 2,554 |
+| Changed conformance | 514 (20.1%, CI 18.6–21.7%) |
+| Eroding / repairing | 412 / 69 |
+| Net change in divergences / absences, summed | +1,703 / +139 |
+
+![Fig. 2](figures-v2/fig-drift.svg)
+*Fig. 2. Net change in divergences against net change in absences over each
+project's window, one dot per project (symmetric-log axes). Below the dashed
+line the code grew away from the design faster than designed structure
+disappeared. The labelled outlier is astrominer (+477 divergences).*
+
+**Drift is the rule, not the exception.** The first study's corpus had one
+drifting project out of three. In this one, 44 of 52 projects
+changed conformance at least once after their diagrams were abandoned, and
+about one commit in five (20.1%) changed it. Most of the remaining
+commits touched source without touching anything a class diagram describes.
+
+**It mostly runs one way.** 37 windows were divergence-led, and summed
+over the corpus, divergences grew by 1,703 against 139 for absences.
+Eroding commits outnumbered repairing ones 412 to 69. The
+pattern the first study saw in one project generalises: code grows *around*
+an abandoned design (new undocumented classes and members) far more than it
+removes what the design describes. The extreme case, astrominer, a Unity game,
+went from 44 to 521 divergences and from a score of 42.9% to 15.2% in 94
+commits. Divergence-led does not mean harmless: in cookpot, divergences grew
+by 27 while 14 designed members disappeared, and the score fell from 74.2% to
+51.6%. Of the 5 absence-led windows, two show the pattern clearly: prism-php (84.2% to
+79.0%) and projet-hotel (65.2% to 60.9%), where designed members disappeared
+without new undocumented code to match.
+
+**Element survival.** 119 designed elements conformed at their
+freeze; 26 of them deviated within the window. Pooled Kaplan–Meier
+survival at the end of the longest window is 0.68 (Fig. 3), so the
+half-life is not reached. Deviation was front-loaded: about one element in
+six deviated within fifteen commits of the freeze, after which the curve
+declines slowly.
+
+![Fig. 3](figures-v2/fig-survival.svg)
+*Fig. 3. Share of initially conforming designed elements still conforming,
+pooled over the corpus (Kaplan–Meier, censored at each window's end).*
+
+*Answer to RQ1.* Abandoned class diagrams drift in most projects, slowly per
+commit but steadily, and the drift is dominated by undocumented code added
+around the design rather than by the design's removal.
 
 ### B. RQ2: What each gate avoids
 
-⟦RQ2⟧
+**Table IV. Gates over the corpus (2,606 commits, 2,554 judged transitions).**
+
+| Gate | Re-analysed | Skip rate [95% CI] | Recall (n = 514) | Specificity (n = 2,040) | Stale runs | Counterfactual tokens saved |
+|---|---|---|---|---|---|---|
+| always | 2,606 | 0% [0%–0%] | 100% [99%–100%] | 0% [0%–0%] | 0 | — |
+| content | 1,399 | 46% [44%–48%] | 100% [99%–100%] | 59% [57%–61%] | 0 | 83% |
+| structural | 1,049 | 60% [58%–62%] | 100% [99%–100%] | 76% [74%–78%] | 0 | 92% |
+| isomorphism | 872 | 67% [65%–68%] | 93% [90%–95%] | 83% [82%–85%] | 117 | 92% |
+
+![Fig. 4](figures-v2/fig-gates.svg)
+*Fig. 4. Skip rate against recall of conformance changes, with 95% Wilson
+intervals.*
+
+The structural gate skipped 60% of commits, re-analysed every one of
+the 514 commits that changed conformance, and avoided 92% of
+the prompt tokens the `always` baseline would have sent. The isomorphism gate
+skipped more (67%) at a real cost in recall (Section V-C). The two
+disagree on 177 commits, always in the same direction (structural
+re-analysed, isomorphism skipped); McNemar's exact test puts the difference far
+beyond chance (p < 0.001), which the three-project corpus could not test at
+all. The content gate paid for every commit that changed bytes, including
+350 commits that changed neither structure nor findings.
+
+**Measured, not only counted.** Where the live arm sent prompts, the saving is
+measured in tokens the model server evaluated. On the seeded set the
+structural gate used 35% of the baseline's measured prompt tokens (Table V).
+The live corpus arm had not finished any project when these numbers were produced.
+
+*Answer to RQ2.* A structural gate avoids three model calls in five and about
+nine prompt tokens in ten, measured on a real model where it could be, and
+missed no conformance change in 514.
 
 ### C. RQ3: What skipping costs in what the user is told
 
-**Stale explanations in the corpus.** ⟦RQ3_CORPUS⟧
+**Stale explanations in the corpus.** No `always`, `content` or `structural` run ever served
+an explanation written for findings that no longer held. The isomorphism gate
+served 117 stale runs (4.5% of its runs). They began at
+51 commits that the gate judged pure renames, and persisted on the
+following structurally unchanged commits until a later change refreshed the
+explanation; stale stretches were refreshed after a median of 2 commits (at
+most 9, 3 censored at the end of a window). The designed failure
+mode turned out to be broader than we specified. We expected it on consistent
+class renames; 112 of the 117 stale runs involved member-level
+findings, where a method or field of a designed class was replaced by another
+of the same kind (for example `localFix()` replaced by `parseRequestHeaders()`
+in prism-php's `Request`), which leaves the graph's shape unchanged.
 
-**Seeded deviations with a real model.** Table VII repeats the controlled
+**Seeded deviations with a real model.** Table V repeats the controlled
 experiment with every gate re-analysis sent to the local model. The gate
 decisions are those of the offline run, since a gate never sees model output:
 the structural gate fired on all ten findings-changing mutations and on one
 structure-only change, and the isomorphism gate let through only the
 consistent rename it is designed to absorb.
 
-**Table VII. Seeded deviations with the live model (16 mutations; 10 change the findings).**
+**Table V. Seeded deviations with the live model (16 mutations; 10 change the findings).**
 
 | Gate | Real calls | Prompt tokens (measured) | Model time | Mean coverage of changed elements | Explanations naming every changed element | Invented identifiers |
 |---|---|---|---|---|---|---|
@@ -353,18 +528,59 @@ named the controller that bypasses its service, a finding that exists only as
 a layer-rule violation. No answer, scoped or full, named an identifier that
 does not exist.
 
-*Answer to RQ3.* ⟦RQ3_ANSWER⟧
+*Answer to RQ3.* Skipping by structure cost nothing in the corpus. Skipping
+by shape cost stale explanations at 7% of conformance changes, mostly member
+replacements, recovered within a couple of commits; and even then the verdict
+served beside the stale text was current. A real model makes one further cost
+visible that a counterfactual cannot: scoping the prompt to the change also
+changes what the model notices.
 
 ### D. RQ4: Can a laptop model serve the loop?
 
-⟦RQ4⟧
+A laptop removes the per-token bill but imposes two limits:
+a bounded context window and slow generation.
+
+**Table VI. Gate prompts that fit a local 32,768-token window** (sent only
+below 85% of the window; sizes converted with the measured ratio of
+1.051 model tokens per `cl100k` token).
+
+| Gate | Fired prompts | Fit [95% CI] | Median size | 90th percentile |
+|---|---|---|---|---|
+| always | 2,606 | 38% [36–40] | 43,785 | 215,765 |
+| content | 1,399 | 74% [72–77] | 13,009 | 61,235 |
+| structural | 1,049 | 87% [85–89] | 8,970 | 33,712 |
+| isomorphism | 872 | 85% [82–87] | 10,245 | 36,873 |
+
+The full-project prompt fits in only 38% of cases, and for
+21 of 52 projects it never fits at all. Scoped prompts fit
+87% of the time. On a local model, scoping is therefore not only a
+saving but what makes per-commit analysis possible: for the larger projects
+an unscoped check can be done only by truncating the project the model is
+asked to judge.
+
+**Time.** Throughput on the integrated GPU was a median 376 prompt
+tokens and 12.9 generated tokens per second. On the seeded set a scoped
+call took a median 39 s against 47 s for a full one, although its prompt was
+half the size: most of the time is spent writing the answer. A skipped call
+saves its whole duration, so on local hardware the skip rate, not the prompt
+size, decides the time a gate saves.  Of the answers, 6 of 45
+reached the 2,048-token output cap before closing their JSON; the tool then
+falls back to the deterministic findings, which is the degradation Section
+III-A is designed for.
+
+*Answer to RQ4.* Yes, with a structural gate: about nine in ten of its
+re-analyses fit a laptop model's window, against four in ten full-project
+checks, and the calls it avoids are where the time goes.
 
 ### E. RQ5: Can the instrument be trusted?
 
 *Labels.* For all 16 mutations the oracle's findings changed exactly when the
 label said they should, before and after the fixes in Section V-F.
 
-*Oracle determinism.* ⟦ORACLE_AGREE⟧
+*Oracle determinism.* every project's replay ran as one process with its own
+oracle. Merging the projects, we compared the oracle copies of every gate at
+every commit on conformance change, source change, reflexion counts, score and
+a hash of the findings; they agreed at all 2,606 commits.
 
 *Model repeatability.* We sent 13 prompts a second time with the cache
 bypassed. Eleven answers were byte-identical, twelve had identical lists of
@@ -376,8 +592,8 @@ design keeps the model out of the verdict.
 
 *Counterfactual against measured tokens.* The previous version of this study
 reported prompt sizes in `cl100k_base` tokens without sending them. Over the
-⟦N_CALIBRATION⟧ distinct prompts sent here, Ollama evaluated a median of
-⟦CAL_RATIO⟧ times the `cl100k` estimate (range ⟦CAL_RANGE⟧). The
+45 distinct prompts sent here, Ollama evaluated a median of
+1.051 times the `cl100k` estimate (range 1.029–1.092). The
 counterfactual was a slight and nearly uniform underestimate, so every saving
 reported as a percentage is unaffected.
 
@@ -431,15 +647,15 @@ conclusions do not survive, which is why the corpus is replayed first-parent.
 ### H. Reproducing the results
 
 ```
-python research/evaluate_deviations.py --out results/                  # Table VI
-python research/live_deviations.py --out results/live                  # Table VII
+python research/evaluate_deviations.py --out results/                  # offline seeded set
+python research/live_deviations.py --out results/live                  # Table V
 python research/build_corpus.py --screen research/corpus-search/screen-results.json --out research/corpus-v2.json
 python research/replay_each.py --corpus research/corpus-v2.json --out results/corpus-v2
 python research/merge_results.py --out results/v2 results/corpus-v2/*/
 python research/analyze_statistics.py --runs results/v2/runs.csv --out results/v2 --replication
 python research/live_llm.py --corpus research/corpus-v2.json --only <project> --out results/live --model qwen2.5-coder:7b --num-ctx 32768 --always-sample 10
-python research/paper_numbers.py --results results/v2                  # Tables III-V
-python research/live_numbers.py --live results/live                    # live tables
+python research/paper_numbers.py --results results/v2                  # Tables II-IV
+python research/live_numbers.py --live results/live                    # Tables V-VI
 python research/fit_numbers.py --runs results/v2/runs.csv --ratio <median ratio>
 ```
 
@@ -449,19 +665,115 @@ The live arm needs Ollama with `qwen2.5-coder:7b` pulled; it never needs a key.
 
 ## VI. Discussion
 
-⟦DISCUSSION⟧
+### A. Gate the explanation, never the verdict
+
+Cost control for language models is usually a trade-off: save money, lose some
+correctness. We accept that trade-off for the explanation and refuse it for the
+verdict, because the deterministic comparison is cheap. The corpus confirms
+why this matters in practice. The isomorphism gate left 117 runs with a
+stale explanation, and the live model, running at temperature 0, still
+answered two of thirteen repeated prompts differently. In both cases the score
+and the lists of divergences and absences beside the explanation were exact.
+A tool that let either the gate or the model decide its verdict would have
+been wrong in exactly those cases.
+
+### B. Choosing a gate
+
+A gate is safe when the property it tests implies the property one cares
+about. The structural gate's fingerprint includes every declared member, so a
+replaced method changes it; it missed nothing in 514 changes. The
+isomorphism gate's property, graph shape under kind-preserving matching, does
+not include member names, so swapping one method for another of the same kind
+leaves it blind. We specified its failure as the consistent class rename; the
+corpus shows the wider family it belongs to. We now recommend the structural
+gate without qualification. Its extra cost over the isomorphism gate is
+177 calls in 2,606 commits, and on a local model each of them is
+a minute or two.
+
+### C. What a local model changes
+
+Moving from a hosted to a local model does not remove the cost; it changes its
+unit from money to time and adds a hard ceiling, the context window. Both make
+gating more valuable, not less. Generation, not prompt reading, dominated the
+time of a call on our hardware, so the calls a gate skips are where the time
+goes; and full-project prompts did not fit the window in most cases, so an
+ungated tool would have to truncate. Scoping has a price that the counterfactual
+study could not see: the model described the changed elements somewhat less
+completely from a scoped prompt than from the whole project. A reasonable
+design is to scope by default and send a full-project prompt when it fits and
+a release, not a commit, is being reviewed.
+
+### D. What the drift says about abandoned diagrams
+
+In most projects the abandoned diagram did not become wrong so much as
+incomplete: undocumented classes and members accumulated around a design that
+largely survived. This is the case a conformance check that reports only a
+score handles worst, because each new undocumented member lowers no score.
+Reporting the two directions separately, as reflexion models do, was what made
+the pattern visible.
 
 ---
 
 ## VII. Threats to Validity
 
-⟦THREATS⟧
+**Construct.** We compare by name, so a renamed class reads as an absence plus
+a divergence. Associations are graded rather than scored, and constructors are
+not counted as divergences. Our explanation scores are lexical: an explanation
+can name an element without explaining it correctly, and a correct
+explanation can describe an element without naming it. Coverage is therefore a
+lower bound on what a reader learns about the changed elements and says
+nothing about the quality of the advice. The invented-identifier score counts
+only names that appear nowhere in code or design. The counterfactual token
+sizes remain an estimate for prompts that were not sent; we report the
+measured ratio that converts them.
+
+**Internal.** The oracle is the deterministic engine the gates rely on, so a
+conformance change the engine cannot see is invisible to the evaluation. The
+analysed directory of each project was chosen automatically, as the common
+directory of the designed classes found in code; code outside it is not
+analysed. Windows are capped at 150 first-parent commits. The live corpus arm
+sampled the `always` baseline and covered only projects whose prompts were
+small enough to finish in the time available, which favours small projects.
+We found and fixed seven defects in the instrument (Section V-F); there may be
+others, which is why every raw run and every model answer is released.
+
+**External.** The corpus is what a public code search returns for StarUML
+class models, filtered by a fixed rule. It contains many small and student-
+team projects, because those are the projects that commit StarUML files; it
+says little about large industrial systems. The manual removal of coursework
+in the search stage is a threat to exact replication; the screen's rule, which
+rejected most such candidates on its own, is not. One model, one quantisation
+and one machine were used for the live arm; a larger or hosted model could
+explain more and would change the time figures, not the gate decisions.
+
+**Conclusion.** Every proportion carries a Wilson interval, and pooled rates
+treat commits as independent although they cluster in projects; Section V-A
+therefore reports project-level counts beside the pooled ones. With
+514 conformance-changing commits, a structural recall of 100% has a
+lower 95% bound of about 99%.
 
 ---
 
 ## VIII. Conclusion
 
-⟦CONCLUSION⟧
+We set out to measure conformance drift at every commit after a design was
+frozen without paying a language model to re-read an unchanged architecture
+each time, and to do it with a model that actually runs. Separating the
+deterministic verdict from the model's explanation made that possible and safe.
+On 52 projects whose authors abandoned their StarUML class models, drift
+was common and mostly took the form of undocumented code growing around the
+design. A structural gate skipped 60% of commits and 92% of
+prompt tokens and still re-analysed all 514 commits that changed
+conformance; a gate keyed on graph shape skipped more commits but served stale
+explanations after shape-preserving member changes. A local 7.6B-parameter
+model served the loop on a laptop, but only because the gate scoped the
+prompts: most full-project prompts did not fit its window.
+
+Three directions follow. The explanations need evaluating by people, not only
+by lexical scores. Gating policies that combine the structural fingerprint
+with changes in the deterministic findings, now that the findings are cheap to
+compare, are worth testing. And the corpus procedure can be rerun as more
+projects commit their models.
 
 ---
 

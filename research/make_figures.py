@@ -83,6 +83,68 @@ def fig_drift(plt, rows, out):
     plt.close(fig)
 
 
+def fig_drift_corpus(plt, drift, out):
+    """One dot per project: net change in divergences against net change in absences.
+
+    Per-project panels stop being readable past a handful of projects; this
+    keeps the direction claim visible at corpus scale. Points below the y = x
+    line are divergence-led, above it absence-led. Symmetric-log axes, because
+    a few projects drift by hundreds and most by a handful.
+    """
+    projects = [p for p in drift["projects"] if p.get("measured", True)]
+    xs = [p["net_divergence"] for p in projects]
+    ys = [p["net_absence"] for p in projects]
+    fig, ax = plt.subplots(figsize=(3.4, 2.7))
+    ax.set_xscale("symlog", linthresh=5)
+    ax.set_yscale("symlog", linthresh=5)
+    lim = max(max(map(abs, xs + ys)), 10) * 1.6
+    ax.plot([-lim, lim], [-lim, lim], color=MUTED, lw=0.8, ls=(0, (3, 3)), zorder=1)
+    ax.scatter(xs, ys, s=22, color=BLUE, edgecolors="white", linewidths=1.0, zorder=3)
+    # Label only the projects that drifted most, so the labels stay legible.
+    offsets = [((6, -3), "left"), ((-7, 7), "right")]
+    top = sorted(projects, key=lambda p: -(abs(p["net_divergence"]) + abs(p["net_absence"])))[:1]
+    for (offset, ha), p in zip(offsets, sorted(top, key=lambda p: -p["net_divergence"])):
+        ax.annotate(p["project"], (p["net_divergence"], p["net_absence"]), textcoords="offset points",
+                    xytext=offset, ha=ha, va="center", color=INK, fontsize=6.5)
+    ticks = [t for t in (-100, -10, 0, 10, 100, 1000) if abs(t) <= lim]
+    ax.set_xticks(ticks); ax.set_yticks(ticks)
+    ax.set_xticklabels([f"{t:+d}" if t else "0" for t in ticks])
+    ax.set_yticklabels([f"{t:+d}" if t else "0" for t in ticks])
+    ax.minorticks_off()
+    ax.annotate("absence-led", (-lim * 0.6, lim * 0.5), color=MUTED, fontsize=7, ha="left")
+    ax.annotate("divergence-led", (lim * 0.6, -lim * 0.5), color=MUTED, fontsize=7, ha="right")
+    ax.set_xlim(-lim, lim)
+    ax.set_ylim(-lim, lim)
+    ax.set_xlabel("net change in divergences")
+    ax.set_ylabel("net change in absences")
+    fig.tight_layout()
+    fig.savefig(os.path.join(out, "fig-drift.svg"))
+    fig.savefig(os.path.join(out, "fig-drift.png"), dpi=300)
+    plt.close(fig)
+
+
+def fig_survival_pooled(plt, element_rows, out):
+    """Kaplan-Meier over every initially conforming element of every project."""
+    pooled = [dict(row, project="all", element=f"{row['project']}::{row['element']}") for row in element_rows]
+    s = element_survival(pooled)["all"]
+    fig, ax = plt.subplots(figsize=(3.4, 2.4))
+    xs, ys = [0], [1.0]
+    for point in s["curve"]:
+        xs.append(point["commit"]); ys.append(point["survival"])
+    xs.append(s["window_commits"] - 1); ys.append(ys[-1])
+    ax.step(xs, ys, where="post", color=BLUE, lw=1.6)
+    ax.annotate(f"{s['conforming_at_freeze']} elements conforming at the freeze", (xs[-1], 1.0),
+                textcoords="offset points", xytext=(-2, -2), ha="right", va="top", color=INK, fontsize=7)
+    ax.axhline(0.5, color=MUTED, lw=0.8, ls=(0, (3, 3)))
+    ax.set_ylim(0, 1.05)
+    ax.set_xlabel("commits after diagram freeze")
+    ax.set_ylabel("share still conforming")
+    fig.tight_layout()
+    fig.savefig(os.path.join(out, "fig-survival.svg"))
+    fig.savefig(os.path.join(out, "fig-survival.png"), dpi=300)
+    plt.close(fig)
+
+
 def fig_survival(plt, element_rows, out):
     survival = element_survival(element_rows)
     fig, ax = plt.subplots(figsize=(3.4, 2.4))
@@ -118,10 +180,14 @@ def fig_gates(plt, statistics, out):
         yerr = [[y - (row["recall_low"] or y)], [(row["recall_high"] or y) - y]]
         ax.errorbar(x, y, xerr=xerr, yerr=yerr, fmt=markers.get(row["gate"], "o"),
                     color=BLUE, ms=6, mec="white", mew=1.2, elinewidth=0.9, capsize=2)
-        # structural and isomorphism usually land almost on top of each other;
-        # label them on opposite sides so both names stay legible.
-        offset = {"structural": (-4, 7), "isomorphism": (6, -24)}.get(row["gate"], (6, -10))
-        ha = "right" if row["gate"] == "structural" else "left"
+        # The gated policies cluster near the top; each label sits at its own
+        # marker (above, below, right) so no name is read against a neighbour.
+        offset, ha = {
+            "always": ((7, -11), "left"),
+            "content": ((0, 9), "center"),
+            "structural": ((0, -15), "center"),
+            "isomorphism": ((9, -14), "left"),
+        }.get(row["gate"], ((6, -10), "left"))
         ax.annotate(row["gate"], (x, y), textcoords="offset points", xytext=offset,
                     ha=ha, color=INK, fontsize=7)
     ax.set_xlim(-0.03, 1.03)
@@ -151,10 +217,16 @@ def main(argv=None):
     os.makedirs(args.out, exist_ok=True)
 
     rows = normalise_rows(read_csv(os.path.join(args.results, "runs.csv")))
-    fig_drift(plt, rows, args.out)
+    corpus = len({row["project"] for row in rows}) > 3
+    drift_path = os.path.join(args.results, "drift.json")
+    if corpus and os.path.isfile(drift_path):
+        with open(drift_path, encoding="utf-8") as handle:
+            fig_drift_corpus(plt, json.load(handle), args.out)
+    else:
+        fig_drift(plt, rows, args.out)
     elements = os.path.join(args.results, "drift_elements.csv")
     if os.path.isfile(elements):
-        fig_survival(plt, read_csv(elements), args.out)
+        (fig_survival_pooled if corpus else fig_survival)(plt, read_csv(elements), args.out)
     stats_path = os.path.join(args.results, "statistics.json")
     if os.path.isfile(stats_path):
         with open(stats_path, encoding="utf-8") as handle:
