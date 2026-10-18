@@ -1,0 +1,216 @@
+sindishima/EZEelectronics UML/V1/Glossary/Glossary.mdj
+giarri/eriantys Deliveries/Model UML/Inital model/class_diagram.mdj
+pedjamitrovic/Chess3D Documentation/diagrams/Piece CD.mdj
+lcvalves/fabric_e-workshop diagrams/class-model.mdj
+sebassmtz/BankThread UML.mdj
+jotanmiguel/ProjetoPTI-PTR Diagrama.mdj
+OSZ-IMT/CodeRunnerClassDiagram test/hase/hase.mdj
+DusceacBogdan/Agenti-de-vanzari-implementare Diagrams/Diagrama UML Rafinata.mdj
+JulianRuano/Open-Market strategyserver/ServidorMultiHiloHandler.mdj
+KaioRodriguesCT/EasyCD-IFES documents/UML.mdj
+Paramesh612/DormNest-OOAD-Project UML Files/Class Diagram Submittes.mdj
+delchiaro/smART documentation/ProximityManager outdoor.mdj
+ARDivekar/SearchDistribute SearchDistribute/Documents/Project Structure.mdj
+Code-Artist/MSChartExtension Doc/MSChartExtension.mdj
+adriengivry/GyvrTools Documentation/GyvrTools.mdj
+OMCHOKSI108/Java_Programming_Projects Library management in java/LMS Class Diagram.mdj
+eugene-seb/MF-Library doc/diagrams.mdj
+AbdessamadAb04/book_distribution_platform Conception_book_distribution_platform.mdj
+coureyk/Projects Project 6 - My Garage Program/UML_Diagram_249_A2.mdj
+SuperNova911/UnityBattleRoyale Diagram.mdj
+onlynight/Translator docs/translator.mdj
+aagarwal1012/Image-Steganography-Library-Android UML/Stegmodel.mdj
+Dantsz/Yorcvs resources/window_system.mdj
+FredBonux/BonoCipollone RASD_CPMS/Diagrms/ClassDiagram.mdj
+Fysek/SensorClass Sensor class.mdj
+MGMDJassim/Projet_Hotel PROJET 7 JAVA.mdj
+codeByKaustubh/DabbeWale Proj diagrams/staruml/class_diagram.mdj
+TimeWarpEngineering/timewarp-quickbooks documentation/star-uml/architecture-comparisons.mdj
+wagnerfloresdossantos/engtelecom-ifsc-sj poo-2024.1/SimuladorRede/projeto2.mdj
+maimingliang/BaseItemLayout BaseItemLayout.mdj
+andrestoga/take_home_robotics_coding_test multi_agent_planning/multi_robot_planning.mdj
+gsdukbh/novel doc/项目uml.mdj
+MARS-Group-HAW/model-wolf-sheep Design/v1 grass growth agent/wolf_sheep_grass_growth_agent_v1_2_data_model_simple.mdj
+tomi-cuentitas/phoenix-adaptH uml/phoenix.mdj
+Knose1/RayLib_SHMUP RayLib_SHMUP/Shmup.mdj
+vivo-community/vivo-data-distribution-api docs/Modeling.mdj
+Sylcantor/WorldMasterCthululu docs/Uml_version_beta.mdj
+itmWUMA/LogicCamera Docs/UML.mdj
+vprusa/gag-web diagrams/web-gag.mdj
+Kamikaze1991/MonkeyEngine GameEngine.mdj
+Seym0n/SHiNE-Framework game-json.mdj
+Jinksi/vars-annotation src/site/uml/MediaPlayer.mdj
+wbaamaral/algafood-api-old src/main/resources/uml/diagrama-de-classes-v2.mdj
+watsh-rajneesh/amigo-chatbot amigo.mdj
+yagoTobi/VirtualQ-Final-Version Diagramas/mdj/DiagramaDeClases.mdj
+B1909976PhanThanhQui/Selling_Book_Online bieudo.mdj
+mzlogin/CleanExpert docs/CleanExpert.mdj
+MorphStore/Engine doc/uml/morphstore.mdj
+wrandelshofer/MonteMedia doc/design/MonteMedia.mdj
+Master-ISI-Projects/usms-web attachements/class_digram.mdj
+Mal3ul/Forma-Tech diagramme des classes.mdj
+collinmarc/gestvae GestVAEv1.mdj
+iftopalmas/aglomerou docs/diagramas.mdj
+ES-DOC/esdoc-cim v2/uml/cim-v2-uml.mdj
+riyazbabashaik/DIGITAL-APPROACH-FOR-BETTER-HARVESTING flaskdemo/CLASSDIAGRAM.mdj
+DurandAntonin/SAE_S5_CalculsDistribues doc/DocumentsTechniques/DiagrammesUML/Livrable2_DiagrammeClasses_2.mdj
+tomrudnick/GradingApp App/GradingApp.mdj
+tasyiann/2Dto3DMotion Assets/OpenPose/Documents/OpenPoseUnityPlugin_UML.mdj
+uia4sap/ui5-chartjs uia-chartjs.mdj
+UnoRoute/vscode-nativescript-extend nativescript-extend.mdj
+CMU-Perceptual-Computing-Lab/openpose_unity_plugin doc/OpenPoseUnityPlugin_UML.mdj
+jomarin38/F3FChrono doc/DataStructure.mdj
+microcosmAI/MuJoCo-RL-Environment-Wrapper images/uml.mdj
+sitomani/4champ docs/4champ.mdj
+ismaelaek/ArtVance UML/classDiagram.mdj
+hazelement/NewsSummary design.mdj
+CapibaraAnonimo/MyAnonaMousePdf api/MyAnonaMousePdf.mdj
+ShaherHA/colorfactory-js Class diagram color factory.mdj
+VSBuss/fabrica-software Documentos organizar/diagrama_das_CARTEIRAS.mdj
+CodeAX2/LegoMissingPieces UML/LegoMissingPieces.mdj
+catarina-moreira/QuLBiT qulbit.mdj
+Felcot/PISS---Felcot---Impostor-Game Documentación/Star - Diagramas/arquitectura.mdj
+OsloFrits/SistemaDeMercado UML do mercadinho.mdj
+mapa21/GitHubMiner25 docs/diagrams/class.mdj
+kmill227/Covid-Vaccination-System UML/Final_Class_Diagram.mdj
+SibusisoKubalo/LMSIT5 Library Management System.mdj
+DigitalHolography/Holovibes docs/UML/file_system.mdj
+axel-ft/scrabble_java uml/Untitled.mdj
+ectky/Uni-Grades-Manager Documentation/Diagrams/ClassDiarams.mdj
+Florin-Catalin/RAT class_diagram.mdj
+XinyueZ/mvvm-template media/arch.mdj
+Mikroservices/Users Images/model.mdj
+ShopeX/prism-php UML.mdj
+Shashi-Bhushan/Logging-Framework documentation/class-diagram.mdj
+jppgks/the-hillbillies diagram/the-hillbillies.mdj
+BlackLambert/astrominer Model/Klassendiagramme/Ship.mdj
+Divirad/FM3D-Engine Wiki/Diagramme/2DGUI.mdj
+2Dan3/FitpassCopyCat Fitpass_model_diagram.mdj
+yulivee/Cookpot doc/Diagrams.mdj
+AntoinePEREDERII/Banquale Documentation/docPrepaAppli-IHM/Diagramme_de_Classes.mdj
+akhdaniel/staruml-odoo-lite samples/academic.mdj
+ablweb/ProjetLDP-Arkanoid doc/diagrams/Untitled.mdj
+ShiYu0318/AI-Game-ML-RL Game/Tank_Man/doc/ClassDiagram.mdj
+nvkuy/PBL03_DUT_DK88 DK88.mdj
+iifawzi/OnlineHospital hospitals.mdj
+sebspas/UE-UI-MVVM-Framework Base_Stats.mdj
+yohemm/ImageGradientFiltration anexe/UML.mdj
+kerwinxu/barcodeManager uml.mdj
+YousefElmenshawy/Clash-Of-Clans-Clone-OOP projectuml.mdj
+logarathansv/EFMS---Excess-Food-Management-System docs/Project.mdj
+Lioydiano/Skydda struttura.mdj
+C-NikhilKarthik/CS-301-Project Class Diag.mdj
+qdac/QDAC3 Doc/QDAC3.mdj
+Youssef-ayman55/Shortest_Path UML.mdj
+equadon/open-space doc/uml.mdj
+Mampi0510/Qt-project- UML.mdj
+sensoriumxr/django-eth-events diagrams.mdj
+terangel/clips docs/main.mdj
+Atuyto-Fac-groupe/The-Rift-Mobile uml.mdj
+davidxk/GridWorld-MDP docs/doc.mdj
+PavelSidyakin/ProductList Model.mdj
+JovanMosurovic/IS1-Project-Audio-Streaming-System uml/UML.mdj
+hugo-fief/Projet_Two fiefdouglou/schema/ppe2.mdj
+Code-Artist/KeyboardMaster Doc/KeyboardMaster.mdj
+MDNich/MIT_Rkt_Zephyrus_Aero avionics/fc/diagram2.mdj
+Jesse-Jumbo/TankMan doc/ClassDiagram.mdj
+Mocearan/coderespect panda/Doc/class.mdj
+lori314/Discrete-Event-Library-Simulator uml.mdj
+kennyhn/TTK4235V19 Heisprosjekt/klassediagram_heisprosjekt.mdj
+IHW-TS/Hotel_Java ModelUML.mdj
+AndreyAD20/Rest-Cycle-Project Documentacion/Diagramas/RestCycle-DiagramaClases-v0.5(16-07-2025).mdj
+lpreterite/datagent docs/datagent.mdj
+shankun/FileUploader UMLModel.mdj
+leodreizzen/formula1-fisica diagramaBackend.mdj
+LounesMD/LoRaSIM Images/UML.mdj
+hulinning2/CodeArtEng.Diagnostics Documentation/CodeArtEng.Diagnostics.mdj
+NishkarshRaj/Particle_Swarm_Intelligence models/ClassDiagram.mdj
+UGNaNpp/Licencjat Docs/klasy.mdj
+Hwan-Yeong/airbot_hyjoe_ws src/A1_perception/docs/architecture.mdj
+Emmeth/Emmeth docs/Class diagram.mdj
+ImAliant/IDFTransportPathFinder diagrams/parser_bd_idfm_class_diagram.mdj
+dineshKumar777/vscode-rf-language-server design/language-server.mdj
+Quentin55553/Projet-CY-Books docs/Diagrams.mdj
+norberttak/XPanel doc/xpanel.mdj
+chuck21619/TypePublic docs/CollapseExpandAccess.mdj
+42-webserver/webserv assets/webserv.mdj
+BautistaTorreV/UTN-Projects TP-Diseño de Sistemas/APIServicioRecomendadorDePuntosDeDonacion/modelado/DDC.mdj
+Knox-AAU/PreprocessingLayer_Nordjyske nordjyske_preprocessing.mdj
+fityocsaba96/methcodus-thesis images/staruml/tester-system-class-diagram.mdj
+armin-reichert/pacman-basic doc/pacman-core-classes.mdj
+jm0rt1/city-sim docs/models/model.mdj
+xuexiangjys/XTask art/xtask.mdj
+ModelEngineering/pySubnetSB docs/design.mdj
+mbari-org/vars-annotation docs/assets/uml/MediaPlayer.mdj
+MathieuSoysal/CodinGame-Puzzles-stats-library ressources-readme/conception.mdj
+lleugen/ing-sw-2019-mauri-murriero-ostrovan Deliveries/UML_model.mdj
+LucaMalagutti/ing-sw-2020-Fratus-Malagutti deliveries/uml/UML_Model.mdj
+gabrielepagano/ing-sw-2020-Pagano-Somaschini-Tegli deliverables/UML/Initial/ClassDiagramModel.mdj
+dre-droid/ing-sw-2023-mastroberti-lecchi-maggese-martellosio deliverables/final/uml/MyShelfie-prereview.mdj
+Trixyz28/ing-sw-2020-Yang-Yu-Zhu Deliverables/UML/UserInterface.mdj
+inwords/InWords WebApi/Resource/UML/GameObjectsUML.mdj
+ipepe/foosball-open-ranking documentation/StarUML_model.mdj
+ldeluigi/higher-lower-pwned docs/ASW-HigherLowerPwned.mdj
+Jblew/git-diary doc/Model.mdj
+Snooz82/vscode-rf-language-server design/language-server.mdj
+methodpark/meeting-room-display docs/mrd_class_diagram.mdj
+derpsteb/pipeliner doc/Pipeliner.mdj
+wyutopia/rdf4node docs/design.mdj
+uiocompcat/HyDGL doc/uml.mdj
+DMALab/autotf documents/uml.mdj
+aetel/cutrenet docs/cutrenet.mdj
+erisilva/sissas Sissas-en.mdj
+thaoanhhaa1/kltn-backend docs/class-diagram-chatbot-service.mdj
+lehcode/angular-fullstack-pro-starter apps/api/docs/UML/app.mdj
+EnriqueSanVic/vulture-security-cam-system docs/diagramas/vulture cam.mdj
+fabishevskiy/LiftSim docs/diagrams/ClassDiagram.mdj
+garyjh126/poker-bot-deep-rl UML/UML_PokerSystem.mdj
+AlessandroBarbiero/Dreams-Eater Documentation/UMLdiagram.mdj
+heclement/board-game UML/UML.mdj
+ramou/ChessMod design/ChessMod.mdj
+Game-as-a-Service/minesweeper doc/minesweeper.mdj
+LupusAnay/highload-server doc/Highload Server UML.mdj
+CR1337/Social-Highscore-Frontend doc/model.mdj
+Potato-Gaming/crystal architecture.mdj
+ya-kostik/redbone Redbone.mdj
+travenos/vari schemes/ui_model.mdj
+Jon-Robb/genetic_algorithm Classes.mdj
+aryeko/CommandAndControlSystem-LDS Documents/Diagrams/UML Diagrams/Class Diagrams/Client - Server UML.mdj
+P0rc3lain/Chess Diagrams/Design.mdj
+avoytovich95/library-web-api Docs/MVC.mdj
+mshubat/galaxy_data_mines docs/gdm_UML.mdj
+Myslitel666/VectorX Documents/Diagrams/Classes.mdj
+Workplace-Futurists/DiScribe Docs/Design/System_Architecture_Design.mdj
+whatss7/OurProjectManager docs/uml/UML.mdj
+NoMansUniverse/frips Frips.mdj
+LaCobble/System-security class_diagram.mdj
+EVR-Roxas/Checador-NFC UML/clases.mdj
+andermena23/Rides24 rides.mdj
+myyrakle/missing_child_system uml/classes/classes.mdj
+FeryaelJustice/HotelAuraDeMallorca docs/DiagramaDeClases.mdj
+KHALID-ZENNOUHI/Evento uml/EventoUML.mdj
+fouadlamrini/Youdemy Diagrammes/diagramme_de_class.mdj
+oussamahdidou/Cloud-Native-Solution-for-Inventory-and-Marketplace-and-Accounting-Service-Integration conception/Conception.mdj
+dpcbranco/JogoDaForcaESM JogoDaForcaESM-UML.mdj
+xReniar/twitther class_diagram.mdj
+FARAJI-Omar/MedConnect MedConnect-class diagram.mdj
+railroad2/vOscillation Class_Diagram.mdj
+joaoaugustogrobe/CorrectionTool2.0 diagrama.mdj
+Rayer/GdxIris design/Iris.mdj
+cthulhusec/SoulLand SoulLand.mdj
+sdthaker/SenecaCollege-BTP400 JavaFX-Library-Management-System/System Design/Librarian.mdj
+jsh9091/ExcelExportHelper Design/Design Diagram.mdj
+Raphael-dim/Agora-Script Diagramme de classe.mdj
+didier-mycontrib/spring6plus appliSpringHexagonal/hexagonal-bank.mdj
+GoodAI/ArnoldSimulator Docs/UML/UBA-sketches-in-StarUML.mdj
+kshitijyelpale/SCS-Simulation-of-Insulin-Pump Documentation/Diagrams/UML Diagrams_2.mdj
+vanillaSky00/neural-arcade TankMan/doc/ClassDiagram.mdj
+jeffrey9911/SpeedWar-Unity-OverloadStudio Scripting_Design.mdj
+MatthieuHernandez/NeuralNetworkTest ULM_diagram_SNN.mdj
+dgk/django-business-logic docs/static/staruml.mdj
+dputhier/pygtftk docs/classes/pygtftk_classes.mdj
+gridgo/gridgo design/connector.mdj
+campusappcn/AndRouter stuff/Untitled.mdj
+amzn/fire-app-builder DataLoader/doc/DataManagerComplete.mdj
+amzn/fire-app-builder DynamicParser/docs/ClassDiagram.mdj
+xuexiangjys/XTask art/xtask.mdj

@@ -105,7 +105,13 @@ def replay_project(
     sandbox: Sandbox,
     cache_dir: str,
     log,
+    hooks=None,
 ) -> Dict[str, Any]:
+    """`hooks`, when given, is told which run is about to start
+    (`before_run(strategy, index, conformance_changed, project_path)`, with strategy "oracle"
+    for the forced run) and may add columns to each row (`row(result, row)`).
+    research/live_llm.py uses it to put a real local model in the loop without
+    the oracle ever reaching one."""
     from core.pipeline import run_analysis  # imported after harness sets sys.path
 
     repo = clone_or_reuse(spec.source, cache_dir)
@@ -153,6 +159,8 @@ def replay_project(
         source_touched = None if previous_digest is None else digest != previous_digest
         previous_digest = digest
 
+        if hooks:
+            hooks.before_run("oracle", index, None, oracle_project)
         oracle_started = time.perf_counter()
         oracle = run_analysis(oracle_project, gate_strategy="always", force=True)
         oracle_elapsed = (time.perf_counter() - oracle_started) * 1000
@@ -182,6 +190,8 @@ def replay_project(
             project_path = projects[strategy]
             file_count = copy_source(tree_dir, project_path, spec.subdirectory)
 
+            if hooks:
+                hooks.before_run(strategy, index, conformance_changed, project_path)
             started = time.perf_counter()
             result = run_analysis(project_path, gate_strategy=strategy)
             elapsed = (time.perf_counter() - started) * 1000
@@ -253,8 +263,14 @@ def replay_project(
                     "absences": reflexion.get("absences"),
                     "findings_hash": oracle.get("findings_hash"),
                     "oracle_latency_ms": round(oracle_elapsed, 1),
+                    # Separate from gate_allowed_llm: whether a model was
+                    # actually reached. Always False offline.
+                    "llm_invoked": bool(llm.get("invoked")),
+                    "llm_degraded": bool(llm.get("degraded")),
                 }
             )
+            if hooks:
+                hooks.row(result, rows[-1])
 
         previous_truth = truth
 

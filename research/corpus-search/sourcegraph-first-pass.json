@@ -1,0 +1,3593 @@
+[
+ {
+  "repo": "github.com/david-pp/tiny-orm",
+  "mdj": "docs/tinyorm.mdj",
+  "freeze": "d4a96578e4",
+  "freeze_date": "2017-10-16",
+  "head_date": "2017-10-30",
+  "fp_commits_after": 5,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Python": 1
+  },
+  "classes": 10,
+  "rels": 9,
+  "ops": 8,
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/Apress/design-patterns-in-modern-cpp",
+  "mdj": "Creational/Creational/CompositeBuilderClassDiagram.mdj",
+  "freeze": "3afd5d5b1a",
+  "freeze_date": "2018-04-17",
+  "head_date": "2018-04-17",
+  "fp_commits_after": 0,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "C#": 2
+  },
+  "classes": 5,
+  "attrs": 2,
+  "ops": 9,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/leafspace/CSLG-Access-Reservation-System",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/TYJia/GameDesignPattern_U3D_Version",
+  "mdj": "Assets/001CommandPattern/UML/001CommandPattern.mdj",
+  "freeze": "0267373387",
+  "freeze_date": "2018-06-20",
+  "head_date": "2018-07-13",
+  "fp_commits_after": 32,
+  "fp_code_commits_after": 10,
+  "langs": {
+   "C#": 23
+  },
+  "classes": 6,
+  "rels": 5,
+  "attrs": 5,
+  "ops": 8
+ },
+ {
+  "repo": "github.com/TYJia/GameDesignPattern_U3D_Version",
+  "mdj": "Assets/002FlyweightPattern/UML/002FlyweightPattern.mdj",
+  "freeze": "a2f9e7faff",
+  "freeze_date": "2018-06-20",
+  "head_date": "2018-07-13",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 9,
+  "langs": {
+   "C#": 23
+  },
+  "classes": 8,
+  "rels": 9,
+  "attrs": 7,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/TYJia/GameDesignPattern_U3D_Version",
+  "mdj": "Assets/003ObserverPattern/UML/003ObserverPattern.mdj",
+  "freeze": "c3da927828",
+  "freeze_date": "2018-06-26",
+  "head_date": "2018-07-13",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 7,
+  "langs": {
+   "C#": 23
+  },
+  "classes": 3,
+  "rels": 2,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/TYJia/GameDesignPattern_U3D_Version",
+  "mdj": "Assets/004PrototypePattern/UML/004PrototypePattern.mdj",
+  "freeze": "ab86af8080",
+  "freeze_date": "2018-06-29",
+  "head_date": "2018-07-13",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "C#": 23
+  },
+  "classes": 7,
+  "rels": 8,
+  "attrs": 5,
+  "ops": 2
+ },
+ {
+  "repo": "github.com/TYJia/GameDesignPattern_U3D_Version",
+  "mdj": "Assets/005SingletonPattern/UML/005SingletonPattern.mdj",
+  "freeze": "c6dbab3efd",
+  "freeze_date": "2018-07-02",
+  "head_date": "2018-07-13",
+  "fp_commits_after": 14,
+  "fp_code_commits_after": 5,
+  "langs": {
+   "C#": 23
+  },
+  "classes": 2,
+  "attrs": 4,
+  "ops": 2,
+  "rels": 1
+ },
+ {
+  "repo": "github.com/TYJia/GameDesignPattern_U3D_Version",
+  "mdj": "Assets/006StatePattern/UML/006StatePattern-StateClass.mdj",
+  "freeze": "ad79a2532f",
+  "freeze_date": "2018-07-06",
+  "head_date": "2018-07-13",
+  "fp_commits_after": 12,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "C#": 23
+  },
+  "classes": 9,
+  "rels": 8,
+  "attrs": 4,
+  "ops": 13
+ },
+ {
+  "repo": "github.com/TYJia/GameDesignPattern_U3D_Version",
+  "mdj": "Assets/006StatePattern/UML/006StatePattern-SwitchCase.mdj",
+  "freeze": "ad79a2532f",
+  "freeze_date": "2018-07-06",
+  "head_date": "2018-07-13",
+  "fp_commits_after": 12,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "C#": 23
+  },
+  "classes": 3,
+  "rels": 2,
+  "attrs": 2,
+  "ops": 1
+ },
+ {
+  "repo": "github.com/wangwang4git/just-do",
+  "mdj": "uml/ServiceProviderFramework.mdj",
+  "freeze": "7038865e41",
+  "freeze_date": "2015-02-16",
+  "head_date": "2015-12-31",
+  "fp_commits_after": 19,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 1
+  },
+  "classes": 5,
+  "ops": 6,
+  "rels": 4,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/wangwang4git/just-do",
+  "mdj": "uml/builder.mdj",
+  "freeze": "4db9cd1036",
+  "freeze_date": "2015-02-15",
+  "head_date": "2015-12-31",
+  "fp_commits_after": 22,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 1
+  },
+  "classes": 4,
+  "rels": 3,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/wangwang4git/just-do",
+  "mdj": "uml/command.mdj",
+  "freeze": "49c36cc36b",
+  "freeze_date": "2015-02-25",
+  "head_date": "2015-12-31",
+  "fp_commits_after": 19,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 1
+  },
+  "classes": 5,
+  "ops": 4,
+  "rels": 5,
+  "attrs": 2
+ },
+ {
+  "repo": "github.com/SambacFeng/SWU-SE-HELPER",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/ragnar-lodbrok/meow-sql",
+  "mdj": "doc/uml_class_diagram.mdj",
+  "freeze": "cf672e3485",
+  "freeze_date": "2018-01-08",
+  "head_date": "2024-01-14",
+  "fp_commits_after": 327,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "TypeScript": 26
+  },
+  "classes": 11,
+  "rels": 15,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/HITLittleZheng/HITCS",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/yuanhuihui/yuanhuihui.github.io",
+  "mdj": "images/binder/binder_bug/Untitled.mdj",
+  "freeze": "cf357145e4",
+  "freeze_date": "2018-11-07",
+  "head_date": "2021-10-18",
+  "fp_commits_after": 253,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "JavaScript": 11
+  }
+ },
+ {
+  "repo": "github.com/yuanhuihui/yuanhuihui.github.io",
+  "mdj": "images/binder/create_servicemanager/binder_classes_servicemanager.mdj",
+  "freeze": "52eead8712",
+  "freeze_date": "2016-01-14",
+  "head_date": "2021-10-18",
+  "fp_commits_after": 802,
+  "fp_code_commits_after": 7,
+  "langs": {
+   "JavaScript": 11
+  },
+  "attrs": 38,
+  "classes": 27,
+  "rels": 41,
+  "ops": 44
+ },
+ {
+  "repo": "github.com/lgreski/datasciencectacontent",
+  "mdj": "resources/data science process.mdj",
+  "freeze": "d90e4fb21e",
+  "freeze_date": "2017-07-02",
+  "head_date": "2026-06-06",
+  "fp_commits_after": 296,
+  "fp_code_commits_after": 0,
+  "langs": {}
+ },
+ {
+  "repo": "github.com/lgreski/datasciencectacontent",
+  "mdj": "resources/repDataProcess.mdj",
+  "freeze": "d90e4fb21e",
+  "freeze_date": "2017-07-02",
+  "head_date": "2026-06-06",
+  "fp_commits_after": 296,
+  "fp_code_commits_after": 0,
+  "langs": {}
+ },
+ {
+  "repo": "github.com/Kautenja/limit-order-book",
+  "mdj": "doxygen/UML.mdj",
+  "freeze": "85503a6647",
+  "freeze_date": "2020-07-07",
+  "head_date": "2020-07-07",
+  "fp_commits_after": 10,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Python": 69,
+   "JavaScript": 55
+  },
+  "classes": 5,
+  "rels": 9,
+  "attrs": 12,
+  "ops": 9
+ },
+ {
+  "repo": "github.com/ChengLuffy/ShadowsocksFree",
+  "mdj": "Carthage/Checkouts/CocoaLumberjack/Documentation/CocoaLumberjack.mdj",
+  "freeze": "3aba636e6a",
+  "freeze_date": "2018-04-23",
+  "head_date": "2021-07-13",
+  "fp_commits_after": 32,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "JavaScript": 1
+  },
+  "classes": 15,
+  "rels": 12,
+  "attrs": 18,
+  "ops": 12
+ },
+ {
+  "repo": "github.com/oleghnidets/TweeTextField",
+  "mdj": "docs/TweeTextField.mdj",
+  "freeze": "25912e2998",
+  "freeze_date": "2018-01-05",
+  "head_date": "2022-05-26",
+  "fp_commits_after": 69,
+  "fp_code_commits_after": 2,
+  "langs": {
+   "JavaScript": 10
+  },
+  "classes": 5,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/oleghnidets/TweeTextField",
+  "mdj": "docs/docsets/TweeTextField.docset/Contents/Resources/Documents/TweeTextField.mdj",
+  "freeze": "580df03bb7",
+  "freeze_date": "2018-02-20",
+  "head_date": "2022-05-26",
+  "fp_commits_after": 56,
+  "fp_code_commits_after": 2,
+  "langs": {
+   "JavaScript": 10
+  },
+  "classes": 5,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/chenyang1999/MyComputerCollegeCourses",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/DreamingLri/SYSU_SSE_Exams",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/ksatria/MK-Design-Pattern",
+  "mdj": "Code/Abstract/UML.mdj",
+  "freeze": "7813180977",
+  "freeze_date": "2017-01-30",
+  "head_date": "2017-12-19",
+  "fp_commits_after": 57,
+  "fp_code_commits_after": 17,
+  "langs": {
+   "Java": 101
+  },
+  "classes": 3,
+  "attrs": 2,
+  "ops": 7,
+  "rels": 2
+ },
+ {
+  "repo": "github.com/ksatria/MK-Design-Pattern",
+  "mdj": "Code/Command/UML.mdj",
+  "freeze": "645c382257",
+  "freeze_date": "2017-03-20",
+  "head_date": "2017-12-19",
+  "fp_commits_after": 32,
+  "fp_code_commits_after": 9,
+  "langs": {
+   "Java": 101
+  },
+  "classes": 14,
+  "rels": 18,
+  "ops": 17,
+  "attrs": 6
+ },
+ {
+  "repo": "github.com/ksatria/MK-Design-Pattern",
+  "mdj": "Code/Duck/UML.mdj",
+  "freeze": "e63d1cc831",
+  "freeze_date": "2017-01-30",
+  "head_date": "2017-12-19",
+  "fp_commits_after": 56,
+  "fp_code_commits_after": 16,
+  "langs": {
+   "Java": 101
+  },
+  "classes": 13,
+  "rels": 20,
+  "attrs": 2,
+  "ops": 18
+ },
+ {
+  "repo": "github.com/ksatria/MK-Design-Pattern",
+  "mdj": "Code/Kingdom/Kingdom.mdj",
+  "freeze": "8fba7195f4",
+  "freeze_date": "2017-01-23",
+  "head_date": "2017-12-19",
+  "fp_commits_after": 61,
+  "fp_code_commits_after": 18,
+  "langs": {
+   "Java": 101
+  },
+  "classes": 6,
+  "attrs": 2,
+  "ops": 2,
+  "rels": 5
+ },
+ {
+  "repo": "github.com/ksatria/MK-Design-Pattern",
+  "mdj": "Code/PizzaFactory/UML.mdj",
+  "freeze": "b7da772949",
+  "freeze_date": "2017-02-20",
+  "head_date": "2017-12-19",
+  "fp_commits_after": 39,
+  "fp_code_commits_after": 11,
+  "langs": {
+   "Java": 101
+  },
+  "classes": 10,
+  "rels": 9,
+  "ops": 13,
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/ksatria/MK-Design-Pattern",
+  "mdj": "Code/WarungSedap/UML.mdj",
+  "freeze": "3f083e16c4",
+  "freeze_date": "2017-02-12",
+  "head_date": "2017-12-19",
+  "fp_commits_after": 44,
+  "fp_code_commits_after": 13,
+  "langs": {
+   "Java": 101
+  },
+  "classes": 14,
+  "rels": 14,
+  "attrs": 2,
+  "ops": 19
+ },
+ {
+  "repo": "github.com/ksatria/MK-Design-Pattern",
+  "mdj": "Code/Weather-O-Rama/UML.mdj",
+  "freeze": "4d70711236",
+  "freeze_date": "2017-02-06",
+  "head_date": "2017-12-19",
+  "fp_commits_after": 49,
+  "fp_code_commits_after": 15,
+  "langs": {
+   "Java": 101
+  },
+  "classes": 5,
+  "rels": 5,
+  "ops": 13,
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/nnngrach/AnyGIS_server",
+  "mdj": "UML/AnyGisServerUML.mdj",
+  "freeze": "409c5b391e",
+  "freeze_date": "2019-02-02",
+  "head_date": "2020-10-23",
+  "fp_commits_after": 597,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "JavaScript": 4
+  },
+  "classes": 9,
+  "rels": 19
+ },
+ {
+  "repo": "github.com/GavriloviciEduard/Asclepios-DICOM-Viewer",
+  "mdj": "doc/coreUML.mdj",
+  "freeze": "640aecc6ec",
+  "freeze_date": "2020-05-23",
+  "head_date": "2020-09-01",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 11,
+  "rels": 10,
+  "attrs": 40,
+  "ops": 90
+ },
+ {
+  "repo": "github.com/harismuneer/Library-Management-System-JAVA",
+  "mdj": "LMS Class Diagram.mdj",
+  "freeze": "ee1e71960b",
+  "freeze_date": "2018-07-02",
+  "head_date": "2025-01-30",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 11
+  },
+  "classes": 10,
+  "rels": 17,
+  "attrs": 28,
+  "ops": 49
+ },
+ {
+  "repo": "github.com/andrewbytecoder/linux-sys",
+  "mdj": "DesignPatterns/uml/adapter/adapter.mdj",
+  "freeze": "8338105995",
+  "freeze_date": "2020-11-29",
+  "head_date": "2025-09-28",
+  "fp_commits_after": 19,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "Python": 542,
+   "Java": 18,
+   "PHP": 3
+  },
+  "classes": 61,
+  "rels": 59,
+  "ops": 63,
+  "attrs": 6
+ },
+ {
+  "repo": "github.com/andrewbytecoder/linux-sys",
+  "mdj": "DesignPatterns/uml/builder/builder.mdj",
+  "freeze": "1d01e995c5",
+  "freeze_date": "2020-10-14",
+  "head_date": "2025-09-28",
+  "fp_commits_after": 34,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "Python": 542,
+   "Java": 18,
+   "PHP": 3
+  },
+  "classes": 4,
+  "rels": 5,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/andrewbytecoder/linux-sys",
+  "mdj": "DesignPatterns/uml/creator-product/creator.mdj",
+  "freeze": "49b5323fe9",
+  "freeze_date": "2020-10-08",
+  "head_date": "2025-09-28",
+  "fp_commits_after": 35,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "Python": 542,
+   "Java": 18,
+   "PHP": 3
+  },
+  "classes": 5,
+  "ops": 5,
+  "rels": 7
+ },
+ {
+  "repo": "github.com/andrewbytecoder/linux-sys",
+  "mdj": "DesignPatterns/uml/creator-product/factory.mdj",
+  "freeze": "1d01e995c5",
+  "freeze_date": "2020-10-14",
+  "head_date": "2025-09-28",
+  "fp_commits_after": 34,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "Python": 542,
+   "Java": 18,
+   "PHP": 3
+  },
+  "classes": 6,
+  "rels": 7,
+  "ops": 7
+ },
+ {
+  "repo": "github.com/andrewbytecoder/linux-sys",
+  "mdj": "DesignPatterns/uml/open-close-principle/open-close-principle.mdj",
+  "freeze": "2a925fb031",
+  "freeze_date": "2020-10-07",
+  "head_date": "2025-09-28",
+  "fp_commits_after": 38,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "Python": 542,
+   "Java": 18,
+   "PHP": 3
+  },
+  "rels": 23,
+  "classes": 6,
+  "attrs": 1,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/andrewbytecoder/linux-sys",
+  "mdj": "DesignPatterns/uml/proxy/proxy.mdj",
+  "freeze": "8338105995",
+  "freeze_date": "2020-11-29",
+  "head_date": "2025-09-28",
+  "fp_commits_after": 19,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "Python": 542,
+   "Java": 18,
+   "PHP": 3
+  },
+  "classes": 13,
+  "rels": 11,
+  "ops": 9
+ },
+ {
+  "repo": "github.com/andrewbytecoder/linux-sys",
+  "mdj": "DesignPatterns/uml/singleton/singleton.mdj",
+  "freeze": "0a68430862",
+  "freeze_date": "2020-10-08",
+  "head_date": "2025-09-28",
+  "fp_commits_after": 37,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "Python": 542,
+   "Java": 18,
+   "PHP": 3
+  },
+  "rels": 25,
+  "classes": 7,
+  "attrs": 2,
+  "ops": 6
+ },
+ {
+  "repo": "github.com/12CrazyPaul21/WxBox",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/Drapegnik/bsu",
+  "mdj": "dms/project/ChessClub.mdj",
+  "freeze": "b4640ad6a1",
+  "freeze_date": "2017-09-24",
+  "head_date": "2020-11-05",
+  "fp_commits_after": 86,
+  "fp_code_commits_after": 25,
+  "langs": {
+   "Python": 76,
+   "Java": 75,
+   "JavaScript": 38
+  },
+  "rels": 17
+ },
+ {
+  "repo": "github.com/Drapegnik/bsu",
+  "mdj": "technology/lab1/lab1.mdj",
+  "freeze": "9a8adf64ca",
+  "freeze_date": "2017-03-13",
+  "head_date": "2020-11-05",
+  "fp_commits_after": 270,
+  "fp_code_commits_after": 120,
+  "langs": {
+   "Python": 76,
+   "Java": 75,
+   "JavaScript": 38
+  },
+  "classes": 11,
+  "attrs": 7,
+  "ops": 23,
+  "rels": 10
+ },
+ {
+  "repo": "github.com/elite-lang/RedApple",
+  "mdj": "doc/code link.mdj",
+  "freeze": "7228215085",
+  "freeze_date": "2015-12-05",
+  "head_date": "2017-02-13",
+  "fp_commits_after": 55,
+  "fp_code_commits_after": 0,
+  "langs": {}
+ },
+ {
+  "repo": "github.com/huannan/AndroidReview",
+  "mdj": "UML.mdj",
+  "freeze": "b94c26bb25",
+  "freeze_date": "2018-07-17",
+  "head_date": "2018-12-10",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 9,
+  "langs": {
+   "Java": 169
+  },
+  "classes": 16,
+  "attrs": 1,
+  "ops": 1,
+  "rels": 19
+ },
+ {
+  "repo": "github.com/f4exb/sdrangel",
+  "mdj": "doc/model/SDRAngel.mdj",
+  "freeze": "ec1779e0e3",
+  "freeze_date": "2026-09-27",
+  "head_date": "2026-10-17",
+  "fp_commits_after": 42,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "JavaScript": 118,
+   "Python": 28,
+   "Java": 1
+  },
+  "classes": 33,
+  "rels": 53,
+  "ops": 16,
+  "attrs": 15
+ },
+ {
+  "repo": "github.com/CMU-Perceptual-Computing-Lab/openpose_unity_plugin",
+  "mdj": "doc/OpenPoseUnityPlugin_UML.mdj",
+  "freeze": "7110187e0a",
+  "freeze_date": "2019-02-05",
+  "head_date": "2019-08-13",
+  "fp_commits_after": 15,
+  "fp_code_commits_after": 7,
+  "langs": {
+   "C#": 10
+  },
+  "classes": 11,
+  "rels": 15,
+  "ops": 12,
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/chyingp/nodejs-learning-guide",
+  "mdj": "assets/cluster.mdj",
+  "freeze": "66925cca9c",
+  "freeze_date": "2018-04-16",
+  "head_date": "2022-03-24",
+  "fp_commits_after": 27,
+  "fp_code_commits_after": 3,
+  "langs": {
+   "JavaScript": 294
+  },
+  "attrs": 6
+ },
+ {
+  "repo": "github.com/openhab/openhab-addons",
+  "error": "error: RPC failed; curl 56 schannel: server closed abruptly (missing close_notify)\nerror: 830 bytes of body are still expected\nfetch-pack: unexpected disconnect while reading sideband packet\nfatal: ea"
+ },
+ {
+  "repo": "github.com/SunshineBrother/JHBlog",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/rygo6/CardExample-Unity",
+  "mdj": "SourceAssets/UML.mdj",
+  "freeze": "a76378bb88",
+  "freeze_date": "2017-05-04",
+  "head_date": "2017-09-18",
+  "fp_commits_after": 1,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "C#": 11
+  },
+  "classes": 19,
+  "rels": 25,
+  "attrs": 9,
+  "ops": 16
+ },
+ {
+  "repo": "github.com/raymond-zhao/awesome-architect",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/saleha-muzammil/Academic-Time-Machine",
+  "mdj": "SDA Lab/Final/solution/Q2.mdj",
+  "freeze": "05096a0bee",
+  "freeze_date": "2023-06-10",
+  "head_date": "2026-09-24",
+  "fp_commits_after": 392,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "Java": 330,
+   "Python": 5,
+   "JavaScript": 2
+  },
+  "classes": 22,
+  "rels": 36,
+  "attrs": 9,
+  "ops": 7
+ },
+ {
+  "repo": "github.com/saleha-muzammil/Academic-Time-Machine",
+  "mdj": "SDA Lab/Final/solution/Q4.mdj",
+  "freeze": "05096a0bee",
+  "freeze_date": "2023-06-10",
+  "head_date": "2026-09-24",
+  "fp_commits_after": 392,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "Java": 330,
+   "Python": 5,
+   "JavaScript": 2
+  },
+  "attrs": 3
+ },
+ {
+  "repo": "github.com/saleha-muzammil/Academic-Time-Machine",
+  "mdj": "SDA Lab/Quiz 1/Solution.mdj",
+  "freeze": "05096a0bee",
+  "freeze_date": "2023-06-10",
+  "head_date": "2026-09-24",
+  "fp_commits_after": 392,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "Java": 330,
+   "Python": 5,
+   "JavaScript": 2
+  },
+  "classes": 22,
+  "attrs": 23,
+  "rels": 20,
+  "ops": 3
+ },
+ {
+  "repo": "github.com/saleha-muzammil/Academic-Time-Machine",
+  "mdj": "SDA Lab/Quiz/Quiz 1/Solution.mdj",
+  "freeze": "05096a0bee",
+  "freeze_date": "2023-06-10",
+  "head_date": "2026-09-24",
+  "fp_commits_after": 392,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "Java": 330,
+   "Python": 5,
+   "JavaScript": 2
+  },
+  "classes": 22,
+  "attrs": 23,
+  "rels": 20,
+  "ops": 3
+ },
+ {
+  "repo": "github.com/saleha-muzammil/Academic-Time-Machine",
+  "mdj": "SDA Lab/exams/Final/solution/Q2.mdj",
+  "freeze": "05096a0bee",
+  "freeze_date": "2023-06-10",
+  "head_date": "2026-09-24",
+  "fp_commits_after": 392,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "Java": 330,
+   "Python": 5,
+   "JavaScript": 2
+  },
+  "classes": 22,
+  "rels": 36,
+  "attrs": 9,
+  "ops": 7
+ },
+ {
+  "repo": "github.com/saleha-muzammil/Academic-Time-Machine",
+  "mdj": "SDA Lab/exams/Final/solution/Q4.mdj",
+  "freeze": "05096a0bee",
+  "freeze_date": "2023-06-10",
+  "head_date": "2026-09-24",
+  "fp_commits_after": 392,
+  "fp_code_commits_after": 4,
+  "langs": {
+   "Java": 330,
+   "Python": 5,
+   "JavaScript": 2
+  },
+  "attrs": 3
+ },
+ {
+  "repo": "github.com/CGAL/cgal",
+  "error": "error: RPC failed; curl 56 Recv failure: Connection was reset\nerror: 5222 bytes of body are still expected\nfetch-pack: unexpected disconnect while reading sideband packet\nfatal: early EOF\nfatal: fetch"
+ },
+ {
+  "repo": "github.com/LeoMobileDeveloper/Blogs",
+  "mdj": "iOS/IAP/images/IAP-with-order.mdj",
+  "freeze": "fa1d1b1450",
+  "freeze_date": "2019-04-25",
+  "head_date": "2021-12-02",
+  "fp_commits_after": 42,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/LeoMobileDeveloper/Blogs",
+  "mdj": "iOS/IAP/images/IAP.mdj",
+  "freeze": "fa1d1b1450",
+  "freeze_date": "2019-04-25",
+  "head_date": "2021-12-02",
+  "fp_commits_after": 42,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/acheronfail/pixel-picker",
+  "mdj": "Carthage/Checkouts/CocoaLumberjack/Documentation/CocoaLumberjack.mdj",
+  "freeze": "fae133c65c",
+  "freeze_date": "2021-10-20",
+  "head_date": "2026-09-10",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "JavaScript": 5,
+   "Python": 2
+  },
+  "classes": 16,
+  "rels": 13,
+  "attrs": 19,
+  "ops": 12
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-jpa",
+  "mdj": "diagrama-domain-model-especialista-jpa/EJPA - Domain Model.mdj",
+  "freeze": "fc28c2e533",
+  "freeze_date": "2020-06-10",
+  "head_date": "2021-04-19",
+  "fp_commits_after": 1,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 14803
+  },
+  "classes": 17,
+  "rels": 38,
+  "attrs": 58
+ },
+ {
+  "repo": "github.com/undertheseanlp/underthesea",
+  "mdj": "extensions/datasets/DI_Vietnamese-UVD/docs/Design.mdj",
+  "freeze": "e0be4fc051",
+  "freeze_date": "2025-09-20",
+  "head_date": "2026-09-05",
+  "fp_commits_after": 283,
+  "fp_code_commits_after": 72,
+  "langs": {
+   "Python": 470,
+   "JavaScript": 182,
+   "TypeScript": 89
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/wanggx/Linux1.0",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/yangkun19921001/Blog",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/CocoaLumberjack/CocoaLumberjack",
+  "mdj": "Documentation/CocoaLumberjack.mdj",
+  "freeze": "313820cd04",
+  "freeze_date": "2021-12-23",
+  "head_date": "2026-10-15",
+  "fp_commits_after": 259,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "JavaScript": 1
+  },
+  "classes": 16,
+  "rels": 13,
+  "attrs": 19,
+  "ops": 12
+ },
+ {
+  "repo": "github.com/yuchuangu85/Launcher3-mx",
+  "mdj": "uml/Launcher3.mdj",
+  "freeze": "694465c86a",
+  "freeze_date": "2019-02-22",
+  "head_date": "2022-10-02",
+  "fp_commits_after": 91,
+  "fp_code_commits_after": 66,
+  "langs": {
+   "Java": 534,
+   "Python": 2
+  }
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/event-bus/event-bus/uml/class-relation.mdj",
+  "freeze": "ff050da96c",
+  "freeze_date": "2015-04-02",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 11,
+  "rels": 13,
+  "attrs": 24
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/image-cache/fresco/uml/imagepipeline.mdj",
+  "freeze": "4a9f288bf7",
+  "freeze_date": "2015-04-03",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 27,
+  "rels": 34,
+  "attrs": 42,
+  "ops": 154
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/image-cache/glide/uml/Glide.mdj",
+  "freeze": "6c53bdc211",
+  "freeze_date": "2016-01-20",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 5,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 99,
+  "rels": 71,
+  "attrs": 42
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/image-cache/glide/uml/glide_main.mdj",
+  "freeze": "6c53bdc211",
+  "freeze_date": "2016-01-20",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 5,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 121,
+  "rels": 99,
+  "attrs": 93,
+  "ops": 10
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/image-cache/glide/uml/glide_simple.mdj",
+  "freeze": "6c53bdc211",
+  "freeze_date": "2016-01-20",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 5,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 136,
+  "rels": 128,
+  "attrs": 79,
+  "ops": 14
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/image-cache/picasso/uml/relation-class.mdj",
+  "freeze": "7104157c7f",
+  "freeze_date": "2015-06-13",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 12,
+  "attrs": 23,
+  "ops": 19,
+  "rels": 11
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/image-cache/picasso/uml/universal-image-loader-flow.mdj",
+  "freeze": "7104157c7f",
+  "freeze_date": "2015-06-13",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {}
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/image-cache/universal-image-loader/uml/relation-class.mdj",
+  "freeze": "ff050da96c",
+  "freeze_date": "2015-04-02",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 12,
+  "attrs": 23,
+  "ops": 19,
+  "rels": 11
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/image-cache/universal-image-loader/uml/universal-image-loader-flow.mdj",
+  "freeze": "ff050da96c",
+  "freeze_date": "2015-04-02",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {}
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/network/retrofit/uml/call-adapter.mdj",
+  "freeze": "6c53bdc211",
+  "freeze_date": "2016-01-20",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 5,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 7,
+  "rels": 13,
+  "attrs": 4,
+  "ops": 6
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/network/retrofit/uml/retrofit.mdj",
+  "freeze": "6c53bdc211",
+  "freeze_date": "2016-01-20",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 5,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 29,
+  "rels": 73,
+  "ops": 17,
+  "attrs": 11
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/network/volley/uml/volley.mdj",
+  "freeze": "ff050da96c",
+  "freeze_date": "2015-04-02",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 24,
+  "rels": 31,
+  "attrs": 22
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/plugin/dynamic-load-apk/uml/class-relation.mdj",
+  "freeze": "068e16b493",
+  "freeze_date": "2015-05-07",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 28,
+  "attrs": 28,
+  "ops": 22,
+  "rels": 51
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "tool-lib/plugin/dynamic-load-apk/uml/dlapkload.mdj",
+  "freeze": "89cf0ab7cb",
+  "freeze_date": "2015-05-06",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 21,
+  "attrs": 30,
+  "ops": 57,
+  "rels": 30
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/image-view/photoview/uml/photoview.mdj",
+  "freeze": "ff050da96c",
+  "freeze_date": "2015-04-02",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 17,
+  "rels": 29,
+  "attrs": 9,
+  "ops": 5
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/menu/sliding-menu/uml/SlidingMenu.mdj",
+  "freeze": "3790a664cd",
+  "freeze_date": "2015-03-25",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 29,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 3,
+  "attrs": 22,
+  "ops": 4,
+  "rels": 2
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/other/android-ultra-pull-to-refresh/uml/UltraPTR.mdj",
+  "freeze": "23124d2933",
+  "freeze_date": "2015-03-09",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 29,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 13,
+  "attrs": 8,
+  "rels": 15
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/other/pager-sliding-tab-strip/image/PageListener.mdj",
+  "freeze": "556e36b5c5",
+  "freeze_date": "2015-07-03",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 7,
+  "rels": 4,
+  "attrs": 5,
+  "ops": 10
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/other/pager-sliding-tab-strip/image/PagerSlidingTabStrip.mdj",
+  "freeze": "556e36b5c5",
+  "freeze_date": "2015-07-03",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 7,
+  "rels": 4,
+  "attrs": 5,
+  "ops": 10
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/other/pager-sliding-tab-strip/image/class.mdj",
+  "freeze": "556e36b5c5",
+  "freeze_date": "2015-07-03",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 7,
+  "rels": 4,
+  "attrs": 5,
+  "ops": 10
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/other/pager-sliding-tab-strip/image/lct.mdj",
+  "freeze": "556e36b5c5",
+  "freeze_date": "2015-07-03",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 1,
+  "rels": 5,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/other/view-pager-indicator/uml/class_relation.mdj",
+  "freeze": "ff050da96c",
+  "freeze_date": "2015-04-02",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 9,
+  "rels": 12
+ },
+ {
+  "repo": "github.com/android-cn/android-open-project-analysis",
+  "mdj": "view/progress-bar/discrete-seek-bar/uml/discrete-seek-bar.mdj",
+  "freeze": "2e7b2fe54c",
+  "freeze_date": "2015-07-03",
+  "head_date": "2019-04-07",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 20,
+  "rels": 40,
+  "attrs": 5,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "05.06. Conhecendo o diagrama de classes da UML/aula-oo.mdj",
+  "freeze": "3cf0d5d4a5",
+  "freeze_date": "2022-06-12",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 23,
+  "fp_code_commits_after": 23,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 1,
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "05.07. Desafio - instanciando objetos e acessando os atributos/clinica-veterinaria/diagrama-de-classes.mdj",
+  "freeze": "3cf0d5d4a5",
+  "freeze_date": "2022-06-12",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 23,
+  "fp_code_commits_after": 23,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 1,
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "08.13. Diagrama de classes - multiplicidade para arrays/escola.mdj",
+  "freeze": "3cf0d5d4a5",
+  "freeze_date": "2022-06-12",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 23,
+  "fp_code_commits_after": 23,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 2,
+  "rels": 2,
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "10.06. Diagrama de classes - construtores/estoque.mdj",
+  "freeze": "09e798ce82",
+  "freeze_date": "2022-06-22",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 22,
+  "fp_code_commits_after": 22,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 1,
+  "attrs": 3,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "10.07. Desafio - construtores/programa-milhas/diagrama-de-classes.mdj",
+  "freeze": "09e798ce82",
+  "freeze_date": "2022-06-22",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 22,
+  "fp_code_commits_after": 22,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 1,
+  "attrs": 2,
+  "ops": 2
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "10.13. Diagrama de classes - visibilidade public, package e private/estoque.mdj",
+  "freeze": "09e798ce82",
+  "freeze_date": "2022-06-22",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 22,
+  "fp_code_commits_after": 22,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 1,
+  "attrs": 3,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "10.14. Desafio - pacotes e modificadores de acesso/programa-milhas/diagrama-de-classes.mdj",
+  "freeze": "09e798ce82",
+  "freeze_date": "2022-06-22",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 22,
+  "fp_code_commits_after": 22,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 1,
+  "attrs": 2,
+  "ops": 3
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "11.05. Desafio - encapsulamento e JavaBeans/financeiro/diagrama-de-classes.mdj",
+  "freeze": "c15731a00a",
+  "freeze_date": "2022-07-05",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 21,
+  "fp_code_commits_after": 21,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 2,
+  "rels": 1,
+  "attrs": 5,
+  "ops": 4
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "11.12. Diagrama de classes - Records/records.mdj",
+  "freeze": "3b688413e1",
+  "freeze_date": "2022-08-16",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 20,
+  "langs": {
+   "Java": 666
+  },
+  "attrs": 2,
+  "ops": 1
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "13.09. Classes abstratas/faturamento/diagrama-de-classes.mdj",
+  "freeze": "3b688413e1",
+  "freeze_date": "2022-08-16",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 20,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 3,
+  "attrs": 4,
+  "ops": 4,
+  "rels": 2
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "13.11. Desafio - polimorfismo e classes abstratas/auditor-fiscal/diagrama-de-classes.mdj",
+  "freeze": "3b688413e1",
+  "freeze_date": "2022-08-16",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 20,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 6,
+  "attrs": 9,
+  "ops": 16,
+  "rels": 5
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "14.02. Criando a primeira interface/contas-pagar/diagrama-de-classes.mdj",
+  "freeze": "3b688413e1",
+  "freeze_date": "2022-08-16",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 20,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 3,
+  "rels": 3,
+  "ops": 3
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "14.03. Implementando a primeira interface/contas-pagar/diagrama-de-classes.mdj",
+  "freeze": "3b688413e1",
+  "freeze_date": "2022-08-16",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 20,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 5,
+  "rels": 7,
+  "ops": 7,
+  "attrs": 3
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "14.05. Conhecendo o projeto da financeira/financeira/diagrama-de-classes.mdj",
+  "freeze": "3b688413e1",
+  "freeze_date": "2022-08-16",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 20,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 5,
+  "attrs": 5,
+  "ops": 6,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "14.09. Classes abstratas com interfaces/financeira/diagrama-de-classes.mdj",
+  "freeze": "3b688413e1",
+  "freeze_date": "2022-08-16",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 20,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 10,
+  "attrs": 7,
+  "rels": 17,
+  "ops": 11
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "14.15. Desafio - interfaces/seguradora/diagrama-de-classes.mdj",
+  "freeze": "3b688413e1",
+  "freeze_date": "2022-08-16",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 20,
+  "fp_code_commits_after": 20,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 6,
+  "ops": 9,
+  "rels": 5,
+  "attrs": 6
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-java",
+  "mdj": "18.09. Percorrendo a lista com Iterator/diagrama-de-classes-iterable.mdj",
+  "freeze": "064226f618",
+  "freeze_date": "2022-10-13",
+  "head_date": "2024-05-29",
+  "fp_commits_after": 18,
+  "fp_code_commits_after": 18,
+  "langs": {
+   "Java": 666
+  },
+  "classes": 6,
+  "rels": 6,
+  "ops": 2
+ },
+ {
+  "repo": "github.com/jiaxw32/iNote",
+  "mdj": "Documents/FBRetainCycleDetector.mdj",
+  "freeze": "83455bf478",
+  "freeze_date": "2021-03-31",
+  "head_date": "2023-11-19",
+  "fp_commits_after": 56,
+  "fp_code_commits_after": 7,
+  "langs": {
+   "Python": 3
+  },
+  "classes": 23,
+  "rels": 28,
+  "attrs": 20,
+  "ops": 30
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/Ajax.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  }
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/ArticleCollection.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "attrs": 5
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/ArticleRank.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 9
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/Blog.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 28
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/BlogNew.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 29
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/BlogTest.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 23
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/Login.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 33,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/MVVM.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 5
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/MemberPay.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 33,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/RabbitMQ.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 8
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/TestLogin.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  }
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/Thump.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 6
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/Turbine.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "rels": 9
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/VueLife.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  }
+ },
+ {
+  "repo": "github.com/wanghaichao0611/Vue-SpringCloud-Blog",
+  "mdj": "BlogStarUML/alipayCommunication.mdj",
+  "freeze": "8346f6d3c7",
+  "freeze_date": "2020-07-03",
+  "head_date": "2022-07-07",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "Java": 265,
+   "JavaScript": 18
+  },
+  "attrs": 3
+ },
+ {
+  "repo": "github.com/campusappcn/AndRouter",
+  "mdj": "stuff/Untitled.mdj",
+  "freeze": "dc883033b2",
+  "freeze_date": "2016-03-17",
+  "head_date": "2017-08-19",
+  "fp_commits_after": 34,
+  "fp_code_commits_after": 17,
+  "langs": {
+   "Java": 63
+  },
+  "classes": 8,
+  "rels": 10
+ },
+ {
+  "repo": "github.com/soaple/stickyboard",
+  "mdj": "architecture/architecture.mdj",
+  "freeze": "dd0eb71107",
+  "freeze_date": "2019-10-25",
+  "head_date": "2022-06-10",
+  "fp_commits_after": 126,
+  "fp_code_commits_after": 93,
+  "langs": {
+   "JavaScript": 155
+  }
+ },
+ {
+  "repo": "github.com/amzn/fire-app-builder",
+  "mdj": "ContentModel/doc/ContentModel.mdj",
+  "freeze": "55f162bdf5",
+  "freeze_date": "2016-10-03",
+  "head_date": "2023-08-31",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Java": 376,
+   "Python": 1
+  },
+  "classes": 3,
+  "attrs": 15,
+  "ops": 35,
+  "rels": 2
+ },
+ {
+  "repo": "github.com/amzn/fire-app-builder",
+  "mdj": "DataLoader/doc/DataManagerComplete.mdj",
+  "freeze": "55f162bdf5",
+  "freeze_date": "2016-10-03",
+  "head_date": "2023-08-31",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Java": 376,
+   "Python": 1
+  },
+  "classes": 49,
+  "rels": 27,
+  "ops": 80,
+  "attrs": 21
+ },
+ {
+  "repo": "github.com/amzn/fire-app-builder",
+  "mdj": "DynamicParser/docs/ClassDiagram.mdj",
+  "freeze": "55f162bdf5",
+  "freeze_date": "2016-10-03",
+  "head_date": "2023-08-31",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Java": 376,
+   "Python": 1
+  },
+  "classes": 169,
+  "attrs": 4478,
+  "ops": 192,
+  "rels": 49
+ },
+ {
+  "repo": "github.com/amzn/fire-app-builder",
+  "mdj": "Utils/doc/Recipe.mdj",
+  "freeze": "55f162bdf5",
+  "freeze_date": "2016-10-03",
+  "head_date": "2023-08-31",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Java": 376,
+   "Python": 1
+  },
+  "classes": 3,
+  "attrs": 2,
+  "ops": 11
+ },
+ {
+  "repo": "github.com/amzn/fire-app-builder",
+  "mdj": "Utils/doc/SearchManager.mdj",
+  "freeze": "55f162bdf5",
+  "freeze_date": "2016-10-03",
+  "head_date": "2023-08-31",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Java": 376,
+   "Python": 1
+  },
+  "classes": 4,
+  "attrs": 3,
+  "ops": 8
+ },
+ {
+  "repo": "github.com/ChenSiLiang/android-toy",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/kbumsik/WolfieMouse",
+  "mdj": "doc/class_design/maze_classes.mdj",
+  "freeze": "0c26030e29",
+  "freeze_date": "2018-03-29",
+  "head_date": "2020-05-18",
+  "fp_commits_after": 77,
+  "fp_code_commits_after": 5,
+  "langs": {
+   "Python": 3
+  },
+  "classes": 17,
+  "rels": 25
+ },
+ {
+  "repo": "github.com/prisma-archive/ios-graphql",
+  "mdj": "quickstart-with-apollo/Instagram/Carthage/Checkouts/SDWebImage/Docs/SDWebImage.mdj",
+  "freeze": "3d2f9f18af",
+  "freeze_date": "2017-05-23",
+  "head_date": "2017-10-26",
+  "fp_commits_after": 10,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "Python": 2
+  },
+  "attrs": 36,
+  "classes": 23,
+  "rels": 16,
+  "ops": 43
+ },
+ {
+  "repo": "github.com/lastwhispers/code",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/wangwangheng/BestBlogReprinted_AndroidNotes",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/devdogio/Quest-System-Pro",
+  "mdj": "Assets/Devdog/QuestSystemPro/DesignDiagram.mdj",
+  "freeze": "01935f9f6e",
+  "freeze_date": "2019-09-20",
+  "head_date": "2021-01-04",
+  "fp_commits_after": 12,
+  "fp_code_commits_after": 3,
+  "langs": {
+   "C#": 309
+  },
+  "classes": 13,
+  "rels": 14,
+  "attrs": 30,
+  "ops": 21
+ },
+ {
+  "repo": "github.com/mzlogin/CleanExpert",
+  "mdj": "docs/CleanExpert.mdj",
+  "freeze": "bc96745d42",
+  "freeze_date": "2016-01-14",
+  "head_date": "2016-12-08",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 12,
+  "langs": {
+   "Java": 17
+  }
+ },
+ {
+  "repo": "github.com/SwanLab/Swan",
+  "error": "error: RPC failed; curl 56 schannel: server closed abruptly (missing close_notify)\nerror: 29 bytes of body are still expected\nfetch-pack: unexpected disconnect while reading sideband packet\nfatal: ear"
+ },
+ {
+  "repo": "github.com/ScaleChain/scalechain",
+  "mdj": "data/docs/design/wallet.mdj",
+  "freeze": "acd1a83b42",
+  "freeze_date": "2016-05-13",
+  "head_date": "2024-03-03",
+  "fp_commits_after": 109,
+  "fp_code_commits_after": 12,
+  "langs": {
+   "Python": 246,
+   "Java": 10
+  }
+ },
+ {
+  "repo": "github.com/qdac/QDAC3",
+  "mdj": "Doc/QDAC3.mdj",
+  "freeze": "e6e4fe2847",
+  "freeze_date": "2016-08-05",
+  "head_date": "2020-05-20",
+  "fp_commits_after": 57,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "JavaScript": 5,
+   "PHP": 1
+  }
+ },
+ {
+  "repo": "github.com/RTFSC-Android/RTFSC",
+  "error": "fatal: unable to access 'https://github.com/RTFSC-Android/RTFSC.git/': Could not resolve host: github.com"
+ },
+ {
+  "repo": "github.com/cheyiliu/All-in-One",
+  "error": "fatal: unable to access 'https://github.com/cheyiliu/All-in-One.git/': Could not resolve host: github.com"
+ },
+ {
+  "repo": "github.com/algaworks/curso-especialista-spring-rest",
+  "error": "fatal: unable to access 'https://github.com/algaworks/curso-especialista-spring-rest.git/': Could not resolve host: github.com"
+ },
+ {
+  "repo": "github.com/aagarwal1012/Image-Steganography-Library-Android",
+  "error": "fatal: unable to access 'https://github.com/aagarwal1012/Image-Steganography-Library-Android.git/': Could not resolve host: github.com"
+ },
+ {
+  "repo": "github.com/stellarloop/Library-Management-System-JAVA",
+  "error": "fatal: unable to access 'https://github.com/stellarloop/Library-Management-System-JAVA.git/': Could not resolve host: github.com"
+ },
+ {
+  "repo": "github.com/evilC/UCR",
+  "mdj": "Docs/UCR.mdj",
+  "freeze": "34af502e0a",
+  "freeze_date": "2015-11-14",
+  "head_date": "2022-03-14",
+  "fp_commits_after": 459,
+  "fp_code_commits_after": 2,
+  "langs": {},
+  "classes": 12,
+  "rels": 26,
+  "attrs": 32,
+  "ops": 15
+ },
+ {
+  "repo": "github.com/bangoc/it3120",
+  "error": "TimeoutExpired(['git', '-C', 'C:\\\\Users\\\\sarve\\\\Desktop\\\\uml-analyzer-final\\\\.corpus-cache\\\\screen\\\\bangoc__it3120', 'show', 'bd4d60daf22121f70418b895fc2ee184d99d1ee0:CaseStudy/all-external-resources/"
+ },
+ {
+  "repo": "github.com/maimingliang/BaseItemLayout",
+  "mdj": "BaseItemLayout.mdj",
+  "freeze": "573548dfa7",
+  "freeze_date": "2016-12-08",
+  "head_date": "2017-08-03",
+  "fp_commits_after": 6,
+  "fp_code_commits_after": 2,
+  "langs": {
+   "Java": 25
+  },
+  "classes": 12,
+  "rels": 10,
+  "attrs": 4,
+  "ops": 5
+ },
+ {
+  "repo": "github.com/sdiemert/StarUMLJS",
+  "mdj": "test/fixtures/testModel1.mdj",
+  "freeze": "e9cb13519d",
+  "freeze_date": "2018-06-02",
+  "head_date": "2018-06-02",
+  "fp_commits_after": 2,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "JavaScript": 4
+  },
+  "classes": 6,
+  "rels": 5,
+  "attrs": 3,
+  "ops": 6
+ },
+ {
+  "repo": "github.com/zlyBear/BearFree",
+  "mdj": "Carthage/Checkouts/CocoaLumberjack/Documentation/CocoaLumberjack.mdj",
+  "freeze": "c4e9fe2ef5",
+  "freeze_date": "2019-04-22",
+  "head_date": "2020-04-20",
+  "fp_commits_after": 13,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "JavaScript": 1
+  },
+  "classes": 15,
+  "rels": 12,
+  "attrs": 18,
+  "ops": 12
+ },
+ {
+  "repo": "github.com/xuexiangjys/XTask",
+  "mdj": "art/xtask.mdj",
+  "freeze": "3cd231ef26",
+  "freeze_date": "2022-02-16",
+  "head_date": "2024-03-12",
+  "fp_commits_after": 23,
+  "fp_code_commits_after": 11,
+  "langs": {
+   "Java": 130
+  },
+  "classes": 24,
+  "rels": 30
+ },
+ {
+  "repo": "github.com/onlyliuxin/coding2017",
+  "error": "no .mdj at HEAD"
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/COMPONENT DIAGRAM/component diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "rels": 46,
+  "classes": 22
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/CONTEXT DIAGRAM/context diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/DEPLOYMENT DIAGRAM/deploment diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/ER DIAGRAM/ER diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/MOCK-UPs/AndroidChatScreen.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/MOCK-UPs/ChatScreen.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/MOCK-UPs/SignUpScreen.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/Admin Sign In Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 8
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/Admin Sign Up Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/End User Sign In Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/End User Sign Up Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/Researcher Sign In Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 8
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/Researcher Sign Up Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/Worker Sign In Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/Worker Sign Up Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/SEQUENCE DIAGRAMs/WorkerCheckPayment.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 8
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/USE CASE DIAGRAMs/Administrator Use Case Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/USE CASE DIAGRAMs/End user use case diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/USE CASE DIAGRAMs/Researcher Use Case Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/USE CASE DIAGRAMs/Worker Use Case Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SDD/SDD_UML_FILES/information view CLASS DIAGRAM/information view CLASS DIAGRAM.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/CONTEXT DIAGRAM/Context Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/EXTERNAL INTERFACES/External Interfaces.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 4,
+  "rels": 2,
+  "ops": 21
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/INTERFACES/AndroidChatScreen.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/INTERFACES/ChatScreen (copy).mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/INTERFACES/ChatScreen.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/INTERFACES/SignUpScreen.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  }
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/LOGICAL DATABASE DIAGRAM/Logical Database Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 9,
+  "rels": 16,
+  "attrs": 21
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/SEQUENCE DIAGRAMS/Admin Sign In Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 8
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/SEQUENCE DIAGRAMS/Admin Sign Up Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/SEQUENCE DIAGRAMS/End User Sign In Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/SEQUENCE DIAGRAMS/End User Sign Up Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/SEQUENCE DIAGRAMS/Researcher Sign In Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 8
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/SEQUENCE DIAGRAMS/Researcher Sign Up Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/SEQUENCE DIAGRAMS/Worker Sign In Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 8
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/SEQUENCE DIAGRAMS/Worker Sign Up Sequence Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "attrs": 7
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/USE CASE DIAGRAM/Administrator Use Case Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/USE CASE DIAGRAM/End user use case diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/USE CASE DIAGRAM/Researcher Use Case Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/ysyesilyurt/Metu-CENG",
+  "mdj": "350/SRS/SRS_UML_FILES/USE CASE DIAGRAM/Worker Use Case Diagram.mdj",
+  "freeze": "e5f9c3d3f2",
+  "freeze_date": "2019-01-31",
+  "head_date": "2022-01-02",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 47,
+   "Java": 27
+  },
+  "classes": 1
+ },
+ {
+  "repo": "github.com/Python-Fuzzylogic/fuzzylogic",
+  "mdj": ".box/fuzzylogic_model.mdj",
+  "freeze": "bad08fa552",
+  "freeze_date": "2024-07-19",
+  "head_date": "2026-09-21",
+  "fp_commits_after": 54,
+  "fp_code_commits_after": 39,
+  "langs": {
+   "Python": 35
+  },
+  "classes": 4,
+  "rels": 9,
+  "ops": 14,
+  "attrs": 4
+ },
+ {
+  "repo": "github.com/niklauslee/staruml-python",
+  "mdj": "unittest-files/generate/CodeGenTestModel.mdj",
+  "freeze": "4c2b3f07f6",
+  "freeze_date": "2020-11-12",
+  "head_date": "2024-08-07",
+  "fp_commits_after": 8,
+  "fp_code_commits_after": 6,
+  "langs": {
+   "Python": 8,
+   "JavaScript": 5
+  },
+  "classes": 12,
+  "attrs": 9,
+  "ops": 8,
+  "rels": 10
+ },
+ {
+  "repo": "github.com/5afe/safe-relay-service",
+  "mdj": "docs/Docs.mdj",
+  "freeze": "e9e81a54ac",
+  "freeze_date": "2019-06-03",
+  "head_date": "2023-08-04",
+  "fp_commits_after": 408,
+  "fp_code_commits_after": 194,
+  "langs": {
+   "Python": 166
+  },
+  "attrs": 34,
+  "classes": 4,
+  "ops": 7,
+  "rels": 3
+ },
+ {
+  "repo": "github.com/einsteinx2/iSub-old-swift-port",
+  "mdj": "Carthage/Checkouts/CocoaLumberjack/Documentation/CocoaLumberjack.mdj",
+  "freeze": "04d17af991",
+  "freeze_date": "2017-09-10",
+  "head_date": "2021-04-05",
+  "fp_commits_after": 47,
+  "fp_code_commits_after": 2,
+  "langs": {
+   "JavaScript": 13
+  }
+ },
+ {
+  "repo": "github.com/gridgo/gridgo",
+  "mdj": "design/connector.mdj",
+  "freeze": "42f57e65c6",
+  "freeze_date": "2018-10-10",
+  "head_date": "2020-01-15",
+  "fp_commits_after": 63,
+  "fp_code_commits_after": 38,
+  "langs": {
+   "Java": 487,
+   "Python": 1
+  },
+  "classes": 8,
+  "rels": 13
+ },
+ {
+  "repo": "github.com/OneBusAway/onebusaway-iphone",
+  "error": "fatal: unable to access 'https://github.com/OneBusAway/onebusaway-iphone.git/': Recv failure: Connection was reset"
+ },
+ {
+  "repo": "github.com/libinzhangyuan/asio_kcp",
+  "mdj": "Class_UML.mdj",
+  "freeze": "889e9b694c",
+  "freeze_date": "2015-07-17",
+  "head_date": "2017-10-25",
+  "fp_commits_after": 21,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 25,
+  "rels": 25,
+  "attrs": 4,
+  "ops": 5
+ },
+ {
+  "repo": "github.com/libinzhangyuan/asio_kcp",
+  "mdj": "Class_UML_client.mdj",
+  "freeze": "5c744773ea",
+  "freeze_date": "2015-07-27",
+  "head_date": "2017-10-25",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 20,
+  "rels": 13,
+  "ops": 9,
+  "attrs": 2
+ },
+ {
+  "repo": "github.com/libinzhangyuan/asio_kcp",
+  "mdj": "client_Class_UML.mdj",
+  "freeze": "5c744773ea",
+  "freeze_date": "2015-07-27",
+  "head_date": "2017-10-25",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 20,
+  "rels": 13,
+  "ops": 10,
+  "attrs": 2
+ },
+ {
+  "repo": "github.com/IllyaStarikov/academia",
+  "mdj": "src/cs5201-object-oriented-numerical-modeling-ninjas/uml/assignment-2.mdj",
+  "freeze": "39472580b0",
+  "freeze_date": "2025-06-27",
+  "head_date": "2026-05-08",
+  "fp_commits_after": 134,
+  "fp_code_commits_after": 25,
+  "langs": {
+   "Python": 243,
+   "C#": 125,
+   "Java": 85
+  },
+  "classes": 3,
+  "attrs": 3,
+  "rels": 1,
+  "ops": 23
+ },
+ {
+  "repo": "github.com/IllyaStarikov/academia",
+  "mdj": "src/cs5201-object-oriented-numerical-modeling-ninjas/uml/assignment-3.mdj",
+  "freeze": "39472580b0",
+  "freeze_date": "2025-06-27",
+  "head_date": "2026-05-08",
+  "fp_commits_after": 134,
+  "fp_code_commits_after": 25,
+  "langs": {
+   "Python": 243,
+   "C#": 125,
+   "Java": 85
+  },
+  "classes": 30,
+  "rels": 9,
+  "attrs": 9,
+  "ops": 43
+ },
+ {
+  "repo": "github.com/IllyaStarikov/academia",
+  "mdj": "src/cs5201-object-oriented-numerical-modeling-ninjas/uml/assignment-4.mdj",
+  "freeze": "39472580b0",
+  "freeze_date": "2025-06-27",
+  "head_date": "2026-05-08",
+  "fp_commits_after": 134,
+  "fp_code_commits_after": 25,
+  "langs": {
+   "Python": 243,
+   "C#": 125,
+   "Java": 85
+  },
+  "classes": 42,
+  "rels": 12,
+  "attrs": 11,
+  "ops": 118
+ },
+ {
+  "repo": "github.com/IllyaStarikov/academia",
+  "mdj": "src/cs5201-object-oriented-numerical-modeling-ninjas/uml/assignment-5.mdj",
+  "freeze": "39472580b0",
+  "freeze_date": "2025-06-27",
+  "head_date": "2026-05-08",
+  "fp_commits_after": 134,
+  "fp_code_commits_after": 25,
+  "langs": {
+   "Python": 243,
+   "C#": 125,
+   "Java": 85
+  },
+  "classes": 26,
+  "rels": 10,
+  "ops": 128,
+  "attrs": 8
+ },
+ {
+  "repo": "github.com/IllyaStarikov/academia",
+  "mdj": "src/cs5201-object-oriented-numerical-modeling-ninjas/uml/assignment-6 copy.mdj",
+  "freeze": "39472580b0",
+  "freeze_date": "2025-06-27",
+  "head_date": "2026-05-08",
+  "fp_commits_after": 134,
+  "fp_code_commits_after": 25,
+  "langs": {
+   "Python": 243,
+   "C#": 125,
+   "Java": 85
+  }
+ },
+ {
+  "repo": "github.com/IllyaStarikov/academia",
+  "mdj": "src/cs5201-object-oriented-numerical-modeling-ninjas/uml/assignment-6.mdj",
+  "freeze": "39472580b0",
+  "freeze_date": "2025-06-27",
+  "head_date": "2026-05-08",
+  "fp_commits_after": 134,
+  "fp_code_commits_after": 25,
+  "langs": {
+   "Python": 243,
+   "C#": 125,
+   "Java": 85
+  },
+  "classes": 33,
+  "rels": 23,
+  "ops": 196,
+  "attrs": 19
+ },
+ {
+  "repo": "github.com/kkrisz1/staruml-reverse-db",
+  "mdj": "test/postgresql/erd-v2.1.7.mdj",
+  "freeze": "a4ea56155d",
+  "freeze_date": "2023-08-27",
+  "head_date": "2024-01-31",
+  "fp_commits_after": 6,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "JavaScript": 35
+  }
+ },
+ {
+  "repo": "github.com/kkrisz1/staruml-reverse-db",
+  "mdj": "test/postgresql/erd.mdj",
+  "freeze": "8ca131353a",
+  "freeze_date": "2019-10-20",
+  "head_date": "2024-01-31",
+  "fp_commits_after": 69,
+  "fp_code_commits_after": 16,
+  "langs": {
+   "JavaScript": 35
+  }
+ },
+ {
+  "repo": "github.com/simulton/QSchematic",
+  "mdj": "docs/uml/model.mdj",
+  "freeze": "7aaa8fed5c",
+  "freeze_date": "2021-05-18",
+  "head_date": "2026-08-05",
+  "fp_commits_after": 367,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 20,
+  "rels": 31,
+  "attrs": 36,
+  "ops": 179
+ },
+ {
+  "repo": "github.com/tomi/vscode-rf-language-server",
+  "mdj": "design/ast-hierarchy.mdj",
+  "freeze": "aacaf744f0",
+  "freeze_date": "2023-10-03",
+  "head_date": "2023-10-04",
+  "fp_commits_after": 1,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "TypeScript": 68
+  },
+  "classes": 41,
+  "attrs": 48,
+  "rels": 33
+ },
+ {
+  "repo": "github.com/tomi/vscode-rf-language-server",
+  "mdj": "design/data-models.mdj",
+  "freeze": "aacaf744f0",
+  "freeze_date": "2023-10-03",
+  "head_date": "2023-10-04",
+  "fp_commits_after": 1,
+  "fp_code_commits_after": 1,
+  "langs": {
+   "TypeScript": 68
+  }
+ },
+ {
+  "repo": "github.com/dputhier/pygtftk",
+  "mdj": "docs/classes/pygtftk_classes.mdj",
+  "freeze": "3c985fd4a8",
+  "freeze_date": "2019-11-19",
+  "head_date": "2022-12-22",
+  "fp_commits_after": 196,
+  "fp_code_commits_after": 143,
+  "langs": {
+   "Python": 122,
+   "JavaScript": 12
+  },
+  "classes": 9,
+  "rels": 8
+ },
+ {
+  "repo": "github.com/dputhier/pygtftk",
+  "mdj": "docs/use_case/novel_tx_annotation/novel_tx_annotation.mdj",
+  "freeze": "8ce76e3a0f",
+  "freeze_date": "2018-05-30",
+  "head_date": "2022-12-22",
+  "fp_commits_after": 621,
+  "fp_code_commits_after": 429,
+  "langs": {
+   "Python": 122,
+   "JavaScript": 12
+  },
+  "rels": 25,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/flaviu2001/University-Projects",
+  "mdj": "Semester 4/Software Engineering/Lab/Diagrams/Class Diagram/conferenceManagementSystemClassDiagram.mdj",
+  "freeze": "26016d5477",
+  "freeze_date": "2021-10-27",
+  "head_date": "2022-09-06",
+  "fp_commits_after": 47,
+  "fp_code_commits_after": 23,
+  "langs": {
+   "Java": 770,
+   "TypeScript": 329,
+   "Python": 136
+  }
+ },
+ {
+  "repo": "github.com/flaviu2001/University-Projects",
+  "mdj": "Semester 4/Software Engineering/Lab/Diagrams/Class Diagram/conferenceManagementSystemClassDiagramV2.mdj",
+  "freeze": "26016d5477",
+  "freeze_date": "2021-10-27",
+  "head_date": "2022-09-06",
+  "fp_commits_after": 47,
+  "fp_code_commits_after": 23,
+  "langs": {
+   "Java": 770,
+   "TypeScript": 329,
+   "Python": 136
+  },
+  "classes": 29,
+  "rels": 56,
+  "attrs": 112,
+  "ops": 49
+ },
+ {
+  "repo": "github.com/flaviu2001/University-Projects",
+  "mdj": "Semester 4/Software Engineering/Lab/Diagrams/Sequence diagrams/Dragos/sequence diagrams.mdj",
+  "freeze": "26016d5477",
+  "freeze_date": "2021-10-27",
+  "head_date": "2022-09-06",
+  "fp_commits_after": 47,
+  "fp_code_commits_after": 23,
+  "langs": {
+   "Java": 770,
+   "TypeScript": 329,
+   "Python": 136
+  },
+  "attrs": 18
+ },
+ {
+  "repo": "github.com/flaviu2001/University-Projects",
+  "mdj": "Semester 4/Systems for Design and Implementation/PetShop Lab 2-4/Diagram/uml_diagram.mdj",
+  "freeze": "26016d5477",
+  "freeze_date": "2021-10-27",
+  "head_date": "2022-09-06",
+  "fp_commits_after": 47,
+  "fp_code_commits_after": 23,
+  "langs": {
+   "Java": 770,
+   "TypeScript": 329,
+   "Python": 136
+  },
+  "classes": 33,
+  "attrs": 27,
+  "ops": 155,
+  "rels": 58
+ },
+ {
+  "repo": "github.com/btccom/btcpool-ABANDONED",
+  "mdj": "docs/Eth/uml.mdj",
+  "freeze": "249df9d268",
+  "freeze_date": "2018-02-27",
+  "head_date": "2020-09-14",
+  "fp_commits_after": 1134,
+  "fp_code_commits_after": 35,
+  "langs": {
+   "PHP": 29,
+   "JavaScript": 1,
+   "Python": 1
+  },
+  "rels": 7,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/staruml/staruml-dev-docs",
+  "mdj": "samples/Book.mdj",
+  "freeze": "f1c771c22c",
+  "freeze_date": "2015-01-17",
+  "head_date": "2015-10-11",
+  "fp_commits_after": 3,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 2,
+  "rels": 1,
+  "attrs": 6
+ },
+ {
+  "repo": "github.com/bytedance/dbatman",
+  "mdj": "docs/internal/design.mdj",
+  "freeze": "1a8402a730",
+  "freeze_date": "2016-03-03",
+  "head_date": "2016-10-20",
+  "fp_commits_after": 118,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "rels": 20,
+  "attrs": 5,
+  "classes": 4,
+  "ops": 7
+ },
+ {
+  "repo": "github.com/AntoineSebert/dandelion",
+  "mdj": "documents/diagrams/diagram.mdj",
+  "freeze": "6573217071",
+  "freeze_date": "2019-03-19",
+  "head_date": "2023-04-11",
+  "fp_commits_after": 292,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "attrs": 14,
+  "classes": 25,
+  "rels": 50,
+  "ops": 47
+ },
+ {
+  "repo": "github.com/staruml/staruml-java",
+  "mdj": "unittest-files/generate/CodeGenTestModel.mdj",
+  "freeze": "86e5981053",
+  "freeze_date": "2022-03-28",
+  "head_date": "2025-04-16",
+  "fp_commits_after": 3,
+  "fp_code_commits_after": 2,
+  "langs": {
+   "Java": 34,
+   "JavaScript": 5
+  },
+  "classes": 12,
+  "attrs": 11,
+  "ops": 9,
+  "rels": 9
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/chain-of-responsibility/etc/chain.mdj",
+  "freeze": "5f28539eb8",
+  "freeze_date": "2017-10-23",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 41,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 3,
+  "attrs": 1,
+  "ops": 1
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/command/etc/command.mdj",
+  "freeze": "3fbc869544",
+  "freeze_date": "2017-09-20",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 43,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 6,
+  "rels": 15,
+  "ops": 6,
+  "attrs": 2
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/mediator/etc/mediator.mdj",
+  "freeze": "c7e52b1f72",
+  "freeze_date": "2018-07-17",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 13,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 5,
+  "rels": 6
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/memento/etc/memento.mdj",
+  "freeze": "7cd8babf38",
+  "freeze_date": "2018-07-17",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 12,
+  "fp_code_commits_after": 0,
+  "langs": {}
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/observer/etc/observer.mdj",
+  "freeze": "635bd82362",
+  "freeze_date": "2018-07-18",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 11,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 4,
+  "ops": 7
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/state/etc/state.mdj",
+  "freeze": "e50997f44a",
+  "freeze_date": "2018-07-18",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 10,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 3,
+  "ops": 2
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/strategy/etc/strategy.mdj",
+  "freeze": "2bb86c3cbd",
+  "freeze_date": "2018-07-18",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 9,
+  "fp_code_commits_after": 0,
+  "langs": {}
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/template-method/etc/template.mdj",
+  "freeze": "6a3bdab632",
+  "freeze_date": "2018-07-18",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 7,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 2,
+  "ops": 5,
+  "rels": 1
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "behavioral/visitor/etc/visitor.mdj",
+  "freeze": "9f8812f0fb",
+  "freeze_date": "2018-09-04",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 5,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 8,
+  "ops": 9,
+  "rels": 7
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "creational/abstract-factory/etc/abstract-factory.mdj",
+  "freeze": "74cf9ce439",
+  "freeze_date": "2017-10-24",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 37,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 10,
+  "ops": 2,
+  "rels": 15
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "creational/builder/etc/builder.mdj",
+  "freeze": "4f5986e0fa",
+  "freeze_date": "2017-10-24",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 36,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 4,
+  "ops": 3
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "creational/cake/etc/cake.mdj",
+  "freeze": "0db6cac7d8",
+  "freeze_date": "2017-11-07",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 6,
+  "rels": 6,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "creational/factory-kit/etc/factory-kit.mdj",
+  "freeze": "766e62b9ce",
+  "freeze_date": "2017-10-25",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 32,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 5
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "creational/factory-method/etc/factory-method.mdj",
+  "freeze": "766e62b9ce",
+  "freeze_date": "2017-10-25",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 32,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 3,
+  "ops": 3
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "creational/prototype/etc/prototype.mdj",
+  "freeze": "c3d8975848",
+  "freeze_date": "2017-10-25",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 31,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 3,
+  "rels": 2,
+  "ops": 2
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "creational/simple-factory/etc/simple-factory.mdj",
+  "freeze": "31dfede565",
+  "freeze_date": "2017-10-25",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 30,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 5,
+  "rels": 5,
+  "ops": 1
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "other/monad/etc/monad.mdj",
+  "freeze": "926007ced9",
+  "freeze_date": "2018-07-18",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 8,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 1,
+  "ops": 3
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "other/selfless-trait/etc/selfless-trait.mdj",
+  "freeze": "8c8c867659",
+  "freeze_date": "2017-11-09",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 17,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 2,
+  "rels": 1
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "persistence/data-access-object/etc/dao.mdj",
+  "freeze": "916a32203b",
+  "freeze_date": "2018-12-07",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 1,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 5,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "persistence/repository/etc/repository.mdj",
+  "freeze": "0125124cb4",
+  "freeze_date": "2019-01-09",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 0,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 7,
+  "ops": 2,
+  "rels": 6
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/adapter/etc/adapter.mdj",
+  "freeze": "0db6cac7d8",
+  "freeze_date": "2017-11-07",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 5,
+  "ops": 3,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/bridge/etc/bridge.mdj",
+  "freeze": "d2090963cd",
+  "freeze_date": "2017-11-07",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 5,
+  "rels": 6,
+  "attrs": 1
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/composite/etc/composite.mdj",
+  "freeze": "4f8a329b0f",
+  "freeze_date": "2017-11-08",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 24,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/decorator/etc/decorator.mdj",
+  "freeze": "f6bc943dbe",
+  "freeze_date": "2017-11-08",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 23,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/facade/etc/facade.mdj",
+  "freeze": "03f340ced7",
+  "freeze_date": "2017-11-08",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 22,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 1
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/flyweight/etc/flyweight.mdj",
+  "freeze": "d841a427d7",
+  "freeze_date": "2018-07-17",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 14,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 5,
+  "rels": 6,
+  "ops": 3,
+  "attrs": 2
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/magnet/etc/magnet.mdj",
+  "freeze": "08ca258dd9",
+  "freeze_date": "2017-11-09",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 19,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "attrs": 1,
+  "ops": 2,
+  "rels": 3
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/proxy/etc/proxy.mdj",
+  "freeze": "ee5425ff5f",
+  "freeze_date": "2017-11-09",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 18,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 4,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/josephguan/scala-design-patterns",
+  "mdj": "structural/type-classes/etc/type-classes.mdj",
+  "freeze": "b23b25d940",
+  "freeze_date": "2017-11-21",
+  "head_date": "2019-01-09",
+  "fp_commits_after": 16,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 8,
+  "rels": 6,
+  "ops": 1
+ },
+ {
+  "repo": "github.com/dgk/django-business-logic",
+  "mdj": "docs/static/staruml.mdj",
+  "freeze": "53d0368ebf",
+  "freeze_date": "2019-03-09",
+  "head_date": "2025-03-24",
+  "fp_commits_after": 26,
+  "fp_code_commits_after": 15,
+  "langs": {
+   "Python": 99,
+   "TypeScript": 59,
+   "JavaScript": 23
+  },
+  "classes": 20,
+  "rels": 16,
+  "attrs": 40,
+  "ops": 3
+ },
+ {
+  "repo": "github.com/WeihanLi/DesignPatterns",
+  "mdj": "BehaviorPattern/IteratorPattern/Iterator.mdj",
+  "freeze": "c867feae31",
+  "freeze_date": "2018-04-14",
+  "head_date": "2026-03-22",
+  "fp_commits_after": 121,
+  "fp_code_commits_after": 19,
+  "langs": {
+   "C#": 93
+  },
+  "classes": 8,
+  "ops": 5,
+  "rels": 8
+ },
+ {
+  "repo": "github.com/Dashark/hello-world",
+  "mdj": "Poly.mdj",
+  "freeze": "6213e99d3d",
+  "freeze_date": "2019-05-13",
+  "head_date": "2022-12-22",
+  "fp_commits_after": 102,
+  "fp_code_commits_after": 2,
+  "langs": {
+   "Java": 2,
+   "JavaScript": 1,
+   "Python": 1
+  },
+  "classes": 7,
+  "rels": 5,
+  "attrs": 5,
+  "ops": 7
+ },
+ {
+  "repo": "github.com/bloodline0902/QLadder",
+  "mdj": "Carthage/Checkouts/CocoaLumberjack/Documentation/CocoaLumberjack.mdj",
+  "freeze": "e2ba93b527",
+  "freeze_date": "2017-11-17",
+  "head_date": "2019-01-04",
+  "fp_commits_after": 25,
+  "fp_code_commits_after": 0,
+  "langs": {
+   "JavaScript": 1
+  }
+ },
+ {
+  "repo": "github.com/MapGIS/WebClient-JavaScript",
+  "mdj": "src/service/uml/Symbols.mdj",
+  "freeze": "8297824481",
+  "freeze_date": "2022-04-20",
+  "head_date": "2022-07-29",
+  "fp_commits_after": 4,
+  "fp_code_commits_after": 3,
+  "langs": {
+   "JavaScript": 789,
+   "TypeScript": 4
+  },
+  "classes": 25,
+  "attrs": 154,
+  "ops": 61,
+  "rels": 41
+ },
+ {
+  "repo": "github.com/MapGIS/WebClient-JavaScript",
+  "mdj": "src/service/uml/Symbols2D.mdj",
+  "freeze": "3aee2b4bb4",
+  "freeze_date": "2022-04-26",
+  "head_date": "2022-07-29",
+  "fp_commits_after": 4,
+  "fp_code_commits_after": 3,
+  "langs": {
+   "JavaScript": 789,
+   "TypeScript": 4
+  },
+  "classes": 25,
+  "attrs": 154,
+  "ops": 61,
+  "rels": 41
+ },
+ {
+  "repo": "github.com/MapGIS/WebClient-JavaScript",
+  "mdj": "src/service/uml/Symbols3D.mdj",
+  "freeze": "3aee2b4bb4",
+  "freeze_date": "2022-04-26",
+  "head_date": "2022-07-29",
+  "fp_commits_after": 4,
+  "fp_code_commits_after": 3,
+  "langs": {
+   "JavaScript": 789,
+   "TypeScript": 4
+  }
+ },
+ {
+  "repo": "github.com/Apress/design-patterns-modern-cpp20",
+  "mdj": "Creational/Creational/CompositeBuilderClassDiagram.mdj",
+  "freeze": "5386409fa0",
+  "freeze_date": "2021-11-05",
+  "head_date": "2021-11-05",
+  "fp_commits_after": 0,
+  "fp_code_commits_after": 0,
+  "langs": {},
+  "classes": 5,
+  "attrs": 2,
+  "ops": 9,
+  "rels": 4
+ },
+ {
+  "repo": "github.com/lovemaoli/XMU_SeLearning",
+  "error": "error: RPC failed; curl 56 Recv failure: Connection was reset\nfatal: early EOF\nfatal: fetch-pack: invalid index-pack output"
+ },
+ {
+  "repo": "github.com/TimeWarpEngineering/timewarp-state",
+  "error": "error: RPC failed; curl 56 Recv failure: Connection was reset\nerror: 44 bytes of body are still expected\nfetch-pack: unexpected disconnect while reading sideband packet\nfatal: early EOF\nfatal: fetch-p"
+ },
+ {
+  "repo": "github.com/CredentialEngine/osmt",
+  "error": "fatal: unable to access 'https://github.com/CredentialEngine/osmt.git/': Could not resolve host: github.com"
+ },
+ {
+  "repo": "github.com/wu-hao-ze/All-assignments-and-projects-for-software-engineering-courses-at-Tongji-University",
+  "error": "fatal: unable to access 'https://github.com/wu-hao-ze/All-assignments-and-projects-for-software-engineering-courses-at-Tongji-University.git/': Could not resolve host: github.com"
+ },
+ {
+  "repo": "github.com/DaxiaK/MyDiary",
+  "error": "fatal: unable to access 'https://github.com/DaxiaK/MyDiary.git/': Could not resolve host: github.com"
+ },
+ {
+  "repo": "github.com/yuchuangu85/Android_Framework_Source",
+  "error": "fatal: unable to access 'https://github.com/yuchuangu85/Android_Framework_Source.git/': Could not resolve host: github.com"
+ }
+]

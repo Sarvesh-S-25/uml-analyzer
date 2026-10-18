@@ -1,0 +1,3886 @@
+[
+ {
+  "repo": "github.com/sindishima/EZEelectronics",
+  "mdj": "UML/V1/Glossary/Glossary.mdj",
+  "freeze": "968e91b338",
+  "freeze_date": "2024-04-27",
+  "head_date": "2025-03-25",
+  "designed": 10,
+  "found_in_code": 3,
+  "subdir": "code/server/src/components",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\EZEelectronics__UML_V1_Glossary_Glossary.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/giarri/eriantys",
+  "mdj": "Deliveries/Model UML/Inital model/class_diagram.mdj",
+  "freeze": "274b35398d",
+  "freeze_date": "2022-07-01",
+  "head_date": "2026-06-09",
+  "designed": 32,
+  "found_in_code": 14,
+  "subdir": "src/main/java/it/polimi/ingsw/server",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\eriantys__Deliveries_Model_UML_Inital_model_class_diagram.mdj",
+  "fp_after": 15,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/pedjamitrovic/Chess3D",
+  "mdj": "Documentation/diagrams/Piece CD.mdj",
+  "freeze": "1fda6ea863",
+  "freeze_date": "2019-09-25",
+  "head_date": "2021-09-21",
+  "designed": 10,
+  "found_in_code": 10,
+  "subdir": "Assets/Project/ChessEngine",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Chess3D__Documentation_diagrams_Piece_CD.mdj",
+  "fp_after": 4,
+  "fp_touching_subdir": 1,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/lcvalves/fabric_e-workshop",
+  "mdj": "diagrams/class-model.mdj",
+  "freeze": "bb8fc3fcfc",
+  "freeze_date": "2022-03-30",
+  "head_date": "2023-05-03",
+  "designed": 2,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\fabric_e-workshop__diagrams_class-model.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/sebassmtz/BankThread",
+  "mdj": "UML.mdj",
+  "freeze": "7a98736475",
+  "freeze_date": "2021-03-17",
+  "head_date": "2022-06-21",
+  "designed": 6,
+  "found_in_code": 5,
+  "subdir": "src/models",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\BankThread__UML.mdj",
+  "fp_after": 6,
+  "fp_touching_subdir": 5,
+  "freeze_run": {
+   "files": 5,
+   "score": 57.14,
+   "conv": 16,
+   "div": 29,
+   "abs": 10
+  },
+  "head_run": {
+   "files": 5,
+   "score": 57.14,
+   "conv": 16,
+   "div": 38,
+   "abs": 10
+  },
+  "drift": [
+   29,
+   38,
+   10,
+   10
+  ]
+ },
+ {
+  "repo": "github.com/jotanmiguel/ProjetoPTI-PTR",
+  "mdj": "Diagrama.mdj",
+  "freeze": "b79504447c",
+  "freeze_date": "2023-04-04",
+  "head_date": "2023-10-24",
+  "designed": 1,
+  "found_in_code": 1,
+  "subdir": "Django/projeto/API",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ProjetoPTI-PTR__Diagrama.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/OSZ-IMT/CodeRunnerClassDiagram",
+  "mdj": "test/hase/hase.mdj",
+  "freeze": "763f5b8bd8",
+  "freeze_date": "2023-11-15",
+  "head_date": "2024-12-28",
+  "designed": 12,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\CodeRunnerClassDiagram__test_hase_hase.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/DusceacBogdan/Agenti-de-vanzari-implementare",
+  "mdj": "Diagrams/Diagrama UML Rafinata.mdj",
+  "freeze": "3d4aa92213",
+  "freeze_date": "2024-06-05",
+  "head_date": "2025-05-10",
+  "designed": 27,
+  "found_in_code": 4,
+  "subdir": "src/main/java",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Agenti-de-vanzari-implementare__Diagrams_Diagrama_UML_Rafinata.mdj",
+  "fp_after": 1,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/JulianRuano/Open-Market",
+  "mdj": "strategyserver/ServidorMultiHiloHandler.mdj",
+  "freeze": "a0d6f41127",
+  "freeze_date": "2023-05-24",
+  "head_date": "2024-10-22",
+  "designed": 12,
+  "found_in_code": 4,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Open-Market__strategyserver_ServidorMultiHiloHandler.mdj",
+  "fp_after": 57,
+  "fp_touching_subdir": 57,
+  "freeze_run": {
+   "files": 171,
+   "score": 80.0,
+   "conv": 42,
+   "div": 62,
+   "abs": 10
+  },
+  "head_run": {
+   "files": 180,
+   "score": 80.0,
+   "conv": 42,
+   "div": 98,
+   "abs": 10
+  },
+  "drift": [
+   62,
+   98,
+   10,
+   10
+  ]
+ },
+ {
+  "repo": "github.com/KaioRodriguesCT/EasyCD-IFES",
+  "mdj": "documents/UML.mdj",
+  "freeze": "30d15158fe",
+  "freeze_date": "2022-06-09",
+  "head_date": "2023-04-29",
+  "designed": 12,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\EasyCD-IFES__documents_UML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Paramesh612/DormNest-OOAD-Project",
+  "mdj": "UML Files/Class Diagram Submittes.mdj",
+  "freeze": "e721103d09",
+  "freeze_date": "2024-09-26",
+  "head_date": "2025-06-07",
+  "designed": 5,
+  "found_in_code": 1,
+  "subdir": "Code",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\DormNest-OOAD-Project__UML_Files_Class_Diagram_Submittes.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/delchiaro/smART",
+  "mdj": "documentation/ProximityManager outdoor.mdj",
+  "freeze": "7aece4b346",
+  "freeze_date": "2015-09-29",
+  "head_date": "2017-05-25",
+  "designed": 5,
+  "found_in_code": 4,
+  "subdir": "app/src/main/java/micc/beaconav/outdoorEngine/localization/outdoorProximity",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\smART__documentation_ProximityManager_outdoor.mdj",
+  "fp_after": 44,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/ARDivekar/SearchDistribute",
+  "mdj": "SearchDistribute/Documents/Project Structure.mdj",
+  "error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+ },
+ {
+  "repo": "github.com/Code-Artist/MSChartExtension",
+  "mdj": "Doc/MSChartExtension.mdj",
+  "freeze": "06d84690d0",
+  "freeze_date": "2019-05-14",
+  "head_date": "2024-08-25",
+  "designed": 19,
+  "found_in_code": 9,
+  "subdir": "MSChartExtension",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\MSChartExtension__Doc_MSChartExtension.mdj",
+  "fp_after": 29,
+  "fp_touching_subdir": 19,
+  "freeze_run": {
+   "files": 35,
+   "score": 38.1,
+   "conv": 16,
+   "div": 118,
+   "abs": 22
+  },
+  "head_run": {
+   "files": 45,
+   "score": 38.1,
+   "conv": 16,
+   "div": 189,
+   "abs": 22
+  },
+  "drift": [
+   118,
+   189,
+   22,
+   22
+  ]
+ },
+ {
+  "repo": "github.com/adriengivry/GyvrTools",
+  "mdj": "Documentation/GyvrTools.mdj",
+  "freeze": "21b5ebbf7d",
+  "freeze_date": "2018-11-21",
+  "head_date": "2024-04-26",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\GyvrTools__Documentation_GyvrTools.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/OMCHOKSI108/Java_Programming_Projects",
+  "mdj": "Library management in java/LMS Class Diagram.mdj",
+  "freeze": "c3b301603a",
+  "freeze_date": "2024-10-21",
+  "head_date": "2026-03-02",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Java_Programming_Projects__Library_management_in_java_LMS_Class_Diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/eugene-seb/MF-Library",
+  "mdj": "doc/diagrams.mdj",
+  "freeze": "98e6ce17d9",
+  "freeze_date": "2025-06-18",
+  "head_date": "2025-12-31",
+  "designed": 13,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\MF-Library__doc_diagrams.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/AbdessamadAb04/book_distribution_platform",
+  "mdj": "Conception_book_distribution_platform.mdj",
+  "freeze": "959cf544b9",
+  "freeze_date": "2025-06-10",
+  "head_date": "2026-02-27",
+  "designed": 7,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\book_distribution_platform__Conception_book_distribution_platform.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/coureyk/Projects",
+  "mdj": "Project 6 - My Garage Program/UML_Diagram_249_A2.mdj",
+  "freeze": "40371f1129",
+  "freeze_date": "2024-01-27",
+  "head_date": "2026-02-03",
+  "designed": 9,
+  "found_in_code": 9,
+  "subdir": "Project 6 - My Garage Program",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Projects__Project_6_-_My_Garage_Program_UML_Diagram_249_A2.mdj",
+  "fp_after": 11,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/SuperNova911/UnityBattleRoyale",
+  "mdj": "Diagram.mdj",
+  "freeze": "98dc0b8baa",
+  "freeze_date": "2019-09-25",
+  "head_date": "2021-08-19",
+  "designed": 14,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\UnityBattleRoyale__Diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/onlynight/Translator",
+  "mdj": "docs/translator.mdj",
+  "freeze": "00adbe0a7c",
+  "freeze_date": "2016-10-31",
+  "head_date": "2018-06-17",
+  "designed": 12,
+  "found_in_code": 9,
+  "subdir": "src/com/github/onlynight/android/string_xml/translate/translator",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Translator__docs_translator.mdj",
+  "fp_after": 11,
+  "fp_touching_subdir": 3,
+  "freeze_run": {
+   "files": 15,
+   "score": 79.07,
+   "conv": 40,
+   "div": 29,
+   "abs": 10
+  },
+  "head_run": {
+   "files": 15,
+   "score": 79.07,
+   "conv": 40,
+   "div": 36,
+   "abs": 10
+  },
+  "drift": [
+   29,
+   36,
+   10,
+   10
+  ]
+ },
+ {
+  "repo": "github.com/aagarwal1012/Image-Steganography-Library-Android",
+  "mdj": "UML/Stegmodel.mdj",
+  "freeze": "54a1a1e396",
+  "freeze_date": "2018-12-08",
+  "head_date": "2022-06-05",
+  "designed": 14,
+  "found_in_code": 6,
+  "subdir": "ImageSteganographyLibrary/src/main/java/com/ayush/imagesteganographylibrary",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Image-Steganography-Library-Android__UML_Stegmodel.mdj",
+  "fp_after": 12,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/Dantsz/Yorcvs",
+  "mdj": "resources/window_system.mdj",
+  "freeze": "ffb9b78233",
+  "freeze_date": "2022-05-20",
+  "head_date": "2024-03-30",
+  "designed": 12,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Yorcvs__resources_window_system.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/FredBonux/BonoCipollone",
+  "mdj": "RASD_CPMS/Diagrms/ClassDiagram.mdj",
+  "freeze": "26cb9909c2",
+  "freeze_date": "2022-12-23",
+  "head_date": "2023-07-26",
+  "designed": 13,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\BonoCipollone__RASD_CPMS_Diagrms_ClassDiagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Fysek/SensorClass",
+  "mdj": "Sensor class.mdj",
+  "freeze": "101e513b0a",
+  "freeze_date": "2020-02-26",
+  "head_date": "2021-12-04",
+  "designed": 7,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\SensorClass__Sensor_class.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/MGMDJassim/Projet_Hotel",
+  "mdj": "PROJET 7 JAVA.mdj",
+  "freeze": "951b2a663e",
+  "freeze_date": "2024-05-24",
+  "head_date": "2025-02-06",
+  "designed": 14,
+  "found_in_code": 11,
+  "subdir": "Model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Projet_Hotel__PROJET_7_JAVA.mdj",
+  "fp_after": 17,
+  "fp_touching_subdir": 13,
+  "freeze_run": {
+   "files": 12,
+   "score": 65.22,
+   "conv": 43,
+   "div": 188,
+   "abs": 18
+  },
+  "head_run": {
+   "files": 12,
+   "score": 60.87,
+   "conv": 41,
+   "div": 188,
+   "abs": 20
+  },
+  "drift": [
+   188,
+   188,
+   18,
+   20
+  ]
+ },
+ {
+  "repo": "github.com/codeByKaustubh/DabbeWale",
+  "mdj": "Proj diagrams/staruml/class_diagram.mdj",
+  "freeze": "820e4aa7a4",
+  "freeze_date": "2025-12-01",
+  "head_date": "2026-06-05",
+  "designed": 14,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\DabbeWale__Proj_diagrams_staruml_class_diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/TimeWarpEngineering/timewarp-quickbooks",
+  "mdj": "documentation/star-uml/architecture-comparisons.mdj",
+  "freeze": "391b0f9c7a",
+  "freeze_date": "2025-08-08",
+  "head_date": "2026-10-09",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\timewarp-quickbooks__documentation_star-uml_architecture-comparisons.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/wagnerfloresdossantos/engtelecom-ifsc-sj",
+  "mdj": "poo-2024.1/SimuladorRede/projeto2.mdj",
+  "freeze": "ff4cd5e676",
+  "freeze_date": "2025-02-22",
+  "head_date": "2026-10-17",
+  "designed": 12,
+  "found_in_code": 10,
+  "subdir": "poo-2024.1",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\engtelecom-ifsc-sj__poo-2024.1_SimuladorRede_projeto2.mdj",
+  "fp_after": 90,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/maimingliang/BaseItemLayout",
+  "mdj": "BaseItemLayout.mdj",
+  "freeze": "573548dfa7",
+  "freeze_date": "2016-12-08",
+  "head_date": "2017-08-03",
+  "designed": 12,
+  "found_in_code": 8,
+  "subdir": "baseitemlayoutlibrary/src/main/java/com/maiml/library",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\BaseItemLayout__BaseItemLayout.mdj",
+  "fp_after": 6,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/andrestoga/take_home_robotics_coding_test",
+  "mdj": "multi_agent_planning/multi_robot_planning.mdj",
+  "freeze": "317e05fbd0",
+  "freeze_date": "2019-06-06",
+  "head_date": "2020-03-05",
+  "designed": 20,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\take_home_robotics_coding_test__multi_agent_planning_multi_robot_planning.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/gsdukbh/novel",
+  "mdj": "doc/\u9879\u76eeuml.mdj",
+  "freeze": "c5caaf8fa3",
+  "freeze_date": "2022-08-17",
+  "head_date": "2024-02-24",
+  "designed": 2,
+  "found_in_code": 2,
+  "subdir": "crawl/src/main/java/top/werls/novel/crawl/core",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\novel__doc_\u9879\u76eeuml.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/MARS-Group-HAW/model-wolf-sheep",
+  "mdj": "Design/v1 grass growth agent/wolf_sheep_grass_growth_agent_v1_2_data_model_simple.mdj",
+  "freeze": "9ac1db37ce",
+  "freeze_date": "2021-04-22",
+  "head_date": "2023-04-07",
+  "designed": 8,
+  "found_in_code": 4,
+  "subdir": "WolfSheepPredation/Model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\model-wolf-sheep__Design_v1_grass_growth_agent_wolf_sheep_grass_growth_agent_v1_2_data_model_simple.mdj",
+  "fp_after": 15,
+  "fp_touching_subdir": 6,
+  "freeze_run": {
+   "files": 4,
+   "score": 66.67,
+   "conv": 24,
+   "div": 35,
+   "abs": 9
+  },
+  "head_run": {
+   "files": 4,
+   "score": 66.67,
+   "conv": 24,
+   "div": 33,
+   "abs": 9
+  },
+  "drift": [
+   35,
+   33,
+   9,
+   9
+  ]
+ },
+ {
+  "repo": "github.com/tomi-cuentitas/phoenix-adaptH",
+  "mdj": "uml/phoenix.mdj",
+  "freeze": "c0760c521f",
+  "freeze_date": "2024-10-08",
+  "head_date": "2026-10-05",
+  "designed": 24,
+  "found_in_code": 15,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\phoenix-adaptH__uml_phoenix.mdj",
+  "fp_after": 277,
+  "fp_touching_subdir": 277,
+  "freeze_run": {
+   "files": 34,
+   "score": 52.94,
+   "conv": 21,
+   "div": 185,
+   "abs": 16
+  },
+  "error": "GitError(\"git archive failed for HEAD: error: invalid path 'phoenix/aux.py'\\nfatal: failed to unpack tree object ba6834eddd118778fa787b26e5e93e88a23ceb88\\n\")"
+ },
+ {
+  "repo": "github.com/Knose1/RayLib_SHMUP",
+  "mdj": "RayLib_SHMUP/Shmup.mdj",
+  "freeze": "2247c6638d",
+  "freeze_date": "2021-12-03",
+  "head_date": "2022-08-10",
+  "designed": 13,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\RayLib_SHMUP__RayLib_SHMUP_Shmup.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/vivo-community/vivo-data-distribution-api",
+  "mdj": "docs/Modeling.mdj",
+  "freeze": "10a24d84d8",
+  "freeze_date": "2017-12-06",
+  "head_date": "2021-06-24",
+  "designed": 14,
+  "found_in_code": 13,
+  "subdir": "vivo_1_10/src/main/java/edu/cornell/library/scholars/webapp/controller/api/distribute",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vivo-data-distribution-api__docs_Modeling.mdj",
+  "fp_after": 17,
+  "fp_touching_subdir": 1,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/Sylcantor/WorldMasterCthululu",
+  "mdj": "docs/Uml_version_beta.mdj",
+  "freeze": "34281ee9db",
+  "freeze_date": "2022-05-11",
+  "head_date": "2023-04-11",
+  "designed": 18,
+  "found_in_code": 3,
+  "subdir": "game/core/src/com/mygdx/game",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\WorldMasterCthululu__docs_Uml_version_beta.mdj",
+  "fp_after": 3,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/itmWUMA/LogicCamera",
+  "mdj": "Docs/UML.mdj",
+  "freeze": "edec731977",
+  "freeze_date": "2024-09-14",
+  "head_date": "2025-08-04",
+  "designed": 28,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\LogicCamera__Docs_UML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/vprusa/gag-web",
+  "mdj": "diagrams/web-gag.mdj",
+  "freeze": "45dc4b9802",
+  "freeze_date": "2019-04-14",
+  "head_date": "2025-06-28",
+  "designed": 14,
+  "found_in_code": 13,
+  "subdir": "src/main/java/cz/muni/fi/gag/app/web/domain",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\gag-web__diagrams_web-gag.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/Kamikaze1991/MonkeyEngine",
+  "mdj": "GameEngine.mdj",
+  "freeze": "cafd8ecaeb",
+  "freeze_date": "2023-05-01",
+  "head_date": "2026-08-08",
+  "designed": 7,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\MonkeyEngine__GameEngine.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Seym0n/SHiNE-Framework",
+  "mdj": "game-json.mdj",
+  "freeze": "fa8d9a9968",
+  "freeze_date": "2025-03-19",
+  "head_date": "2026-04-09",
+  "designed": 29,
+  "found_in_code": 1,
+  "subdir": "dist",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\SHiNE-Framework__game-json.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Jinksi/vars-annotation",
+  "mdj": "src/site/uml/MediaPlayer.mdj",
+  "freeze": "7db185b5c3",
+  "freeze_date": "2018-01-02",
+  "head_date": "2019-06-06",
+  "designed": 16,
+  "found_in_code": 8,
+  "subdir": "src/main/java/org/mbari/m3/vars/annotation",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vars-annotation__src_site_uml_MediaPlayer.mdj",
+  "fp_after": 169,
+  "fp_touching_subdir": 135,
+  "freeze_run": {
+   "files": 241,
+   "score": 65.38,
+   "conv": 28,
+   "div": 248,
+   "abs": 21
+  },
+  "head_run": {
+   "files": 302,
+   "score": 65.38,
+   "conv": 28,
+   "div": 312,
+   "abs": 21
+  },
+  "drift": [
+   248,
+   312,
+   21,
+   21
+  ]
+ },
+ {
+  "repo": "github.com/wbaamaral/algafood-api-old",
+  "mdj": "src/main/resources/uml/diagrama-de-classes-v2.mdj",
+  "freeze": "375391da5e",
+  "freeze_date": "2021-04-04",
+  "head_date": "2022-10-05",
+  "designed": 13,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\algafood-api-old__src_main_resources_uml_diagrama-de-classes-v2.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/watsh-rajneesh/amigo-chatbot",
+  "mdj": "amigo.mdj",
+  "freeze": "526da21bf1",
+  "freeze_date": "2017-05-09",
+  "head_date": "2018-08-29",
+  "designed": 12,
+  "found_in_code": 12,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\amigo-chatbot__amigo.mdj",
+  "fp_after": 16,
+  "fp_touching_subdir": 16,
+  "freeze_run": {
+   "files": 5111,
+   "score": 87.1,
+   "conv": 29,
+   "div": 112,
+   "abs": 10
+  },
+  "head_run": {
+   "files": 261,
+   "score": 87.1,
+   "conv": 29,
+   "div": 120,
+   "abs": 10
+  },
+  "drift": [
+   112,
+   120,
+   10,
+   10
+  ]
+ },
+ {
+  "repo": "github.com/yagoTobi/VirtualQ-Final-Version",
+  "mdj": "Diagramas/mdj/DiagramaDeClases.mdj",
+  "freeze": "f6f39a254a",
+  "freeze_date": "2024-07-25",
+  "head_date": "2026-09-14",
+  "designed": 13,
+  "found_in_code": 10,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\VirtualQ-Final-Version__Diagramas_mdj_DiagramaDeClases.mdj",
+  "fp_after": 3,
+  "fp_touching_subdir": 3,
+  "freeze_run": {
+   "files": 372,
+   "score": 10.77,
+   "conv": 14,
+   "div": 72,
+   "abs": 137
+  },
+  "head_run": {
+   "files": 559,
+   "score": 10.77,
+   "conv": 14,
+   "div": 74,
+   "abs": 137
+  },
+  "drift": [
+   72,
+   74,
+   137,
+   137
+  ]
+ },
+ {
+  "repo": "github.com/B1909976PhanThanhQui/Selling_Book_Online",
+  "mdj": "bieudo.mdj",
+  "freeze": "8b3fde35ae",
+  "freeze_date": "2023-04-21",
+  "head_date": "2024-03-02",
+  "designed": 8,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Selling_Book_Online__bieudo.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/mzlogin/CleanExpert",
+  "mdj": "docs/CleanExpert.mdj",
+  "freeze": "bc96745d42",
+  "freeze_date": "2016-01-14",
+  "head_date": "2016-12-08",
+  "designed": 3,
+  "found_in_code": 3,
+  "subdir": "app/src/main/java/org/mazhuang/cleanexpert",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\CleanExpert__docs_CleanExpert.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/MorphStore/Engine",
+  "mdj": "doc/uml/morphstore.mdj",
+  "freeze": "1e4aef565c",
+  "freeze_date": "2019-01-25",
+  "head_date": "2022-06-27",
+  "designed": 2,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Engine__doc_uml_morphstore.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/wrandelshofer/MonteMedia",
+  "mdj": "doc/design/MonteMedia.mdj",
+  "freeze": "c554f73908",
+  "freeze_date": "2023-07-15",
+  "head_date": "2025-08-30",
+  "designed": 0,
+  "found_in_code": 4,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\MonteMedia__doc_design_MonteMedia.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Master-ISI-Projects/usms-web",
+  "mdj": "attachements/class_digram.mdj",
+  "freeze": "1fc20ff18a",
+  "freeze_date": "2020-01-12",
+  "head_date": "2022-03-22",
+  "designed": 7,
+  "found_in_code": 7,
+  "subdir": "web/app/Models",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\usms-web__attachements_class_digram.mdj",
+  "fp_after": 26,
+  "fp_touching_subdir": 6,
+  "freeze_run": {
+   "files": 17,
+   "score": 20.59,
+   "conv": 7,
+   "div": 50,
+   "abs": 27
+  },
+  "head_run": {
+   "files": 17,
+   "score": 20.59,
+   "conv": 7,
+   "div": 53,
+   "abs": 27
+  },
+  "drift": [
+   50,
+   53,
+   27,
+   27
+  ]
+ },
+ {
+  "repo": "github.com/Mal3ul/Forma-Tech",
+  "mdj": "diagramme des classes.mdj",
+  "freeze": "47eda38fbf",
+  "freeze_date": "2024-01-16",
+  "head_date": "2025-06-18",
+  "designed": 9,
+  "found_in_code": 8,
+  "subdir": "classes",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Forma-Tech__diagramme_des_classes.mdj",
+  "fp_after": 9,
+  "fp_touching_subdir": 6,
+  "freeze_run": {
+   "files": 10,
+   "score": 22.73,
+   "conv": 16,
+   "div": 124,
+   "abs": 57
+  },
+  "head_run": {
+   "files": 17,
+   "score": 20.78,
+   "conv": 17,
+   "div": 148,
+   "abs": 67
+  },
+  "drift": [
+   124,
+   148,
+   57,
+   67
+  ]
+ },
+ {
+  "repo": "github.com/collinmarc/gestvae",
+  "mdj": "GestVAEv1.mdj",
+  "freeze": "04b3aaea45",
+  "freeze_date": "2019-01-02",
+  "head_date": "2026-05-11",
+  "designed": 12,
+  "found_in_code": 4,
+  "subdir": "GestVAEcls",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\gestvae__GestVAEv1.mdj",
+  "fp_after": 251,
+  "fp_touching_subdir": 125,
+  "freeze_run": {
+   "files": 30,
+   "score": 22.73,
+   "conv": 8,
+   "div": 26,
+   "abs": 32
+  },
+  "head_run": {
+   "files": 240,
+   "score": 30.0,
+   "conv": 21,
+   "div": 192,
+   "abs": 49
+  },
+  "drift": [
+   26,
+   192,
+   32,
+   49
+  ]
+ },
+ {
+  "repo": "github.com/iftopalmas/aglomerou",
+  "mdj": "docs/diagramas.mdj",
+  "freeze": "33e745bbc6",
+  "freeze_date": "2020-08-21",
+  "head_date": "2022-05-14",
+  "designed": 4,
+  "found_in_code": 1,
+  "subdir": "mobile/app/componentes",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\aglomerou__docs_diagramas.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ES-DOC/esdoc-cim",
+  "mdj": "v2/uml/cim-v2-uml.mdj",
+  "freeze": "655afd814e",
+  "freeze_date": "2017-02-20",
+  "head_date": "2022-02-22",
+  "designed": 16,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\esdoc-cim__v2_uml_cim-v2-uml.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/riyazbabashaik/DIGITAL-APPROACH-FOR-BETTER-HARVESTING",
+  "mdj": "flaskdemo/CLASSDIAGRAM.mdj",
+  "freeze": "61bc88e328",
+  "freeze_date": "2023-06-18",
+  "head_date": "2024-01-06",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\DIGITAL-APPROACH-FOR-BETTER-HARVESTING__flaskdemo_CLASSDIAGRAM.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/DurandAntonin/SAE_S5_CalculsDistribues",
+  "mdj": "doc/DocumentsTechniques/DiagrammesUML/Livrable2_DiagrammeClasses_2.mdj",
+  "freeze": "7e75f81761",
+  "freeze_date": "2024-01-03",
+  "head_date": "2026-03-24",
+  "designed": 9,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\SAE_S5_CalculsDistribues__doc_DocumentsTechniques_DiagrammesUML_Livrable2_DiagrammeClasses_2.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/tomrudnick/GradingApp",
+  "mdj": "App/GradingApp.mdj",
+  "freeze": "4f3a2be9f1",
+  "freeze_date": "2022-04-20",
+  "head_date": "2023-08-14",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\GradingApp__App_GradingApp.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/uia4sap/ui5-chartjs",
+  "mdj": "uia-chartjs.mdj",
+  "freeze": "cfc934de84",
+  "freeze_date": "2020-03-15",
+  "head_date": "2024-02-02",
+  "designed": 18,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ui5-chartjs__uia-chartjs.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/UnoRoute/vscode-nativescript-extend",
+  "mdj": "nativescript-extend.mdj",
+  "freeze": "07b0bba613",
+  "freeze_date": "2018-10-27",
+  "head_date": "2025-08-29",
+  "designed": 17,
+  "found_in_code": 14,
+  "subdir": "src",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vscode-nativescript-extend__nativescript-extend.mdj",
+  "fp_after": 125,
+  "fp_touching_subdir": 34,
+  "freeze_run": {
+   "files": 18,
+   "score": 79.71,
+   "conv": 64,
+   "div": 30,
+   "abs": 14
+  },
+  "head_run": {
+   "files": 23,
+   "score": 79.71,
+   "conv": 64,
+   "div": 37,
+   "abs": 14
+  },
+  "drift": [
+   30,
+   37,
+   14,
+   14
+  ]
+ },
+ {
+  "repo": "github.com/CMU-Perceptual-Computing-Lab/openpose_unity_plugin",
+  "mdj": "doc/OpenPoseUnityPlugin_UML.mdj",
+  "freeze": "7110187e0a",
+  "freeze_date": "2019-02-05",
+  "head_date": "2019-08-13",
+  "designed": 11,
+  "found_in_code": 8,
+  "subdir": "OpenPosePlugin/Assets/OpenPose",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\openpose_unity_plugin__doc_OpenPoseUnityPlugin_UML.mdj",
+  "fp_after": 15,
+  "fp_touching_subdir": 11,
+  "freeze_run": {
+   "files": 87,
+   "score": 60.0,
+   "conv": 18,
+   "div": 146,
+   "abs": 22
+  },
+  "head_run": {
+   "files": 85,
+   "score": 60.0,
+   "conv": 18,
+   "div": 152,
+   "abs": 22
+  },
+  "drift": [
+   146,
+   152,
+   22,
+   22
+  ]
+ },
+ {
+  "repo": "github.com/jomarin38/F3FChrono",
+  "mdj": "doc/DataStructure.mdj",
+  "freeze": "35a60e5f85",
+  "freeze_date": "2020-10-23",
+  "head_date": "2024-11-26",
+  "designed": 10,
+  "found_in_code": 7,
+  "subdir": "F3FChrono/data",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\F3FChrono__doc_DataStructure.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/microcosmAI/MuJoCo-RL-Environment-Wrapper",
+  "mdj": "images/uml.mdj",
+  "freeze": "00d474b7f5",
+  "freeze_date": "2023-05-01",
+  "head_date": "2024-10-05",
+  "designed": 5,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\MuJoCo-RL-Environment-Wrapper__images_uml.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/sitomani/4champ",
+  "mdj": "docs/4champ.mdj",
+  "freeze": "0ab8b0518e",
+  "freeze_date": "2018-04-22",
+  "head_date": "2026-05-23",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\4champ__docs_4champ.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ismaelaek/ArtVance",
+  "mdj": "UML/classDiagram.mdj",
+  "freeze": "3e7f3081f4",
+  "freeze_date": "2024-05-25",
+  "head_date": "2024-12-23",
+  "designed": 15,
+  "found_in_code": 9,
+  "subdir": "backend/app/Models",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ArtVance__UML_classDiagram.mdj",
+  "fp_after": 24,
+  "fp_touching_subdir": 5,
+  "freeze_run": {
+   "files": 11,
+   "score": 15.0,
+   "conv": 9,
+   "div": 25,
+   "abs": 70
+  },
+  "head_run": {
+   "files": 12,
+   "score": 15.15,
+   "conv": 10,
+   "div": 33,
+   "abs": 75
+  },
+  "drift": [
+   25,
+   33,
+   70,
+   75
+  ]
+ },
+ {
+  "repo": "github.com/hazelement/NewsSummary",
+  "mdj": "design.mdj",
+  "freeze": "54975f7f17",
+  "freeze_date": "2019-04-23",
+  "head_date": "2020-02-11",
+  "designed": 21,
+  "found_in_code": 5,
+  "subdir": "api",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\NewsSummary__design.mdj",
+  "fp_after": 7,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/CapibaraAnonimo/MyAnonaMousePdf",
+  "mdj": "api/MyAnonaMousePdf.mdj",
+  "freeze": "88b42f0682",
+  "freeze_date": "2023-04-07",
+  "head_date": "2024-03-13",
+  "designed": 3,
+  "found_in_code": 3,
+  "subdir": "api/MyAnonaMousePdf/src/main/java/com/capibaraanonimo/myanonamousepdf/model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\MyAnonaMousePdf__api_MyAnonaMousePdf.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ShaherHA/colorfactory-js",
+  "mdj": "Class diagram color factory.mdj",
+  "freeze": "af5a92f452",
+  "freeze_date": "2025-05-15",
+  "head_date": "2026-05-07",
+  "designed": 10,
+  "found_in_code": 6,
+  "subdir": "src/class",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\colorfactory-js__Class_diagram_color_factory.mdj",
+  "fp_after": 5,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/VSBuss/fabrica-software",
+  "mdj": "Documentos organizar/diagrama_das_CARTEIRAS.mdj",
+  "freeze": "ee061fa6a9",
+  "freeze_date": "2023-07-19",
+  "head_date": "2024-04-05",
+  "designed": 2,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\fabrica-software__Documentos_organizar_diagrama_das_CARTEIRAS.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/CodeAX2/LegoMissingPieces",
+  "mdj": "UML/LegoMissingPieces.mdj",
+  "freeze": "afb3d4b4e4",
+  "freeze_date": "2021-07-30",
+  "head_date": "2026-02-03",
+  "designed": 14,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\LegoMissingPieces__UML_LegoMissingPieces.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/catarina-moreira/QuLBiT",
+  "mdj": "qulbit.mdj",
+  "freeze": "cfd8a0d987",
+  "freeze_date": "2020-05-11",
+  "head_date": "2021-09-10",
+  "designed": 13,
+  "found_in_code": 13,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\QuLBiT__qulbit.mdj",
+  "fp_after": 3,
+  "fp_touching_subdir": 3,
+  "freeze_run": {
+   "files": 178,
+   "score": 98.08,
+   "conv": 55,
+   "div": 0,
+   "abs": 9
+  },
+  "error": "GitError(\"git archive failed for HEAD: error: invalid path 'qulbit/balthasar/Icon?'\\nfatal: failed to unpack tree object 11187a2260fa03b6f8435703b63f3f492bc8d795\\n\")"
+ },
+ {
+  "repo": "github.com/Felcot/PISS---Felcot---Impostor-Game",
+  "mdj": "Documentaci\u00f3n/Star - Diagramas/arquitectura.mdj",
+  "freeze": "06ac0eeaaa",
+  "freeze_date": "2020-10-22",
+  "head_date": "2024-02-06",
+  "designed": 17,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\PISS---Felcot---Impostor-Game__Documentaci\u00f3n_Star_-_Diagramas_arquitectura.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/OsloFrits/SistemaDeMercado",
+  "mdj": "UML do mercadinho.mdj",
+  "freeze": "8919767331",
+  "freeze_date": "2023-08-03",
+  "head_date": "2025-02-17",
+  "designed": 13,
+  "found_in_code": 1,
+  "subdir": "SistemaDeMercado/src",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\SistemaDeMercado__UML_do_mercadinho.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/mapa21/GitHubMiner25",
+  "mdj": "docs/diagrams/class.mdj",
+  "freeze": "9e327d7db1",
+  "freeze_date": "2023-03-16",
+  "head_date": "2024-01-16",
+  "designed": 24,
+  "found_in_code": 11,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\GitHubMiner25__docs_diagrams_class.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/kmill227/Covid-Vaccination-System",
+  "mdj": "UML/Final_Class_Diagram.mdj",
+  "freeze": "1e2727ca09",
+  "freeze_date": "2021-05-04",
+  "head_date": "2022-04-15",
+  "designed": 19,
+  "found_in_code": 11,
+  "subdir": "Source",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Covid-Vaccination-System__UML_Final_Class_Diagram.mdj",
+  "fp_after": 11,
+  "fp_touching_subdir": 4,
+  "freeze_run": {
+   "files": 12,
+   "score": 66.2,
+   "conv": 52,
+   "div": 67,
+   "abs": 56
+  },
+  "head_run": {
+   "files": 12,
+   "score": 66.2,
+   "conv": 52,
+   "div": 67,
+   "abs": 56
+  },
+  "drift": [
+   67,
+   67,
+   56,
+   56
+  ]
+ },
+ {
+  "repo": "github.com/SibusisoKubalo/LMSIT5",
+  "mdj": "Library Management System.mdj",
+  "freeze": "2c427241b9",
+  "freeze_date": "2025-03-28",
+  "head_date": "2025-10-23",
+  "designed": 6,
+  "found_in_code": 3,
+  "subdir": "LMS/src/main/java/org/example/Domain",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\LMSIT5__Library_Management_System.mdj",
+  "fp_after": 49,
+  "fp_touching_subdir": 7,
+  "freeze_run": {
+   "files": 6,
+   "score": 11.11,
+   "conv": 4,
+   "div": 22,
+   "abs": 36
+  },
+  "head_run": {
+   "files": 0,
+   "score": 0.0,
+   "conv": 0,
+   "div": 0,
+   "abs": 14
+  },
+  "drift": [
+   22,
+   0,
+   36,
+   14
+  ]
+ },
+ {
+  "repo": "github.com/DigitalHolography/Holovibes",
+  "mdj": "docs/UML/file_system.mdj",
+  "freeze": "e2ee880b38",
+  "freeze_date": "2021-09-23",
+  "head_date": "2025-05-05",
+  "designed": 18,
+  "found_in_code": 1,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Holovibes__docs_UML_file_system.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/axel-ft/scrabble_java",
+  "mdj": "uml/Untitled.mdj",
+  "freeze": "a1342ae814",
+  "freeze_date": "2017-02-27",
+  "head_date": "2018-01-30",
+  "designed": 9,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\scrabble_java__uml_Untitled.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ectky/Uni-Grades-Manager",
+  "mdj": "Documentation/Diagrams/ClassDiarams.mdj",
+  "freeze": "45d3bd13ec",
+  "freeze_date": "2026-01-13",
+  "head_date": "2026-07-28",
+  "designed": 8,
+  "found_in_code": 2,
+  "subdir": "UserService/UserService.Domain",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Uni-Grades-Manager__Documentation_Diagrams_ClassDiarams.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Florin-Catalin/RAT",
+  "mdj": "class_diagram.mdj",
+  "freeze": "9128e21641",
+  "freeze_date": "2019-03-14",
+  "head_date": "2019-12-01",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\RAT__class_diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/XinyueZ/mvvm-template",
+  "mdj": "media/arch.mdj",
+  "freeze": "eee6b4abe7",
+  "freeze_date": "2017-10-07",
+  "head_date": "2018-06-25",
+  "designed": 4,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\mvvm-template__media_arch.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Mikroservices/Users",
+  "mdj": "Images/model.mdj",
+  "freeze": "5052c037bb",
+  "freeze_date": "2020-04-11",
+  "head_date": "2021-11-12",
+  "designed": 8,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Users__Images_model.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ShopeX/prism-php",
+  "mdj": "UML.mdj",
+  "freeze": "c1726f13f3",
+  "freeze_date": "2015-04-02",
+  "head_date": "2022-10-26",
+  "designed": 12,
+  "found_in_code": 8,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\prism-php__UML.mdj",
+  "fp_after": 66,
+  "fp_touching_subdir": 66,
+  "freeze_run": {
+   "files": 40,
+   "score": 84.21,
+   "conv": 32,
+   "div": 54,
+   "abs": 23
+  },
+  "head_run": {
+   "files": 43,
+   "score": 78.95,
+   "conv": 30,
+   "div": 55,
+   "abs": 25
+  },
+  "drift": [
+   54,
+   55,
+   23,
+   25
+  ]
+ },
+ {
+  "repo": "github.com/Shashi-Bhushan/Logging-Framework",
+  "mdj": "documentation/class-diagram.mdj",
+  "freeze": "539f5cc3fc",
+  "freeze_date": "2017-03-10",
+  "head_date": "2019-07-23",
+  "designed": 8,
+  "found_in_code": 2,
+  "subdir": "src/main/java/com/shashi/logging",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Logging-Framework__documentation_class-diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/jppgks/the-hillbillies",
+  "mdj": "diagram/the-hillbillies.mdj",
+  "freeze": "cbe3944df5",
+  "freeze_date": "2016-02-21",
+  "head_date": "2016-11-29",
+  "designed": 1,
+  "found_in_code": 1,
+  "subdir": "src/hillbillies/model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\the-hillbillies__diagram_the-hillbillies.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/BlackLambert/astrominer",
+  "mdj": "Model/Klassendiagramme/Ship.mdj",
+  "freeze": "750245bfbf",
+  "freeze_date": "2021-02-12",
+  "head_date": "2024-07-24",
+  "designed": 15,
+  "found_in_code": 8,
+  "subdir": "astrominerProject/Assets/Scripts/AppScripts",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\astrominer__Model_Klassendiagramme_Ship.mdj",
+  "fp_after": 93,
+  "fp_touching_subdir": 84,
+  "freeze_run": {
+   "files": 19,
+   "score": 42.86,
+   "conv": 23,
+   "div": 44,
+   "abs": 25
+  },
+  "head_run": {
+   "files": 951,
+   "score": 15.15,
+   "conv": 6,
+   "div": 521,
+   "abs": 35
+  },
+  "drift": [
+   44,
+   521,
+   25,
+   35
+  ]
+ },
+ {
+  "repo": "github.com/Divirad/FM3D-Engine",
+  "mdj": "Wiki/Diagramme/2DGUI.mdj",
+  "freeze": "0ae453c5e7",
+  "freeze_date": "2017-03-07",
+  "head_date": "2021-12-07",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\FM3D-Engine__Wiki_Diagramme_2DGUI.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/2Dan3/FitpassCopyCat",
+  "mdj": "Fitpass_model_diagram.mdj",
+  "freeze": "547aa9e2cd",
+  "freeze_date": "2024-06-01",
+  "head_date": "2026-02-24",
+  "designed": 14,
+  "found_in_code": 13,
+  "subdir": "src/main/java/rs/ftn/FitpassCopyCat/model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\FitpassCopyCat__Fitpass_model_diagram.mdj",
+  "fp_after": 5,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/yulivee/Cookpot",
+  "mdj": "doc/Diagrams.mdj",
+  "freeze": "0f7912f42f",
+  "freeze_date": "2018-11-25",
+  "head_date": "2019-08-24",
+  "designed": 20,
+  "found_in_code": 11,
+  "subdir": "Cookpot-Backend/cookpot-bl",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Cookpot__doc_Diagrams.mdj",
+  "fp_after": 56,
+  "fp_touching_subdir": 47,
+  "freeze_run": {
+   "files": 13,
+   "score": 74.19,
+   "conv": 47,
+   "div": 9,
+   "abs": 25
+  },
+  "head_run": {
+   "files": 21,
+   "score": 51.61,
+   "conv": 33,
+   "div": 36,
+   "abs": 39
+  },
+  "drift": [
+   9,
+   36,
+   25,
+   39
+  ]
+ },
+ {
+  "repo": "github.com/AntoinePEREDERII/Banquale",
+  "mdj": "Documentation/docPrepaAppli-IHM/Diagramme_de_Classes.mdj",
+  "freeze": "0e82b38710",
+  "freeze_date": "2023-06-06",
+  "head_date": "2024-02-14",
+  "designed": 17,
+  "found_in_code": 11,
+  "subdir": "src/Banquale",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Banquale__Documentation_docPrepaAppli-IHM_Diagramme_de_Classes.mdj",
+  "fp_after": 33,
+  "fp_touching_subdir": 12,
+  "freeze_run": {
+   "files": 86,
+   "score": 77.94,
+   "conv": 63,
+   "div": 51,
+   "abs": 18
+  },
+  "head_run": {
+   "files": 87,
+   "score": 79.17,
+   "conv": 67,
+   "div": 58,
+   "abs": 18
+  },
+  "drift": [
+   51,
+   58,
+   18,
+   18
+  ]
+ },
+ {
+  "repo": "github.com/akhdaniel/staruml-odoo-lite",
+  "mdj": "samples/academic.mdj",
+  "freeze": "f36952fe1e",
+  "freeze_date": "2022-10-10",
+  "head_date": "2025-07-05",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\staruml-odoo-lite__samples_academic.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ablweb/ProjetLDP-Arkanoid",
+  "mdj": "doc/diagrams/Untitled.mdj",
+  "freeze": "abe84672c2",
+  "freeze_date": "2024-12-27",
+  "head_date": "2025-08-18",
+  "designed": 7,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ProjetLDP-Arkanoid__doc_diagrams_Untitled.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ShiYu0318/AI-Game-ML-RL",
+  "mdj": "Game/Tank_Man/doc/ClassDiagram.mdj",
+  "freeze": "f16956a1be",
+  "freeze_date": "2026-03-12",
+  "head_date": "2026-10-18",
+  "designed": 22,
+  "found_in_code": 6,
+  "subdir": "Game",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\AI-Game-ML-RL__Game_Tank_Man_doc_ClassDiagram.mdj",
+  "fp_after": 2,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/nvkuy/PBL03_DUT_DK88",
+  "mdj": "DK88.mdj",
+  "freeze": "dd8b980081",
+  "freeze_date": "2023-03-29",
+  "head_date": "2023-11-23",
+  "designed": 9,
+  "found_in_code": 3,
+  "subdir": "backend/server/src/main/java/model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\PBL03_DUT_DK88__DK88.mdj",
+  "fp_after": 35,
+  "fp_touching_subdir": 10,
+  "freeze_run": {
+   "files": 8,
+   "score": 33.33,
+   "conv": 15,
+   "div": 33,
+   "abs": 44
+  },
+  "head_run": {
+   "files": 9,
+   "score": 34.38,
+   "conv": 26,
+   "div": 58,
+   "abs": 60
+  },
+  "drift": [
+   33,
+   58,
+   44,
+   60
+  ]
+ },
+ {
+  "repo": "github.com/iifawzi/OnlineHospital",
+  "mdj": "hospitals.mdj",
+  "freeze": "76c9a64b55",
+  "freeze_date": "2020-05-04",
+  "head_date": "2021-01-01",
+  "designed": 4,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\OnlineHospital__hospitals.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/sebspas/UE-UI-MVVM-Framework",
+  "mdj": "Base_Stats.mdj",
+  "freeze": "04ac766cf2",
+  "freeze_date": "2021-03-12",
+  "head_date": "2023-03-13",
+  "designed": 14,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\UE-UI-MVVM-Framework__Base_Stats.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/yohemm/ImageGradientFiltration",
+  "mdj": "anexe/UML.mdj",
+  "freeze": "1fc1786a5e",
+  "freeze_date": "2023-12-17",
+  "head_date": "2024-11-14",
+  "designed": 6,
+  "found_in_code": 2,
+  "subdir": "archi",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ImageGradientFiltration__anexe_UML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/kerwinxu/barcodeManager",
+  "mdj": "uml.mdj",
+  "freeze": "0f7ee34373",
+  "freeze_date": "2022-10-17",
+  "head_date": "2026-05-07",
+  "designed": 21,
+  "found_in_code": 6,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\barcodeManager__uml.mdj",
+  "fp_after": 19,
+  "fp_touching_subdir": 19,
+  "freeze_run": {
+   "files": 8774,
+   "score": 30.36,
+   "conv": 20,
+   "div": 954,
+   "abs": 41
+  },
+  "head_run": {
+   "files": 413,
+   "score": 35.09,
+   "conv": 22,
+   "div": 173,
+   "abs": 39
+  },
+  "drift": [
+   954,
+   173,
+   41,
+   39
+  ]
+ },
+ {
+  "repo": "github.com/YousefElmenshawy/Clash-Of-Clans-Clone-OOP",
+  "mdj": "projectuml.mdj",
+  "freeze": "9e39ffc6ba",
+  "freeze_date": "2024-04-28",
+  "head_date": "2025-04-18",
+  "designed": 7,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Clash-Of-Clans-Clone-OOP__projectuml.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/logarathansv/EFMS---Excess-Food-Management-System",
+  "mdj": "docs/Project.mdj",
+  "freeze": "448b4d7097",
+  "freeze_date": "2024-11-19",
+  "head_date": "2025-10-13",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\EFMS---Excess-Food-Management-System__docs_Project.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Lioydiano/Skydda",
+  "mdj": "struttura.mdj",
+  "freeze": "33ecc0d639",
+  "freeze_date": "2023-01-17",
+  "head_date": "2023-07-24",
+  "designed": 15,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Skydda__struttura.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/C-NikhilKarthik/CS-301-Project",
+  "mdj": "Class Diag.mdj",
+  "freeze": "2b71431a8d",
+  "freeze_date": "2023-04-12",
+  "head_date": "2025-02-16",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\CS-301-Project__Class_Diag.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/qdac/QDAC3",
+  "mdj": "Doc/QDAC3.mdj",
+  "freeze": "e6e4fe2847",
+  "freeze_date": "2016-08-05",
+  "head_date": "2020-05-20",
+  "designed": 1,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\QDAC3__Doc_QDAC3.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Youssef-ayman55/Shortest_Path",
+  "mdj": "UML.mdj",
+  "freeze": "ea99a4b939",
+  "freeze_date": "2024-05-09",
+  "head_date": "2025-01-24",
+  "designed": 0,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Shortest_Path__UML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/equadon/open-space",
+  "mdj": "doc/uml.mdj",
+  "freeze": "b1b4706ca8",
+  "freeze_date": "2020-03-28",
+  "head_date": "2020-09-27",
+  "designed": 7,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\open-space__doc_uml.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Mampi0510/Qt-project-",
+  "mdj": "UML.mdj",
+  "error": "JSONDecodeError('Expecting property name enclosed in double quotes: line 1341 column 1 (char 35496)')"
+ },
+ {
+  "repo": "github.com/sensoriumxr/django-eth-events",
+  "mdj": "diagrams.mdj",
+  "freeze": "598f20ee6d",
+  "freeze_date": "2018-07-27",
+  "head_date": "2022-04-23",
+  "designed": 2,
+  "found_in_code": 2,
+  "subdir": "django_eth_events",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\django-eth-events__diagrams.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/terangel/clips",
+  "mdj": "docs/main.mdj",
+  "freeze": "6213e779b8",
+  "freeze_date": "2026-02-24",
+  "head_date": "2026-09-30",
+  "designed": 2,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\clips__docs_main.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Atuyto-Fac-groupe/The-Rift-Mobile",
+  "mdj": "uml.mdj",
+  "freeze": "a378a550db",
+  "freeze_date": "2024-09-23",
+  "head_date": "2025-04-24",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\The-Rift-Mobile__uml.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/davidxk/GridWorld-MDP",
+  "mdj": "docs/doc.mdj",
+  "freeze": "76699dacb8",
+  "freeze_date": "2019-01-18",
+  "head_date": "2020-01-07",
+  "designed": 11,
+  "found_in_code": 10,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\GridWorld-MDP__docs_doc.mdj",
+  "fp_after": 1,
+  "fp_touching_subdir": 1,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/PavelSidyakin/ProductList",
+  "mdj": "Model.mdj",
+  "freeze": "9aaa048324",
+  "freeze_date": "2021-05-24",
+  "head_date": "2022-07-04",
+  "designed": 0,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ProductList__Model.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/JovanMosurovic/IS1-Project-Audio-Streaming-System",
+  "mdj": "uml/UML.mdj",
+  "freeze": "3c5b226c17",
+  "freeze_date": "2025-07-14",
+  "head_date": "2026-07-12",
+  "designed": 11,
+  "found_in_code": 7,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\IS1-Project-Audio-Streaming-System__uml_UML.mdj",
+  "fp_after": 8,
+  "fp_touching_subdir": 8,
+  "freeze_run": {
+   "files": 239,
+   "score": 51.85,
+   "conv": 18,
+   "div": 133,
+   "abs": 20
+  },
+  "head_run": {
+   "files": 240,
+   "score": 51.85,
+   "conv": 18,
+   "div": 133,
+   "abs": 20
+  },
+  "drift": [
+   133,
+   133,
+   20,
+   20
+  ]
+ },
+ {
+  "repo": "github.com/hugo-fief/Projet_Two",
+  "mdj": "fiefdouglou/schema/ppe2.mdj",
+  "freeze": "2277f6cddb",
+  "freeze_date": "2019-12-20",
+  "head_date": "2024-01-16",
+  "designed": 8,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Projet_Two__fiefdouglou_schema_ppe2.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Code-Artist/KeyboardMaster",
+  "mdj": "Doc/KeyboardMaster.mdj",
+  "freeze": "4e72c6542a",
+  "freeze_date": "2014-11-30",
+  "head_date": "2015-09-11",
+  "designed": 8,
+  "found_in_code": 4,
+  "subdir": "KeyboardMaster",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\KeyboardMaster__Doc_KeyboardMaster.mdj",
+  "fp_after": 2,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/MDNich/MIT_Rkt_Zephyrus_Aero",
+  "mdj": "avionics/fc/diagram2.mdj",
+  "freeze": "53a33ab13c",
+  "freeze_date": "2025-12-10",
+  "head_date": "2026-10-04",
+  "designed": 19,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\MIT_Rkt_Zephyrus_Aero__avionics_fc_diagram2.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Jesse-Jumbo/TankMan",
+  "mdj": "doc/ClassDiagram.mdj",
+  "freeze": "24004a8844",
+  "freeze_date": "2022-09-21",
+  "head_date": "2024-01-11",
+  "designed": 22,
+  "found_in_code": 6,
+  "subdir": "src",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\TankMan__doc_ClassDiagram.mdj",
+  "fp_after": 36,
+  "fp_touching_subdir": 30,
+  "freeze_run": {
+   "files": 14,
+   "score": 45.12,
+   "conv": 39,
+   "div": 125,
+   "abs": 56
+  },
+  "head_run": {
+   "files": 16,
+   "score": 42.68,
+   "conv": 35,
+   "div": 98,
+   "abs": 60
+  },
+  "drift": [
+   125,
+   98,
+   56,
+   60
+  ]
+ },
+ {
+  "repo": "github.com/Mocearan/coderespect",
+  "mdj": "panda/Doc/class.mdj",
+  "freeze": "eb8ed78ef3",
+  "freeze_date": "2023-07-22",
+  "head_date": "2025-02-06",
+  "designed": 16,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\coderespect__panda_Doc_class.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/lori314/Discrete-Event-Library-Simulator",
+  "mdj": "uml.mdj",
+  "freeze": "3da81d21b9",
+  "freeze_date": "2025-07-21",
+  "head_date": "2026-09-02",
+  "designed": 6,
+  "found_in_code": 6,
+  "subdir": "src",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Discrete-Event-Library-Simulator__uml.mdj",
+  "fp_after": 2,
+  "fp_touching_subdir": 1,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/kennyhn/TTK4235V19",
+  "mdj": "Heisprosjekt/klassediagram_heisprosjekt.mdj",
+  "freeze": "c7ec49cb08",
+  "freeze_date": "2019-04-14",
+  "head_date": "2019-12-24",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\TTK4235V19__Heisprosjekt_klassediagram_heisprosjekt.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/IHW-TS/Hotel_Java",
+  "mdj": "ModelUML.mdj",
+  "freeze": "7e45a913f1",
+  "freeze_date": "2022-05-22",
+  "head_date": "2023-04-24",
+  "designed": 10,
+  "found_in_code": 9,
+  "subdir": "hoteljava/src/MVC/model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Hotel_Java__ModelUML.mdj",
+  "fp_after": 3,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/AndreyAD20/Rest-Cycle-Project",
+  "mdj": "Documentacion/Diagramas/RestCycle-DiagramaClases-v0.5(16-07-2025).mdj",
+  "freeze": "d1990acb2c",
+  "freeze_date": "2025-07-16",
+  "head_date": "2026-03-16",
+  "designed": 17,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Rest-Cycle-Project__Documentacion_Diagramas_RestCycle-DiagramaClases-v0.5(16-07-2025).mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/lpreterite/datagent",
+  "mdj": "docs/datagent.mdj",
+  "freeze": "a55f565d04",
+  "freeze_date": "2019-11-27",
+  "head_date": "2021-02-25",
+  "designed": 11,
+  "found_in_code": 1,
+  "subdir": "test/examples",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\datagent__docs_datagent.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/shankun/FileUploader",
+  "mdj": "UMLModel.mdj",
+  "freeze": "2fb1cbed7a",
+  "freeze_date": "2019-06-21",
+  "head_date": "2025-10-21",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\FileUploader__UMLModel.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/leodreizzen/formula1-fisica",
+  "mdj": "diagramaBackend.mdj",
+  "freeze": "3862397167",
+  "freeze_date": "2024-04-05",
+  "head_date": "2026-04-21",
+  "designed": 9,
+  "found_in_code": 5,
+  "subdir": "api/f1data",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\formula1-fisica__diagramaBackend.mdj",
+  "fp_after": 36,
+  "fp_touching_subdir": 8,
+  "freeze_run": {
+   "files": 5,
+   "score": 64.71,
+   "conv": 25,
+   "div": 6,
+   "abs": 21
+  },
+  "head_run": {
+   "files": 8,
+   "score": 64.71,
+   "conv": 25,
+   "div": 9,
+   "abs": 21
+  },
+  "drift": [
+   6,
+   9,
+   21,
+   21
+  ]
+ },
+ {
+  "repo": "github.com/LounesMD/LoRaSIM",
+  "mdj": "Images/UML.mdj",
+  "freeze": "587b21de31",
+  "freeze_date": "2022-09-09",
+  "head_date": "2023-10-28",
+  "designed": 20,
+  "found_in_code": 7,
+  "subdir": "LoRaWAN/Code",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\LoRaSIM__Images_UML.mdj",
+  "fp_after": 16,
+  "fp_touching_subdir": 1,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/hulinning2/CodeArtEng.Diagnostics",
+  "mdj": "Documentation/CodeArtEng.Diagnostics.mdj",
+  "freeze": "178597760a",
+  "freeze_date": "2019-02-23",
+  "head_date": "2022-08-13",
+  "designed": 12,
+  "found_in_code": 6,
+  "subdir": "CodeArtEng.Diagnostics",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\CodeArtEng.Diagnostics__Documentation_CodeArtEng.Diagnostics.mdj",
+  "fp_after": 11,
+  "fp_touching_subdir": 7,
+  "freeze_run": {
+   "files": 12,
+   "score": 71.15,
+   "conv": 43,
+   "div": 84,
+   "abs": 18
+  },
+  "head_run": {
+   "files": 13,
+   "score": 71.15,
+   "conv": 43,
+   "div": 95,
+   "abs": 18
+  },
+  "drift": [
+   84,
+   95,
+   18,
+   18
+  ]
+ },
+ {
+  "repo": "github.com/NishkarshRaj/Particle_Swarm_Intelligence",
+  "mdj": "models/ClassDiagram.mdj",
+  "freeze": "3eb2080dc5",
+  "freeze_date": "2020-01-12",
+  "head_date": "2020-08-15",
+  "designed": 4,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Particle_Swarm_Intelligence__models_ClassDiagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/UGNaNpp/Licencjat",
+  "mdj": "Docs/klasy.mdj",
+  "freeze": "6a0f71188c",
+  "freeze_date": "2024-12-12",
+  "head_date": "2025-06-29",
+  "designed": 8,
+  "found_in_code": 3,
+  "subdir": "server/src/main/java/org/example/server",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Licencjat__Docs_klasy.mdj",
+  "fp_after": 14,
+  "fp_touching_subdir": 1,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/Hwan-Yeong/airbot_hyjoe_ws",
+  "mdj": "src/A1_perception/docs/architecture.mdj",
+  "freeze": "f24999f952",
+  "freeze_date": "2025-06-24",
+  "head_date": "2026-09-15",
+  "designed": 11,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\airbot_hyjoe_ws__src_A1_perception_docs_architecture.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Emmeth/Emmeth",
+  "mdj": "docs/Class diagram.mdj",
+  "freeze": "868ce453d0",
+  "freeze_date": "2015-06-15",
+  "head_date": "2017-04-10",
+  "designed": 4,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Emmeth__docs_Class_diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ImAliant/IDFTransportPathFinder",
+  "mdj": "diagrams/parser_bd_idfm_class_diagram.mdj",
+  "freeze": "089ea16dae",
+  "freeze_date": "2024-05-05",
+  "head_date": "2025-01-31",
+  "designed": 8,
+  "found_in_code": 8,
+  "subdir": "src/main/java/fr/u_paris/gla/crazytrip",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\IDFTransportPathFinder__diagrams_parser_bd_idfm_class_diagram.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/dineshKumar777/vscode-rf-language-server",
+  "mdj": "design/language-server.mdj",
+  "freeze": "3306027dca",
+  "freeze_date": "2017-10-11",
+  "head_date": "2019-03-10",
+  "designed": 8,
+  "found_in_code": 6,
+  "subdir": "server/src",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vscode-rf-language-server__design_language-server.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/Quentin55553/Projet-CY-Books",
+  "mdj": "docs/Diagrams.mdj",
+  "freeze": "76a5151a01",
+  "freeze_date": "2024-05-25",
+  "head_date": "2025-10-12",
+  "designed": 24,
+  "found_in_code": 13,
+  "subdir": "src/main/java/org/openjfx/cybooks",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Projet-CY-Books__docs_Diagrams.mdj",
+  "fp_after": 47,
+  "fp_touching_subdir": 24,
+  "freeze_run": {
+   "files": 45,
+   "score": 47.47,
+   "conv": 51,
+   "div": 220,
+   "abs": 71
+  },
+  "head_run": {
+   "files": 48,
+   "score": 47.47,
+   "conv": 51,
+   "div": 236,
+   "abs": 71
+  },
+  "drift": [
+   220,
+   236,
+   71,
+   71
+  ]
+ },
+ {
+  "repo": "github.com/norberttak/XPanel",
+  "mdj": "doc/xpanel.mdj",
+  "freeze": "d42c9f4539",
+  "freeze_date": "2022-05-28",
+  "head_date": "2026-08-12",
+  "designed": 5,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\XPanel__doc_xpanel.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/chuck21619/TypePublic",
+  "mdj": "docs/CollapseExpandAccess.mdj",
+  "freeze": "497453a977",
+  "freeze_date": "2019-04-08",
+  "head_date": "2024-09-03",
+  "designed": 9,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\TypePublic__docs_CollapseExpandAccess.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/42-webserver/webserv",
+  "mdj": "assets/webserv.mdj",
+  "freeze": "58f9bb5629",
+  "freeze_date": "2023-04-25",
+  "head_date": "2026-08-22",
+  "designed": 11,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\webserv__assets_webserv.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/BautistaTorreV/UTN-Projects",
+  "mdj": "TP-Dise\u00f1o de Sistemas/APIServicioRecomendadorDePuntosDeDonacion/modelado/DDC.mdj",
+  "freeze": "fdbcab8391",
+  "freeze_date": "2025-02-28",
+  "head_date": "2025-10-29",
+  "designed": 18,
+  "found_in_code": 14,
+  "subdir": "\"TP-Dise/303/261o de Sistemas",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\UTN-Projects__TP-Dise\u00f1o_de_Sistemas_APIServicioRecomendadorDePuntosDeDonacion_modelado_DDC.mdj",
+  "fp_after": 12,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/Knox-AAU/PreprocessingLayer_Nordjyske",
+  "mdj": "nordjyske_preprocessing.mdj",
+  "freeze": "fb36494ccd",
+  "freeze_date": "2020-12-18",
+  "head_date": "2022-01-25",
+  "designed": 22,
+  "found_in_code": 22,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\PreprocessingLayer_Nordjyske__nordjyske_preprocessing.mdj",
+  "fp_after": 59,
+  "fp_touching_subdir": 59,
+  "freeze_run": {
+   "files": 61,
+   "score": 95.86,
+   "conv": 141,
+   "div": 116,
+   "abs": 10
+  },
+  "head_run": {
+   "files": 78,
+   "score": 92.41,
+   "conv": 136,
+   "div": 110,
+   "abs": 15
+  },
+  "drift": [
+   116,
+   110,
+   10,
+   15
+  ]
+ },
+ {
+  "repo": "github.com/fityocsaba96/methcodus-thesis",
+  "mdj": "images/staruml/tester-system-class-diagram.mdj",
+  "freeze": "5e8c71a1f0",
+  "freeze_date": "2019-05-06",
+  "head_date": "2020-06-01",
+  "designed": 13,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\methcodus-thesis__images_staruml_tester-system-class-diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/armin-reichert/pacman-basic",
+  "mdj": "doc/pacman-core-classes.mdj",
+  "freeze": "984fbf4d9e",
+  "freeze_date": "2023-04-23",
+  "head_date": "2024-06-10",
+  "designed": 18,
+  "found_in_code": 15,
+  "subdir": "pacman-core/src/main/java/de/amr/games/pacman",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\pacman-basic__doc_pacman-core-classes.mdj",
+  "fp_after": 370,
+  "fp_touching_subdir": 336,
+  "freeze_run": {
+   "files": 67,
+   "score": 100.0,
+   "conv": 45,
+   "div": 522,
+   "abs": 8
+  },
+  "head_run": {
+   "files": 0,
+   "score": 0.0,
+   "conv": 0,
+   "div": 0,
+   "abs": 44
+  },
+  "drift": [
+   522,
+   0,
+   8,
+   44
+  ]
+ },
+ {
+  "repo": "github.com/jm0rt1/city-sim",
+  "mdj": "docs/models/model.mdj",
+  "freeze": "c09f5f6986",
+  "freeze_date": "2026-02-08",
+  "head_date": "2026-09-07",
+  "designed": 16,
+  "found_in_code": 8,
+  "subdir": "src",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\city-sim__docs_models_model.mdj",
+  "fp_after": 1357,
+  "fp_touching_subdir": 18,
+  "freeze_run": {
+   "files": 13,
+   "score": 45.45,
+   "conv": 14,
+   "div": 57,
+   "abs": 17
+  },
+  "head_run": {
+   "files": 48,
+   "score": 45.45,
+   "conv": 14,
+   "div": 133,
+   "abs": 17
+  },
+  "drift": [
+   57,
+   133,
+   17,
+   17
+  ]
+ },
+ {
+  "repo": "github.com/xuexiangjys/XTask",
+  "mdj": "art/xtask.mdj",
+  "freeze": "3cd231ef26",
+  "freeze_date": "2022-02-16",
+  "head_date": "2024-03-12",
+  "designed": 24,
+  "found_in_code": 23,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\XTask__art_xtask.mdj",
+  "fp_after": 23,
+  "fp_touching_subdir": 23,
+  "freeze_run": {
+   "files": 137,
+   "score": 97.87,
+   "conv": 76,
+   "div": 270,
+   "abs": 1
+  },
+  "head_run": {
+   "files": 187,
+   "score": 95.74,
+   "conv": 74,
+   "div": 331,
+   "abs": 2
+  },
+  "drift": [
+   270,
+   331,
+   1,
+   2
+  ]
+ },
+ {
+  "repo": "github.com/ModelEngineering/pySubnetSB",
+  "mdj": "docs/design.mdj",
+  "freeze": "0b62f7b5b6",
+  "freeze_date": "2024-07-01",
+  "head_date": "2025-08-02",
+  "designed": 15,
+  "found_in_code": 7,
+  "subdir": "src/sirn",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\pySubnetSB__docs_design.mdj",
+  "fp_after": 290,
+  "fp_touching_subdir": 103,
+  "freeze_run": {
+   "files": 14,
+   "score": 36.96,
+   "conv": 17,
+   "div": 80,
+   "abs": 42
+  },
+  "head_run": {
+   "files": 0,
+   "score": 0.0,
+   "conv": 0,
+   "div": 0,
+   "abs": 35
+  },
+  "drift": [
+   80,
+   0,
+   42,
+   35
+  ]
+ },
+ {
+  "repo": "github.com/mbari-org/vars-annotation",
+  "mdj": "docs/assets/uml/MediaPlayer.mdj",
+  "freeze": "202beb3c94",
+  "freeze_date": "2022-01-03",
+  "head_date": "2026-10-09",
+  "designed": 16,
+  "found_in_code": 8,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vars-annotation__docs_assets_uml_MediaPlayer.mdj",
+  "fp_after": 176,
+  "fp_touching_subdir": 176,
+  "freeze_run": {
+   "files": 559,
+   "score": 65.38,
+   "conv": 30,
+   "div": 430,
+   "abs": 19
+  },
+  "head_run": {
+   "files": 622,
+   "score": 65.38,
+   "conv": 32,
+   "div": 497,
+   "abs": 17
+  },
+  "drift": [
+   430,
+   497,
+   19,
+   17
+  ]
+ },
+ {
+  "repo": "github.com/MathieuSoysal/CodinGame-Puzzles-stats-library",
+  "mdj": "ressources-readme/conception.mdj",
+  "freeze": "3f6b19ac31",
+  "freeze_date": "2021-12-17",
+  "head_date": "2023-05-13",
+  "designed": 14,
+  "found_in_code": 11,
+  "subdir": "src/main/java/com/github/mathieusoysal/codingame_stats",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\CodinGame-Puzzles-stats-library__ressources-readme_conception.mdj",
+  "fp_after": 159,
+  "fp_touching_subdir": 57,
+  "freeze_run": {
+   "files": 12,
+   "score": 83.33,
+   "conv": 57,
+   "div": 17,
+   "abs": 12
+  },
+  "head_run": {
+   "files": 13,
+   "score": 75.51,
+   "conv": 49,
+   "div": 80,
+   "abs": 15
+  },
+  "drift": [
+   17,
+   80,
+   12,
+   15
+  ]
+ },
+ {
+  "repo": "github.com/lleugen/ing-sw-2019-mauri-murriero-ostrovan",
+  "mdj": "Deliveries/UML_model.mdj",
+  "freeze": "68d3036747",
+  "freeze_date": "2019-03-31",
+  "head_date": "2020-10-14",
+  "designed": 16,
+  "found_in_code": 16,
+  "subdir": "src/main/java/it/polimi/se2019/model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ing-sw-2019-mauri-murriero-ostrovan__Deliveries_UML_model.mdj",
+  "fp_after": 113,
+  "fp_touching_subdir": 59,
+  "freeze_run": {
+   "files": 16,
+   "score": 95.83,
+   "conv": 154,
+   "div": 5,
+   "abs": 37
+  },
+  "head_run": {
+   "files": 21,
+   "score": 86.11,
+   "conv": 147,
+   "div": 113,
+   "abs": 44
+  },
+  "drift": [
+   5,
+   113,
+   37,
+   44
+  ]
+ },
+ {
+  "repo": "github.com/LucaMalagutti/ing-sw-2020-Fratus-Malagutti",
+  "mdj": "deliveries/uml/UML_Model.mdj",
+  "freeze": "034279dbc1",
+  "freeze_date": "2020-06-30",
+  "head_date": "2021-09-06",
+  "designed": 16,
+  "found_in_code": 16,
+  "subdir": "src/main/java/it/polimi/ingsw/PSP4",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ing-sw-2020-Fratus-Malagutti__deliveries_uml_UML_Model.mdj",
+  "fp_after": 13,
+  "fp_touching_subdir": 1,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/gabrielepagano/ing-sw-2020-Pagano-Somaschini-Tegli",
+  "mdj": "deliverables/UML/Initial/ClassDiagramModel.mdj",
+  "freeze": "3883ac969e",
+  "freeze_date": "2024-07-29",
+  "head_date": "2026-01-08",
+  "designed": 23,
+  "found_in_code": 16,
+  "subdir": "src/main/java/it/polimi/ingsw",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ing-sw-2020-Pagano-Somaschini-Tegli__deliverables_UML_Initial_ClassDiagramModel.mdj",
+  "fp_after": 1,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/dre-droid/ing-sw-2023-mastroberti-lecchi-maggese-martellosio",
+  "mdj": "deliverables/final/uml/MyShelfie-prereview.mdj",
+  "freeze": "748ace1aef",
+  "freeze_date": "2023-06-29",
+  "head_date": "2024-02-28",
+  "designed": 21,
+  "found_in_code": 13,
+  "subdir": "src/main/java/it/polimi/ingsw/Model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ing-sw-2023-mastroberti-lecchi-maggese-martellosio__deliverables_final_uml_MyShelfie-prereview.mdj",
+  "fp_after": 37,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/Trixyz28/ing-sw-2020-Yang-Yu-Zhu",
+  "mdj": "Deliverables/UML/UserInterface.mdj",
+  "freeze": "ac7bdfea14",
+  "freeze_date": "2020-07-03",
+  "head_date": "2023-10-17",
+  "designed": 13,
+  "found_in_code": 12,
+  "subdir": "src/main/java/it/polimi/ingsw/view",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ing-sw-2020-Yang-Yu-Zhu__Deliverables_UML_UserInterface.mdj",
+  "fp_after": 4,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/inwords/InWords",
+  "mdj": "WebApi/Resource/UML/GameObjectsUML.mdj",
+  "freeze": "70182af670",
+  "freeze_date": "2019-04-21",
+  "head_date": "2022-05-28",
+  "designed": 4,
+  "found_in_code": 2,
+  "subdir": "WebApi/InWords.WebApi",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\InWords__WebApi_Resource_UML_GameObjectsUML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ipepe/foosball-open-ranking",
+  "mdj": "documentation/StarUML_model.mdj",
+  "freeze": "64e3d0cba3",
+  "freeze_date": "2016-02-23",
+  "head_date": "2017-12-12",
+  "designed": 4,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\foosball-open-ranking__documentation_StarUML_model.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ldeluigi/higher-lower-pwned",
+  "mdj": "docs/ASW-HigherLowerPwned.mdj",
+  "freeze": "870a114929",
+  "freeze_date": "2020-09-01",
+  "head_date": "2023-06-15",
+  "designed": 2,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\higher-lower-pwned__docs_ASW-HigherLowerPwned.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Jblew/git-diary",
+  "mdj": "doc/Model.mdj",
+  "freeze": "d8cc463309",
+  "freeze_date": "2020-09-22",
+  "head_date": "2021-11-02",
+  "designed": 1,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\git-diary__doc_Model.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Snooz82/vscode-rf-language-server",
+  "mdj": "design/language-server.mdj",
+  "freeze": "3306027dca",
+  "freeze_date": "2017-10-11",
+  "head_date": "2020-05-14",
+  "designed": 8,
+  "found_in_code": 6,
+  "subdir": "server/src",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vscode-rf-language-server__design_language-server.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/methodpark/meeting-room-display",
+  "mdj": "docs/mrd_class_diagram.mdj",
+  "freeze": "b12529441d",
+  "freeze_date": "2019-08-16",
+  "head_date": "2022-01-19",
+  "designed": 25,
+  "found_in_code": 19,
+  "subdir": "mrd",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\meeting-room-display__docs_mrd_class_diagram.mdj",
+  "fp_after": 15,
+  "fp_touching_subdir": 6,
+  "freeze_run": {
+   "files": 35,
+   "score": 64.6,
+   "conv": 79,
+   "div": 152,
+   "abs": 60
+  },
+  "head_run": {
+   "files": 37,
+   "score": 64.6,
+   "conv": 79,
+   "div": 154,
+   "abs": 60
+  },
+  "drift": [
+   152,
+   154,
+   60,
+   60
+  ]
+ },
+ {
+  "repo": "github.com/derpsteb/pipeliner",
+  "mdj": "doc/Pipeliner.mdj",
+  "freeze": "79e7b60b1b",
+  "freeze_date": "2019-06-25",
+  "head_date": "2020-05-05",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\pipeliner__doc_Pipeliner.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/wyutopia/rdf4node",
+  "mdj": "docs/design.mdj",
+  "freeze": "8e106aed14",
+  "freeze_date": "2023-09-28",
+  "head_date": "2024-09-11",
+  "designed": 20,
+  "found_in_code": 12,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\rdf4node__docs_design.mdj",
+  "fp_after": 279,
+  "fp_touching_subdir": 279,
+  "freeze_run": {
+   "files": 73,
+   "score": 39.66,
+   "conv": 27,
+   "div": 84,
+   "abs": 39
+  },
+  "head_run": {
+   "files": 86,
+   "score": 33.85,
+   "conv": 25,
+   "div": 150,
+   "abs": 47
+  },
+  "drift": [
+   84,
+   150,
+   39,
+   47
+  ]
+ },
+ {
+  "repo": "github.com/uiocompcat/HyDGL",
+  "mdj": "doc/uml.mdj",
+  "freeze": "c8f100e771",
+  "freeze_date": "2022-09-20",
+  "head_date": "2026-02-23",
+  "designed": 24,
+  "found_in_code": 23,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\HyDGL__doc_uml.mdj",
+  "fp_after": 71,
+  "fp_touching_subdir": 71,
+  "freeze_run": {
+   "files": 64,
+   "score": 74.55,
+   "conv": 51,
+   "div": 256,
+   "abs": 24
+  },
+  "head_run": {
+   "files": 57,
+   "score": 72.22,
+   "conv": 49,
+   "div": 217,
+   "abs": 25
+  },
+  "drift": [
+   256,
+   217,
+   24,
+   25
+  ]
+ },
+ {
+  "repo": "github.com/DMALab/autotf",
+  "mdj": "documents/uml.mdj",
+  "freeze": "edfa1485f4",
+  "freeze_date": "2018-03-07",
+  "head_date": "2019-04-02",
+  "designed": 32,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\autotf__documents_uml.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/aetel/cutrenet",
+  "mdj": "docs/cutrenet.mdj",
+  "freeze": "bbbebdcd68",
+  "freeze_date": "2018-11-30",
+  "head_date": "2020-03-03",
+  "designed": 11,
+  "found_in_code": 1,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\cutrenet__docs_cutrenet.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/erisilva/sissas",
+  "mdj": "Sissas-en.mdj",
+  "freeze": "0d909be106",
+  "freeze_date": "2023-05-25",
+  "head_date": "2026-04-08",
+  "designed": 0,
+  "found_in_code": 1,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\sissas__Sissas-en.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/thaoanhhaa1/kltn-backend",
+  "mdj": "docs/class-diagram-chatbot-service.mdj",
+  "freeze": "72647494b5",
+  "freeze_date": "2024-09-09",
+  "head_date": "2025-05-20",
+  "designed": 2,
+  "found_in_code": 1,
+  "subdir": "chatbot-service/app/models",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\kltn-backend__docs_class-diagram-chatbot-service.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/lehcode/angular-fullstack-pro-starter",
+  "mdj": "apps/api/docs/UML/app.mdj",
+  "freeze": "57135f66f2",
+  "freeze_date": "2023-05-10",
+  "head_date": "2024-02-28",
+  "designed": 8,
+  "found_in_code": 6,
+  "subdir": "apps",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\angular-fullstack-pro-starter__apps_api_docs_UML_app.mdj",
+  "fp_after": 13,
+  "fp_touching_subdir": 7,
+  "freeze_run": {
+   "files": 95,
+   "score": 24.0,
+   "conv": 6,
+   "div": 31,
+   "abs": 27
+  },
+  "head_run": {
+   "files": 95,
+   "score": 24.0,
+   "conv": 6,
+   "div": 31,
+   "abs": 27
+  },
+  "drift": [
+   31,
+   31,
+   27,
+   27
+  ]
+ },
+ {
+  "repo": "github.com/EnriqueSanVic/vulture-security-cam-system",
+  "mdj": "docs/diagramas/vulture cam.mdj",
+  "freeze": "bf19f4807b",
+  "freeze_date": "2022-05-26",
+  "head_date": "2023-04-03",
+  "designed": 4,
+  "found_in_code": 3,
+  "subdir": "VultureCam",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vulture-security-cam-system__docs_diagramas_vulture_cam.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/fabishevskiy/LiftSim",
+  "mdj": "docs/diagrams/ClassDiagram.mdj",
+  "freeze": "bd9b1ecc9f",
+  "freeze_date": "2023-04-04",
+  "head_date": "2023-10-18",
+  "designed": 13,
+  "found_in_code": 13,
+  "subdir": "src/main/python/simulation",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\LiftSim__docs_diagrams_ClassDiagram.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/garyjh126/poker-bot-deep-rl",
+  "mdj": "UML/UML_PokerSystem.mdj",
+  "freeze": "1d1b2f83a1",
+  "freeze_date": "2018-12-12",
+  "head_date": "2025-02-08",
+  "designed": 12,
+  "found_in_code": 9,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\poker-bot-deep-rl__UML_UML_PokerSystem.mdj",
+  "fp_after": 80,
+  "fp_touching_subdir": 80,
+  "freeze_run": {
+   "files": 53,
+   "score": 44.83,
+   "conv": 44,
+   "div": 51,
+   "abs": 55
+  },
+  "head_run": {
+   "files": 375,
+   "score": 44.83,
+   "conv": 44,
+   "div": 99,
+   "abs": 55
+  },
+  "drift": [
+   51,
+   99,
+   55,
+   55
+  ]
+ },
+ {
+  "repo": "github.com/AlessandroBarbiero/Dreams-Eater",
+  "mdj": "Documentation/UMLdiagram.mdj",
+  "freeze": "3762f66a81",
+  "freeze_date": "2022-11-22",
+  "head_date": "2025-01-22",
+  "designed": 17,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Dreams-Eater__Documentation_UMLdiagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/heclement/board-game",
+  "mdj": "UML/UML.mdj",
+  "freeze": "c230561b09",
+  "freeze_date": "2021-05-11",
+  "head_date": "2021-11-22",
+  "designed": 23,
+  "found_in_code": 23,
+  "subdir": "src/game",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\board-game__UML_UML.mdj",
+  "fp_after": 10,
+  "fp_touching_subdir": 6,
+  "freeze_run": {
+   "files": 44,
+   "score": 82.76,
+   "conv": 161,
+   "div": 53,
+   "abs": 36
+  },
+  "head_run": {
+   "files": 25,
+   "score": 82.76,
+   "conv": 161,
+   "div": 52,
+   "abs": 36
+  },
+  "drift": [
+   53,
+   52,
+   36,
+   36
+  ]
+ },
+ {
+  "repo": "github.com/ramou/ChessMod",
+  "mdj": "design/ChessMod.mdj",
+  "freeze": "a3c7dbafbb",
+  "freeze_date": "2020-05-12",
+  "head_date": "2024-09-28",
+  "designed": 17,
+  "found_in_code": 12,
+  "subdir": "forge-1.14.4-28.2.0-mdk/src/main/java/chessmod/common/dom/model/chess",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ChessMod__design_ChessMod.mdj",
+  "fp_after": 62,
+  "fp_touching_subdir": 1,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/Game-as-a-Service/minesweeper",
+  "mdj": "doc/minesweeper.mdj",
+  "freeze": "48ad6da274",
+  "freeze_date": "2023-02-19",
+  "head_date": "2023-10-27",
+  "designed": 8,
+  "found_in_code": 5,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\minesweeper__doc_minesweeper.mdj",
+  "fp_after": 97,
+  "fp_touching_subdir": 97,
+  "freeze_run": {
+   "files": 88,
+   "score": 69.23,
+   "conv": 12,
+   "div": 26,
+   "abs": 8
+  },
+  "head_run": {
+   "files": 145,
+   "score": 69.23,
+   "conv": 12,
+   "div": 57,
+   "abs": 8
+  },
+  "drift": [
+   26,
+   57,
+   8,
+   8
+  ]
+ },
+ {
+  "repo": "github.com/LupusAnay/highload-server",
+  "mdj": "doc/Highload Server UML.mdj",
+  "freeze": "3d1db0e780",
+  "freeze_date": "2018-01-08",
+  "head_date": "2018-08-17",
+  "designed": 4,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\highload-server__doc_Highload_Server_UML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/CR1337/Social-Highscore-Frontend",
+  "mdj": "doc/model.mdj",
+  "freeze": "8edca1ba86",
+  "freeze_date": "2021-12-15",
+  "head_date": "2023-10-09",
+  "designed": 22,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Social-Highscore-Frontend__doc_model.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Potato-Gaming/crystal",
+  "mdj": "architecture.mdj",
+  "freeze": "81bbf9540a",
+  "freeze_date": "2020-09-10",
+  "head_date": "2021-06-22",
+  "designed": 0,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\crystal__architecture.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/ya-kostik/redbone",
+  "mdj": "Redbone.mdj",
+  "freeze": "5856c1455e",
+  "freeze_date": "2017-07-13",
+  "head_date": "2021-06-02",
+  "designed": 2,
+  "found_in_code": 2,
+  "subdir": "lib/classes",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\redbone__Redbone.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/travenos/vari",
+  "mdj": "schemes/ui_model.mdj",
+  "freeze": "736d529fc1",
+  "freeze_date": "2019-05-16",
+  "head_date": "2024-03-08",
+  "designed": 17,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vari__schemes_ui_model.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Jon-Robb/genetic_algorithm",
+  "mdj": "Classes.mdj",
+  "freeze": "94f2321f11",
+  "freeze_date": "2022-12-03",
+  "head_date": "2023-09-16",
+  "designed": 19,
+  "found_in_code": 11,
+  "subdir": "ga",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\genetic_algorithm__Classes.mdj",
+  "fp_after": 55,
+  "fp_touching_subdir": 53,
+  "freeze_run": {
+   "files": 7,
+   "score": 53.06,
+   "conv": 35,
+   "div": 60,
+   "abs": 49
+  },
+  "head_run": {
+   "files": 13,
+   "score": 40.0,
+   "conv": 24,
+   "div": 125,
+   "abs": 53
+  },
+  "drift": [
+   60,
+   125,
+   49,
+   53
+  ]
+ },
+ {
+  "repo": "github.com/aryeko/CommandAndControlSystem-LDS",
+  "mdj": "Documents/Diagrams/UML Diagrams/Class Diagrams/Client - Server UML.mdj",
+  "freeze": "04be3db242",
+  "freeze_date": "2017-06-21",
+  "head_date": "2018-01-18",
+  "designed": 7,
+  "found_in_code": 4,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\CommandAndControlSystem-LDS__Documents_Diagrams_UML_Diagrams_Class_Diagrams_Client_-_Server_UML.mdj",
+  "fp_after": 12,
+  "fp_touching_subdir": 12,
+  "freeze_run": {
+   "files": 231,
+   "score": 65.22,
+   "conv": 15,
+   "div": 146,
+   "abs": 16
+  },
+  "head_run": {
+   "files": 262,
+   "score": 65.22,
+   "conv": 15,
+   "div": 146,
+   "abs": 16
+  },
+  "drift": [
+   146,
+   146,
+   16,
+   16
+  ]
+ },
+ {
+  "repo": "github.com/P0rc3lain/Chess",
+  "mdj": "Diagrams/Design.mdj",
+  "freeze": "a1b5dcf0e8",
+  "freeze_date": "2023-02-17",
+  "head_date": "2026-01-24",
+  "designed": 13,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Chess__Diagrams_Design.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/avoytovich95/library-web-api",
+  "mdj": "Docs/MVC.mdj",
+  "freeze": "9c428ea731",
+  "freeze_date": "2018-04-05",
+  "head_date": "2020-12-14",
+  "designed": 12,
+  "found_in_code": 4,
+  "subdir": "LibraryWeb",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\library-web-api__Docs_MVC.mdj",
+  "fp_after": 21,
+  "fp_touching_subdir": 5,
+  "freeze_run": {
+   "files": 166,
+   "score": 19.05,
+   "conv": 4,
+   "div": 17,
+   "abs": 30
+  },
+  "head_run": {
+   "files": 17,
+   "score": 19.05,
+   "conv": 4,
+   "div": 17,
+   "abs": 30
+  },
+  "drift": [
+   17,
+   17,
+   30,
+   30
+  ]
+ },
+ {
+  "repo": "github.com/mshubat/galaxy_data_mines",
+  "mdj": "docs/gdm_UML.mdj",
+  "freeze": "ef8ff7b630",
+  "freeze_date": "2019-04-24",
+  "head_date": "2022-10-03",
+  "designed": 6,
+  "found_in_code": 4,
+  "subdir": "galaxy_data_mines",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\galaxy_data_mines__docs_gdm_UML.mdj",
+  "fp_after": 18,
+  "fp_touching_subdir": 9,
+  "freeze_run": {
+   "files": 22,
+   "score": 86.89,
+   "conv": 54,
+   "div": 16,
+   "abs": 25
+  },
+  "head_run": {
+   "files": 23,
+   "score": 85.25,
+   "conv": 53,
+   "div": 18,
+   "abs": 26
+  },
+  "drift": [
+   16,
+   18,
+   25,
+   26
+  ]
+ },
+ {
+  "repo": "github.com/Myslitel666/VectorX",
+  "mdj": "Documents/Diagrams/Classes.mdj",
+  "freeze": "842457d403",
+  "freeze_date": "2024-05-21",
+  "head_date": "2025-09-26",
+  "designed": 10,
+  "found_in_code": 9,
+  "subdir": "VectorXBackend",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\VectorX__Documents_Diagrams_Classes.mdj",
+  "fp_after": 60,
+  "fp_touching_subdir": 30,
+  "freeze_run": {
+   "files": 89,
+   "score": 85.29,
+   "conv": 58,
+   "div": 75,
+   "abs": 35
+  },
+  "head_run": {
+   "files": 112,
+   "score": 85.29,
+   "conv": 58,
+   "div": 100,
+   "abs": 35
+  },
+  "drift": [
+   75,
+   100,
+   35,
+   35
+  ]
+ },
+ {
+  "repo": "github.com/Workplace-Futurists/DiScribe",
+  "mdj": "Docs/Design/System_Architecture_Design.mdj",
+  "freeze": "57f2765ecc",
+  "freeze_date": "2019-12-16",
+  "head_date": "2022-12-30",
+  "designed": 5,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\DiScribe__Docs_Design_System_Architecture_Design.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/whatss7/OurProjectManager",
+  "mdj": "docs/uml/UML.mdj",
+  "freeze": "6a8fa37a8e",
+  "freeze_date": "2020-11-02",
+  "head_date": "2021-05-21",
+  "designed": 6,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\OurProjectManager__docs_uml_UML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/NoMansUniverse/frips",
+  "mdj": "Frips.mdj",
+  "freeze": "739ad38f52",
+  "freeze_date": "2023-08-28",
+  "head_date": "2024-12-09",
+  "designed": 8,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\frips__Frips.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/LaCobble/System-security",
+  "mdj": "class_diagram.mdj",
+  "freeze": "7a0cf02943",
+  "freeze_date": "2024-10-02",
+  "head_date": "2026-08-02",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\System-security__class_diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/EVR-Roxas/Checador-NFC",
+  "mdj": "UML/clases.mdj",
+  "freeze": "c7938bd747",
+  "freeze_date": "2024-12-03",
+  "head_date": "2025-08-07",
+  "designed": 5,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Checador-NFC__UML_clases.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/andermena23/Rides24",
+  "mdj": "rides.mdj",
+  "freeze": "f6e82f992d",
+  "freeze_date": "2024-02-21",
+  "head_date": "2025-09-23",
+  "designed": 7,
+  "found_in_code": 6,
+  "subdir": "src/main/java",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Rides24__rides.mdj",
+  "fp_after": 9,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/myyrakle/missing_child_system",
+  "mdj": "uml/classes/classes.mdj",
+  "freeze": "c5be83deec",
+  "freeze_date": "2019-05-11",
+  "head_date": "2019-12-02",
+  "designed": 12,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\missing_child_system__uml_classes_classes.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/FeryaelJustice/HotelAuraDeMallorca",
+  "mdj": "docs/DiagramaDeClases.mdj",
+  "freeze": "bbadee7f85",
+  "freeze_date": "2023-11-20",
+  "head_date": "2026-10-06",
+  "designed": 13,
+  "found_in_code": 10,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\HotelAuraDeMallorca__docs_DiagramaDeClases.mdj",
+  "fp_after": 193,
+  "fp_touching_subdir": 193,
+  "freeze_run": {
+   "files": 308,
+   "score": 92.31,
+   "conv": 53,
+   "div": 66,
+   "abs": 10
+  },
+  "head_run": {
+   "files": 362,
+   "score": 82.69,
+   "conv": 48,
+   "div": 100,
+   "abs": 15
+  },
+  "drift": [
+   66,
+   100,
+   10,
+   15
+  ]
+ },
+ {
+  "repo": "github.com/KHALID-ZENNOUHI/Evento",
+  "mdj": "uml/EventoUML.mdj",
+  "freeze": "7d119f2566",
+  "freeze_date": "2024-03-13",
+  "head_date": "2025-02-19",
+  "designed": 14,
+  "found_in_code": 4,
+  "subdir": "app/Models",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Evento__uml_EventoUML.mdj",
+  "fp_after": 3,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/fouadlamrini/Youdemy",
+  "mdj": "Diagrammes/diagramme_de_class.mdj",
+  "freeze": "a983ff99f4",
+  "freeze_date": "2025-01-23",
+  "head_date": "2026-04-17",
+  "designed": 11,
+  "found_in_code": 4,
+  "subdir": "Class",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Youdemy__Diagrammes_diagramme_de_class.mdj",
+  "fp_after": 3,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/oussamahdidou/Cloud-Native-Solution-for-Inventory-and-Marketplace-and-Accounting-Service-Integration",
+  "mdj": "conception/Conception.mdj",
+  "freeze": "6907914ada",
+  "freeze_date": "2024-10-30",
+  "head_date": "2025-09-09",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Cloud-Native-Solution-for-Inventory-and-Marketplace-and-Accounting-Service-Integration__conception_Conception.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/dpcbranco/JogoDaForcaESM",
+  "mdj": "JogoDaForcaESM-UML.mdj",
+  "freeze": "5ea4423549",
+  "freeze_date": "2017-05-15",
+  "head_date": "2018-02-22",
+  "designed": 3,
+  "found_in_code": 2,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\JogoDaForcaESM__JogoDaForcaESM-UML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/xReniar/twitther",
+  "mdj": "class_diagram.mdj",
+  "freeze": "cbfa48deb9",
+  "freeze_date": "2023-04-29",
+  "head_date": "2024-03-01",
+  "designed": 3,
+  "found_in_code": 2,
+  "subdir": "src/main/java/it/uniroma3/siw/project/model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\twitther__class_diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/FARAJI-Omar/MedConnect",
+  "mdj": "MedConnect-class diagram.mdj",
+  "freeze": "3443c9414f",
+  "freeze_date": "2025-10-16",
+  "head_date": "2026-04-20",
+  "designed": 18,
+  "found_in_code": 6,
+  "subdir": "src/main/java/com/medconnect/medconnect/model",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\MedConnect__MedConnect-class_diagram.mdj",
+  "fp_after": 18,
+  "fp_touching_subdir": 2,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/railroad2/vOscillation",
+  "mdj": "Class_Diagram.mdj",
+  "freeze": "49cc113824",
+  "freeze_date": "2023-02-28",
+  "head_date": "2023-11-22",
+  "designed": 17,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\vOscillation__Class_Diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/joaoaugustogrobe/CorrectionTool2.0",
+  "mdj": "diagrama.mdj",
+  "freeze": "d0655f04df",
+  "freeze_date": "2019-10-26",
+  "head_date": "2024-10-16",
+  "designed": 11,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\CorrectionTool2.0__diagrama.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Rayer/GdxIris",
+  "mdj": "design/Iris.mdj",
+  "freeze": "ff837e312f",
+  "freeze_date": "2015-05-31",
+  "head_date": "2017-05-22",
+  "designed": 7,
+  "found_in_code": 3,
+  "subdir": "core/src/com/dr/iris/event",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\GdxIris__design_Iris.mdj",
+  "fp_after": 23,
+  "fp_touching_subdir": 12,
+  "freeze_run": {
+   "files": 4,
+   "score": 27.27,
+   "conv": 3,
+   "div": 3,
+   "abs": 8
+  },
+  "head_run": {
+   "files": 10,
+   "score": 22.22,
+   "conv": 2,
+   "div": 14,
+   "abs": 7
+  },
+  "drift": [
+   3,
+   14,
+   8,
+   7
+  ]
+ },
+ {
+  "repo": "github.com/cthulhusec/SoulLand",
+  "mdj": "SoulLand.mdj",
+  "freeze": "58d89ea6d9",
+  "freeze_date": "2016-09-02",
+  "head_date": "2021-12-24",
+  "designed": 5,
+  "found_in_code": 5,
+  "subdir": "SoulLand",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\SoulLand__SoulLand.mdj",
+  "fp_after": 92,
+  "fp_touching_subdir": 53,
+  "freeze_run": {
+   "files": 11,
+   "score": 91.67,
+   "conv": 12,
+   "div": 9,
+   "abs": 5
+  },
+  "head_run": {
+   "files": 60,
+   "score": 91.67,
+   "conv": 12,
+   "div": 71,
+   "abs": 5
+  },
+  "drift": [
+   9,
+   71,
+   5,
+   5
+  ]
+ },
+ {
+  "repo": "github.com/sdthaker/SenecaCollege-BTP400",
+  "mdj": "JavaFX-Library-Management-System/System Design/Librarian.mdj",
+  "freeze": "6dd2355803",
+  "freeze_date": "2022-05-12",
+  "head_date": "2022-12-13",
+  "designed": 11,
+  "found_in_code": 5,
+  "subdir": "JavaFX-Library-Management-System/Project Files/src/main/java/btp400/assignment1",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\SenecaCollege-BTP400__JavaFX-Library-Management-System_System_Design_Librarian.mdj",
+  "fp_after": 3,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/jsh9091/ExcelExportHelper",
+  "mdj": "Design/Design Diagram.mdj",
+  "freeze": "b6ef654d31",
+  "freeze_date": "2021-10-02",
+  "head_date": "2024-12-10",
+  "designed": 3,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ExcelExportHelper__Design_Design_Diagram.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/Raphael-dim/Agora-Script",
+  "mdj": "Diagramme de classe.mdj",
+  "freeze": "670e6ff384",
+  "freeze_date": "2022-10-22",
+  "head_date": "2025-01-21",
+  "designed": 9,
+  "found_in_code": 2,
+  "subdir": "src/Model/DataObject",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\Agora-Script__Diagramme_de_classe.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/didier-mycontrib/spring6plus",
+  "mdj": "appliSpringHexagonal/hexagonal-bank.mdj",
+  "freeze": "1cf8643be3",
+  "freeze_date": "2023-11-21",
+  "head_date": "2024-12-04",
+  "designed": 24,
+  "found_in_code": 20,
+  "subdir": "appliSpringHexagonal",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\spring6plus__appliSpringHexagonal_hexagonal-bank.mdj",
+  "fp_after": 37,
+  "fp_touching_subdir": 9,
+  "freeze_run": {
+   "files": 86,
+   "score": 88.41,
+   "conv": 72,
+   "div": 81,
+   "abs": 10
+  },
+  "head_run": {
+   "files": 161,
+   "score": 88.41,
+   "conv": 72,
+   "div": 118,
+   "abs": 10
+  },
+  "drift": [
+   81,
+   118,
+   10,
+   10
+  ]
+ },
+ {
+  "repo": "github.com/GoodAI/ArnoldSimulator",
+  "mdj": "Docs/UML/UBA-sketches-in-StarUML.mdj",
+  "freeze": "2255204631",
+  "freeze_date": "2016-03-29",
+  "head_date": "2016-11-22",
+  "designed": 3,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\ArnoldSimulator__Docs_UML_UBA-sketches-in-StarUML.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/tasyiann/2Dto3DMotion",
+  "mdj": "Assets/OpenPose/Documents/OpenPoseUnityPlugin_UML.mdj",
+  "freeze": "dd0d1de8bb",
+  "freeze_date": "2019-01-23",
+  "head_date": "2021-12-17",
+  "designed": 11,
+  "found_in_code": 8,
+  "subdir": "Assets/OpenPose",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\2Dto3DMotion__Assets_OpenPose_Documents_OpenPoseUnityPlugin_UML.mdj",
+  "fp_after": 55,
+  "fp_touching_subdir": 16,
+  "freeze_run": {
+   "files": 159,
+   "score": 60.0,
+   "conv": 18,
+   "div": 159,
+   "abs": 22
+  },
+  "head_run": {
+   "files": 95,
+   "score": 60.0,
+   "conv": 18,
+   "div": 155,
+   "abs": 22
+  },
+  "drift": [
+   159,
+   155,
+   22,
+   22
+  ]
+ },
+ {
+  "repo": "github.com/vanillaSky00/neural-arcade",
+  "mdj": "TankMan/doc/ClassDiagram.mdj",
+  "freeze": "3c1e3de72e",
+  "freeze_date": "2025-02-06",
+  "head_date": "2026-05-12",
+  "designed": 22,
+  "found_in_code": 5,
+  "subdir": "TankMan/src",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\neural-arcade__TankMan_doc_ClassDiagram.mdj",
+  "fp_after": 13,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/jeffrey9911/SpeedWar-Unity-OverloadStudio",
+  "mdj": "Scripting_Design.mdj",
+  "freeze": "831b83964a",
+  "freeze_date": "2022-09-29",
+  "head_date": "2025-01-07",
+  "designed": 10,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\SpeedWar-Unity-OverloadStudio__Scripting_Design.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/MatthieuHernandez/NeuralNetworkTest",
+  "mdj": "ULM_diagram_SNN.mdj",
+  "freeze": "e4cad36a67",
+  "freeze_date": "2019-12-05",
+  "head_date": "2020-07-25",
+  "designed": 16,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\NeuralNetworkTest__ULM_diagram_SNN.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/dgk/django-business-logic",
+  "mdj": "docs/static/staruml.mdj",
+  "freeze": "53d0368ebf",
+  "freeze_date": "2019-03-09",
+  "head_date": "2025-03-24",
+  "designed": 19,
+  "found_in_code": 16,
+  "subdir": "business_logic",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\django-business-logic__docs_static_staruml.mdj",
+  "fp_after": 26,
+  "fp_touching_subdir": 7,
+  "freeze_run": {
+   "files": 69,
+   "score": 33.87,
+   "conv": 23,
+   "div": 137,
+   "abs": 55
+  },
+  "head_run": {
+   "files": 70,
+   "score": 33.87,
+   "conv": 23,
+   "div": 138,
+   "abs": 55
+  },
+  "drift": [
+   137,
+   138,
+   55,
+   55
+  ]
+ },
+ {
+  "repo": "github.com/dputhier/pygtftk",
+  "mdj": "docs/classes/pygtftk_classes.mdj",
+  "freeze": "3c985fd4a8",
+  "freeze_date": "2019-11-19",
+  "head_date": "2022-12-22",
+  "designed": 9,
+  "found_in_code": 6,
+  "subdir": "pygtftk",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\pygtftk__docs_classes_pygtftk_classes.mdj",
+  "fp_after": 0,
+  "fp_touching_subdir": 0,
+  "verdict": "code under the diagram barely changed"
+ },
+ {
+  "repo": "github.com/gridgo/gridgo",
+  "mdj": "design/connector.mdj",
+  "freeze": "42f57e65c6",
+  "freeze_date": "2018-10-10",
+  "head_date": "2020-01-15",
+  "designed": 8,
+  "found_in_code": 0,
+  "subdir": null,
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\gridgo__design_connector.mdj",
+  "verdict": "too few designed classes found in code"
+ },
+ {
+  "repo": "github.com/campusappcn/AndRouter",
+  "mdj": "stuff/Untitled.mdj",
+  "freeze": "dc883033b2",
+  "freeze_date": "2016-03-17",
+  "head_date": "2017-08-19",
+  "designed": 8,
+  "found_in_code": 3,
+  "subdir": "router/src/main/java/cn/campusapp/router",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\AndRouter__stuff_Untitled.mdj",
+  "fp_after": 34,
+  "fp_touching_subdir": 16,
+  "freeze_run": {
+   "files": 20,
+   "score": 25.0,
+   "conv": 3,
+   "div": 45,
+   "abs": 15
+  },
+  "head_run": {
+   "files": 21,
+   "score": 25.0,
+   "conv": 3,
+   "div": 46,
+   "abs": 15
+  },
+  "drift": [
+   45,
+   46,
+   15,
+   15
+  ]
+ },
+ {
+  "repo": "github.com/amzn/fire-app-builder",
+  "mdj": "DataLoader/doc/DataManagerComplete.mdj",
+  "freeze": "55f162bdf5",
+  "freeze_date": "2016-10-03",
+  "head_date": "2023-08-31",
+  "designed": 48,
+  "found_in_code": 12,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\fire-app-builder__DataLoader_doc_DataManagerComplete.mdj",
+  "fp_after": 17,
+  "fp_touching_subdir": 17,
+  "freeze_run": {
+   "files": 803,
+   "score": 34.78,
+   "conv": 48,
+   "div": 465,
+   "abs": 86
+  },
+  "head_run": {
+   "files": 1085,
+   "score": 34.78,
+   "conv": 48,
+   "div": 560,
+   "abs": 86
+  },
+  "drift": [
+   465,
+   560,
+   86,
+   86
+  ]
+ },
+ {
+  "repo": "github.com/amzn/fire-app-builder",
+  "mdj": "DynamicParser/docs/ClassDiagram.mdj",
+  "freeze": "55f162bdf5",
+  "freeze_date": "2016-10-03",
+  "head_date": "2023-08-31",
+  "designed": 115,
+  "found_in_code": 23,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\fire-app-builder__DynamicParser_docs_ClassDiagram.mdj",
+  "fp_after": 17,
+  "fp_touching_subdir": 17,
+  "freeze_run": {
+   "files": 803,
+   "score": 43.96,
+   "conv": 146,
+   "div": 610,
+   "abs": 175
+  },
+  "head_run": {
+   "files": 1085,
+   "score": 40.48,
+   "conv": 151,
+   "div": 751,
+   "abs": 208
+  },
+  "drift": [
+   610,
+   751,
+   175,
+   208
+  ]
+ },
+ {
+  "repo": "github.com/kshitijyelpale/SCS-Simulation-of-Insulin-Pump",
+  "mdj": "Documentation/Diagrams/UML Diagrams_2.mdj",
+  "freeze": "c271618d20",
+  "freeze_date": "2020-02-21",
+  "head_date": "2021-09-01",
+  "designed": 7,
+  "found_in_code": 3,
+  "subdir": "",
+  "model_file": "C:\\Users\\sarve\\AppData\\Local\\Temp\\claude\\C--Users-sarve-Desktop-uml-analyzer-final\\0014d573-5edf-4b8a-973c-a4c9d835a267\\scratchpad\\models\\SCS-Simulation-of-Insulin-Pump__Documentation_Diagrams_UML_Diagrams_2.mdj",
+  "fp_after": 25,
+  "fp_touching_subdir": 25,
+  "freeze_run": {
+   "files": 557,
+   "score": 15.38,
+   "conv": 5,
+   "div": 292,
+   "abs": 44
+  },
+  "head_run": {
+   "files": 560,
+   "score": 15.38,
+   "conv": 5,
+   "div": 292,
+   "abs": 44
+  },
+  "drift": [
+   292,
+   292,
+   44,
+   44
+  ]
+ }
+]

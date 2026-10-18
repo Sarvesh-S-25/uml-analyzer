@@ -1,0 +1,538 @@
+{
+  "projects": [
+    {
+      "name": "banquale",
+      "source": "https://github.com/AntoinePEREDERII/Banquale.git",
+      "uml": "research/models/banquale.mdj",
+      "start": "0e82b38710",
+      "commits": 150,
+      "subdirectory": "src/Banquale",
+      "provenance": "found",
+      "notes": "Documentation/docPrepaAppli-IHM/Diagramme_de_Classes.mdj last edited 2023-06-06; code to 2024-02-14; 12 first-parent commits touch the analysed code. Screen: 17 designed, 11 found in code, 86 files at freeze."
+    },
+    {
+      "name": "astrominer",
+      "source": "https://github.com/BlackLambert/astrominer.git",
+      "uml": "research/models/astrominer.mdj",
+      "start": "750245bfbf",
+      "commits": 150,
+      "subdirectory": "astrominerProject/Assets/Scripts/AppScripts",
+      "provenance": "found",
+      "notes": "Model/Klassendiagramme/Ship.mdj last edited 2021-02-12; code to 2024-07-24; 84 first-parent commits touch the analysed code. Screen: 15 designed, 8 found in code, 19 files at freeze."
+    },
+    {
+      "name": "openpose-unity-plugin",
+      "source": "https://github.com/CMU-Perceptual-Computing-Lab/openpose_unity_plugin.git",
+      "uml": "research/models/openpose-unity-plugin.mdj",
+      "start": "7110187e0a",
+      "commits": 150,
+      "subdirectory": "OpenPosePlugin/Assets/OpenPose",
+      "provenance": "found",
+      "notes": "doc/OpenPoseUnityPlugin_UML.mdj last edited 2019-02-05; code to 2019-08-13; 11 first-parent commits touch the analysed code. Screen: 11 designed, 8 found in code, 87 files at freeze."
+    },
+    {
+      "name": "mschartextension",
+      "source": "https://github.com/Code-Artist/MSChartExtension.git",
+      "uml": "research/models/mschartextension.mdj",
+      "start": "06d84690d0",
+      "commits": 150,
+      "subdirectory": "MSChartExtension",
+      "provenance": "found",
+      "notes": "Doc/MSChartExtension.mdj last edited 2019-05-14; code to 2024-08-25; 19 first-parent commits touch the analysed code. Screen: 19 designed, 9 found in code, 35 files at freeze."
+    },
+    {
+      "name": "open-market",
+      "source": "https://github.com/JulianRuano/Open-Market.git",
+      "uml": "research/models/open-market.mdj",
+      "start": "a0d6f41127",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "strategyserver/ServidorMultiHiloHandler.mdj last edited 2023-05-24; code to 2024-10-22; 57 first-parent commits touch the analysed code. Screen: 12 designed, 4 found in code, 171 files at freeze."
+    },
+    {
+      "name": "model-wolf-sheep",
+      "source": "https://github.com/MARS-Group-HAW/model-wolf-sheep.git",
+      "uml": "research/models/model-wolf-sheep.mdj",
+      "start": "9ac1db37ce",
+      "commits": 150,
+      "subdirectory": "WolfSheepPredation/Model",
+      "provenance": "found",
+      "notes": "Design/v1 grass growth agent/wolf_sheep_grass_growth_agent_v1_2_data_model_simple.mdj last edited 2021-04-22; code to 2023-04-07; 6 first-parent commits touch the analysed code. Screen: 8 designed, 4 found in code, 4 files at freeze."
+    },
+    {
+      "name": "projet-hotel",
+      "source": "https://github.com/MGMDJassim/Projet_Hotel.git",
+      "uml": "research/models/projet-hotel.mdj",
+      "start": "951b2a663e",
+      "commits": 150,
+      "subdirectory": "Model",
+      "provenance": "found",
+      "notes": "PROJET 7 JAVA.mdj last edited 2024-05-24; code to 2025-02-06; 13 first-parent commits touch the analysed code. Screen: 14 designed, 11 found in code, 12 files at freeze."
+    },
+    {
+      "name": "forma-tech",
+      "source": "https://github.com/Mal3ul/Forma-Tech.git",
+      "uml": "research/models/forma-tech.mdj",
+      "start": "47eda38fbf",
+      "commits": 150,
+      "subdirectory": "classes",
+      "provenance": "found",
+      "notes": "diagramme des classes.mdj last edited 2024-01-16; code to 2025-06-18; 6 first-parent commits touch the analysed code. Screen: 9 designed, 8 found in code, 10 files at freeze."
+    },
+    {
+      "name": "usms-web",
+      "source": "https://github.com/Master-ISI-Projects/usms-web.git",
+      "uml": "research/models/usms-web.mdj",
+      "start": "1fc20ff18a",
+      "commits": 150,
+      "subdirectory": "web/app/Models",
+      "provenance": "found",
+      "notes": "attachements/class_digram.mdj last edited 2020-01-12; code to 2022-03-22; 6 first-parent commits touch the analysed code. Screen: 7 designed, 7 found in code, 17 files at freeze."
+    },
+    {
+      "name": "prism-php",
+      "source": "https://github.com/ShopeX/prism-php.git",
+      "uml": "research/models/prism-php.mdj",
+      "start": "c1726f13f3",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "UML.mdj last edited 2015-04-02; code to 2022-10-26; 66 first-parent commits touch the analysed code. Screen: 12 designed, 8 found in code, 40 files at freeze."
+    },
+    {
+      "name": "vscode-nativescript-extend",
+      "source": "https://github.com/UnoRoute/vscode-nativescript-extend.git",
+      "uml": "research/models/vscode-nativescript-extend.mdj",
+      "start": "07b0bba613",
+      "commits": 150,
+      "subdirectory": "src",
+      "provenance": "found",
+      "notes": "nativescript-extend.mdj last edited 2018-10-27; code to 2025-08-29; 34 first-parent commits touch the analysed code. Screen: 17 designed, 14 found in code, 18 files at freeze."
+    },
+    {
+      "name": "gestvae",
+      "source": "https://github.com/collinmarc/gestvae.git",
+      "uml": "research/models/gestvae.mdj",
+      "start": "04b3aaea45",
+      "commits": 150,
+      "subdirectory": "GestVAEcls",
+      "provenance": "found",
+      "notes": "GestVAEv1.mdj last edited 2019-01-02; code to 2026-05-11; 125 first-parent commits touch the analysed code. Screen: 12 designed, 4 found in code, 30 files at freeze."
+    },
+    {
+      "name": "artvance",
+      "source": "https://github.com/ismaelaek/ArtVance.git",
+      "uml": "research/models/artvance.mdj",
+      "start": "3e7f3081f4",
+      "commits": 150,
+      "subdirectory": "backend/app/Models",
+      "provenance": "found",
+      "notes": "UML/classDiagram.mdj last edited 2024-05-25; code to 2024-12-23; 5 first-parent commits touch the analysed code. Screen: 15 designed, 9 found in code, 11 files at freeze."
+    },
+    {
+      "name": "covid-vaccination-system",
+      "source": "https://github.com/kmill227/Covid-Vaccination-System.git",
+      "uml": "research/models/covid-vaccination-system.mdj",
+      "start": "1e2727ca09",
+      "commits": 150,
+      "subdirectory": "Source",
+      "provenance": "found",
+      "notes": "UML/Final_Class_Diagram.mdj last edited 2021-05-04; code to 2022-04-15; 4 first-parent commits touch the analysed code. Screen: 19 designed, 11 found in code, 12 files at freeze."
+    },
+    {
+      "name": "pbl03-dut-dk88",
+      "source": "https://github.com/nvkuy/PBL03_DUT_DK88.git",
+      "uml": "research/models/pbl03-dut-dk88.mdj",
+      "start": "dd8b980081",
+      "commits": 150,
+      "subdirectory": "backend/server/src/main/java/model",
+      "provenance": "found",
+      "notes": "DK88.mdj last edited 2023-03-29; code to 2023-11-23; 10 first-parent commits touch the analysed code. Screen: 9 designed, 3 found in code, 8 files at freeze."
+    },
+    {
+      "name": "translator",
+      "source": "https://github.com/onlynight/Translator.git",
+      "uml": "research/models/translator.mdj",
+      "start": "00adbe0a7c",
+      "commits": 150,
+      "subdirectory": "src/com/github/onlynight/android/string_xml/translate/translator",
+      "provenance": "found",
+      "notes": "docs/translator.mdj last edited 2016-10-31; code to 2018-06-17; 3 first-parent commits touch the analysed code. Screen: 12 designed, 9 found in code, 15 files at freeze."
+    },
+    {
+      "name": "bankthread",
+      "source": "https://github.com/sebassmtz/BankThread.git",
+      "uml": "research/models/bankthread.mdj",
+      "start": "7a98736475",
+      "commits": 150,
+      "subdirectory": "src/models",
+      "provenance": "found",
+      "notes": "UML.mdj last edited 2021-03-17; code to 2022-06-21; 5 first-parent commits touch the analysed code. Screen: 6 designed, 5 found in code, 5 files at freeze."
+    },
+    {
+      "name": "virtualq-final-version",
+      "source": "https://github.com/yagoTobi/VirtualQ-Final-Version.git",
+      "uml": "research/models/virtualq-final-version.mdj",
+      "start": "f6f39a254a",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "Diagramas/mdj/DiagramaDeClases.mdj last edited 2024-07-25; code to 2026-09-14; 3 first-parent commits touch the analysed code. Screen: 13 designed, 10 found in code, 372 files at freeze."
+    },
+    {
+      "name": "cookpot",
+      "source": "https://github.com/yulivee/Cookpot.git",
+      "uml": "research/models/cookpot.mdj",
+      "start": "0f7912f42f",
+      "commits": 150,
+      "subdirectory": "Cookpot-Backend/cookpot-bl",
+      "provenance": "found",
+      "notes": "doc/Diagrams.mdj last edited 2018-11-25; code to 2019-08-24; 47 first-parent commits touch the analysed code. Screen: 20 designed, 11 found in code, 13 files at freeze."
+    },
+    {
+      "name": "hotelaurademallorca",
+      "source": "https://github.com/FeryaelJustice/HotelAuraDeMallorca.git",
+      "uml": "research/models/hotelaurademallorca.mdj",
+      "start": "bbadee7f85",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "docs/DiagramaDeClases.mdj last edited 2023-11-20; code to 2026-10-06; 193 first-parent commits touch the analysed code. Screen: 13 designed, 10 found in code, 308 files at freeze."
+    },
+    {
+      "name": "minesweeper",
+      "source": "https://github.com/Game-as-a-Service/minesweeper.git",
+      "uml": "research/models/minesweeper.mdj",
+      "start": "48ad6da274",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "doc/minesweeper.mdj last edited 2023-02-19; code to 2023-10-27; 97 first-parent commits touch the analysed code. Screen: 8 designed, 5 found in code, 88 files at freeze."
+    },
+    {
+      "name": "tankman",
+      "source": "https://github.com/Jesse-Jumbo/TankMan.git",
+      "uml": "research/models/tankman.mdj",
+      "start": "24004a8844",
+      "commits": 150,
+      "subdirectory": "src",
+      "provenance": "found",
+      "notes": "doc/ClassDiagram.mdj last edited 2022-09-21; code to 2024-01-11; 30 first-parent commits touch the analysed code. Screen: 22 designed, 6 found in code, 14 files at freeze."
+    },
+    {
+      "name": "genetic-algorithm",
+      "source": "https://github.com/Jon-Robb/genetic_algorithm.git",
+      "uml": "research/models/genetic-algorithm.mdj",
+      "start": "94f2321f11",
+      "commits": 150,
+      "subdirectory": "ga",
+      "provenance": "found",
+      "notes": "Classes.mdj last edited 2022-12-03; code to 2023-09-16; 53 first-parent commits touch the analysed code. Screen: 19 designed, 11 found in code, 7 files at freeze."
+    },
+    {
+      "name": "is1-project-audio-streaming-system",
+      "source": "https://github.com/JovanMosurovic/IS1-Project-Audio-Streaming-System.git",
+      "uml": "research/models/is1-project-audio-streaming-system.mdj",
+      "start": "3c5b226c17",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "uml/UML.mdj last edited 2025-07-14; code to 2026-07-12; 8 first-parent commits touch the analysed code. Screen: 11 designed, 7 found in code, 239 files at freeze."
+    },
+    {
+      "name": "preprocessinglayer-nordjyske",
+      "source": "https://github.com/Knox-AAU/PreprocessingLayer_Nordjyske.git",
+      "uml": "research/models/preprocessinglayer-nordjyske.mdj",
+      "start": "fb36494ccd",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "nordjyske_preprocessing.mdj last edited 2020-12-18; code to 2022-01-25; 59 first-parent commits touch the analysed code. Screen: 22 designed, 22 found in code, 61 files at freeze."
+    },
+    {
+      "name": "codingame-puzzles-stats-library",
+      "source": "https://github.com/MathieuSoysal/CodinGame-Puzzles-stats-library.git",
+      "uml": "research/models/codingame-puzzles-stats-library.mdj",
+      "start": "3f6b19ac31",
+      "commits": 150,
+      "subdirectory": "src/main/java/com/github/mathieusoysal/codingame_stats",
+      "provenance": "found",
+      "notes": "ressources-readme/conception.mdj last edited 2021-12-17; code to 2023-05-13; 57 first-parent commits touch the analysed code. Screen: 14 designed, 11 found in code, 12 files at freeze."
+    },
+    {
+      "name": "vectorx",
+      "source": "https://github.com/Myslitel666/VectorX.git",
+      "uml": "research/models/vectorx.mdj",
+      "start": "842457d403",
+      "commits": 150,
+      "subdirectory": "VectorXBackend",
+      "provenance": "found",
+      "notes": "Documents/Diagrams/Classes.mdj last edited 2024-05-21; code to 2025-09-26; 30 first-parent commits touch the analysed code. Screen: 10 designed, 9 found in code, 89 files at freeze."
+    },
+    {
+      "name": "projet-cy-books",
+      "source": "https://github.com/Quentin55553/Projet-CY-Books.git",
+      "uml": "research/models/projet-cy-books.mdj",
+      "start": "76a5151a01",
+      "commits": 150,
+      "subdirectory": "src/main/java/org/openjfx/cybooks",
+      "provenance": "found",
+      "notes": "docs/Diagrams.mdj last edited 2024-05-25; code to 2025-10-12; 24 first-parent commits touch the analysed code. Screen: 24 designed, 13 found in code, 45 files at freeze."
+    },
+    {
+      "name": "gdxiris",
+      "source": "https://github.com/Rayer/GdxIris.git",
+      "uml": "research/models/gdxiris.mdj",
+      "start": "ff837e312f",
+      "commits": 150,
+      "subdirectory": "core/src/com/dr/iris/event",
+      "provenance": "found",
+      "notes": "design/Iris.mdj last edited 2015-05-31; code to 2017-05-22; 12 first-parent commits touch the analysed code. Screen: 7 designed, 3 found in code, 4 files at freeze."
+    },
+    {
+      "name": "fire-app-builder",
+      "source": "https://github.com/amzn/fire-app-builder.git",
+      "uml": "research/models/fire-app-builder.mdj",
+      "start": "55f162bdf5",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "DynamicParser/docs/ClassDiagram.mdj last edited 2016-10-03; code to 2023-08-31; 17 first-parent commits touch the analysed code. Screen: 115 designed, 23 found in code, 803 files at freeze."
+    },
+    {
+      "name": "commandandcontrolsystem-lds",
+      "source": "https://github.com/aryeko/CommandAndControlSystem-LDS.git",
+      "uml": "research/models/commandandcontrolsystem-lds.mdj",
+      "start": "04be3db242",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "Documents/Diagrams/UML Diagrams/Class Diagrams/Client - Server UML.mdj last edited 2017-06-21; code to 2018-01-18; 12 first-parent commits touch the analysed code. Screen: 7 designed, 4 found in code, 231 files at freeze."
+    },
+    {
+      "name": "library-web-api",
+      "source": "https://github.com/avoytovich95/library-web-api.git",
+      "uml": "research/models/library-web-api.mdj",
+      "start": "9c428ea731",
+      "commits": 150,
+      "subdirectory": "LibraryWeb",
+      "provenance": "found",
+      "notes": "Docs/MVC.mdj last edited 2018-04-05; code to 2020-12-14; 5 first-parent commits touch the analysed code. Screen: 12 designed, 4 found in code, 166 files at freeze."
+    },
+    {
+      "name": "androuter",
+      "source": "https://github.com/campusappcn/AndRouter.git",
+      "uml": "research/models/androuter.mdj",
+      "start": "dc883033b2",
+      "commits": 150,
+      "subdirectory": "router/src/main/java/cn/campusapp/router",
+      "provenance": "found",
+      "notes": "stuff/Untitled.mdj last edited 2016-03-17; code to 2017-08-19; 16 first-parent commits touch the analysed code. Screen: 8 designed, 3 found in code, 20 files at freeze."
+    },
+    {
+      "name": "soulland",
+      "source": "https://github.com/cthulhusec/SoulLand.git",
+      "uml": "research/models/soulland.mdj",
+      "start": "58d89ea6d9",
+      "commits": 150,
+      "subdirectory": "SoulLand",
+      "provenance": "found",
+      "notes": "SoulLand.mdj last edited 2016-09-02; code to 2021-12-24; 53 first-parent commits touch the analysed code. Screen: 5 designed, 5 found in code, 11 files at freeze."
+    },
+    {
+      "name": "django-business-logic",
+      "source": "https://github.com/dgk/django-business-logic.git",
+      "uml": "research/models/django-business-logic.mdj",
+      "start": "53d0368ebf",
+      "commits": 150,
+      "subdirectory": "business_logic",
+      "provenance": "found",
+      "notes": "docs/static/staruml.mdj last edited 2019-03-09; code to 2025-03-24; 7 first-parent commits touch the analysed code. Screen: 19 designed, 16 found in code, 69 files at freeze."
+    },
+    {
+      "name": "spring6plus",
+      "source": "https://github.com/didier-mycontrib/spring6plus.git",
+      "uml": "research/models/spring6plus.mdj",
+      "start": "1cf8643be3",
+      "commits": 150,
+      "subdirectory": "appliSpringHexagonal",
+      "provenance": "found",
+      "notes": "appliSpringHexagonal/hexagonal-bank.mdj last edited 2023-11-21; code to 2024-12-04; 9 first-parent commits touch the analysed code. Screen: 24 designed, 20 found in code, 86 files at freeze."
+    },
+    {
+      "name": "poker-bot-deep-rl",
+      "source": "https://github.com/garyjh126/poker-bot-deep-rl.git",
+      "uml": "research/models/poker-bot-deep-rl.mdj",
+      "start": "1d1b2f83a1",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "UML/UML_PokerSystem.mdj last edited 2018-12-12; code to 2025-02-08; 80 first-parent commits touch the analysed code. Screen: 12 designed, 9 found in code, 53 files at freeze."
+    },
+    {
+      "name": "board-game",
+      "source": "https://github.com/heclement/board-game.git",
+      "uml": "research/models/board-game.mdj",
+      "start": "c230561b09",
+      "commits": 150,
+      "subdirectory": "src/game",
+      "provenance": "found",
+      "notes": "UML/UML.mdj last edited 2021-05-11; code to 2021-11-22; 6 first-parent commits touch the analysed code. Screen: 23 designed, 23 found in code, 44 files at freeze."
+    },
+    {
+      "name": "codearteng-diagnostics",
+      "source": "https://github.com/hulinning2/CodeArtEng.Diagnostics.git",
+      "uml": "research/models/codearteng-diagnostics.mdj",
+      "start": "178597760a",
+      "commits": 150,
+      "subdirectory": "CodeArtEng.Diagnostics",
+      "provenance": "found",
+      "notes": "Documentation/CodeArtEng.Diagnostics.mdj last edited 2019-02-23; code to 2022-08-13; 7 first-parent commits touch the analysed code. Screen: 12 designed, 6 found in code, 12 files at freeze."
+    },
+    {
+      "name": "city-sim",
+      "source": "https://github.com/jm0rt1/city-sim.git",
+      "uml": "research/models/city-sim.mdj",
+      "start": "c09f5f6986",
+      "commits": 150,
+      "subdirectory": "src",
+      "provenance": "found",
+      "notes": "docs/models/model.mdj last edited 2026-02-08; code to 2026-09-07; 18 first-parent commits touch the analysed code. Screen: 16 designed, 8 found in code, 13 files at freeze."
+    },
+    {
+      "name": "scs-simulation-of-insulin-pump",
+      "source": "https://github.com/kshitijyelpale/SCS-Simulation-of-Insulin-Pump.git",
+      "uml": "research/models/scs-simulation-of-insulin-pump.mdj",
+      "start": "c271618d20",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "Documentation/Diagrams/UML Diagrams_2.mdj last edited 2020-02-21; code to 2021-09-01; 25 first-parent commits touch the analysed code. Screen: 7 designed, 3 found in code, 557 files at freeze."
+    },
+    {
+      "name": "angular-fullstack-pro-starter",
+      "source": "https://github.com/lehcode/angular-fullstack-pro-starter.git",
+      "uml": "research/models/angular-fullstack-pro-starter.mdj",
+      "start": "57135f66f2",
+      "commits": 150,
+      "subdirectory": "apps",
+      "provenance": "found",
+      "notes": "apps/api/docs/UML/app.mdj last edited 2023-05-10; code to 2024-02-28; 7 first-parent commits touch the analysed code. Screen: 8 designed, 6 found in code, 95 files at freeze."
+    },
+    {
+      "name": "formula1-fisica",
+      "source": "https://github.com/leodreizzen/formula1-fisica.git",
+      "uml": "research/models/formula1-fisica.mdj",
+      "start": "3862397167",
+      "commits": 150,
+      "subdirectory": "api/f1data",
+      "provenance": "found",
+      "notes": "diagramaBackend.mdj last edited 2024-04-05; code to 2026-04-21; 8 first-parent commits touch the analysed code. Screen: 9 designed, 5 found in code, 5 files at freeze."
+    },
+    {
+      "name": "ing-sw-2019-mauri-murriero-ostrovan",
+      "source": "https://github.com/lleugen/ing-sw-2019-mauri-murriero-ostrovan.git",
+      "uml": "research/models/ing-sw-2019-mauri-murriero-ostrovan.mdj",
+      "start": "68d3036747",
+      "commits": 150,
+      "subdirectory": "src/main/java/it/polimi/se2019/model",
+      "provenance": "found",
+      "notes": "Deliveries/UML_model.mdj last edited 2019-03-31; code to 2020-10-14; 59 first-parent commits touch the analysed code. Screen: 16 designed, 16 found in code, 16 files at freeze."
+    },
+    {
+      "name": "meeting-room-display",
+      "source": "https://github.com/methodpark/meeting-room-display.git",
+      "uml": "research/models/meeting-room-display.mdj",
+      "start": "b12529441d",
+      "commits": 150,
+      "subdirectory": "mrd",
+      "provenance": "found",
+      "notes": "docs/mrd_class_diagram.mdj last edited 2019-08-16; code to 2022-01-19; 6 first-parent commits touch the analysed code. Screen: 25 designed, 19 found in code, 35 files at freeze."
+    },
+    {
+      "name": "galaxy-data-mines",
+      "source": "https://github.com/mshubat/galaxy_data_mines.git",
+      "uml": "research/models/galaxy-data-mines.mdj",
+      "start": "ef8ff7b630",
+      "commits": 150,
+      "subdirectory": "galaxy_data_mines",
+      "provenance": "found",
+      "notes": "docs/gdm_UML.mdj last edited 2019-04-24; code to 2022-10-03; 9 first-parent commits touch the analysed code. Screen: 6 designed, 4 found in code, 22 files at freeze."
+    },
+    {
+      "name": "hydgl",
+      "source": "https://github.com/uiocompcat/HyDGL.git",
+      "uml": "research/models/hydgl.mdj",
+      "start": "c8f100e771",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "doc/uml.mdj last edited 2022-09-20; code to 2026-02-23; 71 first-parent commits touch the analysed code. Screen: 24 designed, 23 found in code, 64 files at freeze."
+    },
+    {
+      "name": "rdf4node",
+      "source": "https://github.com/wyutopia/rdf4node.git",
+      "uml": "research/models/rdf4node.mdj",
+      "start": "8e106aed14",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "docs/design.mdj last edited 2023-09-28; code to 2024-09-11; 279 first-parent commits touch the analysed code. Screen: 20 designed, 12 found in code, 73 files at freeze."
+    },
+    {
+      "name": "xtask",
+      "source": "https://github.com/xuexiangjys/XTask.git",
+      "uml": "research/models/xtask.mdj",
+      "start": "3cd231ef26",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "art/xtask.mdj last edited 2022-02-16; code to 2024-03-12; 23 first-parent commits touch the analysed code. Screen: 24 designed, 23 found in code, 137 files at freeze."
+    },
+    {
+      "name": "vars-annotation",
+      "source": "https://github.com/mbari-org/vars-annotation.git",
+      "uml": "research/models/vars-annotation.mdj",
+      "start": "202beb3c94",
+      "commits": 150,
+      "subdirectory": null,
+      "provenance": "found",
+      "notes": "docs/assets/uml/MediaPlayer.mdj last edited 2022-01-03; code to 2026-10-09; 176 first-parent commits touch the analysed code. Screen: 16 designed, 8 found in code, 559 files at freeze."
+    },
+    {
+      "name": "discordbotrpg",
+      "source": "https://github.com/FightRPG-DiscordBotRPG/DiscordBotRPG-Server.git",
+      "uml": "research/models/discordbotrpg.mdj",
+      "start": "f2ab878",
+      "commits": 0,
+      "subdirectory": "bin",
+      "provenance": "found",
+      "notes": "JavaScript. UML.mdj last edited 2019-12-01; code ran to 2023-01-27 (1153 days, 719 commits behind)."
+    },
+    {
+      "name": "sistema-bancario",
+      "source": "https://github.com/manoelcampos/sistema-bancario-java-junit.git",
+      "uml": "research/models/sistema-bancario.mdj",
+      "start": "16508fe",
+      "commits": 150,
+      "subdirectory": "src/main/java",
+      "provenance": "found",
+      "notes": "Java. Diagram last edited 2020-08-13; code ran to 2025-06-26 (1777 days, 24 commits). A pilot: 8 source files."
+    },
+    {
+      "name": "gamespark",
+      "source": "https://github.com/yusufkaraaslan/GameSpark.git",
+      "uml": "research/models/gamespark.mdj",
+      "start": "8902f40",
+      "commits": 150,
+      "subdirectory": "Assets/yUSyUS/Game Spark/Script",
+      "provenance": "found",
+      "notes": "C#. Diagram last edited 2022-02-25; code ran to 2024-06-19 (845 days, 12 commits). Short window; included for language coverage."
+    }
+  ],
+  "$comment": [
+    "Corpus v2: the three original found designs plus every project from the 2026-10-18 GitHub/Sourcegraph screen that meets the inclusion rule in research/build_corpus.py.",
+    "start = commit of the model's last edit (the freeze). commits caps the first-parent window (0 = all)."
+  ]
+}

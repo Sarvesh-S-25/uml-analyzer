@@ -109,6 +109,42 @@ class IsomorphismTests(unittest.TestCase):
         self.assertFalse(decision.should_invoke_llm)
         self.assertIs(decision.isomorphic, True)
 
+    def test_exhausted_search_budget_is_undecided_and_reanalyses(self):
+        # VF2 once ran for over half an hour on a real C# project. When the
+        # search outlives its budget the answer is "undecided", never "same
+        # shape", and the gate pays rather than serving a stale explanation.
+        from unittest import mock
+
+        import core.graph_diff as graph_diff
+
+        base, renamed = arch_base(), arch_renamed()
+        with mock.patch.object(graph_diff, "ISOMORPHISM_TIMEOUT_SECONDS", -1.0):
+            old = build_implementation_graph(base)
+            new = build_implementation_graph(renamed)
+            self.assertIsNone(is_label_isomorphic(old, new))
+            self.assertEqual(find_renames(old, new), {})
+            decision = gate("isomorphism", base, renamed)
+        self.assertTrue(decision.should_invoke_llm)
+        self.assertIsNone(decision.isomorphic)
+
+    def test_shape_signature_rejects_without_running_vf2(self):
+        # Same node count, edge count, total-degree multiset and kinds, so the
+        # older checks pass; but each class owns a method in one graph and
+        # classes and methods only point at their own kind in the other.
+        import networkx as nx
+        from unittest import mock
+
+        import core.graph_diff as graph_diff
+
+        owns, peers = nx.DiGraph(), nx.DiGraph()
+        for graph in (owns, peers):
+            graph.add_nodes_from(["C1", "C2"], kind="class")
+            graph.add_nodes_from(["M1", "M2"], kind="method")
+        owns.add_edges_from([("C1", "M1"), ("C2", "M2")], relation="contains")
+        peers.add_edges_from([("C1", "C2"), ("M1", "M2")], relation="contains")
+        with mock.patch.object(graph_diff, "_BoundedMatcher", side_effect=AssertionError("VF2 ran")):
+            self.assertIs(is_label_isomorphic(owns, peers), False)
+
     def test_rename_mapping_is_recoverable(self):
         old = build_implementation_graph(arch_base())
         new = build_implementation_graph(arch_renamed())

@@ -17,6 +17,7 @@ additionally absorbs renames -- at the risk of skipping a rename that genuinely
 breaks conformance against a UML diagram that names the class explicitly. The
 gate records enough detail for that risk to be measured instead of guessed.
 """
+import time
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Tuple
 
@@ -26,6 +27,10 @@ from networkx.algorithms import isomorphism
 # VF2 is exponential in the worst case; refuse to attempt it on large graphs
 # rather than hanging a request.
 ISOMORPHISM_NODE_LIMIT = 400
+# The node limit alone is not enough: VF2 hung for over half an hour on a
+# 19-commit C# project of a few hundred nodes, many of them alike. A search that
+# outlives this budget is undecided, and undecided means re-analyse.
+ISOMORPHISM_TIMEOUT_SECONDS = 5.0
 EDIT_DISTANCE_NODE_LIMIT = 60
 EDIT_DISTANCE_TIMEOUT_SECONDS = 5.0
 
@@ -145,11 +150,46 @@ def _relation_match(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
     return a.get("relation") == b.get("relation")
 
 
+class _Deadline(Exception):
+    pass
+
+
+class _BoundedMatcher(isomorphism.DiGraphMatcher):
+    """VF2 that gives up after a wall-clock budget instead of hanging."""
+
+    def __init__(self, *args, budget: Optional[float] = None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._deadline = time.perf_counter() + (ISOMORPHISM_TIMEOUT_SECONDS if budget is None else budget)
+
+    def semantic_feasibility(self, G1_node, G2_node):
+        if time.perf_counter() > self._deadline:
+            raise _Deadline()
+        return super().semantic_feasibility(G1_node, G2_node)
+
+
+def _shape_signature(graph: nx.DiGraph) -> Tuple:
+    """A label-free invariant: equal for isomorphic graphs, cheap to compute.
+
+    Weisfeiler-Lehman refinement over node kinds and edge relations; graphs
+    with different signatures cannot be isomorphic under the gate's matchers.
+    """
+    shaped = nx.DiGraph()
+    for node, data in graph.nodes(data=True):
+        shaped.add_node(node, kind=str(data.get("kind")))
+    for source, target, data in graph.edges(data=True):
+        shaped.add_edge(source, target, relation=str(data.get("relation")))
+    return (
+        sorted((data["kind"], shaped.in_degree(n), shaped.out_degree(n)) for n, data in shaped.nodes(data=True)),
+        nx.weisfeiler_lehman_graph_hash(shaped, node_attr="kind", edge_attr="relation", iterations=3),
+    )
+
+
 def is_label_isomorphic(old: nx.DiGraph, new: nx.DiGraph) -> Optional[bool]:
     """True when the two graphs have the same shape ignoring identifiers.
 
     Returns None when the check was skipped because the graphs are too large to
-    test safely -- the caller must not read None as False.
+    test safely, or when VF2 ran out of its time budget -- the caller must not
+    read None as False, and the gate treats it as "re-analyse".
     """
     if old.number_of_nodes() != new.number_of_nodes():
         return False
@@ -168,11 +208,14 @@ def is_label_isomorphic(old: nx.DiGraph, new: nx.DiGraph) -> Optional[bool]:
     new_kinds = sorted(data.get("kind") for _, data in new.nodes(data=True))
     if old_kinds != new_kinds:
         return False
+    if _shape_signature(old) != _shape_signature(new):
+        return False
 
-    matcher = isomorphism.DiGraphMatcher(
-        old, new, node_match=_kind_match, edge_match=_relation_match
-    )
-    return bool(matcher.is_isomorphic())
+    matcher = _BoundedMatcher(old, new, node_match=_kind_match, edge_match=_relation_match)
+    try:
+        return bool(matcher.is_isomorphic())
+    except _Deadline:
+        return None
 
 
 def find_renames(old: nx.DiGraph, new: nx.DiGraph) -> Dict[str, str]:
@@ -183,10 +226,11 @@ def find_renames(old: nx.DiGraph, new: nx.DiGraph) -> Dict[str, str]:
     """
     if old.number_of_nodes() == 0 or old.number_of_nodes() > ISOMORPHISM_NODE_LIMIT:
         return {}
-    matcher = isomorphism.DiGraphMatcher(
-        old, new, node_match=_kind_match, edge_match=_relation_match
-    )
-    if not matcher.is_isomorphic():
+    matcher = _BoundedMatcher(old, new, node_match=_kind_match, edge_match=_relation_match)
+    try:
+        if not matcher.is_isomorphic():
+            return {}
+    except _Deadline:
         return {}
     return {source: target for source, target in matcher.mapping.items() if source != target}
 
