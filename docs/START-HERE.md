@@ -192,8 +192,19 @@ most often for being missing.**
 
 ## Where you are right now
 
-You have finished **Step 0**. Steps 1 and 2 are the next thirty minutes.
-Step 3 is the project.
+*Updated 18 October 2026.* All the steps have been done once, and then the
+study was revised after faculty review. The revised paper is
+`paper/paper-revised.{md,docx,pdf}`, on branch `revised-paper-live-llm`. It
+uses a 52-project corpus found by a GitHub search
+(`research/corpus-search/`, `research/build_corpus.py`) and a local model in
+the loop (`research/live_llm.py`, `research/live_deviations.py`). To
+regenerate everything after new runs:
+
+```
+powershell -ExecutionPolicy Bypass -File paperebuild-revised.ps1
+```
+
+Raw results and every link and setting used are in `replication/`.
 
 
 ---

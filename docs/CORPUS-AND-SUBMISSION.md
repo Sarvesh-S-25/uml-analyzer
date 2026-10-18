@@ -1,5 +1,12 @@
 # What to test on, and how to get from there to a submitted paper
 
+> **Revised study, 18 October 2026.** The corpus is no longer chosen by hand.
+> `research/corpus-search/README.md` records the GitHub and Sourcegraph
+> search, the staleness filter and the screen. `research/build_corpus.py`
+> holds the inclusion rule, which was fixed before any replay, and
+> `research/corpus-v2.json` is the result (50 found projects plus the
+> original 3). The sections below are the earlier guidance.
+
 *Links verified 26 August 2026.*
 
 ---

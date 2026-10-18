@@ -116,3 +116,28 @@ the variance across projects is itself a result worth reporting.
 
 The pairing that matters is `reuse rate` with `miss rate`. Either alone is
 misleading: a gate that never fires has a perfect reuse rate and is useless.
+
+
+## The revised study: a larger corpus and a live local model
+
+| Script | Purpose |
+|---|---|
+| `build_corpus.py` | Applies the fixed inclusion rule to the screen output and writes `corpus-v2.json` and the frozen models |
+| `corpus-search/` | The search snapshot, screen script and its README (sources, links, manual steps) |
+| `replay_each.py` | Replays each manifest project in its own process and output directory; resumable |
+| `live_llm.py` | Replay with gate re-analyses sent to a local Ollama model. It caches answers by prompt hash, refuses prompts that do not fit the window, and scores the served explanation |
+| `live_deviations.py` | The seeded deviations with the live model (`--repeat` re-sends prompts to measure variation) |
+| `live_numbers.py`, `fit_numbers.py`, `corpus_table.py` | Numbers for the live tables, context-window fit and Table II |
+| `fill_paper.py` | Fills every `⟦NAME⟧` marker in `paper/paper-revised.template.md` from the results |
+
+```bash
+python research/live_deviations.py --out results/live --model qwen2.5-coder:7b
+python research/replay_each.py --corpus research/corpus-v2.json --out results/corpus-v2
+python research/live_llm.py --corpus research/corpus-v2.json --only <project>        --out results/live --model qwen2.5-coder:7b --num-ctx 32768 --always-sample 10
+```
+
+The live scripts need Ollama with the model pulled and never use a key; see
+`../replication/README.md` for the exact runtime and GPU settings. Run the
+offline replays with the model unloaded (`ollama stop qwen2.5-coder:7b`): the
+model and several replay workers together exhausted 32 GB of RAM in this
+study.

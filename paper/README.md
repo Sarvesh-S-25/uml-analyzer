@@ -1,5 +1,15 @@
 # The paper
 
+> **Revised version (18 October 2026):** `paper-revised.md` / `.docx` / `.pdf`
+> answer the faculty review: a real local model is now in the loop, and the
+> corpus has 52 projects. Do not edit `paper-revised.md` directly. It is
+> generated from `paper-revised.template.md` by `research/fill_paper.py`.
+> Rebuild everything, numbers, figures (`figures-v2/`), Word and PDF, with
+> `powershell -ExecutionPolicy Bypass -File paperebuild-revised.ps1`. The
+> Word export closes only the document it opened, so your own open Word
+> documents are safe. Sources, settings and raw results:
+> `../replication/README.md`.
+
 **`paper.md` is the current manuscript** — the conformance-drift framing, the
 corpus study, verified references and every number filled from `results/`.
 
