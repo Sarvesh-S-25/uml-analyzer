@@ -69,6 +69,7 @@ Microsoft Word for the PDF export, and matplotlib for the figures.
   were removed partly by hand. The search snapshot is in
   `research/corpus-search/`.
 * Model timings depend on the machine and on what else is running.
-* The live corpus arm covered only the projects finished when the paper was
-  built. Rerunning `research/live_llm.py` for the remaining projects and then
-  `rebuild-revised.ps1` updates the paper.
+* The live corpus arm covered two projects (banquale, bankthread). The queue
+  was stopped during artvance to finish the paper. To cover more projects,
+  rerun `research/live_llm.py` for each remaining project, then run
+  `rebuild-revised.ps1` to update the paper.

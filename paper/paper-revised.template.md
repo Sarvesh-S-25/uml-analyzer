@@ -1,11 +1,5 @@
 # Measuring Conformance Drift Against Abandoned UML Designs with a Local Language Model in the Loop
 
-*Revised manuscript, IEEE two-column format. Every number in this paper was
-produced by the scripts in the replication package on 18 October 2026; Section
-V-H gives the commands. This revision answers two review comments on the
-previous version: that no language model was ever run, and that only one of
-three projects drifted.*
-
 **Sarvesh Sakthivel** (sarveshs2025@gmail.com)
 
 ---
@@ -44,7 +38,7 @@ replacements rather than the class renames it was designed to tolerate. On a
 laptop, only ⟦ALWAYS_FIT⟧ of full-project prompts fit a 32k-token window
 against ⟦STRUCT_FIT⟧ of structurally scoped ones, so scoping is what makes a
 local model usable, although the 7.6B model often failed to finish its answer
-on a real project; scoping also changes what the model notices. We
+on real projects; scoping also changes what the model notices. We
 release the tool, the corpus search, the live-model protocol and the scripts
 behind every number.
 
@@ -88,14 +82,15 @@ fewer than a third of those touched a UML file in 2022 [16]. An abandoned
 diagram is a statement of intended design that nobody drew for a study, so the
 drift away from it is real.
 
-**What this revision changes.** An earlier version of this study had two
-weaknesses. It never ran a language model: its cost evidence was the size of
-prompts that were never sent. And its corpus held three projects, of which only
-one drifted. Here we (i) put a real model in the loop, a 7.6-billion-parameter
-open-weight code model served locally by Ollama, with no hosted API and no key,
-and record what the model server itself measures; and (ii) replace hand-picked
-subjects with a systematic search of GitHub for StarUML class models, screened
-by a rule fixed before any replay, which yields ⟦N_PROJECTS⟧ projects.
+**This study.** A cost argument about language models is only as good as the
+model behind it, and a drift argument only as good as its corpus. A pilot of
+this work on three hand-picked projects estimated cost from the size of
+prompts it never sent, and only one of its projects drifted. Here we (i) put a
+real model in the loop, a 7.6-billion-parameter open-weight code model served
+locally by Ollama, with no hosted API and no key, and record what the model
+server itself measures; and (ii) take the subjects from a systematic search of
+GitHub for StarUML class models, screened by a rule fixed before any replay,
+which yields ⟦N_PROJECTS⟧ projects.
 
 We ask five research questions:
 
@@ -273,8 +268,8 @@ comment, whitespace, a local rename, reordered methods, a docstring).
 
 ### B. Corpus: a systematic search
 
-The previous corpus was three projects found by browsing. This one comes from
-a search with a fixed procedure (all artifacts in `research/corpus-search/`).
+The subjects come from a search with a fixed procedure (all artifacts are in
+`research/corpus-search/` of the replication package).
 
 1. **Search.** GitHub code search, through its web interface, for files
    matching `path:*.mdj` that contain both `UMLClass` and `UMLOperation`,
@@ -302,7 +297,7 @@ a search with a fixed procedure (all artifacts in `research/corpus-search/`).
 Of the 215 pairs, 112 named too few designed classes in the code, 41 had too
 little later activity under the analysed directory, 3 had lost the directory,
 2 were too large and 5 could not be parsed or checked out; 50 qualified. With
-the three projects of the first study the corpus has 53. One (city-sim) could
+the three projects of the pilot the corpus has 53. One (city-sim) could
 not be replayed on Windows because its history contains a path with a trailing
 space, and ⟦N_REPLAYED_NOTE⟧.
 
@@ -409,8 +404,8 @@ project's window, one dot per project (symmetric-log axes). Below the dashed
 line the code grew away from the design faster than designed structure
 disappeared. The labelled outlier is astrominer (+477 divergences).*
 
-**Drift is the rule, not the exception.** The first study's corpus had one
-drifting project out of three. In this one, ⟦DRIFTED⟧ of ⟦N_PROJECTS⟧ projects
+**Drift is the rule, not the exception.** In the pilot only one project of
+three drifted. Here, ⟦DRIFTED⟧ of ⟦N_PROJECTS⟧ projects
 changed conformance at least once after their diagrams were abandoned, and
 about one commit in five (⟦CHANGED_PCT⟧) changed it. Most of the remaining
 commits touched source without touching anything a class diagram describes.
@@ -418,7 +413,7 @@ commits touched source without touching anything a class diagram describes.
 **It mostly runs one way.** ⟦DIV_LED⟧ windows were divergence-led, and summed
 over the corpus, divergences grew by ⟦NET_DIV⟧ against ⟦NET_ABS⟧ for absences.
 Eroding commits outnumbered repairing ones ⟦ERODING⟧ to ⟦REPAIRING⟧. The
-pattern the first study saw in one project generalises: code grows *around*
+pattern the pilot saw in one project generalises: code grows *around*
 an abandoned design (new undocumented classes and members) far more than it
 removes what the design describes. The extreme case, astrominer, a Unity game,
 went from 44 to 521 divergences and from a score of 42.9% to 15.2% in 94
@@ -565,8 +560,8 @@ III-A is designed for.
 
 *Answer to RQ4.* Only with a structural gate, and only partly. About nine in
 ten of its re-analyses fit a laptop model's window, against four in ten
-full-project checks, and the calls it avoids are where the time goes. But on a
-real project a 7.6B model often could not finish the answer format the tool
+full-project checks, and the calls it avoids are where the time goes. But on
+real projects a 7.6B model often could not finish the answer format the tool
 asks for, so the explanation fell back to the deterministic findings for a
 large share of the calls it did make. The structural gate keeps a local model
 feasible; it does not make a small one sufficient.
@@ -589,8 +584,8 @@ counts. Only time varied: the second call took a median 0.80 of the first
 deterministic on this hardware, but not exactly, which is one more reason the
 design keeps the model out of the verdict.
 
-*Counterfactual against measured tokens.* The previous version of this study
-reported prompt sizes in `cl100k_base` tokens without sending them. Over the
+*Counterfactual against measured tokens.* An offline replay can only report
+prompt sizes in `cl100k_base` tokens, as the pilot did. Over the
 ⟦N_CALIBRATION⟧ distinct prompts sent here, Ollama evaluated a median of
 ⟦CAL_RATIO⟧ times the `cl100k` estimate (range ⟦CAL_RANGE⟧). The
 counterfactual was a slight and nearly uniform underestimate, so every saving
@@ -782,14 +777,14 @@ The tool, the seeded deviations, the corpus search artifacts and inclusion
 rule (`research/corpus-search/`, `research/build_corpus.py`), the corpus
 manifest and frozen models, the raw per-run data of the offline and live
 replays, the model-response cache and the scripts that produce every table and
-figure are in the replication package (`<archive link or Zenodo DOI>`).
+figure are in the replication package: `replication/` and `research/` in
+https://github.com/Sarvesh-S-25/uml-analyzer.
 
 ---
 
 ## References
 
-All entries were checked against Crossref, arXiv or the publisher's record;
-[31] and [32] were added on 18 October 2026.
+All entries were checked against Crossref, arXiv or the publisher's record.
 
 [1] D. E. Perry and A. L. Wolf, "Foundations for the study of software architecture," *ACM SIGSOFT Softw. Eng. Notes*, vol. 17, no. 4, pp. 40–52, 1992, doi: 10.1145/141874.141884.
 

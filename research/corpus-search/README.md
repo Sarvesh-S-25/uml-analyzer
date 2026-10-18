@@ -38,3 +38,9 @@ and are fully reproducible from the files here.
    docstring there. Every decision is in `decisions.csv`. 50 projects qualified;
    with the three projects of the first study, the corpus is
    `../corpus-v2.json`.
+
+**Model files of rejected candidates.** `screen-results.json` records each
+candidate's `model_file` as a path on the original machine. Those copies were
+deleted after the study. The 50 included models are kept in `research/models/`.
+Any other model can be recreated with `git show <freeze>:<mdj path>`, using the
+repository, path and freeze commit recorded in the same row.
