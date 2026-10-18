@@ -43,7 +43,8 @@ explanations after 51 shape-preserving changes, most of them member
 replacements rather than the class renames it was designed to tolerate. On a
 laptop, only 38% of full-project prompts fit a 32k-token window
 against 87% of structurally scoped ones, so scoping is what makes a
-local model usable, and scoping also changes what the model notices. We
+local model usable, although the 7.6B model often failed to finish its answer
+on a real project; scoping also changes what the model notices. We
 release the tool, the corpus search, the live-model protocol and the scripts
 behind every number.
 
@@ -470,7 +471,7 @@ all. The content gate paid for every commit that changed bytes, including
 **Measured, not only counted.** Where the live arm sent prompts, the saving is
 measured in tokens the model server evaluated. On the seeded set the
 structural gate used 35% of the baseline's measured prompt tokens (Table V).
-The live corpus arm had not finished any project when these numbers were produced.
+In the live corpus arm (1 project: banquale), the structural gate sent 9 real calls (114,868 measured prompt tokens, 48 minutes of model time) and the isomorphism gate 8; every scoped prompt fitted the window, while 4 of the sampled full-project prompts did not and were not sent. On this real project the small model often failed to finish the answer format: 4 of the structural gate's 9 answers, and 16 of all 35 answers, were cut off or were not valid JSON, and the tool fell back to its deterministic findings for those runs. Because `always` was sampled, its measured total is not comparable, and Table IV keeps the counterfactual for the corpus-wide saving.
 
 *Answer to RQ2.* A structural gate avoids three model calls in five and about
 nine prompt tokens in ten, measured on a real model where it could be, and
@@ -546,10 +547,10 @@ below 85% of the window; sizes converted with the measured ratio of
 
 | Gate | Fired prompts | Fit [95% CI] | Median size | 90th percentile |
 |---|---|---|---|---|
-| always | 2,606 | 38% [36–40] | 43,785 | 215,765 |
-| content | 1,399 | 74% [72–77] | 13,009 | 61,235 |
-| structural | 1,049 | 87% [85–89] | 8,970 | 33,712 |
-| isomorphism | 872 | 85% [82–87] | 10,245 | 36,873 |
+| always | 2,606 | 38% [36–40] | 43,768 | 215,682 |
+| content | 1,399 | 74% [72–77] | 13,004 | 61,211 |
+| structural | 1,049 | 87% [85–89] | 8,967 | 33,699 |
+| isomorphism | 872 | 85% [82–87] | 10,241 | 36,859 |
 
 The full-project prompt fits in only 38% of cases, and for
 21 of 52 projects it never fits at all. Scoped prompts fit
@@ -558,19 +559,23 @@ saving but what makes per-commit analysis possible: for the larger projects
 an unscoped check can be done only by truncating the project the model is
 asked to judge.
 
-**Time.** Throughput on the integrated GPU was a median 376 prompt
+**Time.** Throughput on the integrated GPU was a median 364 prompt
 tokens and 12.9 generated tokens per second. On the seeded set a scoped
 call took a median 39 s against 47 s for a full one, although its prompt was
 half the size: most of the time is spent writing the answer. A skipped call
 saves its whole duration, so on local hardware the skip rate, not the prompt
-size, decides the time a gate saves.  Of the answers, 6 of 45
+size, decides the time a gate saves. In the live corpus arm the structural gate's calls took 5.3 minutes each on average. Of the answers, 8 of 58
 reached the 2,048-token output cap before closing their JSON; the tool then
 falls back to the deterministic findings, which is the degradation Section
 III-A is designed for.
 
-*Answer to RQ4.* Yes, with a structural gate: about nine in ten of its
-re-analyses fit a laptop model's window, against four in ten full-project
-checks, and the calls it avoids are where the time goes.
+*Answer to RQ4.* Only with a structural gate, and only partly. About nine in
+ten of its re-analyses fit a laptop model's window, against four in ten
+full-project checks, and the calls it avoids are where the time goes. But on a
+real project a 7.6B model often could not finish the answer format the tool
+asks for, so the explanation fell back to the deterministic findings for a
+large share of the calls it did make. The structural gate keeps a local model
+feasible; it does not make a small one sufficient.
 
 ### E. RQ5: Can the instrument be trusted?
 
@@ -592,7 +597,7 @@ design keeps the model out of the verdict.
 
 *Counterfactual against measured tokens.* The previous version of this study
 reported prompt sizes in `cl100k_base` tokens without sending them. Over the
-45 distinct prompts sent here, Ollama evaluated a median of
+58 distinct prompts sent here, Ollama evaluated a median of
 1.051 times the `cl100k` estimate (range 1.029–1.092). The
 counterfactual was a slight and nearly uniform underestimate, so every saving
 reported as a percentage is unaffected.

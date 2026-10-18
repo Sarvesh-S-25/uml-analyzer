@@ -43,7 +43,8 @@ explanations after ⟦ISO_STARTS⟧ shape-preserving changes, most of them membe
 replacements rather than the class renames it was designed to tolerate. On a
 laptop, only ⟦ALWAYS_FIT⟧ of full-project prompts fit a 32k-token window
 against ⟦STRUCT_FIT⟧ of structurally scoped ones, so scoping is what makes a
-local model usable, and scoping also changes what the model notices. We
+local model usable, although the 7.6B model often failed to finish its answer
+on a real project; scoping also changes what the model notices. We
 release the tool, the corpus search, the live-model protocol and the scripts
 behind every number.
 
@@ -562,9 +563,13 @@ reached the 2,048-token output cap before closing their JSON; the tool then
 falls back to the deterministic findings, which is the degradation Section
 III-A is designed for.
 
-*Answer to RQ4.* Yes, with a structural gate: about nine in ten of its
-re-analyses fit a laptop model's window, against four in ten full-project
-checks, and the calls it avoids are where the time goes.
+*Answer to RQ4.* Only with a structural gate, and only partly. About nine in
+ten of its re-analyses fit a laptop model's window, against four in ten
+full-project checks, and the calls it avoids are where the time goes. But on a
+real project a 7.6B model often could not finish the answer format the tool
+asks for, so the explanation fell back to the deterministic findings for a
+large share of the calls it did make. The structural gate keeps a local model
+feasible; it does not make a small one sufficient.
 
 ### E. RQ5: Can the instrument be trusted?
 

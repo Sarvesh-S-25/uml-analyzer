@@ -169,13 +169,18 @@ def main(argv=None):
         tok = {g: sum(int(r["ollama_prompt_tokens"] or 0) for r in sent[g]) for g in GATES}
         secs = {g: sum(float(r["llm_wall_s"] or 0) for r in sent[g]) for g in GATES}
         nofit = sum(1 for r in live_rows if r["llm_status"] == "no_fit")
+        bad = {g: sum(1 for r in sent[g] if r["llm_status"] == "bad_json") for g in GATES}
+        all_sent = sum(len(sent[g]) for g in GATES)
         V["LIVE_CORPUS"] = (
             f"In the live corpus arm ({len(live_projects)} project{'s' if len(live_projects) != 1 else ''}: "
             f"{', '.join(live_projects)}), the structural gate sent {len(sent['structural'])} real calls "
             f"({tok['structural']:,} measured prompt tokens, {secs['structural'] / 60:,.0f} minutes of model time) and the "
-            f"isomorphism gate {len(sent['isomorphism'])}; {nofit} fired prompts did not fit the window and were not sent. "
-            "Because `always` was sampled, its measured total is not comparable and Table IV keeps the counterfactual "
-            "for the corpus-wide saving.")
+            f"isomorphism gate {len(sent['isomorphism'])}; every scoped prompt fitted the window, while {nofit} of the "
+            f"sampled full-project prompts did not and were not sent. On this real project the small model often failed "
+            f"to finish the answer format: {bad['structural']} of the structural gate's {len(sent['structural'])} answers, "
+            f"and {sum(bad.values())} of all {all_sent} answers, were cut off or were not valid JSON, and the tool fell "
+            "back to its deterministic findings for those runs. Because `always` was sampled, its measured total is not "
+            "comparable, and Table IV keeps the counterfactual for the corpus-wide saving.")
         V["LIVE_TIME"] = (f"In the live corpus arm the structural gate's calls took {secs['structural'] / max(len(sent['structural']), 1) / 60:.1f} "
                           "minutes each on average.")
     else:
